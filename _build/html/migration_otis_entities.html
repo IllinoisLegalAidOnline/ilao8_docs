@@ -96,6 +96,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#ilao-oas-financial-category">ILAO OAS Financial Category</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id1">Dependencies</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id2">Base Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-categories">Default categories</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ilao-oas-income-standard">ILAO OAS Income Standard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#administration">Administration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#base-table">Base Table</a></li>
 </ul>
 </li>
 </ul>
@@ -173,6 +179,8 @@
 <p>Online triage and intake system (OTIS) entities are:</p>
 <ul class="simple">
 <li>oas_intake_settings</li>
+<li>ilao_oas_financial_category</li>
+<li>ilao_oas_income_standard</li>
 <li>oas_triage_user</li>
 <li>oas_referral_history</li>
 </ul>
@@ -511,6 +519,117 @@ _category_id</td>
 </table>
 </li>
 </ul>
+</div>
+<div class="section" id="default-categories">
+<h3>Default categories<a class="headerlink" href="#default-categories" title="Permalink to this headline">¶</a></h3>
+<p>As part of the intall process, the following are created:</p>
+<ul class="simple">
+<li>income, asset, and expense category types</li>
+<li>categories within the income category type</li>
+<li>categories within the asset category type</li>
+<li>categories within the expense category type</li>
+</ul>
+<p>These default items are based off of original configuration of OTIS financial data.</p>
+</div>
+</div>
+<div class="section" id="ilao-oas-income-standard">
+<h2>ILAO OAS Income Standard<a class="headerlink" href="#ilao-oas-income-standard" title="Permalink to this headline">¶</a></h2>
+<p>This documentation covers the ilao_oas_income_standard module which provides a framework for storing income standards to be used on a website.</p>
+<div class="section" id="administration">
+<h3>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h3>
+<p>Income standards are managed through admin/structure/ilao_oas_income_standards.  Each income standard consists of:</p>
+<ul class="simple">
+<li>a name</li>
+<li>a dollar amount for a household of size 1 through 8 members</li>
+<li>a dollar amount per household member above 8 people</li>
+</ul>
+</div>
+<div class="section" id="base-table">
+<h3>Base Table<a class="headerlink" href="#base-table" title="Permalink to this headline">¶</a></h3>
+<p>The base table is ilao_oas_income_standard and consists of:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>Id for the income standard entity</td>
+<td>serial, primary key, not null</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>Not used</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>language</td>
+<td>Language of the entity</td>
+<td>varchar; 32</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>Name of the income standard</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>Unix timestamp of when the income
+standard was created</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>Unix timestamp of when the income
+standard was last changed</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>data</td>
+<td>Serialized area of additional data</td>
+<td>blob</td>
+</tr>
+<tr class="row-odd"><td>amount_1</td>
+<td>Income standard for household of 1</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_2</td>
+<td>Income standard for household of 2</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>amount_3</td>
+<td>Income standard for household of 3</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_4</td>
+<td>Income standard for household of 4</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>amount_5</td>
+<td>Income standard for household of 5</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_6</td>
+<td>Income standard for household of 6</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>amount_7</td>
+<td>Income standard for household of 7</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_8</td>
+<td>Income standard for household of 8</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>additional_family
+_members</td>
+<td>Amount for each household member
+for household larger than 8 members</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
