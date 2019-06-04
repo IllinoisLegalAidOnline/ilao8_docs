@@ -1,0 +1,582 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTIS-related entities &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Migrating Organization Data" href="migration_org_data.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS-related entities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#oas-intake-settings-entity">OAS Intake Settings Entity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#base-tables">Base Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taxonomies">Taxonomies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ilao-oas-financial-category">ILAO OAS Financial Category</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Base Tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+      <li>OTIS-related entities</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_otis_entities.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otis-related-entities">
+<h1>OTIS-related entities<a class="headerlink" href="#otis-related-entities" title="Permalink to this headline">¶</a></h1>
+<p>Online triage and intake system (OTIS) entities are:</p>
+<ul class="simple">
+<li>oas_intake_settings</li>
+<li>oas_triage_user</li>
+<li>oas_referral_history</li>
+</ul>
+<p>(oas was the precurser to OTIS and stood for online access system)</p>
+<div class="section" id="oas-intake-settings-entity">
+<h2>OAS Intake Settings Entity<a class="headerlink" href="#oas-intake-settings-entity" title="Permalink to this headline">¶</a></h2>
+<p>This is the documentation for the oas_intake_settings module. This module provides a framework for data related to online intake.</p>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>This module requires:</p>
+<ul class="simple">
+<li>entity</li>
+<li>entity_reference</li>
+<li>ilao_oas_financial_category</li>
+<li>oas_triage_user</li>
+</ul>
+</div>
+<div class="section" id="base-tables">
+<h3>Base Tables<a class="headerlink" href="#base-tables" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">oas_intake_settings_type stores the intake settings types.  This was created mostly because it was in the model code Gwen used.  It contains only 1 record for the actual oas_intake_settings entity type.</p>
+<ul class="simple">
+<li>id (not null; serial; primary key)</li>
+<li>type (machine readable name; varchar, not null)</li>
+<li>label (human readable name; varchar; not null)</li>
+<li>weight (int, not null)</li>
+<li>data (serialized array)</li>
+</ul>
+</li>
+<li><p class="first">oas_intake_settings</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="51%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings_id</td>
+<td>ID of the intake settings</td>
+<td>Serial; primary
+key; not null</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>type from
+oas_intake_settings_type</td>
+<td>varchar; 255;
+not null</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>unix timestamp of when entity created</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>unix timestamp of when last changed</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>uid</td>
+<td>User id of the author</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>serialized array of additional dat</td>
+<td>blob</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>name/label of the entity</td>
+<td>varchar; 255
+not null</td>
+</tr>
+<tr class="row-odd"><td>entity_id</td>
+<td>entity associated with the settings;
+location_services tied to the settings</td>
+<td>int; not null</td>
+</tr>
+<tr class="row-even"><td>entity_type</td>
+<td>entity type of the associated entity
+in our use case, always is node</td>
+<td>varchar; 255;
+not null</td>
+</tr>
+<tr class="row-odd"><td>current_count</td>
+<td>Current number of completed intakes</td>
+<td>int; not null</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>0 or 1; whether settings are active</td>
+<td>int; not null</td>
+</tr>
+<tr class="row-odd"><td>collect_mar
+ital__status</td>
+<td>0 or 1; whether to collect marital
+status</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_immigration</td>
+<td>0 or 1; whether to collect immigration</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_citizenship</td>
+<td>0 or 1; whether to collect citizenship</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_country</td>
+<td>0 or 1; whether to collect country</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_language</td>
+<td>0 or 1; whether to collect language</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_race</td>
+<td>0 or 1; collect user’s race</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_ethnicity</td>
+<td>0 or 1; collect user’s ethnicity</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_income</td>
+<td>0 or 1; whether to collect income</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_assets</td>
+<td>0 or 1; whether to collect assets</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_expenses</td>
+<td>0 or 1; whether to collect expenses</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>apply_income_limit</td>
+<td>0 or 1; whether to apply an income
+limit</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>apply_asset_limit</td>
+<td>0 or 1; whether to apply an asset limit</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_expenses
+_over_income</td>
+<td>0 or 1; whether to collect expenses
+only if user is over-income w/o expense</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>allow_prisoners</td>
+<td>0 or 1; whether to allow prisoners to
+apply online</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>maximum_allowed
+_income</td>
+<td>maximum allowed income, as a percentage
+of an income standard entity</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>maximum_allowed
+_assets</td>
+<td>maximum allowed assets, as a dollar
+amount</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>personal_exemption
+_amount</td>
+<td>dollar amount to exclude from assets
+when calculating asset eligibility</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>intake_limit</td>
+<td>maximum number of etransfers to allow</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>reset_limit
+_frequency</td>
+<td>how often to reset intake count; 1, 7,
+or 30 days.  0 for unlimited</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>maximum_callbacks
+_per_slot</td>
+<td>Maximum callbacks to allow in a time
+slot.</td>
+<td>int; deprecate</td>
+</tr>
+<tr class="row-odd"><td>minimum_minor_age</td>
+<td>Minimum age to apply; minimum is 13;</td>
+<td>int; default = 18</td>
+</tr>
+<tr class="row-even"><td>minimum_senior_age</td>
+<td>Minimum age to qualify as a senior</td>
+<td>int; default = 60</td>
+</tr>
+<tr class="row-odd"><td>callback_number</td>
+<td>Callback telephone number</td>
+<td>varchar; 128</td>
+</tr>
+<tr class="row-even"><td>callback_type</td>
+<td>Type of callback to allow</td>
+<td>varchar; 128</td>
+</tr>
+<tr class="row-odd"><td>cms_vendor</td>
+<td>CMS vendor to etransfer to</td>
+<td>varchar; 255</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Maximum callbacks per slot should be deprecated in favor the maximum callbacks per slot in the service content type.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<p>The OAS intake settings entity type ships with a set of predefined fields:</p>
+</div>
+<div class="section" id="taxonomies">
+<h3>Taxonomies<a class="headerlink" href="#taxonomies" title="Permalink to this headline">¶</a></h3>
+<p>The oas_intake_settings module creates the oas_callback_hours taxonomy.</p>
+</div>
+</div>
+<div class="section" id="ilao-oas-financial-category">
+<h2>ILAO OAS Financial Category<a class="headerlink" href="#ilao-oas-financial-category" title="Permalink to this headline">¶</a></h2>
+<p>This documentation covers the ilao_oas_financial_category module which provides a framework for types of financial information that may be collected via online intake.</p>
+<div class="section" id="id1">
+<h3>Dependencies<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>This module requires:</p>
+<ul class="simple">
+<li>entity</li>
+<li>entityreference</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>Base Tables<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">ilao_oas_financial_category_type: Stores the type of financial category</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="0%" />
+<col width="42%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Name                | Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="2">id</td>
+<td>id of the category type</td>
+<td>Serial; primary key; not null</td>
+</tr>
+<tr class="row-odd"><td colspan="2">type</td>
+<td>machine name of the category type</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td colspan="2">label</td>
+<td>human-readable name of the type</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td colspan="2">weight</td>
+<td>weight of the type</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td colspan="2">data</td>
+<td>serialized array of data</td>
+<td>text</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p class="first">ilao_oas_financial_category: Stores the category of financial information within a category type.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="0%" />
+<col width="42%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head" colspan="3">Name                | Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td colspan="2">ilao_oas_financial
+_category_id</td>
+<td>id of the category</td>
+<td>Serial; primary key; not null</td>
+</tr>
+<tr class="row-odd"><td colspan="2">type</td>
+<td>financial category type of category</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td colspan="2">language</td>
+<td>language of the category</td>
+<td>varchar; 32</td>
+</tr>
+<tr class="row-odd"><td colspan="2">name</td>
+<td>name of the category</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td colspan="2">created</td>
+<td>Unix timestamp when entity created</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td colspan="2">changed</td>
+<td>Unix timestamp of last update</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td colspan="2">weight</td>
+<td>weight of the type</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td colspan="2">data</td>
+<td>serialized array of data</td>
+<td>blob</td>
+</tr>
+<tr class="row-even"><td colspan="2">help_text</td>
+<td>help text to show user</td>
+<td>text</td>
+</tr>
+<tr class="row-odd"><td colspan="2">subcategory</td>
+<td>grouping for related categories</td>
+<td>varchar; 128</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="migration_org_data.html" class="btn btn-neutral" title="Migrating Organization Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
