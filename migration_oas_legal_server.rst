@@ -41,7 +41,7 @@ Module defines one permission to administer legal server.  This permission contr
 Functionality
 ===============
   
-oas_legal_server_build_eTransfer accepts an array of client data and parses it into an XML packet that complies with the `Legal Server XML standard <https://iloi-demo.legalserver.org/modules/matter/intake_xml.php>`_.
+oas_legal_server_build_eTransfer accepts an array of client data and parses it into an XML packet that complies with the `Legal Server XML standard m <https://iloi-demo.legalserver.org/modules/matter/intake_xml.php>`_.
 
 
 .. warning:: 
