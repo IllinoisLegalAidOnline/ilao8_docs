@@ -1,0 +1,624 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OAS Intake Settings &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OAS Triage User" href="migration_oas_triage_user.html" />
+    <link rel="prev" title="OTIS-related migration" href="migration_otis_entities.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OAS Intake Settings</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#oas-intake-settings-module">OAS Intake Settings Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-specific-functionality">ILAO-specific functionality</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OAS Intake Settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_oas_intake_settings.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oas-intake-settings">
+<h1>OAS Intake Settings<a class="headerlink" href="#oas-intake-settings" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the oas_intake_settings module and related information. Combined, these provide a framework for data related to online intake.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is also an ilao_oas_intake_settings module in the Drupal 7 codebase.  This module is not in fact enabled.</p>
+</div>
+<div class="section" id="oas-intake-settings-module">
+<h2>OAS Intake Settings Module<a class="headerlink" href="#oas-intake-settings-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>This module requires:</p>
+<ul class="simple">
+<li>entity</li>
+<li>entity_reference</li>
+<li>ilao_oas_financial_category</li>
+<li>oas_triage_user</li>
+</ul>
+</div>
+<div class="section" id="base-tables">
+<h3>Base Tables<a class="headerlink" href="#base-tables" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="oas-intake-settings-type">
+<h4>oas_intake_settings_type<a class="headerlink" href="#oas-intake-settings-type" title="Permalink to this headline">¶</a></h4>
+<p>Stores the intake settings types.  This was created mostly because it was in the model code Gwen used.  It contains only 1 record for the actual oas_intake_settings entity type.</p>
+<blockquote>
+<div><ul class="simple">
+<li>id (not null; serial; primary key)</li>
+<li>type (machine readable name; varchar, not null)</li>
+<li>label (human readable name; varchar; not null)</li>
+<li>weight (int, not null)</li>
+<li>data (serialized array)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h4>oas_intake_settings<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="51%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings_id</td>
+<td>ID of the intake settings</td>
+<td>Serial; primary
+key; not null</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>type from
+oas_intake_settings_type</td>
+<td>varchar; 255;
+not null</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>unix timestamp of when entity created</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>unix timestamp of when last changed</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>uid</td>
+<td>User id of the author</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>serialized array of additional dat</td>
+<td>blob</td>
+</tr>
+<tr class="row-even"><td>name</td>
+<td>name/label of the entity</td>
+<td>varchar; 255
+not null</td>
+</tr>
+<tr class="row-odd"><td>entity_id</td>
+<td>entity associated with the settings;
+location_services tied to the settings</td>
+<td>int; not null</td>
+</tr>
+<tr class="row-even"><td>entity_type</td>
+<td>entity type of the associated entity
+in our use case, always is node</td>
+<td>varchar; 255;
+not null</td>
+</tr>
+<tr class="row-odd"><td>current_count</td>
+<td>Current number of completed intakes</td>
+<td>int; not null</td>
+</tr>
+<tr class="row-even"><td>enabled</td>
+<td>0 or 1; whether settings are active</td>
+<td>int; not null</td>
+</tr>
+<tr class="row-odd"><td>collect_mar
+ital__status</td>
+<td>0 or 1; whether to collect marital
+status</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_immigration</td>
+<td>0 or 1; whether to collect immigration</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_citizenship</td>
+<td>0 or 1; whether to collect citizenship</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_country</td>
+<td>0 or 1; whether to collect country</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_language</td>
+<td>0 or 1; whether to collect language</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_race</td>
+<td>0 or 1; collect user’s race</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_ethnicity</td>
+<td>0 or 1; collect user’s ethnicity</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_income</td>
+<td>0 or 1; whether to collect income</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_assets</td>
+<td>0 or 1; whether to collect assets</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>collect_expenses</td>
+<td>0 or 1; whether to collect expenses</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>apply_income_limit</td>
+<td>0 or 1; whether to apply an income
+limit</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>apply_asset_limit</td>
+<td>0 or 1; whether to apply an asset limit</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>collect_expenses
+_over_income</td>
+<td>0 or 1; whether to collect expenses
+only if user is over-income w/o expense</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>allow_prisoners</td>
+<td>0 or 1; whether to allow prisoners to
+apply online</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>maximum_allowed
+_income</td>
+<td>maximum allowed income, as a percentage
+of an income standard entity</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>maximum_allowed
+_assets</td>
+<td>maximum allowed assets, as a dollar
+amount</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>personal_exemption
+_amount</td>
+<td>dollar amount to exclude from assets
+when calculating asset eligibility</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>intake_limit</td>
+<td>maximum number of etransfers to allow</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>reset_limit
+_frequency</td>
+<td>how often to reset intake count; 1, 7,
+or 30 days.  0 for unlimited</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>maximum_callbacks
+_per_slot</td>
+<td>Maximum callbacks to allow in a time
+slot.</td>
+<td>int; deprecate</td>
+</tr>
+<tr class="row-odd"><td>minimum_minor_age</td>
+<td>Minimum age to apply; minimum is 13;</td>
+<td>int; default = 18</td>
+</tr>
+<tr class="row-even"><td>minimum_senior_age</td>
+<td>Minimum age to qualify as a senior</td>
+<td>int; default = 60</td>
+</tr>
+<tr class="row-odd"><td>callback_number</td>
+<td>Callback telephone number</td>
+<td>varchar; 128</td>
+</tr>
+<tr class="row-even"><td>callback_type</td>
+<td>Type of callback to allow</td>
+<td>varchar; 128</td>
+</tr>
+<tr class="row-odd"><td>cms_vendor</td>
+<td>CMS vendor to etransfer to</td>
+<td>varchar; 255</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Maximum callbacks per slot should be deprecated in favor the maximum callbacks per slot in the service content type.</p>
+</div>
+</div>
+</div>
+<div class="section" id="fields">
+<h3>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h3>
+<p>The OAS intake settings entity type ships with a set of predefined fields:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>oas_household_definition</td>
+<td>Text area; provides an editable household definition</td>
+</tr>
+<tr class="row-odd"><td>oas_msg_already_applied</td>
+<td>Text area; editable message for users who have already
+applied</td>
+</tr>
+<tr class="row-even"><td>oas_msg_current_client</td>
+<td>Text area; editable message for current clients of an
+program</td>
+</tr>
+<tr class="row-odd"><td>oas_msg_we_call_you</td>
+<td>Text area; editable message shown to users who are told
+that the program will call them.</td>
+</tr>
+<tr class="row-even"><td>oas_msg_please_call</td>
+<td>Text area; editable message shown to users who are told
+to call the program</td>
+</tr>
+<tr class="row-odd"><td>oas_msg_disclaimer</td>
+<td>Text area; editable program disclaimer</td>
+</tr>
+<tr class="row-even"><td>oas_help_marital_status</td>
+<td>Text area; editable help text for marital status</td>
+</tr>
+<tr class="row-odd"><td>oas_help_immigration_status</td>
+<td>Text area; editable help text for immigration status</td>
+</tr>
+<tr class="row-even"><td>oas_help_citizenship_status</td>
+<td>Text area; editable help text for citizenship status</td>
+</tr>
+<tr class="row-odd"><td>oas_help_country_of_origin</td>
+<td>Text area; editable help text for collecting country</td>
+</tr>
+<tr class="row-even"><td>oas_help_language</td>
+<td>Text area; editable help text for user’s language</td>
+</tr>
+<tr class="row-odd"><td>oas_help_race</td>
+<td>Text area; editable help text for user’s race</td>
+</tr>
+<tr class="row-even"><td>oas_help_gender</td>
+<td>Text area; editable help text for user’s gender</td>
+</tr>
+<tr class="row-odd"><td>oas_help_ethnicity</td>
+<td>Text area; editable help text for user’s ethnicity</td>
+</tr>
+<tr class="row-even"><td>oas_income_exempt</td>
+<td>Term reference (intake populations); unlimited
+Used to waive income for special populations</td>
+</tr>
+<tr class="row-odd"><td>oas_income_standard</td>
+<td>Entity reference (ilao_oas_income_standard); limited to 1
+Used to apply a specific income standard</td>
+</tr>
+<tr class="row-even"><td>oas_income_categories</td>
+<td>Entity reference (ilao_oas_financial_category; income
+types bundle); unlimited
+Used to indicate what income types to collect</td>
+</tr>
+<tr class="row-odd"><td>oas_asset_categories</td>
+<td>Entity reference (ilao_oas_financial_category; asset
+types bundle); unlimited
+Used to indicate what asset types to collect</td>
+</tr>
+<tr class="row-even"><td>oas_expense_categories</td>
+<td>Entity reference (ilao_oas_financial_category; expense
+types bundle); unlimited
+Used to indicate what exepense types to collect</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="taxonomies">
+<h3>Taxonomies<a class="headerlink" href="#taxonomies" title="Permalink to this headline">¶</a></h3>
+<p>The oas_intake_settings module creates the oas_callback_hours taxonomy.</p>
+</div>
+<div class="section" id="functionality">
+<h3>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="ilao-specific-functionality">
+<h2>ILAO-specific functionality<a class="headerlink" href="#ilao-specific-functionality" title="Permalink to this headline">¶</a></h2>
+<p>We’ve added a lot of additional fields and functionality to the standard intake settings entity.  This is encapsulated in:
+* the ilao_f_oas_intake_settings feature
+* the ilao_intake_settings module</p>
+<div class="section" id="intake-settings-fields">
+<h3>Intake settings fields<a class="headerlink" href="#intake-settings-fields" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_service_single</td>
+<td>Entity reference to the related service; cardinality of 1
+This is stored as the entity id attached to the intake
+settings entity</td>
+</tr>
+<tr class="row-odd"><td>field_same_legal_issues</td>
+<td>Boolean; whether to inherit the legal issues from the
+selected service</td>
+</tr>
+<tr class="row-even"><td>field_legal_issues</td>
+<td>Term reference (to legal issues taxonomy); used to limit
+what legal issues the intake settings apply</td>
+</tr>
+<tr class="row-odd"><td>field_same_service_area_as
+_locat</td>
+<td>Boolean; whether to inherit the service area from the
+attached service entity</td>
+</tr>
+<tr class="row-even"><td>field_statewide</td>
+<td>Boolean; intake settings is statewide</td>
+</tr>
+<tr class="row-odd"><td>field_include_exclude_by
+_type</td>
+<td>List (Text); what geographic region type the settings are
+limited to (city, county, zip code)</td>
+</tr>
+<tr class="row-even"><td>field_counties</td>
+<td>Entity reference to counties from the region taxonomy
+Select list of unlimited cardinality</td>
+</tr>
+<tr class="row-odd"><td>field_cities</td>
+<td>Entity reference to cities from the region taxonomy
+Select list of unlimited cardinality</td>
+</tr>
+<tr class="row-even"><td>field_zipcodes</td>
+<td>Entity reference to zip codes from the region taxonomy
+Select list of unlimited cardinality</td>
+</tr>
+<tr class="row-odd"><td>field_extended_service_area
+_yn</td>
+<td>Whether this service offers an extended service area
+Boolean</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_triage_user.html" class="btn btn-neutral float-right" title="OAS Triage User" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_otis_entities.html" class="btn btn-neutral" title="OTIS-related migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS-related migration &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>OAS Referral History &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OAS Intake Settings" href="migration_oas_intake_settings.html" />
-    <link rel="prev" title="Migrating Organization Data" href="migration_org_data.html" /> 
+    <link rel="next" title="OAS Legal Server" href="migration_oas_legal_server.html" />
+    <link rel="prev" title="OAS Triage User" href="migration_oas_triage_user.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,10 +86,16 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS-related migration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings Entity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OAS Referral History</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#base-tables">Base Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functionality">Functionality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#views-integration">Views Integration</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
@@ -97,7 +103,6 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
 </ul>
 
             
@@ -145,13 +150,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>OTIS-related migration</li>
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OAS Referral History</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_otis_entities.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migration_oas_referral_history.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -164,50 +171,89 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-related-migration">
-<h1>OTIS-related migration<a class="headerlink" href="#otis-related-migration" title="Permalink to this headline">¶</a></h1>
-<p>Online triage and intake system (OTIS):</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#oas-intake-settings-module">OAS Intake Settings Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#ilao-specific-functionality">ILAO-specific functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#taxonomies">Taxonomies</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#functionality">Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#views-integration">Views Integration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#functionality">Functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#default-categories">Default categories</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#administration">Administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#base-table">Base Table</a></li>
-</ul>
-</li>
+  <div class="section" id="oas-referral-history">
+<h1>OAS Referral History<a class="headerlink" href="#oas-referral-history" title="Permalink to this headline">¶</a></h1>
+<p>This documentation covers the oas_referral_history module which provides an entity to store referrals provided to users.</p>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Officially, none.  Unofficially, this module expects the oas_triage_user and location_services content type to exist to work correctly.</p>
+</div>
+<div class="section" id="base-tables">
+<h2>Base Tables<a class="headerlink" href="#base-tables" title="Permalink to this headline">¶</a></h2>
+<p>The oas_referral_history is the base table for the OASReferral entity.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>referral_id</td>
+<td>Id for the referral entity; each
+set of referrals made is 1 entity</td>
+<td>serial, primary key, not null</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>Unix timestamp for when referrals
+made</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>changed</td>
+<td>Unix timestamp for when referrals
+last updated</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>data</td>
+<td>Serialized array of extra info</td>
+<td>blob</td>
+</tr>
+<tr class="row-even"><td>triage_id</td>
+<td>Reference to the triage_id of the
+user receiving the referrals</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>services_id</td>
+<td>Location services node ID of the
+service the user referred to</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>reject_reason_id</td>
+<td>ID for the reject reason (not used)</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>reject_reason</td>
+<td>Text of the reject reason; used now
+for intake diversions</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>reject_date</td>
+<td>Unix timestamp for reject date</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functionality">
+<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
+<p>The module provides standard entity-related functions, such as the ability to create, update, delete, and load referral history entities.</p>
+<p>The module also supports custom code that allows a user to view their referral history.</p>
+</div>
+<div class="section" id="views-integration">
+<h2>Views Integration<a class="headerlink" href="#views-integration" title="Permalink to this headline">¶</a></h2>
+<p>The following properties have been exposed to Views:</p>
+<ul class="simple">
+<li>referral_id as ID</li>
+<li>triage_Id as Triage User; ties back to the related oas_triage_user entity.</li>
+<li>services_id as Referral; ties back to the related node</li>
+<li>created as Referral date; date of the referral.</li>
 </ul>
 </div>
-<p>(oas was the precurser to OTIS and stood for online access system)</p>
 </div>
 
 
@@ -218,10 +264,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_intake_settings.html" class="btn btn-neutral float-right" title="OAS Intake Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_oas_legal_server.html" class="btn btn-neutral float-right" title="OAS Legal Server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_org_data.html" class="btn btn-neutral" title="Migrating Organization Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_triage_user.html" class="btn btn-neutral" title="OAS Triage User" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

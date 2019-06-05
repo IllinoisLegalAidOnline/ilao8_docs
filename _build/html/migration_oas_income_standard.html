@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS-related migration &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>ILAO OAS Income Standard &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -28,8 +28,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OAS Intake Settings" href="migration_oas_intake_settings.html" />
-    <link rel="prev" title="Migrating Organization Data" href="migration_org_data.html" /> 
+    <link rel="prev" title="ILAO OAS Financial Category" href="migration_oas_financial_category.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,18 +85,26 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS-related migration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings Entity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ILAO OAS Income Standard</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#administration">Administration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#base-table">Base Table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#oas-intake-settings-entity">OAS Intake Settings Entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#ilao-oas-financial-category">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#ilao-oas-income-standard">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#oas-triage-user">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#oas-referral-history">OAS Referral History</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
 </ul>
 
             
@@ -145,13 +152,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>OTIS-related migration</li>
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>ILAO OAS Income Standard</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_otis_entities.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migration_oas_income_standard.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -164,50 +173,105 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-related-migration">
-<h1>OTIS-related migration<a class="headerlink" href="#otis-related-migration" title="Permalink to this headline">¶</a></h1>
-<p>Online triage and intake system (OTIS):</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#oas-intake-settings-module">OAS Intake Settings Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#ilao-specific-functionality">ILAO-specific functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#taxonomies">Taxonomies</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#functionality">Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#views-integration">Views Integration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#functionality">Functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#default-categories">Default categories</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#administration">Administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#base-table">Base Table</a></li>
-</ul>
-</li>
+  <div class="section" id="ilao-oas-income-standard">
+<h1>ILAO OAS Income Standard<a class="headerlink" href="#ilao-oas-income-standard" title="Permalink to this headline">¶</a></h1>
+<p>This documentation covers the ilao_oas_income_standard module which provides a framework for storing income standards to be used on a website.</p>
+<div class="section" id="administration">
+<h2>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h2>
+<p>Income standards are managed through admin/structure/ilao_oas_income_standards.  Each income standard consists of:</p>
+<ul class="simple">
+<li>a name</li>
+<li>a dollar amount for a household of size 1 through 8 members</li>
+<li>a dollar amount per household member above 8 people</li>
 </ul>
 </div>
-<p>(oas was the precurser to OTIS and stood for online access system)</p>
+<div class="section" id="base-table">
+<h2>Base Table<a class="headerlink" href="#base-table" title="Permalink to this headline">¶</a></h2>
+<p>The base table is ilao_oas_income_standard and consists of:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>Id for the income standard entity</td>
+<td>serial, primary key, not null</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>Not used</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>language</td>
+<td>Language of the entity</td>
+<td>varchar; 32</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>Name of the income standard</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>Unix timestamp of when the income
+standard was created</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>Unix timestamp of when the income
+standard was last changed</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>data</td>
+<td>Serialized area of additional data</td>
+<td>blob</td>
+</tr>
+<tr class="row-odd"><td>amount_1</td>
+<td>Income standard for household of 1</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_2</td>
+<td>Income standard for household of 2</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>amount_3</td>
+<td>Income standard for household of 3</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_4</td>
+<td>Income standard for household of 4</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>amount_5</td>
+<td>Income standard for household of 5</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_6</td>
+<td>Income standard for household of 6</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>amount_7</td>
+<td>Income standard for household of 7</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>amount_8</td>
+<td>Income standard for household of 8</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>additional_family
+_members</td>
+<td>Amount for each household member
+for household larger than 8 members</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -218,10 +282,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_intake_settings.html" class="btn btn-neutral float-right" title="OAS Intake Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="migration_org_data.html" class="btn btn-neutral" title="Migrating Organization Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_financial_category.html" class="btn btn-neutral" title="ILAO OAS Financial Category" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

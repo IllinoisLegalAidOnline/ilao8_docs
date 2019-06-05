@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS-related migration &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>OAS Legal Server &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OAS Intake Settings" href="migration_oas_intake_settings.html" />
-    <link rel="prev" title="Migrating Organization Data" href="migration_org_data.html" /> 
+    <link rel="next" title="ILAO OAS Financial Category" href="migration_oas_financial_category.html" />
+    <link rel="prev" title="OAS Referral History" href="migration_oas_referral_history.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -86,18 +86,22 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS-related migration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings Entity</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OAS Legal Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functionality">Functionality</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
 </ul>
 
             
@@ -145,13 +149,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>OTIS-related migration</li>
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OAS Legal Server</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_otis_entities.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migration_oas_legal_server.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -164,50 +170,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-related-migration">
-<h1>OTIS-related migration<a class="headerlink" href="#otis-related-migration" title="Permalink to this headline">¶</a></h1>
-<p>Online triage and intake system (OTIS):</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#oas-intake-settings-module">OAS Intake Settings Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#ilao-specific-functionality">ILAO-specific functionality</a></li>
+  <div class="section" id="oas-legal-server">
+<h1>OAS Legal Server<a class="headerlink" href="#oas-legal-server" title="Permalink to this headline">¶</a></h1>
+<p>This is the documentation for the oas_legal_server module.  This provides the functionality
+to generate the data packet needed an sending it to the statewide instance of Legal Server case management system.</p>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>entity</li>
+<li>entityreference</li>
+<li>ilao_oas_financial_category</li>
+<li>oas_intake_settings</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#taxonomies">Taxonomies</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#functionality">Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#views-integration">Views Integration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#functionality">Functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#default-categories">Default categories</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#administration">Administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#base-table">Base Table</a></li>
-</ul>
-</li>
-</ul>
+<div class="section" id="unofficial-dependencies">
+<h3>Unofficial dependencies<a class="headerlink" href="#unofficial-dependencies" title="Permalink to this headline">¶</a></h3>
 </div>
-<p>(oas was the precurser to OTIS and stood for online access system)</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The module has a configuration interface that can be found at admin/intake/legal-server.</p>
+<img alt="_images/legal-server-config.png" src="_images/legal-server-config.png" />
+<p>This interface is used to:
+* Set the API urls to send etransfers
+* Configure time outs and maximum retries
+* Set the system to run in a demo mode (where eTransfers go to the demo server)
+* Set the system to run suspended (where eTransfers are not sent)
+* Sets a dummy first name, used for automated testing
+* Sets the Legal server name for organizations.  This must match the organization name text in Legal Server.
+* Sets an email notification address</p>
+<p>Organizations are added to the configuration form when they have a service that accepts online intakes through IllinoisLegalAid.org</p>
+<div class="section" id="permisssions">
+<h3>Permisssions<a class="headerlink" href="#permisssions" title="Permalink to this headline">¶</a></h3>
+<p>Module defines one permission to administer legal server.  This permission controls access to the configuration.</p>
+</div>
+</div>
+<div class="section" id="functionality">
+<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
+<p>oas_legal_server_build_eTransfer accepts an array of client data and parses it into an XML packet that complies with the <a class="reference external" href="https://iloi-demo.legalserver.org/modules/matter/intake_xml.php">Legal Server XML standard</a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There is a new REST-based API for intakes that needs to be implemented.</p>
+</div>
+<p>Upon attempting to send an eTransfer, it handles two instances of failure:</p>
+<ul class="simple">
+<li>malformed XML will generally require human re-submission</li>
+<li>server failures</li>
+</ul>
+<p>A notification of either instance is sent from the module to the email contact in the configuration.</p>
+</div>
 </div>
 
 
@@ -218,10 +228,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_intake_settings.html" class="btn btn-neutral float-right" title="OAS Intake Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_oas_financial_category.html" class="btn btn-neutral float-right" title="ILAO OAS Financial Category" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_org_data.html" class="btn btn-neutral" title="Migrating Organization Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_referral_history.html" class="btn btn-neutral" title="OAS Referral History" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

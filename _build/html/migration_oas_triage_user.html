@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OAS Triage User &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OAS Referral History" href="migration_oas_referral_history.html" />
+    <link rel="prev" title="OAS Intake Settings Entity" href="migration_oas_intake_settings.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings Entity</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OAS Triage User</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#base-tables">Base Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#taxonomies">Taxonomies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#oas-intake-settings-entity">OAS Intake Settings Entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#ilao-oas-financial-category">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#ilao-oas-income-standard">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#oas-triage-user">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_otis_entities.html#oas-referral-history">OAS Referral History</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OAS Triage User</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_oas_triage_user.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oas-triage-user">
+<h1>OAS Triage User<a class="headerlink" href="#oas-triage-user" title="Permalink to this headline">¶</a></h1>
+<p>This documentation covers the oas_triage_user module which provides an entity to store information about a specific OTIS triage and intake instance.</p>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>None</p>
+</div>
+<div class="section" id="base-tables">
+<h2>Base Tables<a class="headerlink" href="#base-tables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="oas-triage-user-type">
+<h3>oas_triage_user_type<a class="headerlink" href="#oas-triage-user-type" title="Permalink to this headline">¶</a></h3>
+<p>Base table for triage user types.  There is in fact only the one type.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>id</td>
+<td>Id for the triage user type</td>
+<td>serial, primary key, not null</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>Machine name of the triage user type</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>label</td>
+<td>Human-readable name of the type</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>weight</td>
+<td>Weight of the type</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>data</td>
+<td>Serialized array of extra info</td>
+<td>text</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3>oas_triage_user<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="41%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Description</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>triage_id</td>
+<td>Id for the triage user instance</td>
+<td>serial, primary key, not null</td>
+</tr>
+<tr class="row-odd"><td>type</td>
+<td>Triage type (oas_triage_user_type)</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>Unix timestamp of when the entity
+was created</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>Unix timestamp of when the entity
+was last updated</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>intake_created</td>
+<td>Unix timestamp of when intake was
+started</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>intake_changed</td>
+<td>Unix timestamp of when intake was
+last updated (ie the user completes
+a step in the intake process)</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>data</td>
+<td>Serialized array of extra data</td>
+<td>blob</td>
+</tr>
+<tr class="row-odd"><td>uid</td>
+<td>User ID of the person using Get
+Legal Help; 0 for anonymous users</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>household size</td>
+<td>Total household size</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>household_adults</td>
+<td>Number of adults in household; only
+collected in intake</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>household_children</td>
+<td>Number of children in household;
+only collected in intake</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>total_income</td>
+<td>Total monthly income for household;
+only collected with intake</td>
+<td>float</td>
+</tr>
+<tr class="row-even"><td>total_expenses</td>
+<td>Total monthly household expenses;
+only collected with intake</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>total_assets</td>
+<td>Total assets for household;
+only collected with intake</td>
+<td>float</td>
+</tr>
+<tr class="row-even"><td>zip_code</td>
+<td>User’s zip code</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>triage_status</td>
+<td>Current triage status</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>intake_status</td>
+<td>Current intake status</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>intake_organization</td>
+<td>Intake settings id associated with
+an intake application.</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>lsc_code</td>
+<td>LSC problem code (not active)</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>lsc_subcode</td>
+<td>LSC subproblem code (not active)</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>referral_source</td>
+<td>Tracks how the user got to OTIS</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>county</td>
+<td>User’s county</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>state</td>
+<td>User’s state</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>ip_address</td>
+<td>User IP address (for ILAO, our load
+balancer IP masks the actual user IP</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>last_screen_viewed</td>
+<td>Last screen the user viewed</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>intake_notes</td>
+<td>Intake notes sent with application</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>gender</td>
+<td>Gender of the user; collected only
+in intakes where it is required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>race</td>
+<td>Race of the user; collected only
+in intakes where it is required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>ethnicity</td>
+<td>Ethnicity of the user; collected
+only in intakes where it’s required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>marital_status</td>
+<td>Marital status of user; collected
+only in intakes where it’s required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>citizenship</td>
+<td>Citizenship of the user; collected
+only in intakes where it’s required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>immigrant_status</td>
+<td>Immigrant status of user; collected
+only in intakes where it’s required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>age</td>
+<td>User’s age; intake only</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>primary_language</td>
+<td>Language spoken at home; collected
+only in intakes where it’s required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-even"><td>country_of_origin</td>
+<td>User’s country of origin; collected
+only in intakes where it’s required</td>
+<td>varchar; 255</td>
+</tr>
+<tr class="row-odd"><td>overincome</td>
+<td>Whether user is overincome or not</td>
+<td>int; see key</td>
+</tr>
+<tr class="row-even"><td>etransfer_status</td>
+<td>E-transfer status</td>
+<td>text</td>
+</tr>
+<tr class="row-odd"><td>etransfer_failure
+_reason</td>
+<td>E-transfer failure reason</td>
+<td>text</td>
+</tr>
+<tr class="row-even"><td>etransfer_data</td>
+<td>Serialized array of etransfer data;
+scrubbed after 7 days</td>
+<td>blob</td>
+</tr>
+<tr class="row-odd"><td>daily_reminder_sent</td>
+<td>Logs a 1 when a daily reminder of
+an appointment is sent</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>hourly_reminder_sent</td>
+<td>Logs a 1 when the hour-before an
+appointment reminder is sent</td>
+<td>int</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>The install hook(s) add a number of fields and field instances upon installation:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>oas_referrals</td>
+<td>Installed in install hook; deleted in update hook</td>
+</tr>
+<tr class="row-odd"><td>oas_triage_help_type</td>
+<td>Type of help the user is seeking (list_text, unlimited)</td>
+</tr>
+<tr class="row-even"><td>field_triage_problem</td>
+<td>User problem (term reference; uses legal issues taxonomy;
+cardinality is 1)</td>
+</tr>
+<tr class="row-odd"><td>field_limited_populations</td>
+<td>Populations the user belongs to (term reference; uses
+intake populations taxonomy</td>
+</tr>
+<tr class="row-even"><td>field_triage_search</td>
+<td>Text field of user’s problem (text, cardinality of 1</td>
+</tr>
+<tr class="row-odd"><td>field_triage_problem</td>
+<td>Term reference for user problem (term reference; uses
+legal issues taxonomy; cardinality unlimited)</td>
+</tr>
+<tr class="row-even"><td>field_triage_referrals
+_given</td>
+<td>Exists in install script but deleted in intake settings
+update hook</td>
+</tr>
+<tr class="row-odd"><td>field_triage_callback_times</td>
+<td>Stores user callback times; text field; unlimited</td>
+</tr>
+<tr class="row-even"><td>field_opt_in_sms</td>
+<td>Field to get opt in consent for SMS; boolean</td>
+</tr>
+<tr class="row-odd"><td>field_mobile_phone</td>
+<td>Text field for mobile phone number</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">field_triage_referrals_given and oas_referrals should be removed from the Drupal 8 module.</p>
+</div>
+</div>
+<div class="section" id="taxonomies">
+<h2>Taxonomies<a class="headerlink" href="#taxonomies" title="Permalink to this headline">¶</a></h2>
+<p>The module automatically creates a number of default taxonomies upon installation.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Taxonomy</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>oas_gender</td>
+<td>Provides default gender terms for OTIS</td>
+</tr>
+<tr class="row-odd"><td>oas_ethnicity</td>
+<td>Provides default ethnicity terms for OTIS</td>
+</tr>
+<tr class="row-even"><td>oas_race</td>
+<td>Provides default race terms for OTIS</td>
+</tr>
+<tr class="row-odd"><td>oas_languages</td>
+<td>Provides default list of languages for OTIS</td>
+</tr>
+<tr class="row-even"><td>oas_citizenship_status</td>
+<td>Provides default list of citizenship statuses for OTIS;
+this field is used primarily by the LSC-funded orgs</td>
+</tr>
+<tr class="row-odd"><td>oas_immigration_status</td>
+<td>Provides default list of immigrant statuses for OTIS;
+this field is used primarily by NIJC</td>
+</tr>
+<tr class="row-even"><td>oas_marital_status</td>
+<td>Provides default marital statuses for OTIS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_referral_history.html" class="btn btn-neutral float-right" title="OAS Referral History" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_intake_settings.html" class="btn btn-neutral" title="OAS Intake Settings Entity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

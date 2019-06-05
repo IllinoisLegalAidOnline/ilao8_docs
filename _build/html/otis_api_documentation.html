@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Drupal 8 OTIS API Implementation &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -27,8 +26,9 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="OTIS Drupal 8" href="otis_drupal8.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -82,9 +82,15 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Migration Documentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Drupal 8 OTIS API Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             
@@ -130,12 +136,16 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+          <li><a href="otis_drupal8.html">OTIS Drupal 8</a> &raquo;</li>
+        
+      <li>Drupal 8 OTIS API Implementation</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/otis_api_documentation.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -147,11 +157,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="drupal-8-otis-api-implementation">
+<h1>Drupal 8 OTIS API Implementation<a class="headerlink" href="#drupal-8-otis-api-implementation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="referral-history-api">
+<h2>Referral History API<a class="headerlink" href="#referral-history-api" title="Permalink to this headline">¶</a></h2>
+<p>The referral API will provide referral history information between systems.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-referral-history</td>
+<td>GET</td>
+<td>Loads a specific referral</td>
+</tr>
+<tr class="row-odd"><td>get-referral-service</td>
+<td>GET</td>
+<td>Loads a specific referral history service</td>
+</tr>
+<tr class="row-even"><td>create-referral-history</td>
+<td>POST</td>
+<td>Creates a referral history entity</td>
+</tr>
+<tr class="row-odd"><td>update-referral-history</td>
+<td>POST</td>
+<td>Updates a referral history entity</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -159,6 +201,13 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="otis_drupal8.html" class="btn btn-neutral" title="OTIS Drupal 8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
