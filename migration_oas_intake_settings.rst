@@ -322,20 +322,6 @@ The OAS intake settings entity integrates with Views.  Views can be used to gene
 +-----------------------+-------------------------+-------------------------------------+
 
 
-
-
-* intake_settings_id as ID
-* name as name; name of the intake settings
-* created as created; date the intake settings were created
-* changed as changed; date the intake settings were last changed
-* uid as user; the author of the intake settings
-* entity_id as service; ties back to the location_services associated with the intake settings
-* current_count as current count; the current number of etransfers made.  This number is reset based on frequency
-* enabled as Intake open; whether the current set of settings is open for intake or not. 
-* collect
-
-
-
 ILAO-specific functionality
 ============================
 We've added a lot of additional fields and functionality to the standard intake settings entity.  This is encapsulated in:
