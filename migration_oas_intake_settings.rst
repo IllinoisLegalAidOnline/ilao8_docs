@@ -194,8 +194,146 @@ Taxonomies
 --------------
 The oas_intake_settings module creates the oas_callback_hours taxonomy.
 
-Functionality
----------------
+
+Tokens
+========
+The oas_intake_settings.token.inc file defines specific tokens for use in OTIS.  All tokens are prefixed with OAS, for example: [OAS:name].
+
+When used in text that is then run through the token module, the token string is replaced with actual data.
+
++----------------------------+----------------------------------------------------------+
+| Token                      | Description                                              |
++============================+==========================================================+
+| OAS:name] or [OAS:Name]    | Returns the organization name of the service the user has|
+|                            | applied to.                                              |
++----------------------------+----------------------------------------------------------+
+| [OAS:call-back-number],    | Returns the call back number from the intake settings    |
+| [OAS:phone], [OAS:Phone]   |                                                          |
++----------------------------+----------------------------------------------------------+
+| [OAS:minimum-age]          | Returns the minimum age to apply online through OTIS     |
++----------------------------+----------------------------------------------------------+
+| [OAS:senior-age]           | Returns the minimum age to be considered a senior        |
++----------------------------+----------------------------------------------------------+
+| [OAS:maximum-assets]       | Returns the dollar amount of the maximum allowed assets  |
++----------------------------+----------------------------------------------------------+
+| [OAS:personal-property     | Returns the amount of the personal property exemption    |
+| -exemption]                | when calculating asset eligibility                       |
++----------------------------+----------------------------------------------------------+
+| [OAS:maximum-income        | Returns the maximum income percentage allowed when       |
+| -percent]                  | calculating income eligibility                           |
++----------------------------+----------------------------------------------------------+
+| [OAS:income-standard]      | Returns the lower-cased name of the income standard to   |
+|                            | apply                                                    |
++----------------------------+----------------------------------------------------------+
+| [OAS:triage-id]            | Returns the triage id of the current user                |
++----------------------------+----------------------------------------------------------+
+
+Views Integration
+==================
+
+
+The OAS intake settings entity integrates with Views.  Views can be used to generate reports.
+
++-----------------------+-------------------------+-------------------------------------+
+| Property              | Views label             | Description                         |
++=======================+=========================+=====================================+
+| intake_settings_id    | ID                      | Unique id of the intake setting     |
++-----------------------+-------------------------+-------------------------------------+
+| name                  | name                    | Name of the intake settings         |
++-----------------------+-------------------------+-------------------------------------+
+| created               | created                 | Date the intake settings were       |
+|                       |                         | created                             |
++-----------------------+-------------------------+-------------------------------------+
+| changed               | changed                 | Date settings were last updated     |
++-----------------------+-------------------------+-------------------------------------+
+| uid                   | user                    | Author of the settings; ties back to|
+|                       |                         | the users table                     |
++-----------------------+-------------------------+-------------------------------------+
+| entity_id             | service                 | Location services node associated w/|
+|                       |                         | the settings; ties to node table    |
++-----------------------+-------------------------+-------------------------------------+
+| current_count         | Current count           | Current number of intakes since last|
+|                       |                         | reset (based on reset frequency)    |
++-----------------------+-------------------------+-------------------------------------+
+| enabled               | Intake open             | Yes or no;is intake currently open? |
++-----------------------+-------------------------+-------------------------------------+
+| collect_marital_status| Collect marital status  | Yes or no; do we collect this info? |
++-----------------------+-------------------------+-------------------------------------+
+| collect_immigration   | Collect immigrant status| Yes or no; do we collect this info? |
++-----------------------+-------------------------+-------------------------------------+
+| collect_citizenship   | Collect citizenship     | Yes or no; do we collect citizenship|
+|                       | status                  | status from users                   |
++-----------------------+-------------------------+-------------------------------------+
+| collect_country       | Collect country of      | Yes or no; do we collect the user's |
+|                       | origin                  | country of origin                   |
++-----------------------+-------------------------+-------------------------------------+
+| collect_language      | Collect language spoken | Yes or no; do we collect the user's |
+|                       | at home                 | primary language                    |
++-----------------------+-------------------------+-------------------------------------+
+| collect_gender        | Collect gender          | Yes or no; do we collect this info? |
++-----------------------+-------------------------+-------------------------------------+
+| collect_race          | Collect race            | Yes or no; do we collect this info? |
++-----------------------+-------------------------+-------------------------------------+
+| collect_ethnicity     | Collect ethnicity       | Yes or no; do we collect this info? |
++-----------------------+-------------------------+-------------------------------------+
+| collect_assets        | Collect assets          | Yes or no; do we collect asset info?|
++-----------------------+-------------------------+-------------------------------------+
+| collect_income        | Collect income          | Yes or no; do we collect income?    |
++-----------------------+-------------------------+-------------------------------------+
+| collect_expenses      | Collect expenses        | Yes or no; do we collect expenses?  |
++-----------------------+-------------------------+-------------------------------------+
+| apply_income_limit    | Test for income         | Yes or no; do we apply an income    |
+|                       | eligibility             | limit                               |
++-----------------------+-------------------------+-------------------------------------+
+| apply_asset_limit     | Test for asset          | Yes or no; do we apply an asset     |
+|                       | eligibility             | limit                               |
++-----------------------+-------------------------+-------------------------------------+
+| collect_expenses_over | Collect expenses when   | Yes or no; do we collect expenses   |
+| _income               | user is overincome      | only when user is overincome        |
++-----------------------+-------------------------+-------------------------------------+
+| allow_prisoners       | Can prisoners apply     | Yes or no; whether people in prison |
+|                       | online                  | or jail apply online                |
++-----------------------+-------------------------+-------------------------------------+
+| maximum_allowed_income| Maximum allowed income  | Integer; percentage of income       |
+|                       |                         | standard as maximum                 |
++-----------------------+-------------------------+-------------------------------------+
+| personal_exemption    | Amount of personal prop-| Integer; dollar amount to exclude   |
+| _amount               | erty to exempt          | from asset test                     |
++-----------------------+-------------------------+-------------------------------------+
+| intake_limit          | Maximum number of       | Integer; if 0, intakes are unlimited|
+|                       | intakes allowed         |                                     |
++-----------------------+-------------------------+-------------------------------------+
+| maximum_callbacks_per | Maximum number of call- | Integer; should be deprecated       |
+| _slot                 | backs to allow per slot |                                     |
++-----------------------+-------------------------+-------------------------------------+
+| minimum_minor_age     | Minimum age for a minor | Integer                             |
++-----------------------+-------------------------+-------------------------------------+
+| minimum_senior_age    | Minimum age to be con-  | Integer                             |
+|                       | sidered a senior        |                                     |
++-----------------------+-------------------------+-------------------------------------+
+| callback_number       | Callback number         | Text; telephone number              |
++-----------------------+-------------------------+-------------------------------------+
+| callback_type         | Callback type           | Text: we call you, client calls     |
++-----------------------+-------------------------+-------------------------------------+
+| reset_limit_frequency | How often do intake     | Number: 0, 1, 7, 30; 0 is never     |
+|                       | limits get reset        | 1,7,30 days between resets          |
++-----------------------+-------------------------+-------------------------------------+
+| cms_vendor            | CMS vendor              | Text; what CMS vendor do we send to |
++-----------------------+-------------------------+-------------------------------------+
+
+
+
+
+* intake_settings_id as ID
+* name as name; name of the intake settings
+* created as created; date the intake settings were created
+* changed as changed; date the intake settings were last changed
+* uid as user; the author of the intake settings
+* entity_id as service; ties back to the location_services associated with the intake settings
+* current_count as current count; the current number of etransfers made.  This number is reset based on frequency
+* enabled as Intake open; whether the current set of settings is open for intake or not. 
+* collect
+
 
 
 ILAO-specific functionality
@@ -240,3 +378,82 @@ Intake settings fields
 | field_extended_service_area| Whether this service offers an extended service area     |
 | _yn                        | Boolean                                                  |
 +----------------------------+----------------------------------------------------------+
+| field_extended_service_area| Entity reference to region taxonomy of additional states |
+|                            | This is used exclusively for NIJC                        |
++----------------------------+----------------------------------------------------------+
+| oas_income_categories      | Entity reference to finance categories of type income    |
+|                            | that should be collected from the user.                  |
++----------------------------+----------------------------------------------------------+
+| oas_income_standard        | Entity reference to income categories                    |
++----------------------------+----------------------------------------------------------+
+| oas_income_exempt          | Term reference to intake populations that should have any|
+|                            | ncome limits waived                                      |  
++----------------------------+----------------------------------------------------------+
+| oas_asset_categories       | Entity references to finance categories of type assets   |
+|                            | that should be collected from the user.                  |
++----------------------------+----------------------------------------------------------+
+| oas_expense_categories     | Entity references to finance categories of type expense  |
+|                            | that should be collected from the user.                  |
++----------------------------+----------------------------------------------------------+
+| oas_msg_we_call_you        | Long text; message to display to users when the callback |
+|                            | type is "we call you"                                    |
++----------------------------+----------------------------------------------------------+
+| oas_msg_please_call        | Long text; message to display to users when the callback |
+|                            | type is "client calls"                                   |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours_sunday  | Term reference to OAS callback hours; used to indicate   |
+|                            | available hours for callbacks on Sundays                 |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours_monday  | Term reference to OAS callback hours; used to indicate   |
+|                            | available hours for callbacks on Mondays                 |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours_tuesday | Term reference to OAS callback hours; used to indicate   |
+|                            | available hours for callbacks on Tuesdays                |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours         | Term reference to OAS callback hours; used to indicate   |
+| _wednesday                 | available hours for callbacks on Wednesdays              |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours         | Term reference to OAS callback hours; used to indicate   |
+| _thursday                  | available hours for callbacks on Thursdays               |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours_friday  | Term reference to OAS callback hours; used to indicate   |
+|                            | available hours for callbacks on Fridays                 |
++----------------------------+----------------------------------------------------------+
+| oas_callback_hours_saturday| Term reference to OAS callback hours; used to indicate   |
+|                            | available hours for callbacks on Saturdays               |
++----------------------------+----------------------------------------------------------+
+| field_bypass_intake_message| Long text; message to display when intake is bypassed    |
++----------------------------+----------------------------------------------------------+
+| oas_msg_disclaimer         | Long text; program disclaimer to display to user starting|
+|                            | an online intake application                             |
++----------------------------+----------------------------------------------------------+
+| oas_household_definition   | Long text; the program's definition of a household       |
++----------------------------+----------------------------------------------------------+
+| oas_msg_current_client     | Long text; message to display to a user who is already a |
+|                            | current client for the same problem                      |
++----------------------------+----------------------------------------------------------+
+| oas_msg_already_applied    | Long text; message to display to a user who has already  |
+|                            | applied for this same problem                            |
++----------------------------+----------------------------------------------------------+
+| oas_help_citizenship_status| Long text; help text to display to users when collecting |
+|                            | citizenship status                                       |
++----------------------------+----------------------------------------------------------+
+| oas_help_country_of_origin | Long text; help text to display to users when collecting |
+|                            | a user's country of origin                               |
++----------------------------+----------------------------------------------------------+
+| oas_help_marital_status    | Long text; help text to display to users when collecting |
+|                            | marital status                                           |
++----------------------------+----------------------------------------------------------+
+| oas_help_gender            | Long text; help text to display to users when collecting |
+|                            | user's gender                                            |
++----------------------------+----------------------------------------------------------+
+| oas_help_immigration_status| Long text; help text to display to users when collecting |
+|                            | their immigrant status                                   |
++----------------------------+----------------------------------------------------------+
+| oas_help_language          | Long text; help text to display to users when collecting |
+|                            | the user's primary language                              |
++----------------------------+----------------------------------------------------------+
+
+
+
+

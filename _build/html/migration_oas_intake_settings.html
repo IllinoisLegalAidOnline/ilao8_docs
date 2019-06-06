@@ -89,6 +89,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">OAS Intake Settings</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#oas-intake-settings-module">OAS Intake Settings Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tokens">Tokens</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#views-integration">Views Integration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ilao-specific-functionality">ILAO-specific functionality</a></li>
 </ul>
 </li>
@@ -484,9 +486,249 @@ Used to indicate what exepense types to collect</td>
 <h3>Taxonomies<a class="headerlink" href="#taxonomies" title="Permalink to this headline">¶</a></h3>
 <p>The oas_intake_settings module creates the oas_callback_hours taxonomy.</p>
 </div>
-<div class="section" id="functionality">
-<h3>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h3>
 </div>
+<div class="section" id="tokens">
+<h2>Tokens<a class="headerlink" href="#tokens" title="Permalink to this headline">¶</a></h2>
+<p>The oas_intake_settings.token.inc file defines specific tokens for use in OTIS.  All tokens are prefixed with OAS, for example: [OAS:name].</p>
+<p>When used in text that is then run through the token module, the token string is replaced with actual data.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Token</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>OAS:name] or [OAS:Name]</td>
+<td>Returns the organization name of the service the user has
+applied to.</td>
+</tr>
+<tr class="row-odd"><td>[OAS:call-back-number],
+[OAS:phone], [OAS:Phone]</td>
+<td>Returns the call back number from the intake settings</td>
+</tr>
+<tr class="row-even"><td>[OAS:minimum-age]</td>
+<td>Returns the minimum age to apply online through OTIS</td>
+</tr>
+<tr class="row-odd"><td>[OAS:senior-age]</td>
+<td>Returns the minimum age to be considered a senior</td>
+</tr>
+<tr class="row-even"><td>[OAS:maximum-assets]</td>
+<td>Returns the dollar amount of the maximum allowed assets</td>
+</tr>
+<tr class="row-odd"><td>[OAS:personal-property
+-exemption]</td>
+<td>Returns the amount of the personal property exemption
+when calculating asset eligibility</td>
+</tr>
+<tr class="row-even"><td>[OAS:maximum-income
+-percent]</td>
+<td>Returns the maximum income percentage allowed when
+calculating income eligibility</td>
+</tr>
+<tr class="row-odd"><td>[OAS:income-standard]</td>
+<td>Returns the lower-cased name of the income standard to
+apply</td>
+</tr>
+<tr class="row-even"><td>[OAS:triage-id]</td>
+<td>Returns the triage id of the current user</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="views-integration">
+<h2>Views Integration<a class="headerlink" href="#views-integration" title="Permalink to this headline">¶</a></h2>
+<p>The OAS intake settings entity integrates with Views.  Views can be used to generate reports.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="29%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Views label</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>intake_settings_id</td>
+<td>ID</td>
+<td>Unique id of the intake setting</td>
+</tr>
+<tr class="row-odd"><td>name</td>
+<td>name</td>
+<td>Name of the intake settings</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>created</td>
+<td>Date the intake settings were
+created</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>changed</td>
+<td>Date settings were last updated</td>
+</tr>
+<tr class="row-even"><td>uid</td>
+<td>user</td>
+<td>Author of the settings; ties back to
+the users table</td>
+</tr>
+<tr class="row-odd"><td>entity_id</td>
+<td>service</td>
+<td>Location services node associated w/
+the settings; ties to node table</td>
+</tr>
+<tr class="row-even"><td>current_count</td>
+<td>Current count</td>
+<td>Current number of intakes since last
+reset (based on reset frequency)</td>
+</tr>
+<tr class="row-odd"><td>enabled</td>
+<td>Intake open</td>
+<td>Yes or no;is intake currently open?</td>
+</tr>
+<tr class="row-even"><td>collect_marital_status</td>
+<td>Collect marital status</td>
+<td>Yes or no; do we collect this info?</td>
+</tr>
+<tr class="row-odd"><td>collect_immigration</td>
+<td>Collect immigrant status</td>
+<td>Yes or no; do we collect this info?</td>
+</tr>
+<tr class="row-even"><td>collect_citizenship</td>
+<td>Collect citizenship
+status</td>
+<td>Yes or no; do we collect citizenship
+status from users</td>
+</tr>
+<tr class="row-odd"><td>collect_country</td>
+<td>Collect country of
+origin</td>
+<td>Yes or no; do we collect the user’s
+country of origin</td>
+</tr>
+<tr class="row-even"><td>collect_language</td>
+<td>Collect language spoken
+at home</td>
+<td>Yes or no; do we collect the user’s
+primary language</td>
+</tr>
+<tr class="row-odd"><td>collect_gender</td>
+<td>Collect gender</td>
+<td>Yes or no; do we collect this info?</td>
+</tr>
+<tr class="row-even"><td>collect_race</td>
+<td>Collect race</td>
+<td>Yes or no; do we collect this info?</td>
+</tr>
+<tr class="row-odd"><td>collect_ethnicity</td>
+<td>Collect ethnicity</td>
+<td>Yes or no; do we collect this info?</td>
+</tr>
+<tr class="row-even"><td>collect_assets</td>
+<td>Collect assets</td>
+<td>Yes or no; do we collect asset info?</td>
+</tr>
+<tr class="row-odd"><td>collect_income</td>
+<td>Collect income</td>
+<td>Yes or no; do we collect income?</td>
+</tr>
+<tr class="row-even"><td>collect_expenses</td>
+<td>Collect expenses</td>
+<td>Yes or no; do we collect expenses?</td>
+</tr>
+<tr class="row-odd"><td>apply_income_limit</td>
+<td>Test for income
+eligibility</td>
+<td>Yes or no; do we apply an income
+limit</td>
+</tr>
+<tr class="row-even"><td>apply_asset_limit</td>
+<td>Test for asset
+eligibility</td>
+<td>Yes or no; do we apply an asset
+limit</td>
+</tr>
+<tr class="row-odd"><td>collect_expenses_over
+_income</td>
+<td>Collect expenses when
+user is overincome</td>
+<td>Yes or no; do we collect expenses
+only when user is overincome</td>
+</tr>
+<tr class="row-even"><td>allow_prisoners</td>
+<td>Can prisoners apply
+online</td>
+<td>Yes or no; whether people in prison
+or jail apply online</td>
+</tr>
+<tr class="row-odd"><td>maximum_allowed_income</td>
+<td>Maximum allowed income</td>
+<td>Integer; percentage of income
+standard as maximum</td>
+</tr>
+<tr class="row-even"><td>personal_exemption
+_amount</td>
+<td>Amount of personal prop-
+erty to exempt</td>
+<td>Integer; dollar amount to exclude
+from asset test</td>
+</tr>
+<tr class="row-odd"><td>intake_limit</td>
+<td>Maximum number of
+intakes allowed</td>
+<td>Integer; if 0, intakes are unlimited</td>
+</tr>
+<tr class="row-even"><td>maximum_callbacks_per
+_slot</td>
+<td>Maximum number of call-
+backs to allow per slot</td>
+<td>Integer; should be deprecated</td>
+</tr>
+<tr class="row-odd"><td>minimum_minor_age</td>
+<td>Minimum age for a minor</td>
+<td>Integer</td>
+</tr>
+<tr class="row-even"><td>minimum_senior_age</td>
+<td>Minimum age to be con-
+sidered a senior</td>
+<td>Integer</td>
+</tr>
+<tr class="row-odd"><td>callback_number</td>
+<td>Callback number</td>
+<td>Text; telephone number</td>
+</tr>
+<tr class="row-even"><td>callback_type</td>
+<td>Callback type</td>
+<td>Text: we call you, client calls</td>
+</tr>
+<tr class="row-odd"><td>reset_limit_frequency</td>
+<td>How often do intake
+limits get reset</td>
+<td>Number: 0, 1, 7, 30; 0 is never
+1,7,30 days between resets</td>
+</tr>
+<tr class="row-even"><td>cms_vendor</td>
+<td>CMS vendor</td>
+<td>Text; what CMS vendor do we send to</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>intake_settings_id as ID</li>
+<li>name as name; name of the intake settings</li>
+<li>created as created; date the intake settings were created</li>
+<li>changed as changed; date the intake settings were last changed</li>
+<li>uid as user; the author of the intake settings</li>
+<li>entity_id as service; ties back to the location_services associated with the intake settings</li>
+<li>current_count as current count; the current number of etransfers made.  This number is reset based on frequency</li>
+<li>enabled as Intake open; whether the current set of settings is open for intake or not.</li>
+<li>collect</li>
+</ul>
 </div>
 <div class="section" id="ilao-specific-functionality">
 <h2>ILAO-specific functionality<a class="headerlink" href="#ilao-specific-functionality" title="Permalink to this headline">¶</a></h2>
@@ -548,6 +790,109 @@ Select list of unlimited cardinality</td>
 _yn</td>
 <td>Whether this service offers an extended service area
 Boolean</td>
+</tr>
+<tr class="row-even"><td>field_extended_service_area</td>
+<td>Entity reference to region taxonomy of additional states
+This is used exclusively for NIJC</td>
+</tr>
+<tr class="row-odd"><td>oas_income_categories</td>
+<td>Entity reference to finance categories of type income
+that should be collected from the user.</td>
+</tr>
+<tr class="row-even"><td>oas_income_standard</td>
+<td>Entity reference to income categories</td>
+</tr>
+<tr class="row-odd"><td>oas_income_exempt</td>
+<td>Term reference to intake populations that should have any
+ncome limits waived</td>
+</tr>
+<tr class="row-even"><td>oas_asset_categories</td>
+<td>Entity references to finance categories of type assets
+that should be collected from the user.</td>
+</tr>
+<tr class="row-odd"><td>oas_expense_categories</td>
+<td>Entity references to finance categories of type expense
+that should be collected from the user.</td>
+</tr>
+<tr class="row-even"><td>oas_msg_we_call_you</td>
+<td>Long text; message to display to users when the callback
+type is “we call you”</td>
+</tr>
+<tr class="row-odd"><td>oas_msg_please_call</td>
+<td>Long text; message to display to users when the callback
+type is “client calls”</td>
+</tr>
+<tr class="row-even"><td>oas_callback_hours_sunday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Sundays</td>
+</tr>
+<tr class="row-odd"><td>oas_callback_hours_monday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Mondays</td>
+</tr>
+<tr class="row-even"><td>oas_callback_hours_tuesday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Tuesdays</td>
+</tr>
+<tr class="row-odd"><td>oas_callback_hours
+_wednesday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Wednesdays</td>
+</tr>
+<tr class="row-even"><td>oas_callback_hours
+_thursday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Thursdays</td>
+</tr>
+<tr class="row-odd"><td>oas_callback_hours_friday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Fridays</td>
+</tr>
+<tr class="row-even"><td>oas_callback_hours_saturday</td>
+<td>Term reference to OAS callback hours; used to indicate
+available hours for callbacks on Saturdays</td>
+</tr>
+<tr class="row-odd"><td>field_bypass_intake_message</td>
+<td>Long text; message to display when intake is bypassed</td>
+</tr>
+<tr class="row-even"><td>oas_msg_disclaimer</td>
+<td>Long text; program disclaimer to display to user starting
+an online intake application</td>
+</tr>
+<tr class="row-odd"><td>oas_household_definition</td>
+<td>Long text; the program’s definition of a household</td>
+</tr>
+<tr class="row-even"><td>oas_msg_current_client</td>
+<td>Long text; message to display to a user who is already a
+current client for the same problem</td>
+</tr>
+<tr class="row-odd"><td>oas_msg_already_applied</td>
+<td>Long text; message to display to a user who has already
+applied for this same problem</td>
+</tr>
+<tr class="row-even"><td>oas_help_citizenship_status</td>
+<td>Long text; help text to display to users when collecting
+citizenship status</td>
+</tr>
+<tr class="row-odd"><td>oas_help_country_of_origin</td>
+<td>Long text; help text to display to users when collecting
+a user’s country of origin</td>
+</tr>
+<tr class="row-even"><td>oas_help_marital_status</td>
+<td>Long text; help text to display to users when collecting
+marital status</td>
+</tr>
+<tr class="row-odd"><td>oas_help_gender</td>
+<td>Long text; help text to display to users when collecting
+user’s gender</td>
+</tr>
+<tr class="row-even"><td>oas_help_immigration_status</td>
+<td>Long text; help text to display to users when collecting
+their immigrant status</td>
+</tr>
+<tr class="row-odd"><td>oas_help_language</td>
+<td>Long text; help text to display to users when collecting
+the user’s primary language</td>
 </tr>
 </tbody>
 </table>
