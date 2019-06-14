@@ -5,6 +5,8 @@ OAS Triage User
 
 This documentation covers the oas_triage_user module which provides an entity to store information about a specific OTIS triage and intake instance.
 
+In addition, it provides most of the actual intake and triage functionality
+
 Dependencies
 ==============
 None
@@ -203,3 +205,5 @@ The module automatically creates a number of default taxonomies upon installatio
 +----------------------------+----------------------------------------------------------+
 | oas_marital_status         | Provides default marital statuses for OTIS               |
 +----------------------------+----------------------------------------------------------+
+
+

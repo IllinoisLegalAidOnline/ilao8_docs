@@ -13,6 +13,8 @@ Online triage and intake system (OTIS):
    migration_oas_legal_server
    migration_oas_financial_category
    migration_oas_income_standard
+   migration_oas_functionality
+   migration_oas_reporting
 
 
 (oas was the precurser to OTIS and stood for online access system)

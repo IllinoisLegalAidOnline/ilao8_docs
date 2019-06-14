@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTIS Functionality Documentation &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OTIS Reporting Functionality" href="migration_oas_reporting.html" />
+    <link rel="prev" title="ILAO OAS Income Standard" href="migration_oas_income_standard.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OTIS Functionality Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#custom-menu-routes">Custom menu routes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduled-tasks">Scheduled tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OTIS Functionality Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_oas_functionality.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otis-functionality-documentation">
+<h1>OTIS Functionality Documentation<a class="headerlink" href="#otis-functionality-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="custom-menu-routes">
+<h2>Custom menu routes<a class="headerlink" href="#custom-menu-routes" title="Permalink to this headline">¶</a></h2>
+<p>We have defined a series of menu routes that provide the user interface for the system.</p>
+<p>In oas_triage_user.module:</p>
+<blockquote>
+<div><ul class="simple">
+<li>/get-legal-help:  Displays the main page of Get Legal Help.  Calls the form found in oas_triage_user.ui.inc.</li>
+<li>/get-legal-help/triage-questions: Displays a picker for the user to narrow their legal issue when they select or enter a term that exactly matches on the legal issues taxonomy at anything above the lowest level. Relies on the oas_triage_user.evaluate_triage.inc and within that, the oas_triage_user_ilao_triage_form.</li>
+<li>/get-legal-help/triage-start: Displays a picker for the user to identify their legal issue when they enter a term that is not an exact match to the legal issues taxonomy.  If no match is found, the user is given the top 8 substantive areas to pick from. Relies on the oas_triage_user.evaluate_triage.inc file and within that, the oas_triage_user_ilao_triage_start_form.</li>
+<li>get-legal-help/referrals: Displays the user’s referrals and relies on the oas_triage_user.referrals.inc file and oas–referrals.tpl.php template file.</li>
+<li>get-legal-help/referral-history: Displays the user’s past referrals based on a specific triage ID and relies on the oas_triage_user.referrals.inc file.</li>
+<li>get-legal-help/intake: Displays the intake forms. The intake form is actually a multi-page form.  Relies on the oas_triage_user.application_form.inc file to generate the oas_triage_user_application_form.</li>
+<li>get-legal-help/bypass: Displays the bypass intake page to users who reach a bypass intake exit point in online intake.  Relies on the oas_triage_user.exits.inc file and the oas–bypass.tpl.php template file.</li>
+<li>get-legal-help/address-form: Displays the address form for users who successfully get through online intake.  Relies on the oas_triage_user_client_address_form in the oas_triage_user.address_form.inc file.</li>
+<li>get-legal-help/please-call: Displays the please call us confirmation form.  Relies on the  the oas_triage_user.exits.inc file and the oas–please-call.tpl.php template file.</li>
+<li>get-legal-help/callback-form: Displays the form for a user to pick one or more call back times.  Relies on the oas_triage_user_callback_form form in the oas_triage_user.exits.inc file.</li>
+<li>get-legal-help/callback-confirm: Displays the please call us confirmation form.  Relies on the oas_triage_user.exits.inc file and the oas–we-call-you.tpl.php template file.</li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Depending on the legal issue selected a user would get routed from triage-start to triage-questions if further narrowing is required and from the triage-questions page to either referrals or program triage rules.</p>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="oas-triage-user-get-organization-name-id">
+<h3>oas_triage_user_get_organization_name($id)<a class="headerlink" href="#oas-triage-user-get-organization-name-id" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Requires: an integer representing the node ID of a location_service ($id)
+Returns: a string that represents the name of the organization associated with the location</p>
+</div>
+<div class="section" id="oas-triage-user-get-organization-nid-id">
+<h3>oas_triage_user_get_organization_nid ($id)<a class="headerlink" href="#oas-triage-user-get-organization-nid-id" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Requires: an integer representing the node ID of a location_service ($id)
+Returns: an integer that represents the node ID of the organization associated with the location</p>
+</div>
+<div class="section" id="oas-triage-user-process-etransfer">
+<h3>oas_triage_user_process_etransfer<a class="headerlink" href="#oas-triage-user-process-etransfer" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Requires: an integer representing the triage ID to process
+Returns: a Boolean
+Invoked by: Cron (see Scheduled tasks)
+Purpose: processes an etransfer that is in the queue (has had a prior failure).</p>
+<div class="section" id="process">
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Loads the triage user entity</li>
+<li>Checks the legal server configuration to see if it has already hit the limit (defaults to 3 tries otherwise)</li>
+<li>Returns a failure if the maximum retries has been reached</li>
+<li>Unserializes the user’s data from the etransfer_data property</li>
+<li>Attempts to build the transfer (dependency: oas_legal_server_etransfer)</li>
+<li>Updates the triage user entity based on success or failure</li>
+<li>On success:<ul>
+<li>Sends the email confirmation message</li>
+<li>Sends an sms confirmation is available and user has opted in</li>
+<li>Updates the triage user’s intake status to etransferred, etransfer status to success</li>
+</ul>
+</li>
+<li>On failure:<ul>
+<li>Updates the triage user’s intake status to not eTransferred</li>
+<li>Updates the triage user’s etransfer status to failure if the maximum retries has not been met</li>
+<li>Updates the triage user’s etransfer status to abandoned if the maximum retries has been met</li>
+<li>Updates the triage user’s etransfer reason to the received failure reason.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="dependencies">
+<h4>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h4>
+<p>Modules</p>
+<ul class="simple">
+<li>oas_legal_server to capture and return maximum number of retries</li>
+<li>ilao_triage_sms_reminders to send SMS confirmation</li>
+</ul>
+<p>Functions:</p>
+<ul class="simple">
+<li>oas_legal_server_eTransfer to build and send the etransfer</li>
+<li>oas_triage_user_email_notify to send email notification</li>
+<li>ilao_triage_sms_reminders_send_confirmation to send SMS notification</li>
+<li>oas_triage_user_phone_notify to send related legal content via SMS</li>
+<li>oas_triage_user_save to update the triage user entity.</li>
+</ul>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">should be refactored.</p>
+</div>
+</div>
+</div>
+<div class="section" id="oas-triage-user-email-notify">
+<h3>oas_triage_user_email_notify<a class="headerlink" href="#oas-triage-user-email-notify" title="Permalink to this headline">¶</a></h3>
+<p>Parameters:</p>
+<ul class="simple">
+<li>an integer representing the intake settings ID associated with the triage</li>
+<li>the array of callback times</li>
+<li>the user’s email</li>
+</ul>
+<p>Process:</p>
+<ul class="simple">
+<li>Loads the intake settings for the intake</li>
+<li>Builds the email</li>
+<li>If the triage id exists in a session variable:<ul>
+<li>Loads the user’s legal problem</li>
+<li>Finds related content</li>
+<li>Updates the email body to include those resources</li>
+</ul>
+</li>
+<li>Invokes drupal_mail to send</li>
+</ul>
+<p>Relies on:
+* oas_triage_user_build_confirmation_body
+* oas_triage_user_get_child_problem
+* block 7 of the related legal content view</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This code needs to be reviewed. It appears to only include legal content if the session variable for triage ID exists.  Would be better to instead load the triage user ID as the parameter and build off of that data rather than rely on session when we may need to handle late etransfers.</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-phone-notify">
+<h3>oas_triage_user_phone_notify<a class="headerlink" href="#oas-triage-user-phone-notify" title="Permalink to this headline">¶</a></h3>
+<p>Purpsose:  sends an SMS of related legal content to a user via SMS if they have completed intake.</p>
+<p>Parameters:
+* triage user entity</p>
+<p>Relies on:</p>
+<ul class="simple">
+<li>oas_triage_user_get_child_problem</li>
+<li>block 7 of the related legal content view</li>
+<li>ilao_sms module<ul>
+<li>ilao_sms_check_mode (checks to determine if we are running SMS in demo mode)</li>
+<li>ilao_sms_get_demo_phone (gets the demo number from configuration)</li>
+</ul>
+</li>
+<li>twilio module (twilio_send to send the text)</li>
+<li>ilao_triage_sms module (ilao_triage_sms_save_message to send the actual sms text)</li>
+<li>shurly module (shurly_shorten to generate a shortened URL)</li>
+</ul>
+<div class="section" id="oas-triage-user-build-confirmation-body">
+<h4>oas_triage_user_build_confirmation_body<a class="headerlink" href="#oas-triage-user-build-confirmation-body" title="Permalink to this headline">¶</a></h4>
+<p>Builds the body of a successful intake email.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li>intake settings entity</li>
+<li>call back times array</li>
+</ul>
+<p>Relies on:</p>
+<ul class="simple">
+<li>oas_intake_settings.token.inc</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions-to-determine-user-s-problem">
+<h3>Functions to determine user’s problem<a class="headerlink" href="#functions-to-determine-user-s-problem" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="oas-triage-user-route-to-initial-results">
+<h4>oas_triage_user_route_to_initial_results<a class="headerlink" href="#oas-triage-user-route-to-initial-results" title="Permalink to this headline">¶</a></h4>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The code in this function needs refactored.</p>
+</div>
+<p>Located in: oas_triage_user.
+Parameters:</p>
+<ul class="simple">
+<li>form</li>
+<li>form_state (results of the user’s Get legal help form)</li>
+<li>triage_user entity</li>
+</ul>
+<p>Relies on:</p>
+<ul class="simple">
+<li>oas_triage_user_get_legal_issues</li>
+<li>oas_triage_user_get_top_parents</li>
+<li>oas_triage_user_get_legal_issue</li>
+</ul>
+<p>Process</p>
+<ul class="simple">
+<li>Unsets any existing triage id (acts as a reset)</li>
+<li>Determines based on the user’s search term:<ul>
+<li>We have an exact term match<ul>
+<li>Updates the user’s problem in the system</li>
+<li>Redirects the user to the right resources using the oas_triage_user_determine_resources function.</li>
+</ul>
+</li>
+<li>We have more than one matching term<ul>
+<li>Sets the triage status to Legal issue</li>
+<li>Directs the user to the triage-questions page</li>
+</ul>
+</li>
+<li>We have no matching terms<ul>
+<li>Sets the triage status to top of triage tree</li>
+<li>Sets the start terms to the top level terms</li>
+<li>Redirects the user to triage-start</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Redirects the user to the legal-information/not-illinois page if they are out of the service area (see the oas_triage_user_in_service_area function)</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-get-legal-issues">
+<h4>oas_triage_user_get_legal_issues<a class="headerlink" href="#oas-triage-user-get-legal-issues" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="oas-triage-user-get-top-parents">
+<h4>oas_triage_user_get_top_parents<a class="headerlink" href="#oas-triage-user-get-top-parents" title="Permalink to this headline">¶</a></h4>
+<p>Returns an array of legal isssues in the legal issues taxonomy that do not have a parent term.</p>
+<p>Array is structured as the term id =&gt; translated name</p>
+</div>
+<div class="section" id="oas-triage-user-get-legal-issue">
+<h4>oas_triage_user_get_legal_issue<a class="headerlink" href="#oas-triage-user-get-legal-issue" title="Permalink to this headline">¶</a></h4>
+<p>Parameter:  String of a search term
+Returns either:</p>
+<ul class="simple">
+<li>0 if no legal issue can be determined</li>
+<li>the term id for the matching term if exactly 1 is found</li>
+<li>the array of matching terms if more than 1 match is found</li>
+</ul>
+<p>Relies on:
+* taxonomy
+* i18n
+* legal_issues_autosuggest view</p>
+<p>Process:</p>
+<ul>
+<li><p class="first">Checks first to see if the search term is an exact match for a legal issue taxonomy term.</p>
+</li>
+<li><p class="first">Checks to see if there is a localized match to the search term</p>
+</li>
+<li><p class="first">If no result, uses the legal_issue_autosuggest to look for an exact match</p>
+<ul>
+<li><p class="first">If the search term is a single keyword, rewrites it to include plural formats</p>
+</li>
+<li><p class="first">If the search term is not single keyword, uses the combined phrase</p>
+</li>
+<li><p class="first">Then it loops through the results and:</p>
+<blockquote>
+<div><ul class="simple">
+<li>if it is the lowest level term, adds the term object into an array</li>
+<li>if that array is then empty (meaning none of the results were low-level terms)<ul>
+<li>adds any term that has a child and a parent (this avoids adding the top level terms</li>
+<li>loops through the resulting array to remove child terms if the parent term is included</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">if there is just one result, the term id is returned</p>
+</li>
+<li><p class="first">if there is more than one result, the array is returned.  The array includes the term id as the key and the term name as the value.</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-in-service-area">
+<h4>oas_triage_user_in_service_area<a class="headerlink" href="#oas-triage-user-in-service-area" title="Permalink to this headline">¶</a></h4>
+<p>Located in: oas_triage_user.evaluate_triage.inc
+Parameters: triage_user entity
+Returns: Boolean
+Purpose: Determines if the user is in our service area:</p>
+<ul class="simple">
+<li>Users in Illinois are always in the service area</li>
+<li>Users outside of Illinois are out of the service area unless:<ul>
+<li>User is looking for help in immigration (see oas_triage_user_is_immigration)</li>
+<li>User is looking for a lawyer</li>
+<li>User is in NIJC’s extended service area (see oas_triage_user_check_nijc</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-is-immigration">
+<h4>oas_triage_user_is_immigration<a class="headerlink" href="#oas-triage-user-is-immigration" title="Permalink to this headline">¶</a></h4>
+<p>Located in: oas_triage_user.evaluate_triage.inc
+Parameters: integer representing the term id of the user’s problem
+Returns: Boolean
+Purpose: Determine if the user’s legal issue is related to an immigration problem in our taxonomy</p>
+</div>
+<div class="section" id="oas-triage-user-check-nijc">
+<h4>oas_triage_user_check_nijc<a class="headerlink" href="#oas-triage-user-check-nijc" title="Permalink to this headline">¶</a></h4>
+<p>Located in: oas_triage_user.evaluate_triage.inc
+Parameters: integer representing the term ID of the user’s state
+Returns:  Boolean
+Purpose:  Determines if a user is in NIJC’s extended service area as NIJC allows intakes through our platfor outside of Illinois.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">NIJC’s organization node ID is hard coded into this function.</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-determine-resources">
+<h4>oas_triage_user_determine_resources<a class="headerlink" href="#oas-triage-user-determine-resources" title="Permalink to this headline">¶</a></h4>
+<p>Located in: oas_triage_user.evaluate_triage.inc
+Parameters:</p>
+<ul class="simple">
+<li>triage user entity</li>
+<li>form_state array</li>
+</ul>
+<p>Returns: form_state
+Purpose:  Updated the form_state to set an appropriate redirect to the next page.
+Process:</p>
+<ul class="simple">
+<li>If no help type exists, sets the help type to lawyer.</li>
+<li>If the help types include a lawyer:<ul>
+<li>Determines if intake is available (see oas_triage_user_is_intake_available)</li>
+<li>If intake is possible:<ul>
+<li>Checks to see if there are program triage rules</li>
+<li>If there are program triage rules:<ul>
+<li>Sets the triage status to Program triage</li>
+<li>Sets the redirect to the triage rules node</li>
+</ul>
+</li>
+<li>If there are no triage rules:<ul>
+<li>Sets the triage status to Referrals</li>
+<li>Redirects to referrals page</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>If intake is not possible:<ul>
+<li>Sets the triage status to Referrals</li>
+<li>Redirects to referrals page</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>If the user is not looking for a lawyer:<ul>
+<li>Sets the triage status to referrals</li>
+<li>Redirects to the referrals page</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There is a refernce to referrals when the user overincome value is 10; this is never invoked.</p>
+</div>
+</div>
+</div>
+<div class="section" id="functions-to-determine-whether-intake-is-available">
+<h3>Functions to determine whether intake is available<a class="headerlink" href="#functions-to-determine-whether-intake-is-available" title="Permalink to this headline">¶</a></h3>
+<p>oas_triage_user_is_intake_available</p>
+</div>
+</div>
+<div class="section" id="scheduled-tasks">
+<h2>Scheduled tasks<a class="headerlink" href="#scheduled-tasks" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We have invoked scheduled tasks using the Drupal hook_cron and also the hook_cronapi methods.  The hook_cronapi method is more useful when connecting to third party cron, like Elysian cron.</p>
+</div>
+<div class="section" id="process-queued-etransfers">
+<h3>Process queued eTransfers<a class="headerlink" href="#process-queued-etransfers" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Requires: nothing
+Invokes:  hook_cron
+Relies on: oas_triage_user_process_etransfer
+Purpose: Runs the scheduled task to retry failed eTransfers.
+Executes: This task is scheduled to run hourly.</p>
+<p>Related: oas_triage_user_cron_queue_info in the same module, tells the Drupal queue about our scheduled task.</p>
+<div class="section" id="id1">
+<h4>oas_triage_user_process_etransfer<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>This is a fairly complex piece of code that goes through the queue of unprocessed etransfers and attempts to resend them.</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Accepts: a triage_id that ties to the oas_triage_user table
+Returns: a boolean (succeeded or failure)</dd>
+</dl>
+<p>It relies on:</p>
+<ul class="simple">
+<li>variables set in the legal server configuration for end point and maximum retries</li>
+<li>the serialized data stored in the user’s triage record</li>
+<li>the oas_triage_user_email_notify function to send the user a confirmation message</li>
+<li>the ilao_triage_sms_reminders module to send an SMS confirmation if the user has SMS</li>
+<li>oas_triage_save_user to save the user’s information and update their record<ul>
+<li>on success, the user’s intake status is set to eTransferred and their eTransfer status updated to success</li>
+<li>on failure, the user’s etransfer status is set to Abandoned and the failure reason stored, if the maximum number of tries has been reached.</li>
+<li>on failure, the user’s etransfer status is set to Failure and the failure reason stored, if the maximum number of tries has not yet been reached.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SMS reminder is not a dependency; the code checks that the module is enabled and if it is not, SMS is ignored.</p>
+</div>
+</div>
+</div>
+<div class="section" id="remove-oas-triage-user-test-data">
+<h3>Remove OAS Triage User Test Data<a class="headerlink" href="#remove-oas-triage-user-test-data" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Invokes: hook_cronAPI
+Relies on: oas_triage_user_remove_test_data
+Purpose: Removes test data from our production database.  Test data includes any instance where the user’s last name is test or tester.
+Executes:  This task is scheduled to run daily.</p>
+</div>
+<div class="section" id="update-intake-status-for-incompletes">
+<h3>Update intake status for incompletes<a class="headerlink" href="#update-intake-status-for-incompletes" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Invokes: hook_cronAPI
+Relies on: oas_triage_user_set_intake_status
+Purpose: Updates the intake status for users who started but did not complete intake.
+Executes:  This task is scheduled to run daily.</p>
+</div>
+<div class="section" id="notify-site-architects-if-etransfers-stop-completely">
+<h3>Notify Site architects if etransfers stop completely<a class="headerlink" href="#notify-site-architects-if-etransfers-stop-completely" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.module
+Invokes: hook_cronAPI
+Relies on:</p>
+<ul class="simple">
+<li>oas_triage_user_send_email_regarding_etransfer_issue</li>
+<li>rules module</li>
+<li>custom rule component (rules_potential_problem_with_etransfers)</li>
+</ul>
+<p>Purpose:  Sends an email notification to site architect when no etransfers have been processed in 2 days.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">this component needs to be updated to send to OTIS manager not site architect.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_reporting.html" class="btn btn-neutral float-right" title="OTIS Reporting Functionality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_income_standard.html" class="btn btn-neutral" title="ILAO OAS Income Standard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

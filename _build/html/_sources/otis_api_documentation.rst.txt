@@ -18,6 +18,19 @@ The referral API will provide referral history information between systems.
 | update-referral-history| POST     | Updates a referral history entity                 |
 +------------------------+----------+---------------------------------------------------+
 
+Organization API
+==================
+
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
+| get-organization-name- | GET      | Loads the name of the parent organization         |
+| service-id             |          | by service id.                                    |
++------------------------+----------+---------------------------------------------------+
+| get-organization-id-   | GET      | Loads the node id of the parent organization      |
+| service-id             |          | by service id.                                    |
++------------------------+----------+---------------------------------------------------+
+
 
 
 

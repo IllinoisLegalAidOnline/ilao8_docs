@@ -325,11 +325,17 @@ The OAS intake settings entity integrates with Views.  Views can be used to gene
 ILAO-specific functionality
 ============================
 We've added a lot of additional fields and functionality to the standard intake settings entity.  This is encapsulated in:
+
 * the ilao_f_oas_intake_settings feature
 * the ilao_intake_settings module
 
 Intake settings fields
 ------------------------
+The addition of ILAO-specific fields allows ILAO to tie intake settings and our organizations, locations, and location services information together.
+
+For example:
+
+* An intake settings may inherit the legal issues and service area from a service.  This will copy the data from the service into the intake settings.
 
 +----------------------------+----------------------------------------------------------+
 | Field                      | Description                                              |

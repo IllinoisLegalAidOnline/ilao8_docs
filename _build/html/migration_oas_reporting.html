@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS-related migration &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>OTIS Reporting Functionality &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OAS Intake Settings" href="migration_oas_intake_settings.html" />
-    <link rel="prev" title="Migrating Organization Data" href="migration_org_data.html" /> 
+    <link rel="next" title="OTIS Drupal 8" href="otis_drupal8.html" />
+    <link rel="prev" title="OTIS Functionality Documentation" href="migration_oas_functionality.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -87,7 +87,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">OTIS-related migration</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
@@ -95,7 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_functionality.html">OTIS Functionality Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OTIS Reporting Functionality</a></li>
 </ul>
 </li>
 </ul>
@@ -148,13 +148,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>OTIS-related migration</li>
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OTIS Reporting Functionality</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_otis_entities.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migration_oas_reporting.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -167,59 +169,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-related-migration">
-<h1>OTIS-related migration<a class="headerlink" href="#otis-related-migration" title="Permalink to this headline">¶</a></h1>
-<p>Online triage and intake system (OTIS):</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#oas-intake-settings-module">OAS Intake Settings Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#tokens">Tokens</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#views-integration">Views Integration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_settings.html#ilao-specific-functionality">ILAO-specific functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#fields">Fields</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_triage_user.html#taxonomies">Taxonomies</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#functionality">Functionality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_referral_history.html#views-integration">Views Integration</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_legal_server.html#functionality">Functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#dependencies">Dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#base-tables">Base Tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_financial_category.html#default-categories">Default categories</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#administration">Administration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_income_standard.html#base-table">Base Table</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_functionality.html">OTIS Functionality Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#custom-menu-routes">Custom menu routes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#functions">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#scheduled-tasks">Scheduled tasks</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
-</ul>
-</div>
-<p>(oas was the precurser to OTIS and stood for online access system)</p>
+  <div class="section" id="otis-reporting-functionality">
+<h1>OTIS Reporting Functionality<a class="headerlink" href="#otis-reporting-functionality" title="Permalink to this headline">¶</a></h1>
+<p>OAS triage user.module: oas_triage_user_form_views_exposed_form_alter</p>
 </div>
 
 
@@ -230,10 +182,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_intake_settings.html" class="btn btn-neutral float-right" title="OAS Intake Settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="otis_drupal8.html" class="btn btn-neutral float-right" title="OTIS Drupal 8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_org_data.html" class="btn btn-neutral" title="Migrating Organization Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_functionality.html" class="btn btn-neutral" title="OTIS Functionality Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
