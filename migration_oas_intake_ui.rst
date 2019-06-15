@@ -273,6 +273,72 @@ Expenses:  oas_triage_user_save_expenses, which:
 Calculating Financial Eligibility
 ===================================
 
+Income eligibility
+--------------------
+The oas_triage_user_calculate_income_eligibility calculates income eligiblity.  Income eligibility is generally determined by looking at the total income minus countable expenses against a maximum percentage of an income standard based on household size.
+
+Parameters
+^^^^^^^^^^^^
+Requires:  intake settings entity, count expenses boolean (Default is true)
+Returns: boolean value "is user income eligible?"
+
+Process
+^^^^^^^^^
+Returns true if income is not collected.  For all other cases:
+
+* Invokes oas_triage_user_check_for_exemption to see if income is waived for the user
+* Calculates the total household size
+* Adds up all the entered income fields and multiplies by 12 to get annual income
+* If expenses can be offset against income:
+
+  * Adds up all collected expenses
+  * Multiplies expenses by 12
+
+* If expenses are not available to offset income, set total expenses to 0  
+* Sets the total income for eligibility to income - assets with a minimum income of 0
+* Loads the ilao_income_standard used in the intake settings as the income standard to apply
+* Calculates the correct annual amount by:
+
+  * For households with 8 or fewer members, taking that amount from the income standards entity
+  * For households with more than 8 members, taking the amount for 8 members and adding the additional member amount * the number of additional members
+  * Determines the maximum allowed income based on the percentage allowed in the intake settings
+  * Returns true if the user is not over income and eligible for services
+  * Returns false if the user is over income and not eligible
+
+Asset eligibility
+-------------------
+
+The oas_triage_user_calculate_asset_eligibility calculates asset eligiblity.  Asset eligiblity is generally calculated by adding up all countable assets and comparing that against a maximum asset dollar limit.  Some programs exclude a dollar amount for personal property in adding up assets.
+
+Parameters
+^^^^^^^^^^^^
+Requires:  intake settings entity,
+Returns: boolean value "is user asset eligible?"
+
+
+Process
+^^^^^^^^^
+
+* Adds up all the asset items
+* If personal property is collected and there is a dollar exemption for personal property, the total assets are reduced (but not by more than the amount of personal property) by the exemption amount.  For example: 
+
+  * if total assets are $5000, personal property is $2000 and the personal property exemption is $8500, total assets of $3000 would be counted.
+  * if total assets are $10000, personal property is $9000 and the personal property exemption is $8500, total assets of $1500 would be counted.
+  
+* Pulls the maximum allowed assets tied to the intake settings
+* If the total countable assets are less than the maximum allowed, returns TRUE (user is asset eligible)
+* If the total countable assets are equal to or more than the maximum allowed, returns FALSE (user is not asset eligible)
+
+Final processing
+-------------------
+The application submit function then:
+* Updates the overincome property in the triage user entity to 3 if the user is over asset, 2 if the user is over-income  If a user is both over income and over asset, the status is set to 3.
+
+If a user is financially ineligible, they are redirected to referrals.  If they are eligible, they are taken to the contact form.
+
+  
+ 
+  
 
 Contact form
 ==============

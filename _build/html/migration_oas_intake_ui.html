@@ -465,6 +465,69 @@ Located: oas_triage_user.application_form.inc</p>
 </div>
 <div class="section" id="calculating-financial-eligibility">
 <h2>Calculating Financial Eligibility<a class="headerlink" href="#calculating-financial-eligibility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="income-eligibility">
+<h3>Income eligibility<a class="headerlink" href="#income-eligibility" title="Permalink to this headline">¶</a></h3>
+<p>The oas_triage_user_calculate_income_eligibility calculates income eligiblity.  Income eligibility is generally determined by looking at the total income minus countable expenses against a maximum percentage of an income standard based on household size.</p>
+<div class="section" id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h4>
+<p>Requires:  intake settings entity, count expenses boolean (Default is true)
+Returns: boolean value “is user income eligible?”</p>
+</div>
+<div class="section" id="process">
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<p>Returns true if income is not collected.  For all other cases:</p>
+<ul class="simple">
+<li>Invokes oas_triage_user_check_for_exemption to see if income is waived for the user</li>
+<li>Calculates the total household size</li>
+<li>Adds up all the entered income fields and multiplies by 12 to get annual income</li>
+<li>If expenses can be offset against income:<ul>
+<li>Adds up all collected expenses</li>
+<li>Multiplies expenses by 12</li>
+</ul>
+</li>
+<li>If expenses are not available to offset income, set total expenses to 0</li>
+<li>Sets the total income for eligibility to income - assets with a minimum income of 0</li>
+<li>Loads the ilao_income_standard used in the intake settings as the income standard to apply</li>
+<li>Calculates the correct annual amount by:<ul>
+<li>For households with 8 or fewer members, taking that amount from the income standards entity</li>
+<li>For households with more than 8 members, taking the amount for 8 members and adding the additional member amount * the number of additional members</li>
+<li>Determines the maximum allowed income based on the percentage allowed in the intake settings</li>
+<li>Returns true if the user is not over income and eligible for services</li>
+<li>Returns false if the user is over income and not eligible</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="asset-eligibility">
+<h3>Asset eligibility<a class="headerlink" href="#asset-eligibility" title="Permalink to this headline">¶</a></h3>
+<p>The oas_triage_user_calculate_asset_eligibility calculates asset eligiblity.  Asset eligiblity is generally calculated by adding up all countable assets and comparing that against a maximum asset dollar limit.  Some programs exclude a dollar amount for personal property in adding up assets.</p>
+<div class="section" id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Requires:  intake settings entity,
+Returns: boolean value “is user asset eligible?”</p>
+</div>
+<div class="section" id="id4">
+<h4>Process<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Adds up all the asset items</li>
+<li>If personal property is collected and there is a dollar exemption for personal property, the total assets are reduced (but not by more than the amount of personal property) by the exemption amount.  For example:<ul>
+<li>if total assets are $5000, personal property is $2000 and the personal property exemption is $8500, total assets of $3000 would be counted.</li>
+<li>if total assets are $10000, personal property is $9000 and the personal property exemption is $8500, total assets of $1500 would be counted.</li>
+</ul>
+</li>
+<li>Pulls the maximum allowed assets tied to the intake settings</li>
+<li>If the total countable assets are less than the maximum allowed, returns TRUE (user is asset eligible)</li>
+<li>If the total countable assets are equal to or more than the maximum allowed, returns FALSE (user is not asset eligible)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="final-processing">
+<h3>Final processing<a class="headerlink" href="#final-processing" title="Permalink to this headline">¶</a></h3>
+<p>The application submit function then:
+* Updates the overincome property in the triage user entity to 3 if the user is over asset, 2 if the user is over-income  If a user is both over income and over asset, the status is set to 3.</p>
+<p>If a user is financially ineligible, they are redirected to referrals.  If they are eligible, they are taken to the contact form.</p>
+</div>
 </div>
 <div class="section" id="contact-form">
 <h2>Contact form<a class="headerlink" href="#contact-form" title="Permalink to this headline">¶</a></h2>
