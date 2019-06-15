@@ -311,11 +311,189 @@ Process:
 .. warning::
    There is a refernce to referrals when the user overincome value is 10; this is never invoked.
 
+oas_triage_user_get_search_terms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Located in: oas_triage_user.evaluate_triage.inc
+Parameters: An array of terms
+Returns: An array of term reference options for use in a form, formatted as tid => name
+
 Functions to determine whether intake is available
 ----------------------------------------------------
 oas_triage_user_is_intake_available
     
-   
+Forms
+==========
+
+Get Legal Help main form
+---------------------------
+Function: oas_triage_user_edit_form
+Found in: oas_triage_user.ui.inc
+
+
+On menu access, creates a triage user entity.  The default form:
+
+* Loads the user if the user is logged in
+* Loads the user's zip code if it is defined in their account or in a session variable
+* Adds a heading markup element to describe Get Legal Help
+* Adds a zip code text field
+* Adds a household size field
+* Adds an overincome field (yes or no that asks the user if their income is more than a maximum amount
+* Adds an ajax callback that takes the household size and calculates the maximum income amount. 
+* Attaches any additional fields created in the user interface.  In ILAO's instance that includes
+  
+  * What type of help do you want? Check all that apply. (oas_triage_help_type)
+  * What is your problem about? (field_triage_search, text field)
+  * I would like to get confirmation, reminders, and additional information via text message (field_opt_in_sms); this field is currently set to no access
+  * My problem is about: (field_triage_problem; term reference); set to no access
+  * Do any of the following describe you? Check all that apply. (field_limited_populations; term reference)
+  * Mobile phone (field_mobile_phone; text); set to no access
+  * Problem history (field_triage_problem_history, term reference); set to no access
+  * Callback times selected (field_triage_callback_times; text)
+
+Calculating Maximum Income
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The oas_triage_user_get_maximum_income function in the oas_triage_user.ui.inc file controls the maximum intake value that appears on the main Get Legal Help form. 
+
+It defaults to $10,000 unless ILAO's custom ilao_oas_income_standard module is installed (this is installed on ILAO's website).  With that module installed, the function:
+
+* Loads the federal poverty level income standard
+* Grabs the amount that matches the user's household size; this amount is annual income
+* Calculates the monthly maximum by multiplying the annual income by 350%, dividing by 12 and adding $500. 
+* Calculates the amount to display by taking the maximum amount and dividing it by 1000, dropping any fractions and then adding $1000.
+* Applies a number format to the amount
+
+.. note::
+   If the annual income is $12500 per year, the system will take that amount multiply it by 3.5 and divide by 12 ($3645.83) and then adding $500 ($4145.83).  It will then divide that by 1000 (4.14583) and drop any fraction (4) and then multipling by 1000 for an amount of $4000
+  
+
+Known Alters
+^^^^^^^^^^^^^^
+The Get legal help form can be altered by any other module.  Our ILAO-specific intake settings module does this.  
+
+Function: ilao_intake_settings_form_oas_triage_user_edit_form_alter
+Location: ilao_intake_settings.module
+  
+Alterations:
+
+* Sets the callback times text field to no access
+* Adds a fieldset for legal
+* Adds a checkbox field for a disclaimer
+* Adds a checkbox field for terms and conditions
+* Adds translation support for help type options   
+
+Validation
+^^^^^^^^^^^^^
+Function: oas_triage_user_edit_form_validate
+Located in: oas_triage_user.ui.inc
+
+Validates that if the help type includes lawyer that the household size and income fields are both required.
+
+Form submit
+^^^^^^^^^^^^
+Function: oas_triage_user_edit_form_submit
+Located in: oas_triage_user.ui.inc
+
+Process:
+
+* Stores the household size in a session variable
+* Updates the tirage user entity to:
+
+  * Sets the created time to the current time for a new entity 
+  * Set the changed time to the current time
+  * Store the user ID
+  * Store the IP address
+  * Set the last screen viewed to "get-legal-help"
+  
+* If the ilao_geolocation module is enabled (it currently is), the submit form also updates the triage entity to:
+
+  * Set the county to the county associated with the submitted zip code
+  * Set the state to the state associated with the submitted zip code 
+  
+* Invokes the oas_triage_user_route_to_initial_results function to launch the next step  
+  
+
+
+Triage form
+-------------
+Function: oas_triage_user_ilao_triage_form
+Found in: oas_triage_user.evaluate_triage.inc
+
+If necessary, will set the session variable triage_id based on url path and then loads the triage entity.
+
+Form consists of up to 4 radio elements that represent the maximum depth of the legal issues taxonomy.  For example, when the taxonomy tree structure looks like this:
+
+* Level 1
+
+  * Level 2
+  
+    * Level 3
+    * Level 3
+      
+      * Level 4
+      * Level 4
+      * Level 4
+    * Level 2
+  
+    * Level 3
+    * Level 3
+      
+      * Level 4
+      * Level 4
+      * Level 4    
+* Level 1
+* Level 1
+
+If the user's search matches on Level 1, all the Level 2s will appear and then upon selecting a Level 2, all the Level 3s will display under that Level 2 and then upon selecting a Level 3, all the Level 4s will display.  
+
+If the user starts at a lower level term or there are no child terms, the submit form displays.
+
+Form Submit
+^^^^^^^^^^^^
+Function: oas_triage_user_ilao_triage_form_submit
+Located in: oas_triage_user.evaluate_triage.inc
+
+Upon submitting the form:
+
+* The user's legal problem history is updated in the field_triage_problem_history record.  This field maintains the entire hierarchy of their selections.
+* Updates the triage user entity
+* Invokes the oas_triage_user_determine_resources function to determine how to route the user
+
+oas_triage_user_legal_issue_build_tree
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Found in: oas_triage_user.evaluate_triage.inc
+Parameter: integer; taxonomy term id from legal issues
+Returns an array of select options that are at the level immediately below the hierarchy level as the term parameter
+
+Triage start form
+--------------------
+Function: oas_triage_user_ilao_triage_start_form
+Found in: oas_triage_user.evaluate_triage.inc
+
+If necessary, will set the session variable triage_id based on url path and then loads the triage entity.
+
+This is a dynamic form that is used on the get-legal-help/triage-start page.
+It consists of a single checkbox field that displays either:
+
+* The top categories from our legal issues taxonomy (from oas_triage_user_get_top_parents)
+* The list of terms from based on the user's search (using oas_triage_user_get_search_terms)  
+
+Form submit
+^^^^^^^^^^^^^
+Function: oas_triage_user_ilao_triage_start_submit
+Located in: oas_triage_user.evaluate_triage.inc
+If the user has selected a lowest level legal issue:
+
+* update the user's problem in their triage entity
+* use the oas_triage_user_determine_resources function to proceed.
+
+If the user has not selected a lowest level legal issue:
+
+* update the user's problem in their triage entity
+* Redirects to the /triage-questions form
+
+
+
+
 
 Scheduled tasks
 ================
