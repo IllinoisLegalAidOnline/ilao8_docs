@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTIS Functionality Documentation &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OTIS Global Items" href="migration_oas_functionality.html" />
+    <link rel="prev" title="ILAO OAS Income Standard" href="migration_oas_income_standard.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OTIS Functionality Documentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+      <li>OTIS Functionality Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_otis_functionality_overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otis-functionality-documentation">
+<h1>OTIS Functionality Documentation<a class="headerlink" href="#otis-functionality-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#custom-menu-routes">Custom Menu Routes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#important-notes">Important notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#common-functions">Common Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#process-queued-etransfers">Process queued eTransfers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#remove-oas-triage-user-test-data">Remove OAS Triage User Test Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#update-intake-status-for-incompletes">Update intake status for incompletes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#notify-site-architects-if-etransfers-stop-completely">Notify Site architects if etransfers stop completely</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_glh.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_glh.html#forms">Forms</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-is-intake-available">oas_triage_user_is_intake_available</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-intake-specific-population">oas_triage_user_intake_specific_population</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-intake-general">oas_triage_user_intake_general</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-least-updated-intake-organization">oas_triage_user_least_updated_intake_organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-get-triage-rules">oas_triage_user_get_triage_rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-set-up-intake-object">oas_triage_user_set_up_intake_object</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#application-form">Application form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#contact-form">Contact form</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_functionality.html" class="btn btn-neutral float-right" title="OTIS Global Items" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_income_standard.html" class="btn btn-neutral" title="ILAO OAS Income Standard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

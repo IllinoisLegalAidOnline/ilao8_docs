@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTIS Intake UI and Pre-Transfer &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OTIS eTransfer Processing" href="migration_oas_etransfer.html" />
+    <link rel="prev" title="Intake Availability Functions" href="migration_oas_intake_available.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
+        
+      <li>OTIS Intake UI and Pre-Transfer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_oas_intake_ui.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otis-intake-ui-and-pre-transfer">
+<h1>OTIS Intake UI and Pre-Transfer<a class="headerlink" href="#otis-intake-ui-and-pre-transfer" title="Permalink to this headline">¶</a></h1>
+<p>When a user reaches intake, after completing a program’s triage rules successfully, they complete a series of forms to collect additional information.</p>
+<div class="section" id="application-form">
+<h2>Application form<a class="headerlink" href="#application-form" title="Permalink to this headline">¶</a></h2>
+<p>Location: oas_triage_user.application_form.inc</p>
+<p>The main get-legal-help/intake form is a multi-page form and what pages display to a user depends on the intake settings. An error is thrown if there is  no session variable for the triage id.</p>
+<p>The form consists of:
+* The first page that collects name, date of birth, and demographics.  These are defined in the oas_triage_user_application_form.
+* A page to collect household size
+* Pages to collect financial information</p>
+<p>The oas_triage_user_application_form_validate manages form validation and invokes specific validation on each page’s submission.</p>
+<p>The contact form and callback selection form are separate forms.</p>
+<div class="section" id="first-page-of-the-form">
+<h3>First page of the form<a class="headerlink" href="#first-page-of-the-form" title="Permalink to this headline">¶</a></h3>
+<p>The first page of the form is defined in the oas_triage_user_application_form form.</p>
+<div class="section" id="invokes-and-requires">
+<h4>Invokes and Requires<a class="headerlink" href="#invokes-and-requires" title="Permalink to this headline">¶</a></h4>
+<p>Invokes hook_form
+Requires:</p>
+<ul class="simple">
+<li>ilao_triage</li>
+<li>Session variable containing the current intake settings id</li>
+</ul>
+</div>
+<div class="section" id="form-elements">
+<h4>Form Elements<a class="headerlink" href="#form-elements" title="Permalink to this headline">¶</a></h4>
+<p>Note that the select taxonomy require oas_triage_user_load_intake_taxonomy to load the options.  For fields marked “only displays if enabled,” these only display if the intake settings are configured to collect the field.  When collected, the help text is pulled from the intake settings.</p>
+<p>The Select country requires the locale module to load Drupal’s country list.
++——————————+—————————-+—————————-+
+| Form variable                | Type                       | Notes                      |
++==============================+============================+============================+
+| settings_id                  | hidden                     | the session intake settting|
++——————————+—————————-+—————————-+
+| about_you                    | field set                  | Just a label               |
++——————————+—————————-+—————————-+
+| first_name                   | text field                 | User’s first name          |
++——————————+—————————-+—————————-+
+| middle_name                  | text field                 | User’s middle name         |
++——————————+—————————-+—————————-+
+| last_name                    | text field                 | User’s last name           |
++——————————+—————————-+—————————-+
+| maiden_name                  | text field                 | User’s maiden name         |
++——————————+—————————-+—————————-+
+| nickname                     | text field                 | User’s nickname(s)         |
++——————————+—————————-+—————————-+
+| date_of_birth                | date or text field         | If date module exists,     |
+|                              |                            | separate month, day, year  |
+|                              |                            | elements; goes back 110 yrs|
++——————————+—————————-+—————————-+
+| race                         | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+| ethnicity                    | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| gender                       | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| marital_status               | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| country                      | select country             | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| language                     | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| immigration                  | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| citizenship                  | select taxonomy            | Only displays if enabled   |
++——————————+—————————-+—————————-+
+| current_client               | checkbox                   | Is user current client for |
+|                              |                            | same problem?              |
++——————————+—————————-+—————————-+
+| applied                      | checkbox                   | Has user applied for same  |
+|                              |                            | problem?                   |
++——————————+—————————-+—————————-+
+| current_client_different     | checkbox                   | Is user current client w/  |
+|                              |                            | a different problem?       |
++——————————+—————————-+—————————-+
+| never_client                 | checkbox                   | Has user never been a      |
+|                              |                            | client of organization z   |
++——————————+—————————-+—————————-+
+| prisoner                     | checkbox                   | Is user in jail or prison? |
+|                              |                            | Only asked if needed       |
++——————————+—————————-+—————————-+</p>
+</div>
+<div class="section" id="validation-and-submission">
+<h4>Validation and Submission<a class="headerlink" href="#validation-and-submission" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="contact-form">
+<h2>Contact form<a class="headerlink" href="#contact-form" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_etransfer.html" class="btn btn-neutral float-right" title="OTIS eTransfer Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_intake_available.html" class="btn btn-neutral" title="Intake Availability Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

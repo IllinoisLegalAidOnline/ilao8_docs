@@ -13,7 +13,7 @@ Online triage and intake system (OTIS):
    migration_oas_legal_server
    migration_oas_financial_category
    migration_oas_income_standard
-   migration_oas_functionality
+   migration_otis_functionality_overview
    migration_oas_reporting
 
 

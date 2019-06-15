@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Intake Availability Functions &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OTIS Intake UI and Pre-Transfer" href="migration_oas_intake_ui.html" />
+    <link rel="prev" title="Get Legal Help Form to Next Step" href="migration_oas_glh.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Intake Availability Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
+        
+      <li>Intake Availability Functions</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_oas_intake_available.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="intake-availability-functions">
+<h1>Intake Availability Functions<a class="headerlink" href="#intake-availability-functions" title="Permalink to this headline">¶</a></h1>
+<p>Most of the code to determine if intake is available is found in the oas_triage_user.intake_available.inc file in the OAS Triage User module.</p>
+<div class="section" id="oas-triage-user-is-intake-available">
+<h2>oas_triage_user_is_intake_available<a class="headerlink" href="#oas-triage-user-is-intake-available" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.intake_available.inc
+Parameters
+————–
+Requires: Triage user entity for the specific user
+Returns:
+* Null if user is overincome and not in a specific population
+* Null if user is overincome and in a specific population but income is not waived
+* A query results set of intake setting ids</p>
+<div class="section" id="depends-on">
+<h3>Depends on<a class="headerlink" href="#depends-on" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>ilao_geolocation module to get the user’s region information from a zip code</li>
+<li>oas_triage_user_get_child_problem to get the user’s legal issue</li>
+<li>oas_triage_user_set_up_intake_object</li>
+</ul>
+</div>
+<div class="section" id="process">
+<h3>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Intake has not reached its limit if it is has a limit of 0 (unlimited) or if the current count is less than the maximum set.  Scheduled tasks clear the current count as deteremined by the reset frequency.</p>
+</div>
+<p>If the user indicated that they are over-income on the initial Get Legal Help form:</p>
+<ul class="simple">
+<li>Checks to see if the user has indicated that tehy are a member of a special population</li>
+<li>If the user is not a member of a special population, intake is not available</li>
+<li>Runs a database query to check:<ul>
+<li>For an intake settings that matches the user’s zip code, city, county, or state OR for intake settings that are statewide.  This data is stored in 4 different tables.</li>
+<li>For intake settings that are unlimited in capacity OR that have not yet reached capacity</li>
+<li>Is income exempt for the specific population OR does not apply an income limit at all</li>
+<li>The legal issue is in the intake settings</li>
+<li>The intake status is open</li>
+</ul>
+</li>
+</ul>
+<p>If the user indicated that they are not over-income on the initial Get Legal Help form:</p>
+<ul class="simple">
+<li>First checks to see what intake setting are available based on:<ul>
+<li>matches the user’s zip code, city, county, or state OR for intake settings that are statewide.  This data is stored in 4 different tables.</li>
+<li>For intake settings that are unlimited in capacity OR that have not yet reached capacity</li>
+<li>Is income exempt for the specific population OR does not apply an income limit at all</li>
+<li>The legal issue is in the intake settings</li>
+<li>The intake status is open</li>
+</ul>
+</li>
+</ul>
+<p>If there is exactly one intake settings:</p>
+<ul class="simple">
+<li>Checks to see if the user meets any population requirements via oas_triage_user_intake_specific_population</li>
+<li>Checks to see if the it is a general service</li>
+</ul>
+</div>
+</div>
+<div class="section" id="oas-triage-user-intake-specific-population">
+<h2>oas_triage_user_intake_specific_population<a class="headerlink" href="#oas-triage-user-intake-specific-population" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.intake_available.inc</p>
+<p>Filters a list of intake settings to a set that matches the user’s specific population.  This function fires only when the user has selected a special population.</p>
+<div class="section" id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h3>
+<p>Requires:</p>
+<ul class="simple">
+<li>array of populations the user belongs to</li>
+<li>an array of initial applicable intake settings</li>
+</ul>
+<p>Returns: a query result set or null.</p>
+</div>
+<div class="section" id="id1">
+<h3>Process<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Loads the triage user entity from the session variables</li>
+<li>Loads the user’s problem</li>
+<li>Checks to see if there are available triage rules using oas_triage_user_get_triage_rules</li>
+<li>If there are no triage rules, then there can be no intake available</li>
+<li>If there are matching triage rules, it runs a query to return an ordered set of intake settings that:<ul>
+<li>match the user’s population</li>
+<li>are in the set of intake settings passed into the function</li>
+<li>are ordered by maximum allowed income descending, service volume, current count</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="oas-triage-user-intake-general">
+<h2>oas_triage_user_intake_general<a class="headerlink" href="#oas-triage-user-intake-general" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.intake_available.inc</p>
+<p>Filters a list of potential intake settings matches to return a maximum of one result that has triage rules and meets the best available criteria.</p>
+<div class="section" id="id2">
+<h3>Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Parameters: an array of initial applicable intake settings
+Returns: a query result set or null.</p>
+</div>
+<div class="section" id="id3">
+<h3>Process<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Loads the triage user entity from the session variables</li>
+<li>Loads the user’s problem</li>
+<li>Checks to see if there are available triage rules using oas_triage_user_get_triage_rules</li>
+<li>If there are no triage rules, then there can be no intake available</li>
+<li>If there are matching triage rules, it runs a query to return an ordered set of intake settings that:<ul>
+<li>are in the set of intake settings passed into the function</li>
+<li>are ordered by maximum allowed income descending, service volume, current count</li>
+</ul>
+</li>
+<li>Passes the resulting query to oas_triage_user_least_updated_intake_organization to return exactly one result.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Intake settings can be applied to multiple legal issues.  Triage rules can as well.  In order for a user to be guided to online intake, there must be a legal issues match ON BOTH.</p>
+</div>
+</div>
+</div>
+<div class="section" id="oas-triage-user-least-updated-intake-organization">
+<h2>oas_triage_user_least_updated_intake_organization<a class="headerlink" href="#oas-triage-user-least-updated-intake-organization" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.intake_available.inc
+Invoked by: oas_triage_user_intake_general</p>
+<div class="section" id="id4">
+<h3>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Requires:
+* Query result set of intake settings id
+* Original set of intake settings id</p>
+<p>Returns the intake settings id that:
+* If there is only 1 filtered results, returns that
+* If there are 2 or more results, returns the best match that:</p>
+<blockquote>
+<div><ul class="simple">
+<li>the user has not already been triaged through and diverted</li>
+<li>is free</li>
+<li>if multiple free services exist, the one that has gone the longest without an intake</li>
+<li>if no free service is available, then the paid service</li>
+<li>if multiple paid services exist, the one that has gone the longest without an intake</li>
+</ul>
+</div></blockquote>
+<p>Relies on _oas_triage_user_return_organization to return a matching organization.</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-get-triage-rules">
+<h2>oas_triage_user_get_triage_rules<a class="headerlink" href="#oas-triage-user-get-triage-rules" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.intake_available.inc
+Determines if there are triage rules that align with the intake settings on service and legal issue.</p>
+<div class="section" id="id5">
+<h3>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>Requires:</p>
+<ul class="simple">
+<li>$intake_options =&gt; array of intake settings ID</li>
+<li>$problem =&gt; legal issue</li>
+</ul>
+<p>Returns a query set of triage rules</p>
+</div>
+<div class="section" id="id6">
+<h3>Process<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>the legal issue matches the passed in $problem</li>
+<li>the triage rules node is tied to a service that matches the service(s) that match any of the intake settings id passed in</li>
+</ul>
+</div>
+</div>
+<div class="section" id="oas-triage-user-set-up-intake-object">
+<h2>oas_triage_user_set_up_intake_object<a class="headerlink" href="#oas-triage-user-set-up-intake-object" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.intake_available.inc</p>
+<p>Sets the $_SESSION[‘oas_intake’][‘intake_settings_id’] session variable to the selected intake settings id.</p>
+<div class="section" id="id7">
+<h3>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>Requires: integer; intake_settings_id
+Returns; null</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_intake_ui.html" class="btn btn-neutral float-right" title="OTIS Intake UI and Pre-Transfer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_glh.html" class="btn btn-neutral" title="Get Legal Help Form to Next Step" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

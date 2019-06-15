@@ -1,0 +1,367 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTIS Scheduled Tasks &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Get Legal Help Form to Next Step" href="migration_oas_glh.html" />
+    <link rel="prev" title="OTIS Global Items" href="migration_oas_functionality.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">OTIS Scheduled Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
+        
+      <li>OTIS Scheduled Tasks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_oas_cron.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="otis-scheduled-tasks">
+<h1>OTIS Scheduled Tasks<a class="headerlink" href="#otis-scheduled-tasks" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">We have invoked scheduled tasks using the Drupal hook_cron and also the hook_cronapi methods.  The hook_cronapi method is more useful when connecting to third party cron, like Elysian cron.</p>
+</div>
+<div class="section" id="process-queued-etransfers">
+<h2>Process queued eTransfers<a class="headerlink" href="#process-queued-etransfers" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.module
+Requires: nothing
+Invokes:  hook_cron
+Relies on: oas_triage_user_process_etransfer
+Purpose: Runs the scheduled task to retry failed eTransfers.
+Executes: This task is scheduled to run hourly.</p>
+<p>Related: oas_triage_user_cron_queue_info in the same module, tells the Drupal queue about our scheduled task.</p>
+<div class="section" id="oas-triage-user-process-etransfer">
+<h3>oas_triage_user_process_etransfer<a class="headerlink" href="#oas-triage-user-process-etransfer" title="Permalink to this headline">¶</a></h3>
+<p>This is a fairly complex piece of code that goes through the queue of unprocessed etransfers and attempts to resend them.</p>
+<p>Located in: oas_triage_user.module</p>
+<p>Invoked by: Cron
+Purpose: processes an etransfer that is in the queue (has had a prior failure).</p>
+<dl class="docutils">
+<dt>Parameters:</dt>
+<dd>Accepts: a triage_id that ties to the oas_triage_user table
+Returns: a boolean (succeeded or failure)</dd>
+</dl>
+<p>It relies on:</p>
+<ul class="simple">
+<li>variables set in the legal server configuration for end point and maximum retries</li>
+<li>the serialized data stored in the user’s triage record</li>
+<li>the oas_triage_user_email_notify function to send the user a confirmation message</li>
+<li>the ilao_triage_sms_reminders module to send an SMS confirmation if the user has SMS</li>
+<li>oas_triage_save_user to save the user’s information and update their record</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SMS reminder is not a dependency; the code checks that the module is enabled and if it is not, SMS is ignored.</p>
+</div>
+<div class="section" id="process">
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Loads the triage user entity</li>
+<li>Checks the legal server configuration to see if it has already hit the limit (defaults to 3 tries otherwise)</li>
+<li>Returns a failure if the maximum retries has been reached</li>
+<li>Unserializes the user’s data from the etransfer_data property</li>
+<li>Attempts to build the transfer (dependency: oas_legal_server_etransfer)</li>
+<li>Updates the triage user entity based on success or failure</li>
+<li>On success:<ul>
+<li>Sends the email confirmation message</li>
+<li>Sends an sms confirmation is available and user has opted in</li>
+<li>Updates the triage user’s intake status to etransferred, etransfer status to success</li>
+</ul>
+</li>
+<li>On failure:<ul>
+<li>Updates the triage user’s intake status to not eTransferred</li>
+<li>Updates the triage user’s etransfer status to failure if the maximum retries has not been met</li>
+<li>Updates the triage user’s etransfer status to abandoned if the maximum retries has been met</li>
+<li>Updates the triage user’s etransfer reason to the received failure reason.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="dependencies">
+<h4>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h4>
+<p>Modules</p>
+<ul class="simple">
+<li>oas_legal_server to capture and return maximum number of retries</li>
+<li>ilao_triage_sms_reminders to send SMS confirmation</li>
+</ul>
+<p>Functions:</p>
+<ul class="simple">
+<li>oas_legal_server_eTransfer to build and send the etransfer</li>
+<li>oas_triage_user_email_notify to send email notification</li>
+<li>ilao_triage_sms_reminders_send_confirmation to send SMS notification</li>
+<li>oas_triage_user_phone_notify to send related legal content via SMS</li>
+<li>oas_triage_user_save to update the triage user entity.</li>
+</ul>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">should be refactored.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="remove-oas-triage-user-test-data">
+<h2>Remove OAS Triage User Test Data<a class="headerlink" href="#remove-oas-triage-user-test-data" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.module
+Invokes: hook_cronAPI
+Relies on: oas_triage_user_remove_test_data
+Purpose: Removes test data from our production database.  Test data includes any instance where the user’s last name is test or tester.
+Executes:  This task is scheduled to run daily.</p>
+</div>
+<div class="section" id="update-intake-status-for-incompletes">
+<h2>Update intake status for incompletes<a class="headerlink" href="#update-intake-status-for-incompletes" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.module
+Invokes: hook_cronAPI
+Relies on: oas_triage_user_set_intake_status
+Purpose: Updates the intake status for users who started but did not complete intake.
+Executes:  This task is scheduled to run daily.</p>
+</div>
+<div class="section" id="notify-site-architects-if-etransfers-stop-completely">
+<h2>Notify Site architects if etransfers stop completely<a class="headerlink" href="#notify-site-architects-if-etransfers-stop-completely" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.module
+Invokes: hook_cronAPI
+Relies on:</p>
+<ul class="simple">
+<li>oas_triage_user_send_email_regarding_etransfer_issue</li>
+<li>rules module</li>
+<li>custom rule component (rules_potential_problem_with_etransfers)</li>
+</ul>
+<p>Purpose:  Sends an email notification to site architect when no etransfers have been processed in 2 days.</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">this component needs to be updated to send to OTIS manager not site architect.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_glh.html" class="btn btn-neutral float-right" title="Get Legal Help Form to Next Step" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_functionality.html" class="btn btn-neutral" title="OTIS Global Items" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
