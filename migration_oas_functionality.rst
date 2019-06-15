@@ -69,6 +69,12 @@ Located in: oas_triage_user.module
 Requires: an integer representing the node ID of a location_service ($id)
 Returns: an integer that represents the node ID of the organization associated with the location
 
+oas_triage_user_save
+-----------------------
+Located in: 
+Requires:  a triage user entity
+Saves the triage user entity to the database.
+
 oas_triage_user_email_notify
 --------------------------------  
 Parameters:
