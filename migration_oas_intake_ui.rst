@@ -136,7 +136,7 @@ The oas_triage_user_save_demographics function loads the current triage entity a
   * country of origin
 
 Household size page
-=====================
+---------------------
 
 Form Elements
 ^^^^^^^^^^^^^^^^^

@@ -196,11 +196,8 @@
 * Pages to collect financial information</p>
 <p>The oas_triage_user_application_form_validate manages form validation and invokes specific validation on each page’s submission.</p>
 <p>The contact form and callback selection form are separate forms.</p>
-<div class="section" id="first-page-of-the-form">
-<h3>First page of the form<a class="headerlink" href="#first-page-of-the-form" title="Permalink to this headline">¶</a></h3>
-<p>The first page of the form is defined in the oas_triage_user_application_form form.</p>
 <div class="section" id="invokes-and-requires">
-<h4>Invokes and Requires<a class="headerlink" href="#invokes-and-requires" title="Permalink to this headline">¶</a></h4>
+<h3>Invokes and Requires<a class="headerlink" href="#invokes-and-requires" title="Permalink to this headline">¶</a></h3>
 <p>Invokes hook_form
 Requires:</p>
 <ul class="simple">
@@ -208,6 +205,9 @@ Requires:</p>
 <li>Session variable containing the current intake settings id</li>
 </ul>
 </div>
+<div class="section" id="first-page-of-the-form">
+<h3>First page of the form<a class="headerlink" href="#first-page-of-the-form" title="Permalink to this headline">¶</a></h3>
+<p>The first page of the form is defined in the oas_triage_user_application_form form.</p>
 <div class="section" id="form-elements">
 <h4>Form Elements<a class="headerlink" href="#form-elements" title="Permalink to this headline">¶</a></h4>
 <p>Note that the select taxonomy require oas_triage_user_load_intake_taxonomy to load the options.  For fields marked “only displays if enabled,” these only display if the intake settings are configured to collect the field.  When collected, the help text is pulled from the intake settings.</p>
@@ -264,10 +264,207 @@ Requires:</p>
 |                              |                            | Only asked if needed       |
 +——————————+—————————-+—————————-+</p>
 </div>
-<div class="section" id="validation-and-submission">
-<h4>Validation and Submission<a class="headerlink" href="#validation-and-submission" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="validation">
+<h4>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h4>
+<p>The global validation function:</p>
+<ul class="simple">
+<li>Invokes the page 1 submit function (oas_triage_user_submit_page1)</li>
+<li>Updates the current page in the form state array</li>
+<li>Stores the first page’s data in the form state array</li>
+<li>Drupal’s own validation handles the required field validation.</li>
+</ul>
+</div>
+<div class="section" id="submit-handler">
+<h4>Submit handler<a class="headerlink" href="#submit-handler" title="Permalink to this headline">¶</a></h4>
+<p>Displays an error message if</p>
+<ul class="simple">
+<li>the user has indicated that they are a current client</li>
+<li>the user has indicated that they have already applied</li>
+<li>the user has indicated that they are in jail or prison and the intake settings does not allow prisoners to apply online</li>
+<li>the user is younger than the minimum age to apply online.</li>
+</ul>
+<p>If an error message is displayed, the user is not allowed to proceed to the second page.</p>
+<p>The _oas_triage_user_get_user_age private function takes the user’s date of birth to calculate their age.</p>
+<p>Invokes oas_triage_user_save_demographics to save demographic data.</p>
+</div>
+<div class="section" id="saving-entity-data-from-page-1">
+<h4>Saving entity data from page 1<a class="headerlink" href="#saving-entity-data-from-page-1" title="Permalink to this headline">¶</a></h4>
+<p>The oas_triage_user_save_demographics function loads the current triage entity and updates:</p>
+<ul class="simple">
+<li>the last screen viewed to “Intake start”</li>
+<li>the intake status to “Started”</li>
+<li>the intake_changed time to the current timestamp</li>
+<li>the user’s age</li>
+<li>the user’s various demographic properties, if collected:<ul>
+<li>gender</li>
+<li>race</li>
+<li>ethnicity</li>
+<li>marital_status</li>
+<li>citizenship_status</li>
+<li>immigration_status</li>
+<li>primary language</li>
+<li>country of origin</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
+<div class="section" id="household-size-page">
+<h3>Household size page<a class="headerlink" href="#household-size-page" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Form Elements<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Form variable</th>
+<th class="head">Type</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>description</td>
+<td>markup</td>
+<td>From intake settings, the
+program’s definition of who
+is in the household</td>
+</tr>
+<tr class="row-odd"><td>household_size</td>
+<td>markup</td>
+<td>Heading label</td>
+</tr>
+<tr class="row-even"><td>adults</td>
+<td>integer</td>
+<td>Number of adults; required</td>
+</tr>
+<tr class="row-odd"><td>children</td>
+<td>integer</td>
+<td>Number of kids; required</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h4>Validation<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>This page has a custom validate function, oas_triage_user_validate_household.</p>
+<p>Validation requires that:</p>
+<ul class="simple">
+<li>Number of adults is a positive integer or empty</li>
+<li>Number of children is a positive integer or empty</li>
+<li>Total number of adults and children is at least 1</li>
+</ul>
+</div>
+<div class="section" id="submission">
+<h4>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h4>
+<p>This page has a custom submit function, oas_triage_user_submit_household.</p>
+<p>Upon submission, the triage user entity is updated:</p>
+<ul class="simple">
+<li>to set the number of household_adults</li>
+<li>to set the number of household_children</li>
+<li>sets the intake_changed property to the current timestamp</li>
+<li>changes the last screen viewed to “Intake household”</li>
+</ul>
+</div>
+</div>
+<div class="section" id="financial-pages">
+<h3>Financial Pages<a class="headerlink" href="#financial-pages" title="Permalink to this headline">¶</a></h3>
+<p>The financial form pages depend on the financial settings in the relevant intake_settings entity.  Programs may collect:</p>
+<ul class="simple">
+<li>income</li>
+<li>assets</li>
+<li>expenses</li>
+<li>expenses only if the user appears to be over-income</li>
+<li>nothing at all</li>
+</ul>
+<p>If intake settings are configured to not collect any financial information, the user’s application is then processed.</p>
+<p>The oas_triage_user_get_next_screen function determines which form page to show:
+* From household size, show income if income needs collected
+* From household size, process if no income, assets, or expenses need collected
+* From income page, show assets if assets need collected
+* From income page, show expenses if assets are not collected but expenses are
+* From income page, show expenses if assets are not collected, expenses are only collected if the user is over-income and the user appears to be over-income
+* From income page, go to done if no assets or expenses need collected
+* From asset page, show expenses if expenses are generally collected
+* From asset page, show expenses if  expenses are only collected if the user is over-income and the user appears to be over-income
+* From asset page, go to done if no expenses need collected
+* From expense page, go to done</p>
+<dl class="docutils">
+<dt>..warning::</dt>
+<dd>It appears that if income is not collected, assets and expenses can not be collected either.</dd>
+<dt>..note ::</dt>
+<dd>There was agreement in the evaluation meeting to remove some of the financial pages across programs.</dd>
+</dl>
+<div class="section" id="building-the-form">
+<h4>Building the form<a class="headerlink" href="#building-the-form" title="Permalink to this headline">¶</a></h4>
+<p>The form is built in the oas_triage_user_ask_financial function
+Located: oas_triage_user.application_form.inc</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li>$form =&gt; the form</li>
+<li>$terms =&gt; the financial taxonomy terms to collect</li>
+<li>$category =&gt; a string (expense types, assets, income sources)</li>
+<li>$suffix =&gt; a label to append to the end of the help description (per month, total, etc)</li>
+<li>$progress =&gt; the progress percentage to display in the progress form</li>
+</ul>
+<p>Form elements:</p>
+<p>With this information, the ask_financial function builds a form that:</p>
+<ul class="simple">
+<li>adds a description header, with the number of household members</li>
+<li>loops through each taxonomy term and loads the related ilao_oas_financial_category entity</li>
+<li>builds field groups for each unique subcategory of financial categories</li>
+<li>adds each financial category item as a field within the correct field group</li>
+<li>each term is:<ul>
+<li>required</li>
+<li>named a variation of the taxonomy term name that is lowercase and spaces replaced with underscores.  For example Checking account becomes named checking_account.</li>
+<li>prefixed with a $</li>
+<li>any suffix is added</li>
+<li>help text from the entity is added</li>
+<li>a textfield</li>
+<li>required to be an integer</li>
+<li>defaults to 0</li>
+</ul>
+</li>
+</ul>
+<p>Form validation:</p>
+<ul class="simple">
+<li>The _oas_triage_user_validate_financial validates each item to ensure it is a positive integer or 0</li>
+</ul>
+</div>
+<div class="section" id="saving-financial-data">
+<h4>Saving Financial Data<a class="headerlink" href="#saving-financial-data" title="Permalink to this headline">¶</a></h4>
+<p>Each type category of financial data has its own save function.</p>
+<p>Income:  oas_triage_user_save_income, which:</p>
+<ul class="simple">
+<li>Loads the triage user entity</li>
+<li>Sets the last screen viewed to “Income questions”</li>
+<li>Adds up all the income amounts and stores it in the total income property</li>
+<li>Updates the intake changed timestamp to the current timestamp</li>
+<li>Saves the triage user entity</li>
+</ul>
+<p>Assets:  oas_triage_user_save_assets, which:</p>
+<ul class="simple">
+<li>Loads the triage user entity</li>
+<li>Sets the last screen viewed to “Assets questions”</li>
+<li>Adds up all the income amounts and stores it in the total assets property</li>
+<li>Updates the intake changed timestamp to the current timestamp</li>
+<li>Saves the triage user entity</li>
+</ul>
+<p>Expenses:  oas_triage_user_save_expenses, which:</p>
+<ul class="simple">
+<li>Loads the triage user entity</li>
+<li>Sets the last screen viewed to “Expense questions”</li>
+<li>Adds up all the expense amounts and stores it in the total expenses property</li>
+<li>Updates the intake changed timestamp to the current timestamp</li>
+<li>Saves the triage user entity</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="calculating-financial-eligibility">
+<h2>Calculating Financial Eligibility<a class="headerlink" href="#calculating-financial-eligibility" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="contact-form">
 <h2>Contact form<a class="headerlink" href="#contact-form" title="Permalink to this headline">¶</a></h2>
