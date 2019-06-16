@@ -336,16 +336,97 @@ The application submit function then:
 
 If a user is financially ineligible, they are redirected to referrals.  If they are eligible, they are taken to the contact form.
 
-  
- 
-  
 
 Contact form
 ==============
 
+The address form can be found in the oas_triage_user.address_form.inc file. The oas_triage_user_client_address_form function generates the form.
+
+Requires that the session triage ID be defined.
+
+Form elements
+---------------
+
+Default form elements
+^^^^^^^^^^^^^^^^^^^^^^^
+The oas_triage_user module generates the default address form.  Other modules, as always in Drupal, can alter that form
++----------------------------+----------------------------+------------------------------+
+| Form variable              | Type                       | Notes                        |
++============================+============================+==============================+
+| callback_type              | hidden                     | the callback type from the   |
+|                            |                            | associated intake settings   |
++----------------------------+----------------------------+------------------------------+
+| client_telephone           | text field                 | telephone field              |
++----------------------------+----------------------------+------------------------------+
+| client_email               | text field                 | field for email address      |
++----------------------------+----------------------------+------------------------------+
+| client_address_street      | text field                 | field for line 1 of address  |
++----------------------------+----------------------------+------------------------------+
+| client_address_street2     | text field                 | field for line 2 of address  |
++----------------------------+----------------------------+------------------------------+
+| client_city                | text field                 | field for city               |
++----------------------------+----------------------------+------------------------------+
+| client_state               | text field                 | field for state              |
++----------------------------+----------------------------+------------------------------+   
+
+Form alters 
+------------
+
+The ilao_sms_opt_in module alters this form.  It:
+
+* add a custom submit handler (ilao_oas_triage_sms_opt_in_submit)
+* adds a custom validation function (ilao_oas_triage_sms_opt_in_validate)
+* attaches the oas_triage_user form; this is the form that makes up the Get Legal Help form
+* it hides the Get Legal Help form elements
+* it makes the opt_in_sms field visible on the form
+* it adds the following:
+
+  * a select form element to set phone type; if the phone type is mobile, the opt in sms form element displays using conditional fields.
 
 
+.. todo::  Evaluate if all of this was really necessary of whether the OTIS platform should support SMS out of the box.
+
+Validation
+------------
+
+The default validation function (oas_triage_user_client_address_form_validate) validates the form to:
+
+* ensure that the email is valid
+* ensure that the phone number is valid
+* ensure that the phone number is less than 20 characters.  This is a limitation on the eTransfer as Legal Server will not accept phone number fields larger than 20 characters.
+* ensures that the zip code is less than 10 characters
+
+The ilao_oas_triage_sms_opt_in_validate adds validation to ensure that if the phone type is mobile the field_opt_in_sms is required.
+
+Submit functions
+-----------------
+
+The default submit function (oas_triage_user_client_address_form_submit):
+* Updates session data with the user's email, phone, and address.  We do not store this information unserialized in our database.
+* Checks the callback type to set the form redirect to the right page:
+
+  * If callback type is please call, sets the redirect to get-legal-help/please-call.
+  * If callback type is we call client:
+  
+    * Sets the redirect to get-legal-help/callback-form if there are callback hours available
+    * Sets the redirect to get-legal-help/please-call if there are no callback hours.
+    
+* Calls the oas_triage_user_save_address_data to save the appropriate data.
 
 
+oas_triage_user_save_address_data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Updates the triage user entity to:
 
+* Set the last screen viewed to 'Address Form'
+* Set the intake changed timestamp to the current timestamp
+* Saves the changes to the database
+
+
+.. todo:: The default submit function also stores the email address into a session variable for Acquia Lift.  This should be extracted into its own unrelated module to keep this clean.
+
+The ilao_oas_triage_sms_opt_in_submit updates the triage user entity to:
+* store the user's mobile phone to the field_mobile_phone
+* stores the user's SMS opt in settings to the field_opt_in_sms
+* saves the entity
 

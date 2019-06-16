@@ -531,6 +531,99 @@ Returns: boolean value “is user asset eligible?”</p>
 </div>
 <div class="section" id="contact-form">
 <h2>Contact form<a class="headerlink" href="#contact-form" title="Permalink to this headline">¶</a></h2>
+<p>The address form can be found in the oas_triage_user.address_form.inc file. The oas_triage_user_client_address_form function generates the form.</p>
+<p>Requires that the session triage ID be defined.</p>
+<div class="section" id="id5">
+<h3>Form elements<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="default-form-elements">
+<h4>Default form elements<a class="headerlink" href="#default-form-elements" title="Permalink to this headline">¶</a></h4>
+<p>The oas_triage_user module generates the default address form.  Other modules, as always in Drupal, can alter that form
++—————————-+—————————-+——————————+
+| Form variable              | Type                       | Notes                        |
++============================+============================+==============================+
+| callback_type              | hidden                     | the callback type from the   |
+|                            |                            | associated intake settings   |
++—————————-+—————————-+——————————+
+| client_telephone           | text field                 | telephone field              |
++—————————-+—————————-+——————————+
+| client_email               | text field                 | field for email address      |
++—————————-+—————————-+——————————+
+| client_address_street      | text field                 | field for line 1 of address  |
++—————————-+—————————-+——————————+
+| client_address_street2     | text field                 | field for line 2 of address  |
++—————————-+—————————-+——————————+
+| client_city                | text field                 | field for city               |
++—————————-+—————————-+——————————+
+| client_state               | text field                 | field for state              |
++—————————-+—————————-+——————————+</p>
+</div>
+</div>
+<div class="section" id="form-alters">
+<h3>Form alters<a class="headerlink" href="#form-alters" title="Permalink to this headline">¶</a></h3>
+<p>The ilao_sms_opt_in module alters this form.  It:</p>
+<ul class="simple">
+<li>add a custom submit handler (ilao_oas_triage_sms_opt_in_submit)</li>
+<li>adds a custom validation function (ilao_oas_triage_sms_opt_in_validate)</li>
+<li>attaches the oas_triage_user form; this is the form that makes up the Get Legal Help form</li>
+<li>it hides the Get Legal Help form elements</li>
+<li>it makes the opt_in_sms field visible on the form</li>
+<li>it adds the following:<ul>
+<li>a select form element to set phone type; if the phone type is mobile, the opt in sms form element displays using conditional fields.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Evaluate if all of this was really necessary of whether the OTIS platform should support SMS out of the box.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Validation<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>The default validation function (oas_triage_user_client_address_form_validate) validates the form to:</p>
+<ul class="simple">
+<li>ensure that the email is valid</li>
+<li>ensure that the phone number is valid</li>
+<li>ensure that the phone number is less than 20 characters.  This is a limitation on the eTransfer as Legal Server will not accept phone number fields larger than 20 characters.</li>
+<li>ensures that the zip code is less than 10 characters</li>
+</ul>
+<p>The ilao_oas_triage_sms_opt_in_validate adds validation to ensure that if the phone type is mobile the field_opt_in_sms is required.</p>
+</div>
+<div class="section" id="submit-functions">
+<h3>Submit functions<a class="headerlink" href="#submit-functions" title="Permalink to this headline">¶</a></h3>
+<p>The default submit function (oas_triage_user_client_address_form_submit):
+* Updates session data with the user’s email, phone, and address.  We do not store this information unserialized in our database.
+* Checks the callback type to set the form redirect to the right page:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If callback type is please call, sets the redirect to get-legal-help/please-call.</li>
+<li>If callback type is we call client:<ul>
+<li>Sets the redirect to get-legal-help/callback-form if there are callback hours available</li>
+<li>Sets the redirect to get-legal-help/please-call if there are no callback hours.</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Calls the oas_triage_user_save_address_data to save the appropriate data.</li>
+</ul>
+<div class="section" id="oas-triage-user-save-address-data">
+<h4>oas_triage_user_save_address_data<a class="headerlink" href="#oas-triage-user-save-address-data" title="Permalink to this headline">¶</a></h4>
+<p>Updates the triage user entity to:</p>
+<ul class="simple">
+<li>Set the last screen viewed to ‘Address Form’</li>
+<li>Set the intake changed timestamp to the current timestamp</li>
+<li>Saves the changes to the database</li>
+</ul>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">The default submit function also stores the email address into a session variable for Acquia Lift.  This should be extracted into its own unrelated module to keep this clean.</p>
+</div>
+<p>The ilao_oas_triage_sms_opt_in_submit updates the triage user entity to:
+* store the user’s mobile phone to the field_mobile_phone
+* stores the user’s SMS opt in settings to the field_opt_in_sms
+* saves the entity</p>
+</div>
+</div>
 </div>
 </div>
 
