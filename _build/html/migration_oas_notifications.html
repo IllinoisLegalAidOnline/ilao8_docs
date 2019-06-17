@@ -193,6 +193,168 @@
 <li>Initial confirmation, by email and, optionally, SMS</li>
 <li>Reminders of callback appointments</li>
 </ul>
+<div class="section" id="initial-confirmations">
+<h2>Initial Confirmations<a class="headerlink" href="#initial-confirmations" title="Permalink to this headline">¶</a></h2>
+<p>Located in: oas_triage_user.module file in the oas_triage_user_process_etransfer function.</p>
+<p>When an etransfer is successful:</p>
+<ul class="simple">
+<li>Invokes oas_triage_user_email_notify to send an email confirmation</li>
+<li>Checks to see if the ilao_triage_sms_reminders module is enabled and if so:<ul>
+<li>Sends a confirmation text via ilao_triage_sms_reminders_send_confirmation</li>
+<li>Sends a content follow up via oas_triage_user_phone_notify</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="email-notifications">
+<h3>Email notifications<a class="headerlink" href="#email-notifications" title="Permalink to this headline">¶</a></h3>
+<p>Function:  oas_triage_user_email_notify
+Located in: oas_triage_user.module</p>
+<div class="section" id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>an integer representing the intake settings ID associated with the triage</li>
+<li>the array of callback times</li>
+<li>the user’s email</li>
+</ul>
+</div>
+<div class="section" id="process">
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Loads the intake settings for the intake</li>
+<li>Builds the email</li>
+<li>If the triage id exists in a session variable:<ul>
+<li>Loads the user’s legal problem</li>
+<li>Finds related content</li>
+<li>Updates the email body to include those resources</li>
+</ul>
+</li>
+<li>Invokes drupal_mail to send</li>
+</ul>
+</div>
+<div class="section" id="relies-on">
+<h4>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>oas_triage_user_build_confirmation_body</li>
+<li>oas_triage_user_get_child_problem</li>
+<li>block 7 of the related legal content view</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This code needs to be reviewed. It appears to only include legal content if the session variable for triage ID exists.  Would be better to instead load the triage user ID as the parameter and build off of that data rather than rely on session when we may need to handle late etransfers.</p>
+</div>
+</div>
+</div>
+<div class="section" id="sms-confirmation-notification">
+<h3>SMS Confirmation  Notification<a class="headerlink" href="#sms-confirmation-notification" title="Permalink to this headline">¶</a></h3>
+<p>Function: ilao_triage_sms_reminders_send_confirmation
+Located in: ilao_traige_sms_reminders.module</p>
+<div class="section" id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Requires:</p>
+<ul class="simple">
+<li>Triage user entity</li>
+<li>Intake settings ID</li>
+<li>Callback hours string (which may be null)</li>
+</ul>
+<p>Returns: nothing</p>
+</div>
+<div class="section" id="id2">
+<h4>Process<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>The function:</p>
+<p>Verifies that the user has opte-in to SMS as part of their online intake application.  If the user has opted in:</p>
+<ul class="simple">
+<li>Calls oas_triage_user_build_confirmation_body to build the message</li>
+<li>Converts the resulting message to plain text since SMS does not support HTML</li>
+<li>Loads the user’s phone number (or demo phone number if running in demo mode)</li>
+<li>Verifies that a phone number exists and then:<ul>
+<li>Sends the confirmation message via Twilio</li>
+<li>Checks to see if callback hours exists and if so:<ul>
+<li>Calls ilao_triage_sms_reminders_build_cancel_reminder to build a cancel message</li>
+<li>Sends the cancel message via Twilio</li>
+</ul>
+</li>
+<li>Logs the message via ilao_triage_sms_save_message</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="ilao-triage-sms-reminders-build-cancel-reminder">
+<h4>ilao_triage_sms_reminders_build_cancel_reminder<a class="headerlink" href="#ilao-triage-sms-reminders-build-cancel-reminder" title="Permalink to this headline">¶</a></h4>
+<p>Parameters:</p>
+<ul class="simple">
+<li>Accepts a triage user entity</li>
+<li>Returns a string</li>
+</ul>
+<p>Process:</p>
+<ul class="simple">
+<li>Loads the intake_settings for the intake organization</li>
+<li>Builds the message (If you need to change or cancel your appointment…)</li>
+<li>Relies on the oas_intake_settings tokens to replace OAS:name and OAS:call-back-number tokens.</li>
+</ul>
+</div>
+<div class="section" id="ilao-triage-sms-save-message">
+<h4>ilao_triage_sms_save_message<a class="headerlink" href="#ilao-triage-sms-save-message" title="Permalink to this headline">¶</a></h4>
+<p>Parameters:
+Accepts the telephone number, message, and a message type.  For sms reminders, the type is “OAS confirmation”</p>
+<p>Returns: null</p>
+<p>Process:</p>
+<ul class="simple">
+<li>Creates a message array</li>
+<li>Invokes the ilao_sms_surveys_create function to create a message object</li>
+<li>Saves the message object</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">$message[&#39;created&#39;] = REQUEST_TIME;</span>
+<span class="x">$message[&#39;changed&#39;] = REQUEST_TIME;</span>
+<span class="x">$message[&#39;from_number&#39;] = variable_get(&#39;twilio_number&#39;);</span>
+<span class="x">$message[&#39;to_number&#39;] = $to_number;</span>
+<span class="x">$message[&#39;message_type&#39;] = $type;</span>
+<span class="x">$message[&#39;message&#39;] = $body;</span>
+</pre></div>
+</div>
+<p>ilao_sms_surveys_create to create an entity and save it.</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>Depends on the ilao_sms_surveys module but does not include that as a module dependency or check for it in the code.</li>
+<li>Should probably be saving messages to the ilao_sms_message table.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="sms-related-content-notification">
+<h3>SMS Related Content Notification<a class="headerlink" href="#sms-related-content-notification" title="Permalink to this headline">¶</a></h3>
+<p>oas_triage_user_phone_notify</p>
+<p>Purpose:  sends an SMS of related legal content to a user via SMS if they have completed intake.</p>
+<p>Parameters:
+* triage user entity</p>
+<p>Relies on:</p>
+<ul class="simple">
+<li>oas_triage_user_get_child_problem</li>
+<li>block 7 of the related legal content view</li>
+<li>ilao_sms module<ul>
+<li>ilao_sms_check_mode (checks to determine if we are running SMS in demo mode)</li>
+<li>ilao_sms_get_demo_phone (gets the demo number from configuration)</li>
+</ul>
+</li>
+<li>twilio module (twilio_send to send the text)</li>
+<li>ilao_triage_sms module (ilao_triage_sms_save_message to send the actual sms text)</li>
+<li>shurly module (shurly_shorten to generate a shortened URL)</li>
+</ul>
+<div class="section" id="oas-triage-user-build-confirmation-body">
+<h4>oas_triage_user_build_confirmation_body<a class="headerlink" href="#oas-triage-user-build-confirmation-body" title="Permalink to this headline">¶</a></h4>
+<p>Builds the body of a successful intake email.</p>
+<p>Parameters:</p>
+<ul class="simple">
+<li>intake settings entity</li>
+<li>call back times array</li>
+</ul>
+<p>Relies on:</p>
+<ul class="simple">
+<li>oas_intake_settings.token.inc</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 
 

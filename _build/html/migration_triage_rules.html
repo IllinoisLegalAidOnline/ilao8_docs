@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OTIS Reporting Functionality" href="migration_oas_reporting.html" />
-    <link rel="prev" title="OTIS Widget" href="migration_oas_widget.html" /> 
+    <link rel="next" title="OTIS Referrals" href="migration_oas_referrals.html" />
+    <link rel="prev" title="OTIS Automated Notifications" href="migration_oas_notifications.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -100,11 +100,14 @@
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Triage Rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Triage Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_surveys.html">OTIS Surveys</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
@@ -185,7 +188,56 @@
             
   <div class="section" id="triage-rules">
 <h1>Triage Rules<a class="headerlink" href="#triage-rules" title="Permalink to this headline">¶</a></h1>
-<p>Covers:  Triage rules node type and custom webform stuff</p>
+<p>Triage rules are a standard Drupal content type that has been integrated with Webform and adds some custom functionality to process.  Triage rules are essentially black boxes where ILAO’s platform has no understanding of the logic within them.</p>
+<div class="section" id="content-type">
+<h2>Content Type<a class="headerlink" href="#content-type" title="Permalink to this headline">¶</a></h2>
+<p>The content type has a handful of fields.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="24%" />
+<col width="45%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Title</td>
+<td>text field</td>
+<td>Title for the triage rule</td>
+</tr>
+<tr class="row-odd"><td>Service(s)
+(field_service)</td>
+<td>entity reference</td>
+<td>Services associated with the triage
+rules; unlimited cardinality</td>
+</tr>
+<tr class="row-even"><td>Legal issue(s)
+(field_legal_issues)</td>
+<td>term reference</td>
+<td>Legal issues tagged to the triage
+rules; unlimited cardinality</td>
+</tr>
+<tr class="row-odd"><td>Groups audience
+(og_group_ref)</td>
+<td>Entity reference
+Hidden</td>
+<td>The organization associated with the
+service(s); controls permission</td>
+</tr>
+</tbody>
+</table>
+<p>It also has the webform module attached to allow webforms to be created and attached to the content.</p>
+</div>
+<div class="section" id="webform-components-conditionals">
+<h2>Webform Components &amp; Conditionals<a class="headerlink" href="#webform-components-conditionals" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="webform-processing">
+<h2>Webform Processing<a class="headerlink" href="#webform-processing" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -196,10 +248,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_reporting.html" class="btn btn-neutral float-right" title="OTIS Reporting Functionality" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_oas_referrals.html" class="btn btn-neutral float-right" title="OTIS Referrals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_oas_widget.html" class="btn btn-neutral" title="OTIS Widget" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_notifications.html" class="btn btn-neutral" title="OTIS Automated Notifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -100,11 +100,14 @@
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_surveys.html">OTIS Surveys</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
@@ -259,67 +262,6 @@ Returns: an integer that represents the node ID of the organization associated w
 <p>Located in:
 Requires:  a triage user entity
 Saves the triage user entity to the database.</p>
-</div>
-<div class="section" id="oas-triage-user-email-notify">
-<h3>oas_triage_user_email_notify<a class="headerlink" href="#oas-triage-user-email-notify" title="Permalink to this headline">¶</a></h3>
-<p>Parameters:</p>
-<ul class="simple">
-<li>an integer representing the intake settings ID associated with the triage</li>
-<li>the array of callback times</li>
-<li>the user’s email</li>
-</ul>
-<p>Process:</p>
-<ul class="simple">
-<li>Loads the intake settings for the intake</li>
-<li>Builds the email</li>
-<li>If the triage id exists in a session variable:<ul>
-<li>Loads the user’s legal problem</li>
-<li>Finds related content</li>
-<li>Updates the email body to include those resources</li>
-</ul>
-</li>
-<li>Invokes drupal_mail to send</li>
-</ul>
-<p>Relies on:
-* oas_triage_user_build_confirmation_body
-* oas_triage_user_get_child_problem
-* block 7 of the related legal content view</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">This code needs to be reviewed. It appears to only include legal content if the session variable for triage ID exists.  Would be better to instead load the triage user ID as the parameter and build off of that data rather than rely on session when we may need to handle late etransfers.</p>
-</div>
-</div>
-<div class="section" id="oas-triage-user-phone-notify">
-<h3>oas_triage_user_phone_notify<a class="headerlink" href="#oas-triage-user-phone-notify" title="Permalink to this headline">¶</a></h3>
-<p>Purpsose:  sends an SMS of related legal content to a user via SMS if they have completed intake.</p>
-<p>Parameters:
-* triage user entity</p>
-<p>Relies on:</p>
-<ul class="simple">
-<li>oas_triage_user_get_child_problem</li>
-<li>block 7 of the related legal content view</li>
-<li>ilao_sms module<ul>
-<li>ilao_sms_check_mode (checks to determine if we are running SMS in demo mode)</li>
-<li>ilao_sms_get_demo_phone (gets the demo number from configuration)</li>
-</ul>
-</li>
-<li>twilio module (twilio_send to send the text)</li>
-<li>ilao_triage_sms module (ilao_triage_sms_save_message to send the actual sms text)</li>
-<li>shurly module (shurly_shorten to generate a shortened URL)</li>
-</ul>
-<div class="section" id="oas-triage-user-build-confirmation-body">
-<h4>oas_triage_user_build_confirmation_body<a class="headerlink" href="#oas-triage-user-build-confirmation-body" title="Permalink to this headline">¶</a></h4>
-<p>Builds the body of a successful intake email.</p>
-<p>Parameters:</p>
-<ul class="simple">
-<li>intake settings entity</li>
-<li>call back times array</li>
-</ul>
-<p>Relies on:</p>
-<ul class="simple">
-<li>oas_intake_settings.token.inc</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
