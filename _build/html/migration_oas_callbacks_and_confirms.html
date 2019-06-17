@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS Functionality Documentation &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Exit screens and Callbacks &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OTIS Global Items" href="migration_oas_functionality.html" />
-    <link rel="prev" title="ILAO OAS Income Standard" href="migration_oas_income_standard.html" /> 
+    <link rel="next" title="OTIS eTransfer Processing" href="migration_oas_etransfer.html" />
+    <link rel="prev" title="OTIS Intake UI and Pre-Transfer" href="migration_oas_intake_ui.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -94,13 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">OTIS Functionality Documentation</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Exit screens and Callbacks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
@@ -165,13 +165,15 @@
         
           <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
         
-      <li>OTIS Functionality Documentation</li>
+          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
+        
+      <li>Exit screens and Callbacks</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_otis_functionality_overview.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migration_oas_callbacks_and_confirms.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -184,62 +186,126 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-functionality-documentation">
-<h1>OTIS Functionality Documentation<a class="headerlink" href="#otis-functionality-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#custom-menu-routes">Custom Menu Routes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#important-notes">Important notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#common-functions">Common Functions</a></li>
+  <div class="section" id="exit-screens-and-callbacks">
+<h1>Exit screens and Callbacks<a class="headerlink" href="#exit-screens-and-callbacks" title="Permalink to this headline">¶</a></h1>
+<p>Exit screen functionality is largely within tihe oas_triage_user.exits.inc file.</p>
+<p>There are six exit screens:</p>
+<ul class="simple">
+<li>Callback select form</li>
+<li>Callback confirmation page</li>
+<li>Please call us confirmation page</li>
+<li>Failure page</li>
+<li>Bypass intake page</li>
+<li>Referrals page</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#process-queued-etransfers">Process queued eTransfers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#remove-oas-triage-user-test-data">Remove OAS Triage User Test Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#update-intake-status-for-incompletes">Update intake status for incompletes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#notify-site-architects-if-etransfers-stop-completely">Notify Site architects if etransfers stop completely</a></li>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The bypass intake page is only ever called when processing triage rules and the user hits a bypass end point.  See the triage rules section for details on this exit screen.
+The referrals is only generated if a user is directed to referrals.  See the referrals page for more details.</p>
+</div>
+<div class="section" id="template-files">
+<h2>Template files<a class="headerlink" href="#template-files" title="Permalink to this headline">¶</a></h2>
+<p>Each page (not the select form) has a template file provided in the module that can be themed per the usual Drupal theme layer.  The 4 template files are:</p>
+<ul class="simple">
+<li>oas–bypass.tpl.php</li>
+<li>oas–please-call.tpl.php</li>
+<li>oas–referrals.tpl.php</li>
+<li>oas–we-call-you.tpl.php</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_glh.html#functions">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_glh.html#forms">Forms</a></li>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">in an ideal world, the template files would have been themed in ILAO’s theme folder rather than in the module.</p>
+</div>
+</div>
+<div class="section" id="please-call-page">
+<h2>Please call page<a class="headerlink" href="#please-call-page" title="Permalink to this headline">¶</a></h2>
+<p>The please call page is displayed when:</p>
+<ul class="simple">
+<li>the callback type is “client calls</li>
+<li>the user selects “none of these times work for me” on the callback select form</li>
+<li>the callback type is “we call client” but there are no callback slots available.</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-is-intake-available">oas_triage_user_is_intake_available</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-intake-specific-population">oas_triage_user_intake_specific_population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-intake-general">oas_triage_user_intake_general</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-least-updated-intake-organization">oas_triage_user_least_updated_intake_organization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-get-triage-rules">oas_triage_user_get_triage_rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-set-up-intake-object">oas_triage_user_set_up_intake_object</a></li>
+<p>and the etransfer was successful (see the oas_triage_user_please_call function)</p>
+<p>If the etransfer_status was already set when this page is built, the user will see a message that their application was already submitted and it will not resubmit it.</p>
+<p>The page is built by the oas_triage_user_build_please_call_page function.</p>
+<div class="section" id="oas-triage-user-build-please-call-page">
+<h3>oas_triage_user_build_please_call_page<a class="headerlink" href="#oas-triage-user-build-please-call-page" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h4>
+<p>Requires: the intake settings ID of the intake settings used to generate the application
+Returns: a render array</p>
+</div>
+<div class="section" id="process">
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<p>In building the page the function:
+* invokes the oas_triage_user_save_exit to save the last screen viewed as Please call and set the intake status to eTransferred.
+* Loads the organization name
+* Sets the page title
+* Builds out the content array for the template file:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Call label (hand-coded in the module)</li>
+<li>Contact label</li>
+<li>Call message from the intake settings (requires token_replace to replace OAS tokens with values</li>
+<li>Steps (loads the steps from the oas_triage_user_get_steps function</li>
+<li>Adds the steps image</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#application-form">Application form</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#calculating-financial-eligibility">Calculating Financial Eligibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#contact-form">Contact form</a></li>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="oas-triage-user-save-exit">
+<h3>oas_triage_user_save_exit<a class="headerlink" href="#oas-triage-user-save-exit" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>Requires:</p>
+<ul class="simple">
+<li>exit type; string to populate last screen viewed</li>
+<li>transfer type; string to populate the intake status.</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html#template-files">Template files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html#please-call-page">Please call page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html#callback-confirmation-page">Callback Confirmation Page</a></li>
+<p>Returns:  null</p>
+</div>
+<div class="section" id="id2">
+<h4>Process<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Updates the triage user entity to:</p>
+<ul class="simple">
+<li>set the last screen viewed to the exit type parameter</li>
+<li>set the intake status to the transfer type parameter</li>
+<li>set the intake changed timestamp to the current timestamp</li>
+<li>saves the changes to the database</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_etransfer.html#building-the-client-array">Building the client array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_etransfer.html#submitting-the-etransfer">Submitting the eTransfer</a></li>
+</div>
+</div>
+<div class="section" id="oas-triage-user-get-steps">
+<h3>oas_triage_user_get_steps<a class="headerlink" href="#oas-triage-user-get-steps" title="Permalink to this headline">¶</a></h3>
+<p>Generates the steps array to be included in the render array for the page.</p>
+<div class="section" id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Requires:</p>
+<ul class="simple">
+<li>the organization name</li>
+<li>the contact type string (“please_call”, etc)</li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_surveys.html">OTIS Surveys</a></li>
+<p>Returns a render array element that includes:</p>
+<ul class="simple">
+<li>the #theme type of item_list</li>
+<li>an empty tite</li>
+<li>the class</li>
+<li>the array of items in the list</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="section" id="callback-confirmation-page">
+<h2>Callback Confirmation Page<a class="headerlink" href="#callback-confirmation-page" title="Permalink to this headline">¶</a></h2>
+<p>The callback confirmation page is displayed when:</p>
+<ul class="simple">
+<li>the callback type is “we call client”</li>
+<li>the user selects at least one callback time</li>
+</ul>
+<p>and the etransfer was successful (see the oas_triage_user_please_call function)</p>
+<p>If the etransfer_status was already set when this page is built, the user will see a message that their application was already submitted and it will not resubmit it.</p>
 </div>
 </div>
 
@@ -251,10 +317,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_functionality.html" class="btn btn-neutral float-right" title="OTIS Global Items" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_oas_etransfer.html" class="btn btn-neutral float-right" title="OTIS eTransfer Processing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_oas_income_standard.html" class="btn btn-neutral" title="ILAO OAS Income Standard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_intake_ui.html" class="btn btn-neutral" title="OTIS Intake UI and Pre-Transfer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

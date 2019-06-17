@@ -27,7 +27,9 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OTIS Automated Notifications" href="migration_oas_notifications.html" />
+    <link rel="prev" title="Exit screens and Callbacks" href="migration_oas_callbacks_and_confirms.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -81,8 +83,38 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration.html">Migration Documentation</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">OTIS eTransfer Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_surveys.html">OTIS Surveys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
 </ul>
 
@@ -129,6 +161,12 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+        
+          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
+        
       <li>OTIS eTransfer Processing</li>
     
     
@@ -150,6 +188,282 @@
             
   <div class="section" id="otis-etransfer-processing">
 <h1>OTIS eTransfer Processing<a class="headerlink" href="#otis-etransfer-processing" title="Permalink to this headline">¶</a></h1>
+<p>OTIS currently only supports eTransferring to the statewide instance of Legal Server.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As of June 15, 2019, ILAO uses a <a class="reference external" href="https://iloi.legalserver.org/modules/matter/intake_xml.php">POST/XML-based eTransfer method</a>.  Legal Server has also implemented a REST-based API that we have not yet migrated over to.</p>
+</div>
+<div class="section" id="building-the-client-array">
+<h2>Building the client array<a class="headerlink" href="#building-the-client-array" title="Permalink to this headline">¶</a></h2>
+<p>The function oas_triage_user_etransfer builds an array of data needed for the eTransfer and sets default values as needed. This data array includes:</p>
+<ul class="simple">
+<li>first name mapped to firstName</li>
+<li>middle name mapped to middleName</li>
+<li>last name mapped to lastName</li>
+<li>nickname mapped to aliasFirst</li>
+<li>maiden name mapped to aliasLast</li>
+<li>street address line 1 mapped to address1</li>
+<li>street address line 2 mapped to address2</li>
+<li>city mapped to city</li>
+<li>state is hard coded to ‘IL’</li>
+<li>zip as zip</li>
+<li>county from oas_triage_user_get_county (returns FIPS county)</li>
+<li>phone number as phoneHome (current eTransfer does not support different phone types)</li>
+<li>date of birth as dateOfBirth</li>
+<li>email as email</li>
+<li>martial status</li>
+<li>race</li>
+<li>ethnicity</li>
+<li>gender</li>
+<li>language</li>
+<li>veteran; true or false based on user’s selected populations</li>
+<li>disabled; true or false based on user’s selected populations</li>
+<li>organization name as eTransferOrganization.  See oas_triage_user_get_legal_server_org</li>
+<li>legal issue as LSC problem code.  See oas_triage_user_get_problemcode()</li>
+<li>notes.  See oas_triage_user_notes()</li>
+<li>number of adults in household mapped as numberOfAdults</li>
+<li>number of children in household mapped as numberofChildren</li>
+<li>citizenship status mapped as citizenshipStatus</li>
+<li>callback type (We call client or client calls) as callbackType</li>
+<li>callback time slot(s) mapped as callbackDayTime.  See oas_triage_user_set_callback_times</li>
+<li>collected assets (see oas_triage_user_process_assets)</li>
+<li>intake settings id as intake_settings_id</li>
+<li>an external id as externalId.  This is the string ILAOWeb- with the triage_id appended.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Demographic data (marital status, race, ethnicity, gender, language) all require a mapping on our end to acceptable Legal Server data.  See the oas_triage_user_get_demographic_mapping function.</p>
+</div>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<ul class="last simple">
+<li>There may be a bug in getting/setting the disabled and veteran values.</li>
+<li>Hard coding of state is bad practice; is problem for out-of-state NIJC users.</li>
+<li>Get demographic mapping does not account for potential duplication across taxonomies</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-get-demographic-mapping">
+<h3>oas_triage_user_get_demographic_mapping<a class="headerlink" href="#oas-triage-user-get-demographic-mapping" title="Permalink to this headline">¶</a></h3>
+<p>Located in oas_triage_user.exits.inc
+Parameters
+^^^^^^^^^^^^^</p>
+<ul class="simple">
+<li>Requires a term name</li>
+<li>Returns either:<ul>
+<li>the value from field_legal_server_mapping that associated with the term name</li>
+<li>null, if no match is found</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-get-population">
+<h3>oas_triage_user_get_population<a class="headerlink" href="#oas-triage-user-get-population" title="Permalink to this headline">¶</a></h3>
+<p>Located in oas_triage_user.exits.inc</p>
+<div class="section" id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Requires a term ID that reflects a population</li>
+<li>Returns a Boolean (true if the user matches on the population; false otherwise)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="oas-triage-user-get-county">
+<h3>oas_triage_user_get_county<a class="headerlink" href="#oas-triage-user-get-county" title="Permalink to this headline">¶</a></h3>
+<p>Located in oas_triage_user.exits.inc</p>
+<div class="section" id="id1">
+<h4>Parameters<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Requires a zip code</li>
+<li>Returns the county FIPS value associated with the zip code taxonomy term and stored in field_countyfips</li>
+</ul>
+</div>
+</div>
+<div class="section" id="oas-triage-user-get-legal-server-org">
+<h3>oas_triage_user_get_legal_server_org<a class="headerlink" href="#oas-triage-user-get-legal-server-org" title="Permalink to this headline">¶</a></h3>
+<p>Located in oas_triage_user.exits.inc</p>
+<div class="section" id="id2">
+<h4>Parameters<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Requires the intake settings entity associated with the triage user</li>
+<li>Returns the value of the variable created in the oas_legal_server module for the organization associated with the intake settings.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The OAS Legal Server module stores a variable for each organization in OTIS in the format of oas_legal_server_org_[nid] where [nid] is the organization’s node ID.</p>
+</div>
+</div>
+</div>
+<div class="section" id="oas-triage-user-get-problemcode">
+<h3>oas_triage_user_get_problemcode<a class="headerlink" href="#oas-triage-user-get-problemcode" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<p>Returns the problem code related to the user’s legal issue, from the legal server problem code mappings taxonomy, which maps ILAO’s legal issue taxonomy to Legal Server’s problem code table.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Relies on the <a class="reference external" href="https://www.illinoislegalaid.org/admin/structure/taxonomy/legal_server_problem_code_mappings">Legal Server Problem Code Mappings</a> taxonomy where each term name is the Legal Server problem code and a field maps ILAO’s legal issues to that term.  For example, the 01 Bankruptcy/ Debter Relief maps to ILAO’s bankruptcy legal issues.  The term names MUST match exactly how they exist in Legal Server.</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-notes">
+<h3>oas_triage_user_notes<a class="headerlink" href="#oas-triage-user-notes" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<p>Returns an updated notes string that includes:</p>
+<ul class="simple">
+<li>any notes generated from the triage rules</li>
+<li>the callback type, as a string using oas_triage_user_set_callback_type</li>
+<li>the callback times</li>
+<li>the user’s immigrant status, if collected since this does not map in Legal Server</li>
+<li>the user’s country of origin, since this is not mapped in Legal Server</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-set-callback-times">
+<h3>oas_triage_user_set_callback_times<a class="headerlink" href="#oas-triage-user-set-callback-times" title="Permalink to this headline">¶</a></h3>
+<p>Creates a string that represents the callback hours.</p>
+</div>
+<div class="section" id="oas-triage-user-set-callback-type">
+<h3>oas_triage_user_set_callback_type<a class="headerlink" href="#oas-triage-user-set-callback-type" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id3">
+<h4>Parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<p>Accepts a callback type string
+Returns a Legal server acceptable callback type string</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-process-assets">
+<h3>oas_triage_user_process_assets<a class="headerlink" href="#oas-triage-user-process-assets" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Accepts a triage user entity
+Returns an array of collected assets formatted as:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">assetType =&gt; name</span>
+<span class="x">assetAmount =&gt; $ amount of asset.</span>
+
+<span class="x"> Relies on oas_triage_user_get_financial_category to set the name based on Legal Server mappings.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="oas-triage-user-process-income">
+<h3>oas_triage_user_process_income<a class="headerlink" href="#oas-triage-user-process-income" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id5">
+<h4>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>Accepts a triage user entity
+Returns an array of collected income formatted as:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">incomeType =&gt; name</span>
+<span class="x">incomeFrequencey =&gt; 12 (since we collect monthly only)</span>
+<span class="x">incomeAmount =&gt; dollar amount of income</span>
+</pre></div>
+</div>
+<p>Relies on oas_triage_user_get_financial_category to set the name based on Legal Server mappings.</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-process-expenses">
+<h3>oas_triage_user_process_expenses<a class="headerlink" href="#oas-triage-user-process-expenses" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id6">
+<h4>Parameters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>Accepts a triage user entity
+Returns an array of collected expenses formatted as:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">expenseType =&gt; name</span>
+<span class="x">expenseFrequencey =&gt; 12 (since we collect monthly only)</span>
+<span class="x">expenseAmount =&gt; dollar amount of income</span>
+</pre></div>
+</div>
+<p>Relies on oas_triage_user_get_financial_category to set the name based on Legal Server mappings.</p>
+</div>
+</div>
+<div class="section" id="oas-triage-user-get-financial-category">
+<h3>oas_triage_user_get_financial_category<a class="headerlink" href="#oas-triage-user-get-financial-category" title="Permalink to this headline">¶</a></h3>
+<p>Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id7">
+<h4>Parameters<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>Accepts:  $type and $class where class is the financial category type and type is the term name in the oas_financial_category types</p>
+<p>Returns:  the term name from the legal_server_financial_mappings taxonomy where the term associated with the type passed in matches on the field_data_field_maps_to_financial.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The legal_server_financial_mappings taxonomy maps Legal Server financial categories to those provided by OTIS.  The legal_server_financial_mappings must be an exact match to Legal Server.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="submitting-the-etransfer">
+<h2>Submitting the eTransfer<a class="headerlink" href="#submitting-the-etransfer" title="Permalink to this headline">¶</a></h2>
+<p>Once the array of data is built, the system:</p>
+<ul class="simple">
+<li>Make a serialized copy of the array as part of the triage user entity</li>
+<li>Sets the etransfer status to Etransfer_Queued in the triage user entity</li>
+<li>Saves the triage user entity to the database</li>
+<li>Checks to see that the oas_legal_server is installed</li>
+<li>eTransfers the application</li>
+<li>Updates the intake settings to increment the current count by 1</li>
+<li>Displays the confirmation message to the user.</li>
+</ul>
+<p>The actual eTransfer process is handled in the oas_legal_server module.  This was done to eventually allow us to leverage additional endpoints for transferring OTIS data.</p>
+<div class="section" id="getting-legal-server-s-configuration">
+<h3>Getting Legal Server’s configuration<a class="headerlink" href="#getting-legal-server-s-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The oas_legal_server module includes a number of settings, stored as variables, that include:</p>
+<ul class="simple">
+<li>whether the site should be running OTIS in demo mode</li>
+<li>whether the site should be running OTIS in suspended mode</li>
+<li>the live transfer endpoint url</li>
+<li>the demo transfer endpoint url</li>
+<li>the maximum number of retries in case of failure</li>
+<li>the Legal server name of each organization</li>
+<li>a failure contact point</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If running in suspended mode, the etransfer will not be submitted.  If running in demo mode, the eTransfer will be sent to a demo server. These should NEVER be enabled on production.</p>
+</div>
+</div>
+<div class="section" id="building-the-legal-server-transfer">
+<h3>Building the Legal Server transfer<a class="headerlink" href="#building-the-legal-server-transfer" title="Permalink to this headline">¶</a></h3>
+<p>The client array generated must be further transformed into XML to be sent to Legal Server.  That work is handled in the oas_legal_server module in the oas_legal_server_build_eTransfer function.</p>
+<div class="section" id="id8">
+<h4>Parameters<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<p>Accepts: a client data array
+Returns: XML that complies with Legal Server’s schema</p>
+</div>
+<div class="section" id="process">
+<h4>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<p>The module:
+* Replaces any &amp; with the word and to ensure that the text passed is XML-friendly
+* Wraps the data from the client data array into a &lt;matter&gt; XML tag
+* Converts the client data array into XML
+* Adds the matter_xml_version element</p>
+</div>
+</div>
+<div class="section" id="sending-the-xml-transfer">
+<h3>Sending the XML transfer<a class="headerlink" href="#sending-the-xml-transfer" title="Permalink to this headline">¶</a></h3>
+<p>Once the XML packet is created, the oas_legal_server relies on CURL to send the eTransfer and waits for a response from Legal Server.</p>
+<div class="section" id="success">
+<h4>Success<a class="headerlink" href="#success" title="Permalink to this headline">¶</a></h4>
+<p>If Legal Server responds with a success message, the oas_legal_server module does nothing.  The oas_triage_user module takes back over and:</p>
+<ul class="simple">
+<li>sets the etransfer status to “Success”</li>
+<li>sets the intake status to eTransferred</li>
+<li>Sends out confirmation messages</li>
+<li>Displays the confirmation screen to the user.</li>
+</ul>
+</div>
+<div class="section" id="failure">
+<h4>Failure<a class="headerlink" href="#failure" title="Permalink to this headline">¶</a></h4>
+<p>Failures happen in 2 ways:
+* A server failure.  That usually resolves itself with a retry.
+* A data validation failure.  That usually requires a manual resubmission</p>
+<p>When Legal Server responds with a failure:
+* the eTransfer status gets set to Failure
+* the intake status gets set to not eTransferred
+* the user is given an application delayed message
+* the failure contact is notified
+* the system will retry every hour until success up to the maximum number of retries.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the failure is due to a data validation, the failure contact email will include a copy of the bad data.  Gwen’s usual approach for this is to open the <a class="reference external" href="https://iloi.legalserver.org/modules/matter/intake_xml.php">XML endpoint</a> and build the XML by hand using the sample data, fixing any errors and then using Drush to update the oas_triage_user database.  This is not ideal.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
@@ -157,6 +471,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_oas_notifications.html" class="btn btn-neutral float-right" title="OTIS Automated Notifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_callbacks_and_confirms.html" class="btn btn-neutral" title="Exit screens and Callbacks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
