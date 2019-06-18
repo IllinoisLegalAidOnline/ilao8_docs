@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Permissions &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>OTIS Permissions &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -96,7 +96,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Permissions</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">OTIS Permissions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
@@ -168,7 +168,7 @@
         
           <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
         
-      <li>Permissions</li>
+      <li>OTIS Permissions</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -187,8 +187,62 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="permissions">
-<h1>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="otis-permissions">
+<h1>OTIS Permissions<a class="headerlink" href="#otis-permissions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general-permissions">
+<h2>General Permissions<a class="headerlink" href="#general-permissions" title="Permalink to this headline">¶</a></h2>
+<p>Triage rules and intake settings both rely on the organic groups module to affiliate an organization with the entity. However, they do so differently.</p>
+</div>
+<div class="section" id="organic-group-permissions">
+<h2>Organic Group Permissions<a class="headerlink" href="#organic-group-permissions" title="Permalink to this headline">¶</a></h2>
+<p>In ILAO’s ecosystem, each organization node is also an organic group.  The group includes roles for:</p>
+<ul class="simple">
+<li>member</li>
+<li>organization manager</li>
+<li>OAS manager</li>
+</ul>
+<p>The OAS manager has permissions managed through organic groups that allow them to manage:</p>
+<ul class="simple">
+<li>locations</li>
+<li>location-services</li>
+<li>triage-rules</li>
+</ul>
+<p>The organization manager has permissions to manage all of the above plus the organization profile.</p>
+<div class="section" id="triage-rules">
+<h3>Triage rules<a class="headerlink" href="#triage-rules" title="Permalink to this headline">¶</a></h3>
+<p>Because of the built-in integration between nodes and organic group, triage rule access is automatically defined when a service is associated with the triage rules when creating or editing the triage rules.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The code looks only at the first service added.  If triage rules were shared across organizations, this would not work.</p>
+</div>
+</div>
+<div class="section" id="intake-settings">
+<h3>Intake settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h3>
+<p>Because intake settings are a custom entity, we had to manage the access via custom modules.</p>
+<p>The ilao_intake_settings module manages access:</p>
+<ul class="simple">
+<li>if the ilao_organizations module is installed, that takes ownership of granting permissions</li>
+<li>if the ilao_organizations module is not installed, the user must have the manage all intake settings permission in the general user permissions tables</li>
+</ul>
+<p>The ilao_organizations module uses the ilao_organization_is_oas_manager to check for access.</p>
+<div class="section" id="ilao-organization-is-oas-manager">
+<h4>ilao_organization_is_oas_manager<a class="headerlink" href="#ilao-organization-is-oas-manager" title="Permalink to this headline">¶</a></h4>
+<p>Located in ilao_organizations.module</p>
+<p>Process:</p>
+<ul class="simple">
+<li>Loads the user entity of the currently logged in user</li>
+<li>Loads the organic groups associated with the user</li>
+<li>Checks to see if they are an OAS Manager of the organic group; returns True if they are</li>
+<li>Checks to see if they have the staff role in the general user roles (this should just be ILAO staff); returns TRUE if they do</li>
+<li>Returns FALSE otherwise.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">At first glance, it is unclear if this verifies that the user is the OAS manager for the specific organization whose intake settings are being edited.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
