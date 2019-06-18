@@ -38,6 +38,7 @@ Form Elements
 Note that the select taxonomy require oas_triage_user_load_intake_taxonomy to load the options.  For fields marked "only displays if enabled," these only display if the intake settings are configured to collect the field.  When collected, the help text is pulled from the intake settings.
 
 The Select country requires the locale module to load Drupal's country list.
+
 +------------------------------+----------------------------+----------------------------+
 | Form variable                | Type                       | Notes                      |
 +==============================+============================+============================+
@@ -60,7 +61,8 @@ The Select country requires the locale module to load Drupal's country list.
 |                              |                            | elements; goes back 110 yrs|
 +------------------------------+----------------------------+----------------------------+
 | race                         | select taxonomy            | Only displays if enabled   |
-+------------------------------+----------------------------+----------------------------+| ethnicity                    | select taxonomy            | Only displays if enabled   |
++------------------------------+----------------------------+----------------------------+
+| ethnicity                    | select taxonomy            | Only displays if enabled   |
 +------------------------------+----------------------------+----------------------------+
 | gender                       | select taxonomy            | Only displays if enabled   |
 +------------------------------+----------------------------+----------------------------+
@@ -200,11 +202,11 @@ The oas_triage_user_get_next_screen function determines which form page to show:
 * From asset page, go to done if no expenses need collected
 * From expense page, go to done
 
-..warning::
-  It appears that if income is not collected, assets and expenses can not be collected either.
+..  warning::
+    It appears that if income is not collected, assets and expenses can not be collected either.
 
-..note ::
-  There was agreement in the evaluation meeting to remove some of the financial pages across programs.
+..  note ::
+    There was agreement in the evaluation meeting to remove some of the financial pages across programs.
   
 Building the form
 ^^^^^^^^^^^^^^^^^^^
@@ -350,6 +352,7 @@ Form elements
 Default form elements
 ^^^^^^^^^^^^^^^^^^^^^^^
 The oas_triage_user module generates the default address form.  Other modules, as always in Drupal, can alter that form
+
 +----------------------------+----------------------------+------------------------------+
 | Form variable              | Type                       | Notes                        |
 +============================+============================+==============================+
@@ -426,6 +429,7 @@ Updates the triage user entity to:
 .. todo:: The default submit function also stores the email address into a session variable for Acquia Lift.  This should be extracted into its own unrelated module to keep this clean.
 
 The ilao_oas_triage_sms_opt_in_submit updates the triage user entity to:
+
 * store the user's mobile phone to the field_mobile_phone
 * stores the user's SMS opt in settings to the field_opt_in_sms
 * saves the entity

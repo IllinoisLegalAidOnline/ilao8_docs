@@ -96,6 +96,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_permissions.html">Permissions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
@@ -297,6 +298,100 @@ Returns: a render array</p>
 </div>
 </div>
 </div>
+<div class="section" id="callback-selection-form">
+<h2>Callback Selection Form<a class="headerlink" href="#callback-selection-form" title="Permalink to this headline">¶</a></h2>
+<p>The callback selection form is displayed when:</p>
+<ul class="simple">
+<li>the callback type is “we call client”</li>
+<li>there are callback times available to display</li>
+</ul>
+<p>oas_triage_user_callback_form builds the form.
+_oas_triage_user_get_callback_options builds the list of callback option times.</p>
+<div class="section" id="getting-callback-times">
+<h3>Getting callback times<a class="headerlink" href="#getting-callback-times" title="Permalink to this headline">¶</a></h3>
+<p>The private _oas_triage_user_get_callback_options function generates the list of callback times.
+Located in oas_triage_user.exits.inc</p>
+<div class="section" id="id4">
+<h4>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Accepts an intake_settings entity
+Returns an array of callback options for use in a checkbox form element.</p>
+</div>
+<div class="section" id="id5">
+<h4>Process<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Determines the start date available for next callback slot.  This is either:<ul>
+<li>2 days from the current day</li>
+<li>3 days from the current day if it is a Saturday</li>
+</ul>
+</li>
+<li>Builds an array of days from the start date going to the next 15 days.</li>
+<li>For each day in the array:<ul>
+<li>Gets the field name where the callback slots are stored.  This is determined by taking the lower case of the day of the week and appending it to oas_callback_hours.</li>
+<li>Invokes oas_triage_user_is_holiday to determine if the day is a holiday</li>
+<li>If there are callback hours and it is not a holiday, builds the time slot options for that day by:<ul>
+<li>Loading the taxonomy term that represents the hour slot</li>
+<li>Checking to see if the time slot is full</li>
+<li>If the time slot is not full, creates an option element for the checkbox element</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Is the time slot full?  Programs currently can limit the number of callbacks that can be scheduled in a slot at either the intake setting or service level.  Service level is most common.  This requires then that we check the total number of callbacks for given slot to determine if the max has been reached. If the max has been reached, the time slot is not available for booking.</p>
+</div>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Consider reducing the number of days where callbacks are offered
+Consider allowing programs to set their own additional holidays.
+Consider refactoring to break this down further.</p>
+</div>
+</div>
+</div>
+<div class="section" id="displaying-the-form">
+<h3>Displaying the form<a class="headerlink" href="#displaying-the-form" title="Permalink to this headline">¶</a></h3>
+<p>oas_triage_user_callback_form defines the form.
+Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id6">
+<h4>Process<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Invokes the oas_triage_user_save_exit function to update the triage user information.</li>
+<li>Determines the maximum number of options the user can pick.  By default, that number is 3 but the program may have defined a different number in their service.</li>
+<li>Builds the form with elements for:<ul>
+<li>Callback times, as a list of checkboxes</li>
+<li>A single checkbox to indicate that none of the times work for them</li>
+<li>A hidden value of for the maximum slots</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="processing-the-form">
+<h3>Processing the form<a class="headerlink" href="#processing-the-form" title="Permalink to this headline">¶</a></h3>
+<p>oas_triage_user_callback_form_submit validates and submits the form.</p>
+<div class="section" id="id7">
+<h4>Process<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>If the user has picked more time slots than allowed, an error is displayed and the user must reduce the number of selections before proceeding.</li>
+<li>If the user has indicated that none of the times work for them, they are redirected to the get-legal-help/please-call confirmation</li>
+<li>Otherwise:<ul>
+<li>The system invokes oas_triage_user_save_callback_times to save the selected callback times</li>
+<li>Redirects the user to the get-legal-help/callback-confirm page.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="oas-triage-user-save-callback-times">
+<h4>oas_triage_user_save_callback_times<a class="headerlink" href="#oas-triage-user-save-callback-times" title="Permalink to this headline">¶</a></h4>
+<p>Located in: oas_triage_user.exits.inc</p>
+<ul class="simple">
+<li>Updates the field_triage_callback_times associated with the triage user with an array of callback times.</li>
+<li>Invokes oas_triage_user_save to save the triage user with updated information.</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="section" id="callback-confirmation-page">
 <h2>Callback Confirmation Page<a class="headerlink" href="#callback-confirmation-page" title="Permalink to this headline">¶</a></h2>
 <p>The callback confirmation page is displayed when:</p>
@@ -304,8 +399,81 @@ Returns: a render array</p>
 <li>the callback type is “we call client”</li>
 <li>the user selects at least one callback time</li>
 </ul>
+<p>See also:  <a class="reference external" href="migration_oas_intake_ui.html">Contact form submission in</a></p>
 <p>and the etransfer was successful (see the oas_triage_user_please_call function)</p>
 <p>If the etransfer_status was already set when this page is built, the user will see a message that their application was already submitted and it will not resubmit it.</p>
+</div>
+<div class="section" id="bypass-intake-page">
+<h2>Bypass Intake Page<a class="headerlink" href="#bypass-intake-page" title="Permalink to this headline">¶</a></h2>
+<p>The bypass intake page appears when the end point in the triage rules is set to bypass. The function oas_triage_user_bypass builds the bypass page and the oas–bypass.tpl.php file displays the page.</p>
+<div class="section" id="oas-triage-user-bypass">
+<h3>oas_triage_user_bypass<a class="headerlink" href="#oas-triage-user-bypass" title="Permalink to this headline">¶</a></h3>
+<p>Located in oas_triage_user.exits.inc</p>
+<div class="section" id="id8">
+<h4>Process<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Loads the intake settings associated with the triage</li>
+<li>Loads the organization’s name</li>
+<li>Build the content render array:<ul>
+<li>call_header is empty</li>
+<li>If the program has defined a bypass message to display, sets the call_msg to that message, replacing any tokens for OAS:name with the organization name and the OAS:phone with the callback number.</li>
+<li>If the program has not defined a bypass message, provides a generic message that uses the default organization name and callback number.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="saving-the-triage-exit-to-the-triage-object">
+<h2>Saving the triage exit to the triage object<a class="headerlink" href="#saving-the-triage-exit-to-the-triage-object" title="Permalink to this headline">¶</a></h2>
+<p>oas_triage-user_save_exit
+Located in: oas_triage_user.exits.inc</p>
+<div class="section" id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>Requires an exit type and a transfer type as strings</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="31%" />
+<col width="31%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Page</th>
+<th class="head">Exit type</th>
+<th class="head">Transfer type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>callback-form</td>
+<td>Callback form</td>
+<td>Started</td>
+</tr>
+<tr class="row-odd"><td>callback-confirm</td>
+<td>Callback confirm</td>
+<td>eTransferred</td>
+</tr>
+<tr class="row-even"><td>please-call</td>
+<td>Please call</td>
+<td>Not eTransferred</td>
+</tr>
+</tbody>
+</table>
+<p>For a user accessing the callback form, the exit type is Callback form and transfer type is started.</p>
+</div>
+<div class="section" id="id10">
+<h3>Process<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>Updates the triage user entity to:</p>
+<ul class="simple">
+<li>set the last screen viewed to the exit type</li>
+<li>set the intake status to the transfer type</li>
+<li>set the intake changed to the current timestamp</li>
+<li>saves the triage user entity by invoking oas_triage_user_save</li>
+</ul>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Unclear if bypass sets an exit type.</p>
+</div>
+</div>
 </div>
 </div>
 
