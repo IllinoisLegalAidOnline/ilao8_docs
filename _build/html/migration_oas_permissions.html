@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS Functionality Documentation &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Permissions &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OTIS Global Items" href="migration_oas_functionality.html" />
-    <link rel="prev" title="ILAO OAS Income Standard" href="migration_oas_income_standard.html" /> 
+    <link rel="next" title="OTIS Scheduled Tasks" href="migration_oas_cron.html" />
+    <link rel="prev" title="OTIS Global Items" href="migration_oas_functionality.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -94,9 +94,9 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">OTIS Functionality Documentation</a><ul>
+<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_permissions.html">Permissions</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Permissions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
@@ -166,13 +166,15 @@
         
           <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
         
-      <li>OTIS Functionality Documentation</li>
+          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
+        
+      <li>Permissions</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_otis_functionality_overview.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/migration_oas_permissions.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -185,72 +187,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-functionality-documentation">
-<h1>OTIS Functionality Documentation<a class="headerlink" href="#otis-functionality-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#custom-menu-routes">Custom Menu Routes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#important-notes">Important notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_functionality.html#common-functions">Common Functions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_permissions.html">Permissions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#process-queued-etransfers">Process queued eTransfers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#remove-oas-triage-user-test-data">Remove OAS Triage User Test Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#update-intake-status-for-incompletes">Update intake status for incompletes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_cron.html#notify-site-architects-if-etransfers-stop-completely">Notify Site architects if etransfers stop completely</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_glh.html#functions">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_glh.html#forms">Forms</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-is-intake-available">oas_triage_user_is_intake_available</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-intake-specific-population">oas_triage_user_intake_specific_population</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-intake-general">oas_triage_user_intake_general</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-least-updated-intake-organization">oas_triage_user_least_updated_intake_organization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-get-triage-rules">oas_triage_user_get_triage_rules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_available.html#oas-triage-user-set-up-intake-object">oas_triage_user_set_up_intake_object</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#application-form">Application form</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#calculating-financial-eligibility">Calculating Financial Eligibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_intake_ui.html#contact-form">Contact form</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html#template-files">Template files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html#please-call-page">Please call page</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html#callback-confirmation-page">Callback Confirmation Page</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_etransfer.html#building-the-client-array">Building the client array</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_etransfer.html#submitting-the-etransfer">Submitting the eTransfer</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_oas_notifications.html#initial-confirmations">Initial Confirmations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="migration_triage_rules.html#content-type">Content Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_triage_rules.html#webform-components-conditionals">Webform Components &amp; Conditionals</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_triage_rules.html#webform-processing">Webform Processing</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_widget.html">OTIS Widget</a></li>
-<li class="toctree-l1"><a class="reference internal" href="migration_oas_surveys.html">OTIS Surveys</a></li>
-</ul>
-</div>
+  <div class="section" id="permissions">
+<h1>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -261,10 +199,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_functionality.html" class="btn btn-neutral float-right" title="OTIS Global Items" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_oas_cron.html" class="btn btn-neutral float-right" title="OTIS Scheduled Tasks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_oas_income_standard.html" class="btn btn-neutral" title="ILAO OAS Income Standard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_oas_functionality.html" class="btn btn-neutral" title="OTIS Global Items" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

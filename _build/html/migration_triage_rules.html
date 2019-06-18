@@ -96,6 +96,7 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_oas_permissions.html">Permissions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
 <li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
@@ -231,12 +232,119 @@ service(s); controls permission</td>
 </tbody>
 </table>
 <p>It also has the webform module attached to allow webforms to be created and attached to the content.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The ilao_triage module provides some special handling for the node:</p>
+<ul class="last simple">
+<li>The og_group_ref is hidden in the ilao_triage_form_triage_rules_node_form_alter.</li>
+<li>The ilao_triage_node_after_build function hides some additional settings from users.</li>
+<li>ilao_triage_node_presave sets the organic group to the organization of the first service selected.  This then controls access to edit the triage rules.</li>
+</ul>
+</div>
 </div>
 <div class="section" id="webform-components-conditionals">
 <h2>Webform Components &amp; Conditionals<a class="headerlink" href="#webform-components-conditionals" title="Permalink to this headline">¶</a></h2>
+<p>The ilao_triage module makes changes to the default webform module for the triage rule form to simplify it for OTIS administrators.</p>
+<div class="section" id="form-alteration">
+<h3>Form alteration<a class="headerlink" href="#form-alteration" title="Permalink to this headline">¶</a></h3>
+<p>Form alteration is located in ilao_triage.module in the ilao_triage_form_alter function.</p>
+<p>For triage rules, the available types of form elements is different than for generic webforms.  The allowed form elements are:</p>
+<ul class="simple">
+<li>Date</li>
+<li>Hidden; the hidden type allows a triage rules author to save data that is passed in the notes field of an eTransfer OR set an endpoint</li>
+<li>Message; this is a markup element that displays to a user completing a set of program triage rules</li>
+<li>Number; a text field that requires a numerical value</li>
+<li>Radio; a single select option</li>
+<li>Text input; a text field that has no validation</li>
+<li>Yes/No; a radio single select option built using a custom webform component.  The yes/no component is defined in ilao_triage/components/yesno.inc.</li>
+</ul>
+</div>
+<div class="section" id="custom-validation">
+<h3>Custom validation<a class="headerlink" href="#custom-validation" title="Permalink to this headline">¶</a></h3>
+<p>The ilao_triage_conditional_validate function provides a custom validation check to ensure that if there is a form element named ‘end point’, that it validates as one of the defined OTIS end points:</p>
+<ul class="simple">
+<li>intake (takes user to intake application)</li>
+<li>divert (gives the user referrals)</li>
+<li>bypass (gives user the bypass screen; no intake or referrals are provided)</li>
+<li>pro bono (takes users to intake application but adds a note for pro bono placement)</li>
+<li>self help line (takes users to intake application but adds a note to direct to self help line)</li>
+</ul>
+</div>
 </div>
 <div class="section" id="webform-processing">
 <h2>Webform Processing<a class="headerlink" href="#webform-processing" title="Permalink to this headline">¶</a></h2>
+<p>The ilao_triage_module processes the submitted triage rules webform.  This logic is in the ilao_triage_submit function.</p>
+<div class="section" id="process">
+<h3>Process<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h3>
+<p>For each submitted form element, it adds appropriate values to a notes object that is then inserted into an etransfer packet:</p>
+<ul class="simple">
+<li>For yes/no elements, it adds the name of the form element and then Yes or No based on the user’s answer.</li>
+<li>For radio elements, adds the submitted answer.  For example for the radio question “What’s your issue?” with options for “I had a cut in my food stamps, I received a letter that my food stamps are being terminated” and the user selects “I had a cut in my food stamps,” the notes object would include the text I had a cut in my food stamps</li>
+<li>For hidden elements, other than those named end point or endpoint, the name of the form element and the hidden value are added to the notes.</li>
+<li>For any other type, the name of the form element and then submitted value are added to the notes.</li>
+</ul>
+</div>
+<div class="section" id="endpoint-processing">
+<h3>Endpoint processing<a class="headerlink" href="#endpoint-processing" title="Permalink to this headline">¶</a></h3>
+<p>A hidden field with a name of endpoint or end point is treated as the form element that controls routing of the triage rules through OTIS.</p>
+<p>In all cases, the triage user entity is updated with the following:</p>
+<ul class="simple">
+<li>the last screen viewed is set to “Program triage”</li>
+<li>the intake_created timestamp is set to the current timestamp</li>
+<li>the changed timestamp is set to the current timestamp</li>
+<li>the intake_status is set to the correct status (see specific endpoints below)</li>
+<li>the triage_status is set to “Program triage_completed”</li>
+<li>if county and state information has not yet been stored, the county and state are saved based on the zip code entered.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The saving of triage user data checks first that the oas_triage_user module is enabled and a triage_id is stored in a session variable.  For a user coming through the normal workflow, these will always be true.  If this check fails, an error is thrown directing the user to the main Get Legal Help page.</p>
+</div>
+<div class="section" id="endpoint-intake-pro-bono-or-self-help-line">
+<h4>Endpoint: intake, pro bono or self help line<a class="headerlink" href="#endpoint-intake-pro-bono-or-self-help-line" title="Permalink to this headline">¶</a></h4>
+<p>When the end point is intake, pro bono, or self help line:</p>
+<ul class="simple">
+<li>the user is redirected to the get-legal-help/intake page</li>
+<li>the intake status is updated to “Offered”</li>
+</ul>
+<p>Endpoints of pro bono or self help line work just as any other form of intake except that:</p>
+<ul class="simple">
+<li>if the end point is pro bono, a note ” Route to pro bono” is added to the case notes.</li>
+<li>if the end point is self help line, a note of ” Route to self-represented litigant help line” is added to the case notes.</li>
+</ul>
+</div>
+<div class="section" id="endpoint-bypass">
+<h4>Endpoint: bypass<a class="headerlink" href="#endpoint-bypass" title="Permalink to this headline">¶</a></h4>
+<p>Bypass is designed to tell the user not to apply online but to call the program directly and should be used for high priority cases.  When the end point is set to bypass:</p>
+<ul class="simple">
+<li>the user is redirected to the get-legal-help/bypass page</li>
+<li>the intake status is updated to “Bypass intake”</li>
+</ul>
+</div>
+<div class="section" id="endpoint-divert">
+<h4>Endpoint: divert<a class="headerlink" href="#endpoint-divert" title="Permalink to this headline">¶</a></h4>
+<p>Diversion happens when a user answers triage rules in such a way that the program is not going to take their case.  When that happens:</p>
+<ul class="simple">
+<li>if program triage rules exist for a different program, the user is directed to their triage rules.</li>
+<li>if no other program triage rules exist for a different program, the user is given other referrals and directed to the /get-legal-help/referrals page.</li>
+</ul>
+<p>In either case:</p>
+<ul class="simple">
+<li>the intake status is set to Diverted</li>
+<li>a record is entered in the oas_referral_history to log the diversion:<ul>
+<li>the service ID is stored in the database</li>
+<li>the reject reason is set to “intake diversion”</li>
+<li>the reject date is set to the current timestamp.</li>
+</ul>
+</li>
+</ul>
+<p>We did not start logging this information until 1/24/2018.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Our intention was to capture all instances where a user was offered a second chance intake.  This was probably not the best approach as it logs every intake diversion and not just those that resulted in a secondary intake.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 

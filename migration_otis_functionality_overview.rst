@@ -7,6 +7,7 @@ OTIS Functionality Documentation
    :caption: Contents:
 
    migration_oas_functionality
+   migration_oas_permissions
    migration_oas_cron
    migration_oas_glh
    migration_oas_intake_available
