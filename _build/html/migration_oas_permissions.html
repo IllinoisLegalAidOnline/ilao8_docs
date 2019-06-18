@@ -243,6 +243,16 @@
 </div>
 </div>
 </div>
+<div class="section" id="views-access-plugins">
+<h2>Views Access Plugins<a class="headerlink" href="#views-access-plugins" title="Permalink to this headline">¶</a></h2>
+<p>In order to grant appropriate access to intake settings and triage rules reports, we created custom views access plugins.  They are in the ilao_organizations module as included files:</p>
+<ul class="simple">
+<li>Is org or oas manager in the ilao_organizations_is_admin_views_access_plugin.inc file; checks to see if the current user has either the organization administrator or an OAS manager role for the group</li>
+<li>Is OAS manager in the ilao_organizations_is_oas_admin_views_access_plugin.inc file; checks to see if the current user has the OAS manager role for the group</li>
+<li>Is Org admin in the ilao_organizations_is_org_admin_views_access_plugin.inc file; checks to see if the current user has the organization manager role for the group</li>
+<li>Is OG member in the ilao_organizations_is_og_member_views_access_plugin.inc file; checks to see if the current user is a member of the specific group</li>
+</ul>
+</div>
 </div>
 
 

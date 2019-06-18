@@ -56,6 +56,14 @@ Process:
 
 .. warning:: 
    At first glance, it is unclear if this verifies that the user is the OAS manager for the specific organization whose intake settings are being edited.
-   
+
+Views Access Plugins
+=========================
+In order to grant appropriate access to intake settings and triage rules reports, we created custom views access plugins.  They are in the ilao_organizations module as included files:
+
+* Is org or oas manager in the ilao_organizations_is_admin_views_access_plugin.inc file; checks to see if the current user has either the organization administrator or an OAS manager role for the group
+* Is OAS manager in the ilao_organizations_is_oas_admin_views_access_plugin.inc file; checks to see if the current user has the OAS manager role for the group
+* Is Org admin in the ilao_organizations_is_org_admin_views_access_plugin.inc file; checks to see if the current user has the organization manager role for the group
+* Is OG member in the ilao_organizations_is_og_member_views_access_plugin.inc file; checks to see if the current user is a member of the specific group   
    
 
