@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="OTIS Drupal 8" href="otis_drupal8.html" /> 
@@ -86,8 +87,16 @@
 <li class="toctree-l1"><a class="reference internal" href="migration.html">Migration Documentation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Drupal 8 OTIS API Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#triage-user-api">Triage User API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#triage-listing-api">Triage Listing API</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#financial-entity-api">Financial entity API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#organization-api">Organization API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#location-api">Location API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legal-issues-api">Legal Issues API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intake-available-api">Intake available API</a></li>
 </ul>
 </li>
 </ul>
@@ -160,6 +169,226 @@
             
   <div class="section" id="drupal-8-otis-api-implementation">
 <h1>Drupal 8 OTIS API Implementation<a class="headerlink" href="#drupal-8-otis-api-implementation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="triage-user-api">
+<h2>Triage User API<a class="headerlink" href="#triage-user-api" title="Permalink to this headline">¶</a></h2>
+<p>References to “triage user” refer to an instance of a triage user entity.  An individual may have multiple triage user entities associated with them if they apply more than once.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>create-triage-user</td>
+<td>POST</td>
+<td>Creates an initial triage user entity</td>
+</tr>
+<tr class="row-odd"><td>save-triage-user</td>
+<td>POST</td>
+<td>Saves a triage user entity to the database</td>
+</tr>
+<tr class="row-even"><td>load-triage-user</td>
+<td>GET</td>
+<td>Loads a specific triage user entity by ID</td>
+</tr>
+<tr class="row-odd"><td>load-triage-users</td>
+<td>GET</td>
+<td>Loads multiple triage user entities by an array
+of IDs</td>
+</tr>
+<tr class="row-even"><td>get-triage-user-
+properties</td>
+<td>GET</td>
+<td>Gets the list of properties of the triage user
+entity</td>
+</tr>
+<tr class="row-odd"><td>get-created-date</td>
+<td>GET</td>
+<td>Gets the created date of a specific triage user</td>
+</tr>
+<tr class="row-even"><td>set-created-date</td>
+<td>POST</td>
+<td>Sets the created date of a specific triage user</td>
+</tr>
+<tr class="row-odd"><td>get-changed-date</td>
+<td>GET</td>
+<td>Gets the changed date of a specific triage user</td>
+</tr>
+<tr class="row-even"><td>set-changed-date</td>
+<td>POST</td>
+<td>Sets the changed date of a specific triage user</td>
+</tr>
+<tr class="row-odd"><td>get-intake-created-date</td>
+<td>GET</td>
+<td>Gets the intake created date of a specific triage
+user</td>
+</tr>
+<tr class="row-even"><td>set-intake-created-date</td>
+<td>POST</td>
+<td>Sets the intake created date of a specific triage
+user</td>
+</tr>
+<tr class="row-odd"><td>get-intake-created-date</td>
+<td>GET</td>
+<td>Gets the intake created date of a specific triage
+user</td>
+</tr>
+<tr class="row-even"><td>get-user-id</td>
+<td>GET</td>
+<td>Gets the user id associated with a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-user-id</td>
+<td>POST</td>
+<td>Sets the user id associated with a triage user</td>
+</tr>
+<tr class="row-even"><td>get-household-size</td>
+<td>GET</td>
+<td>Gets the total household size for a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-household-size</td>
+<td>POST</td>
+<td>Sets the total household size for a triage user</td>
+</tr>
+<tr class="row-even"><td>get-household-adults</td>
+<td>GET</td>
+<td>Gets the number of adults in a household for a
+triage user</td>
+</tr>
+<tr class="row-odd"><td>set-household-adults</td>
+<td>POST</td>
+<td>Sets the number of adults in a household for a
+triage user</td>
+</tr>
+<tr class="row-even"><td>get-household-children</td>
+<td>GET</td>
+<td>Gets the number of children in a household for a
+triage user</td>
+</tr>
+<tr class="row-odd"><td>set-household-children</td>
+<td>POST</td>
+<td>Sets the number of children in a household for a
+triage user</td>
+</tr>
+<tr class="row-even"><td>get-total-income</td>
+<td>GET</td>
+<td>Gets the total income of a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-total-income</td>
+<td>POST</td>
+<td>Sets the total income of a triage user</td>
+</tr>
+<tr class="row-even"><td>get-total-expenses</td>
+<td>GET</td>
+<td>Gets the total exepnses of a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-total-expenses</td>
+<td>POST</td>
+<td>Sets the total expenses of a triage user</td>
+</tr>
+<tr class="row-even"><td>get-total-assets</td>
+<td>GET</td>
+<td>Gets the total assets of a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-total-assets</td>
+<td>POST</td>
+<td>Sets the total assets of a triage user</td>
+</tr>
+<tr class="row-even"><td>get-zip-code</td>
+<td>GET</td>
+<td>Gets the stored zip code of a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-zip-code</td>
+<td>POST</td>
+<td>Sets the zip code of a triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-status</td>
+<td>GET</td>
+<td>Gets the current triage status of the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-status</td>
+<td>POST</td>
+<td>Sets the current triage status of the triage user</td>
+</tr>
+<tr class="row-even"><td>get-intake-status</td>
+<td>GET</td>
+<td>Gets the current intake status of the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-intake-status</td>
+<td>POST</td>
+<td>Sets the current intake status of the triage user</td>
+</tr>
+<tr class="row-even"><td>get-intake-id</td>
+<td>SET</td>
+<td>Gets the intake settings ID associated with
+a triage user.  See also intake settings API</td>
+</tr>
+<tr class="row-odd"><td>set-intake-id</td>
+<td>GET</td>
+<td>Sets the intake settings ID associated with
+a triage user.  See also intake settings API</td>
+</tr>
+<tr class="row-even"><td>get-referral-source</td>
+<td>GET</td>
+<td>Gets the referral source for a triage user</td>
+</tr>
+<tr class="row-odd"><td>set-referral-source</td>
+<td>SET</td>
+<td>Sets the referral source for a triage user</td>
+</tr>
+<tr class="row-even"><td>get-lsc-code</td>
+<td>GET</td>
+<td>Gets the LSC code associated with the triage user</td>
+</tr>
+<tr class="row-odd"><td>get-lsc-subcode</td>
+<td>GET</td>
+<td>Gets the LSC subcode associated with the triage
+user</td>
+</tr>
+<tr class="row-even"><td>set-lsc-code</td>
+<td>SET</td>
+<td>Sets the LSC code associated with the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-lsc-subcode</td>
+<td>SET</td>
+<td>Sets the LSC subcode associated with the triage
+user</td>
+</tr>
+<tr class="row-even"><td>get-triage-county</td>
+<td>GET</td>
+<td>Gets the county associated with the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-county</td>
+<td>SET</td>
+<td>Sets the county associated with the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-state</td>
+<td>GET</td>
+<td>Gets the state associated with the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-state</td>
+<td>SET</td>
+<td>Sets the state associated with the triage user</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="triage-listing-api">
+<h3>Triage Listing API<a class="headerlink" href="#triage-listing-api" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>get-intake-statuses</li>
+<li>get-triage-statuses</li>
+<li>get-last-screens</li>
+</ul>
+</div>
+</div>
+<div class="section" id="financial-entity-api">
+<h2>Financial entity API<a class="headerlink" href="#financial-entity-api" title="Permalink to this headline">¶</a></h2>
+</div>
 <div class="section" id="referral-history-api">
 <h2>Referral History API<a class="headerlink" href="#referral-history-api" title="Permalink to this headline">¶</a></h2>
 <p>The referral API will provide referral history information between systems.</p>
@@ -176,7 +405,16 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>get-referral-history</td>
+<tr class="row-even"><td>get-recent-history</td>
+<td>GET</td>
+<td>Returns referral ids of referral instances for
+a user in last 30 days;</td>
+</tr>
+<tr class="row-odd"><td>get-referrals</td>
+<td>GET</td>
+<td>Loads a set of referrals based on a referral id</td>
+</tr>
+<tr class="row-even"><td>get-referral</td>
 <td>GET</td>
 <td>Loads a specific referral</td>
 </tr>
@@ -184,11 +422,26 @@
 <td>GET</td>
 <td>Loads a specific referral history service</td>
 </tr>
-<tr class="row-even"><td>create-referral-history</td>
+<tr class="row-even"><td>get-all-history</td>
+<td>GET</td>
+<td>Returns the entire referral history for a given
+user</td>
+</tr>
+<tr class="row-odd"><td>get-referral-type</td>
+<td>GET</td>
+<td>Returns whether the referral was a cold referral
+or an OTIS application</td>
+</tr>
+<tr class="row-even"><td>get-referral-status</td>
+<td>GET</td>
+<td>Checks the status of an OTIS application based on
+a predefined closed date</td>
+</tr>
+<tr class="row-odd"><td>create-referral-history</td>
 <td>POST</td>
 <td>Creates a referral history entity</td>
 </tr>
-<tr class="row-odd"><td>update-referral-history</td>
+<tr class="row-even"><td>update-referral-history</td>
 <td>POST</td>
 <td>Updates a referral history entity</td>
 </tr>
@@ -221,6 +474,96 @@ service-id</td>
 <td>GET</td>
 <td>Loads the node id of the parent organization
 by service id.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="location-api">
+<h2>Location API<a class="headerlink" href="#location-api" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>detect-zipcode</td>
+<td>GET</td>
+<td>Invokes 3rd party detection to determine user zip</td>
+</tr>
+<tr class="row-odd"><td>get-zipcode-from-user</td>
+<td>GET</td>
+<td>Loads the zip code for a specific Drupal user ID</td>
+</tr>
+<tr class="row-even"><td>get-region-from-zip</td>
+<td>GET</td>
+<td>Loads region data for a specific zip code</td>
+</tr>
+<tr class="row-odd"><td>get-city-from-zip</td>
+<td>GET</td>
+<td>Loads city for a specific zip code from taxonomy</td>
+</tr>
+<tr class="row-even"><td>get-county-from-zip</td>
+<td>GET</td>
+<td>Loads county for a specific zip code from taxonomy</td>
+</tr>
+<tr class="row-odd"><td>get-state-from-zip</td>
+<td>GET</td>
+<td>Loads state for a specific zip code from taxonomy</td>
+</tr>
+<tr class="row-even"><td>get-county-fips</td>
+<td>GET</td>
+<td>Loads the county FIPS for a specific county</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="legal-issues-api">
+<h2>Legal Issues API<a class="headerlink" href="#legal-issues-api" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-node-legal-issue</td>
+<td>GET</td>
+<td>Returns legal issues based on a node ID</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="intake-available-api">
+<h2>Intake available API<a class="headerlink" href="#intake-available-api" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>is-intake-available</td>
+<td>GET</td>
+<td>Determines if online intake is available</td>
 </tr>
 </tbody>
 </table>

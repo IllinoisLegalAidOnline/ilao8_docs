@@ -14,4 +14,10 @@ Welcome to ILAO Drupal 8's documentation!
    otis_drupal8
    
 
+Notes
+========
+
+In the next version:
+* Support redirect on legal issues; see 50801
+* Don't ask population questions twice (see jail or prison)
 
