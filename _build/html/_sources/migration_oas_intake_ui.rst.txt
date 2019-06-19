@@ -371,6 +371,8 @@ The oas_triage_user module generates the default address form.  Other modules, a
 +----------------------------+----------------------------+------------------------------+
 | client_state               | text field                 | field for state              |
 +----------------------------+----------------------------+------------------------------+   
+| client_zipcode             | text field                 | field for zip code           |
++----------------------------+----------------------------+------------------------------+
 
 Form alters 
 ------------

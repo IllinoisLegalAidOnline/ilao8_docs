@@ -91,12 +91,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#triage-listing-api">Triage Listing API</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#financial-entity-api">Financial entity API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#financial-entities-api">Financial entities API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifications-reminders-api">Notifications &amp; Reminders API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#organization-api">Organization API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#location-api">Location API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-api">Legal Issues API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#intake-available-api">Intake available API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#online-intake-api">Online Intake API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legal-server-etransfer-apis">Legal Server eTransfer APIs</a></li>
 </ul>
 </li>
 </ul>
@@ -324,7 +326,7 @@ triage user</td>
 <td>Sets the current intake status of the triage user</td>
 </tr>
 <tr class="row-even"><td>get-intake-id</td>
-<td>SET</td>
+<td>POST</td>
 <td>Gets the intake settings ID associated with
 a triage user.  See also intake settings API</td>
 </tr>
@@ -338,7 +340,7 @@ a triage user.  See also intake settings API</td>
 <td>Gets the referral source for a triage user</td>
 </tr>
 <tr class="row-odd"><td>set-referral-source</td>
-<td>SET</td>
+<td>POST</td>
 <td>Sets the referral source for a triage user</td>
 </tr>
 <tr class="row-even"><td>get-lsc-code</td>
@@ -351,11 +353,11 @@ a triage user.  See also intake settings API</td>
 user</td>
 </tr>
 <tr class="row-even"><td>set-lsc-code</td>
-<td>SET</td>
+<td>POST</td>
 <td>Sets the LSC code associated with the triage user</td>
 </tr>
 <tr class="row-odd"><td>set-lsc-subcode</td>
-<td>SET</td>
+<td>POST</td>
 <td>Sets the LSC subcode associated with the triage
 user</td>
 </tr>
@@ -364,7 +366,7 @@ user</td>
 <td>Gets the county associated with the triage user</td>
 </tr>
 <tr class="row-odd"><td>set-triage-county</td>
-<td>SET</td>
+<td>POST</td>
 <td>Sets the county associated with the triage user</td>
 </tr>
 <tr class="row-even"><td>get-triage-state</td>
@@ -372,22 +374,302 @@ user</td>
 <td>Gets the state associated with the triage user</td>
 </tr>
 <tr class="row-odd"><td>set-triage-state</td>
-<td>SET</td>
+<td>POST</td>
 <td>Sets the state associated with the triage user</td>
+</tr>
+<tr class="row-even"><td>get-last-screen-viewed</td>
+<td>GET</td>
+<td>Gets the last screen viewed by the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-last-screen-viewed</td>
+<td>POST</td>
+<td>Sets the last screen viewed by the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-user-ip</td>
+<td>GET</td>
+<td>Gets the IP address of the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-user-ip</td>
+<td>POST</td>
+<td>Sets the IP address of the triage user</td>
+</tr>
+<tr class="row-even"><td>get-intake-notes</td>
+<td>GET</td>
+<td>Gets the intake notes for the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-intake-notes</td>
+<td>POST</td>
+<td>Sets the intake notes for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-gender</td>
+<td>GET</td>
+<td>Gets the gender for the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-gender</td>
+<td>POST</td>
+<td>Sets the gender for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-race</td>
+<td>GET</td>
+<td>Gets the race for the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-race</td>
+<td>POST</td>
+<td>Sets the race for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-ethnicity</td>
+<td>GET</td>
+<td>Gets the ethnicity for the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-ethnicity</td>
+<td>POST</td>
+<td>Sets the ethnicity for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-marital
+-status</td>
+<td>GET</td>
+<td>Gets the marital status for the triage user</td>
+</tr>
+<tr class="row-odd"><td>get-triage-marital
+-status</td>
+<td>POST</td>
+<td>Sets the marital status for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-citizenship</td>
+<td>GET</td>
+<td>Gets the citizenship for the triage user</td>
+</tr>
+<tr class="row-odd"><td>set-triage-citizenship</td>
+<td>POST</td>
+<td>Sets the citizenship for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-immigrant
+-status</td>
+<td>GET</td>
+<td>Gets the immigrant status for the triage user</td>
+</tr>
+<tr class="row-odd"><td>get-triage-immigrant
+-status</td>
+<td>GET</td>
+<td>Gets the immigrant status for the triage user</td>
+</tr>
+<tr class="row-even"><td>get-triage-user-age</td>
+<td>GET</td>
+<td>Gets the triage user’s age</td>
+</tr>
+<tr class="row-odd"><td>set-triage-user-age</td>
+<td>POST</td>
+<td>Sets the triage user’s age</td>
+</tr>
+<tr class="row-even"><td>get-triage-language</td>
+<td>GET</td>
+<td>Gets the triage user’s primary language</td>
+</tr>
+<tr class="row-odd"><td>set-triage-language</td>
+<td>POST</td>
+<td>Sets the triage user’s primary language</td>
+</tr>
+<tr class="row-even"><td>get-triage-country</td>
+<td>GET</td>
+<td>Gets the triage user’s country of origin</td>
+</tr>
+<tr class="row-odd"><td>set-triage-country</td>
+<td>POST</td>
+<td>Sets the triage user’s country of origin</td>
+</tr>
+<tr class="row-even"><td>get-financial-status</td>
+<td>GET</td>
+<td>Gets the triage user’s income status (over-income,
+over asset, etc)</td>
+</tr>
+<tr class="row-odd"><td>set-financial-status</td>
+<td>POST</td>
+<td>Sets the triage user’s income status (over-income,
+over asset, etc)</td>
+</tr>
+<tr class="row-even"><td>get-transfer-status</td>
+<td>GET</td>
+<td>Gets the etransfer status of a triage user entity</td>
+</tr>
+<tr class="row-odd"><td>set-transfer-status</td>
+<td>POST</td>
+<td>Sets the etransfer status of a triage user entity</td>
+</tr>
+<tr class="row-even"><td>get-transfer-failure
+-reason</td>
+<td>GET</td>
+<td>Gets the transfer failure reason of an application</td>
+</tr>
+<tr class="row-odd"><td>set-transfer-failure
+-reason</td>
+<td>POST</td>
+<td>Sets the transfer failure reason of an application</td>
+</tr>
+<tr class="row-even"><td>get-etransfer-data</td>
+<td>GET</td>
+<td>Gets the serialized data of an application</td>
+</tr>
+<tr class="row-odd"><td>set-etransfer-data</td>
+<td>POST</td>
+<td>Sets the serialized data of an application</td>
+</tr>
+<tr class="row-even"><td>get-triage-populations</td>
+<td>GET</td>
+<td>Gets any populations the user has identified as</td>
+</tr>
+<tr class="row-odd"><td>set-triage-populations</td>
+<td>POST</td>
+<td>Sets any populations the user has identified as</td>
+</tr>
+<tr class="row-even"><td>get-triage-populations</td>
+<td>GET</td>
+<td>Gets any populations the user has identified as</td>
+</tr>
+<tr class="row-odd"><td>get-triage-problem</td>
+<td>GET</td>
+<td>Gets the text of the user’s entered legal problem</td>
+</tr>
+<tr class="row-even"><td>set-triage-problem</td>
+<td>POST</td>
+<td>Sets the text of the user’s entered legal problem</td>
+</tr>
+<tr class="row-odd"><td>get-triage-problem-tree</td>
+<td>GET</td>
+<td>Gets the legal issue tree of the user’s entered
+legal problem</td>
+</tr>
+<tr class="row-even"><td>set-triage-problem-tree</td>
+<td>SET</td>
+<td>Sets the legal issue tree of the user’s entered
+legal problem</td>
 </tr>
 </tbody>
 </table>
 <div class="section" id="triage-listing-api">
 <h3>Triage Listing API<a class="headerlink" href="#triage-listing-api" title="Permalink to this headline">¶</a></h3>
+<p>Each of the triage listing API methods listed below will return the list of options from the OTIS taxonomy system and return them in JSON format.</p>
 <ul class="simple">
 <li>get-intake-statuses</li>
 <li>get-triage-statuses</li>
 <li>get-last-screens</li>
+<li>get-gender-list</li>
+<li>get-race-list</li>
+<li>get-ethnicity-list</li>
+<li>get-marital-status-list</li>
+<li>get-citizenship-list</li>
+<li>get-immigrant-status-list</li>
+<li>get-income-status</li>
 </ul>
 </div>
 </div>
-<div class="section" id="financial-entity-api">
-<h2>Financial entity API<a class="headerlink" href="#financial-entity-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="financial-entities-api">
+<h2>Financial entities API<a class="headerlink" href="#financial-entities-api" title="Permalink to this headline">¶</a></h2>
+<p>The financial entities include:</p>
+<ul class="simple">
+<li>income standards</li>
+<li>income, asset, and expense categories</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-income-standards</td>
+<td>GET</td>
+<td>Gets the list of income standard entities</td>
+</tr>
+<tr class="row-odd"><td>get-income-standard</td>
+<td>GET</td>
+<td>Gets an entire specified income standard</td>
+</tr>
+<tr class="row-even"><td>get-income-standard
+-household</td>
+<td>GET</td>
+<td>Get the income standard amount for a specified
+household size</td>
+</tr>
+<tr class="row-odd"><td>get-income-standard
+-additional-member</td>
+<td>GET</td>
+<td>Get the income standard amount to add for each
+family member over 8</td>
+</tr>
+<tr class="row-even"><td>get-income
+-subcategories</td>
+<td>GET</td>
+<td>Returns the list of subcategories under income</td>
+</tr>
+<tr class="row-odd"><td>get-income-items</td>
+<td>GET</td>
+<td>Returns the list of income items in a subcategory</td>
+</tr>
+<tr class="row-even"><td>get-expense
+-subcategories</td>
+<td>GET</td>
+<td>Returns the list of subcategories under expense</td>
+</tr>
+<tr class="row-odd"><td>get-expense-items</td>
+<td>GET</td>
+<td>Returns the list of expense items in a subcategory</td>
+</tr>
+<tr class="row-even"><td>get-asset
+-subcategories</td>
+<td>GET</td>
+<td>Returns the list of subcategories under asset</td>
+</tr>
+<tr class="row-odd"><td>get-asset -items</td>
+<td>GET</td>
+<td>Returns the list of asset items in a subcategory</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="notifications-reminders-api">
+<h2>Notifications &amp; Reminders API<a class="headerlink" href="#notifications-reminders-api" title="Permalink to this headline">¶</a></h2>
+<p>The manages notifications and reminders settings.  By design, this should work across entities (triage users, Drupal users, for example) by requiring parameters for:</p>
+<ul class="simple">
+<li>entity type</li>
+<li>entity id</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-sms-opt-in-status</td>
+<td>GET</td>
+<td>Gets the opt in status.</td>
+</tr>
+<tr class="row-odd"><td>set-sms-opt-in-status</td>
+<td>POST</td>
+<td>Sets the opt in status.</td>
+</tr>
+<tr class="row-even"><td>get-mobile-phone</td>
+<td>GET</td>
+<td>Gets the phone associated with the entity</td>
+</tr>
+<tr class="row-odd"><td>set-mobile-phone</td>
+<td>POST</td>
+<td>Gets the phone associated with the entity</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="referral-history-api">
 <h2>Referral History API<a class="headerlink" href="#referral-history-api" title="Permalink to this headline">¶</a></h2>
@@ -543,11 +825,30 @@ by service id.</td>
 <td>GET</td>
 <td>Returns legal issues based on a node ID</td>
 </tr>
+<tr class="row-odd"><td>get-legal-issue-text</td>
+<td>GET</td>
+<td>Accepts text and translates it to one or more
+legal issues</td>
+</tr>
+<tr class="row-even"><td>get-legal-issues-tree</td>
+<td>GET</td>
+<td>Loads the legal issues tree for a specific term</td>
+</tr>
+<tr class="row-odd"><td>get-legal-issue-parents</td>
+<td>GET</td>
+<td>Returns the parent terms of a specific term</td>
+</tr>
+<tr class="row-even"><td>get-legal-issue
+-children</td>
+<td>GET</td>
+<td>Returns the child terms of a specific term</td>
+</tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="intake-available-api">
-<h2>Intake available API<a class="headerlink" href="#intake-available-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="online-intake-api">
+<h2>Online Intake API<a class="headerlink" href="#online-intake-api" title="Permalink to this headline">¶</a></h2>
+<p>Intake settings</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
@@ -561,9 +862,294 @@ by service id.</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>is-intake-available</td>
+<tr class="row-even"><td>get-intake-settings</td>
+<td>GET</td>
+<td>Gets the intake settings entity based on ID</td>
+</tr>
+<tr class="row-odd"><td>save-intake-settings</td>
+<td>POST</td>
+<td>Saves an intake settings entity</td>
+</tr>
+</tbody>
+</table>
+<p>Intake/Triage User Integration</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-is-intake-available</td>
 <td>GET</td>
 <td>Determines if online intake is available</td>
+</tr>
+<tr class="row-odd"><td>get-user-callback-type</td>
+<td>GET</td>
+<td>Loads the callback type for a specific intake</td>
+</tr>
+<tr class="row-even"><td>set-user-callback-type</td>
+<td>POST</td>
+<td>Sets the callback type for a specific intake</td>
+</tr>
+<tr class="row-odd"><td>get-client-first-name</td>
+<td>GET</td>
+<td>Gets the client’s first name</td>
+</tr>
+<tr class="row-even"><td>set-client-first-name</td>
+<td>POST</td>
+<td>Sets the client’s first name</td>
+</tr>
+<tr class="row-odd"><td>get-client-middle-name</td>
+<td>GET</td>
+<td>Gets the client’s middle name</td>
+</tr>
+<tr class="row-even"><td>set-client-middle-name</td>
+<td>POST</td>
+<td>Sets the client’s middle name</td>
+</tr>
+<tr class="row-odd"><td>get-client-last-name</td>
+<td>GET</td>
+<td>Gets the client’s last name</td>
+</tr>
+<tr class="row-even"><td>set-client-last-name</td>
+<td>POST</td>
+<td>Sets the client’s last name</td>
+</tr>
+<tr class="row-odd"><td>get-client-maiden-name</td>
+<td>GET</td>
+<td>Gets the client’s maiden name</td>
+</tr>
+<tr class="row-even"><td>set-client-maiden-name</td>
+<td>POST</td>
+<td>Sets the client’s maiden name</td>
+</tr>
+<tr class="row-odd"><td>get-client-nickname</td>
+<td>GET</td>
+<td>Gets the client’s nickname</td>
+</tr>
+<tr class="row-even"><td>set-client-nickname</td>
+<td>POST</td>
+<td>Sets the client’s nickname</td>
+</tr>
+<tr class="row-odd"><td>get-client-dob</td>
+<td>GET</td>
+<td>Gets the client’s date of birth</td>
+</tr>
+<tr class="row-even"><td>set-client-dob</td>
+<td>POST</td>
+<td>Sets the client’s date of birth</td>
+</tr>
+<tr class="row-odd"><td>calculate-client-age</td>
+<td>POST</td>
+<td>Returns an integer based on a date of birth</td>
+</tr>
+<tr class="row-even"><td>calculate-minor-age</td>
+<td>POST</td>
+<td>Returns a boolean for user is too young to apply
+online based on program rules</td>
+</tr>
+<tr class="row-odd"><td>calculate-senior-age</td>
+<td>POST</td>
+<td>Returns a boolean indicator of whether the user is
+or is not a senior based on program rules</td>
+</tr>
+<tr class="row-even"><td>get-is-current-client</td>
+<td>GET</td>
+<td>Gets whether the user is a current client of
+partner org for the specific problem</td>
+</tr>
+<tr class="row-odd"><td>set-is-current-client</td>
+<td>POST</td>
+<td>Sets boolean based on whether user is a current
+client of partner org for the specific problem</td>
+</tr>
+<tr class="row-even"><td>get-is-current-client
+-different</td>
+<td>GET</td>
+<td>Gets whether the user is a current client of
+partner org for a different problem</td>
+</tr>
+<tr class="row-odd"><td>set-is-current-client
+-different</td>
+<td>POST</td>
+<td>Sets boolean based on whether user is a current
+client of partner org for a different problem</td>
+</tr>
+<tr class="row-even"><td>get-is-new-client
+-different</td>
+<td>GET</td>
+<td>Gets whether the user has never been a client of
+partner org</td>
+</tr>
+<tr class="row-odd"><td>set-is-current-client
+-different</td>
+<td>POST</td>
+<td>Sets boolean based on whether user has never
+been a client of partner org</td>
+</tr>
+<tr class="row-even"><td>get-client-prisoner</td>
+<td>GET</td>
+<td>Gets whether the user has indicated that they are
+in jail or prison</td>
+</tr>
+<tr class="row-odd"><td>set-client-prisoner</td>
+<td>POST</td>
+<td>Sets whether the user has indicated that they are
+in jail or prison</td>
+</tr>
+<tr class="row-even"><td>get-client-phone</td>
+<td>GET</td>
+<td>Gets the client phone number</td>
+</tr>
+<tr class="row-odd"><td>get-client-phone-type</td>
+<td>GET</td>
+<td>Gets the client phone type</td>
+</tr>
+<tr class="row-even"><td>get-client-email</td>
+<td>GET</td>
+<td>Gets the client email address</td>
+</tr>
+<tr class="row-odd"><td>get-client-street-1</td>
+<td>GET</td>
+<td>Get the clients street address, line 1</td>
+</tr>
+<tr class="row-even"><td>get-client-street-2</td>
+<td>GET</td>
+<td>Get the clients street address, line 2</td>
+</tr>
+<tr class="row-odd"><td>get-client-city</td>
+<td>GET</td>
+<td>Get client’s entered city</td>
+</tr>
+<tr class="row-even"><td>get-client-state</td>
+<td>GET</td>
+<td>Get client’s entered state</td>
+</tr>
+<tr class="row-odd"><td>get-client-zipcode</td>
+<td>GET</td>
+<td>Gets client’s entered zip code</td>
+</tr>
+<tr class="row-even"><td>set-client-phone</td>
+<td>POST</td>
+<td>Sets the client phone number</td>
+</tr>
+<tr class="row-odd"><td>set-client-phone-type</td>
+<td>POST</td>
+<td>Sets the client phone type</td>
+</tr>
+<tr class="row-even"><td>set-client-email</td>
+<td>POST</td>
+<td>Sets the client email address</td>
+</tr>
+<tr class="row-odd"><td>set-client-street-1</td>
+<td>POST</td>
+<td>Set the clients street address, line 1</td>
+</tr>
+<tr class="row-even"><td>set-client-street-2</td>
+<td>POST</td>
+<td>Set the clients street address, line 2</td>
+</tr>
+<tr class="row-odd"><td>set-client-city</td>
+<td>POST</td>
+<td>Set client’s entered city</td>
+</tr>
+<tr class="row-even"><td>set-client-state</td>
+<td>POST</td>
+<td>Set client’s entered state</td>
+</tr>
+<tr class="row-odd"><td>set-client-zipcode</td>
+<td>POST</td>
+<td>Sets client’s entered zip code</td>
+</tr>
+<tr class="row-even"><td>calculate-total-income</td>
+<td>POST</td>
+<td>Given collected income, returns total income</td>
+</tr>
+<tr class="row-odd"><td>calculate-total-assets</td>
+<td>POST</td>
+<td>Given collected assets, returns total assets</td>
+</tr>
+<tr class="row-even"><td>calculate-countable
+-assets</td>
+<td>POST</td>
+<td>Given asset information, calculates countable
+assets after excluding any exemptions</td>
+</tr>
+<tr class="row-odd"><td>calculate-countable
+-income</td>
+<td>POST</td>
+<td>Given income information, calculates countable
+income after deducting expenses</td>
+</tr>
+<tr class="row-even"><td>calculate-total
+-expenses</td>
+<td>POST</td>
+<td>Given collected expenses, returns total expenses</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), and any population they may be a member of.</p>
+</div>
+</div>
+<div class="section" id="legal-server-etransfer-apis">
+<h2>Legal Server eTransfer APIs<a class="headerlink" href="#legal-server-etransfer-apis" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>generate-ls-xml-data</td>
+<td>POST</td>
+<td>Generates XML data from a triage user entity</td>
+</tr>
+<tr class="row-odd"><td>get-ls-organization</td>
+<td>POST</td>
+<td>Given an intake settings, return the correct Legal
+Server organization name</td>
+</tr>
+<tr class="row-even"><td>get-ls-problem-code</td>
+<td>POST</td>
+<td>Given a triage user, get the Legal Server problem
+code from mappings</td>
+</tr>
+<tr class="row-odd"><td>get-ls-external-id</td>
+<td>POST</td>
+<td>Given a triage user, generate a unique ID for
+Legal Server</td>
+</tr>
+<tr class="row-even"><td>send-to-legal-server</td>
+<td>POST</td>
+<td>Sends an eTransfer to Legal Server</td>
+</tr>
+<tr class="row-odd"><td>get-legal-server
+-endpoint</td>
+<td>GET</td>
+<td>Gets the Legal Server endpoint for eTransfer</td>
+</tr>
+<tr class="row-even"><td>get-transfer-status</td>
+<td>GET</td>
+<td>Loads the triage user transfer status</td>
+</tr>
+<tr class="row-odd"><td>set-transfer-status</td>
+<td>POST</td>
+<td>Updates the triage user transfer status</td>
 </tr>
 </tbody>
 </table>

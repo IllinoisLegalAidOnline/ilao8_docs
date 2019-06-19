@@ -180,6 +180,7 @@ The install hook(s) add a number of fields and field instances upon installation
 
 .. warning::
    field_triage_referrals_given and oas_referrals should be removed from the Drupal 8 module.
+   Also the field_triage_problem stores the term reference SELECTED by the user without capturing a full hierarchy while field_triage_search stores the actual text or taxonomy term depending on what was entered. 
 
  
 Taxonomies
