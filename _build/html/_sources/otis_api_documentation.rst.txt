@@ -257,6 +257,9 @@ The financial entities include:
 
 Notifications & Reminders API
 ==============================
+
+Contact API
+--------------
 The manages notifications and reminders settings.  By design, this should work across entities (triage users, Drupal users, for example) by requiring parameters for:
 
 * entity type
@@ -274,6 +277,33 @@ The manages notifications and reminders settings.  By design, this should work a
 | set-mobile-phone       | POST     | Gets the phone associated with the entity         |
 +------------------------+----------+---------------------------------------------------+
 
+Reminder API
+----------------
+The reminder API sends, logs, and provides report data:
+
+* Confirmation messages upon completing an online application
+* Appointment reminders
+
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
+| build-confirmation-msg | POST     | Builds the confirmation message                   |
++------------------------+----------+---------------------------------------------------+
+| build-app-reminder     | POST     | Builds an appointment reminder                    |
++------------------------+----------+---------------------------------------------------+
+| send-SMS-message       | POST     | Sends an SMS message of confirmation or           |
+|                        |          | reminder type                                     |
++------------------------+----------+---------------------------------------------------+
+| send-mail-message      | POST     | Sends an email message of confimation or          |
+|                        |          | reminder type                                     |
++------------------------+----------+---------------------------------------------------+
+| save-SMS-message       | POST     | Saves an sms message record                       |
++------------------------+----------+---------------------------------------------------+
+| save-mail-message      | POST     | Saves a record of sent mail                       |
++------------------------+----------+---------------------------------------------------+
+| get-messages           | GET      | Gets messages; allows for parameters for date,    |
+|                        |          | type, format                                      |
++------------------------+----------+---------------------------------------------------+
 
 
 
@@ -369,6 +399,7 @@ Online Intake API
 ======================
 
 Intake settings
+-----------------
 
 +------------------------+----------+---------------------------------------------------+
 | Endpoint               | Method   | Description                                       |
@@ -377,12 +408,226 @@ Intake settings
 +------------------------+----------+---------------------------------------------------+
 | save-intake-settings   | POST     | Saves an intake settings entity                   |
 +------------------------+----------+---------------------------------------------------+
+| get-is-created         | GET      | Gets the created date for an intake settings      |
++------------------------+----------+---------------------------------------------------+
+| get-is-changed         | GET      | Gets the last updated date for an intake settings |
++------------------------+----------+---------------------------------------------------+
+| set-is-created         | POST     | Sets the created date for an intake settings      |
++------------------------+----------+---------------------------------------------------+
+| set-is-changed         | POST     | Sets the last updated date for an intake settings |
++------------------------+----------+---------------------------------------------------+
+| get-is-author          | GET      | Gets the author user id of an intake settings     |
++------------------------+----------+---------------------------------------------------+
+| set-is-author          | POST     | Sets the author user id of an intake settings     |
++------------------------+----------+---------------------------------------------------+
+| get-is-current-count   | GET      | Gets the current count for an intake settings     |
++------------------------+----------+---------------------------------------------------+
+| increment-is-current-  | POST     | Increments the current count of an intake setting |
+| -count                 |          | by one                                            |
++------------------------+----------+---------------------------------------------------+
+| reset-is-current-count | POST     | Resets intake current count to zero               |
++------------------------+----------+---------------------------------------------------+
+| get-is-status          | GET      | Gets the current status (open/closed) for an      |
+|                        |          | intake settings                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-status          | POST     | Sets the current status for an intake settings    |
++------------------------+----------+---------------------------------------------------+
+| get-collect-marital-   | GET      | Gets whether we collect marital status            |
+| status                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-collect-marital-   | POST     | Updates whether we collect marital status         |
+| status                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-collect-immigration| GET      | Gets whether we collect immigration               |
++------------------------+----------+---------------------------------------------------+
+| set-collect-immigration| POST     | Sets whether we collect immigration               |
++------------------------+----------+---------------------------------------------------+
+| get-collect-citizenship| GET      | Gets whether we collect citizenship               |
++------------------------+----------+---------------------------------------------------+
+| set-collect-citizenship| POST     | Sets whether we collect citizenship               |
++------------------------+----------+---------------------------------------------------+
+| get-collect-country    | GET      | Gets whether we collect country of origin         |
++------------------------+----------+---------------------------------------------------+
+| set-collect-country    | POST     | Sets whether we collect country of origin         |
++------------------------+----------+---------------------------------------------------+
+| get-collect-language   | GET      | Gets whether we collect language spoken at home   |
++------------------------+----------+---------------------------------------------------+
+| set-collect-language   | POST     | Sets whether we collect language spoken at home   |
++------------------------+----------+---------------------------------------------------+
+| get-collect-race       | GET      | Gets whether we collect race                      |
++------------------------+----------+---------------------------------------------------+
+| set-collect-race       | POST     | Sets whether we collect race                      |
++------------------------+----------+---------------------------------------------------+
+| get-collect-ethnicity  | GET      | Gets whether we collect ethnicity                 |
++------------------------+----------+---------------------------------------------------+
+| set-collect-ethnicity  | POST     | Sets whether we collect ethnicity                 |
++------------------------+----------+---------------------------------------------------+
+| get-collect-income     | GET      | Gets whether we collect income information        |
++------------------------+----------+---------------------------------------------------+
+| set-collect-income     | POST     | Sets whether we collect income information        |
++------------------------+----------+---------------------------------------------------+
+| get-is-income-types    | GET      | Gets types of income we collect                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-income-types    | POST     | Sets types of income we collect                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-asset-types     | GET      | Gets types of assets we collect                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-asset-types     | POST     | Sets types of assets we collect                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-expense-types   | GET      | Gets types of expenses we collect                 |
++------------------------+----------+---------------------------------------------------+
+| set-is-expense-types   | POST     | Sets types of expenses we collect                 |
++------------------------+----------+---------------------------------------------------+
+| get-is-apply-income-   | GET      | Gets whether we apply an income limit             |
+| limit                  |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-apply-income-   | POST     | Sets whether we apply an income limit             |
+| limit                  |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-apply-asset-    | GET      | Gets whether we apply an asset limit              |
+| limit                  |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-apply-asset-    | POST     | Sets whether we apply an asset limit              |
+| limit                  |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-max-income-     | GET      | Gets maximum income percentage                    |
+| allowed                |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-max-income-     | POST     | Sets maximum income percentage                    |
+| allowed                |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-income-standard | GET      | Gets income standard to apply                     |
++------------------------+----------+---------------------------------------------------+
+| set-is-income-standard | POST     | Sets income standard to apply                     |
++------------------------+----------+---------------------------------------------------+
+| get-is-max-allowed-    | GET      | Gets the maximum assets allowed                   |
+| assets                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-max-allowed-    | POST     | Sets the maximum assets allowed                   |
+| assets                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-personal-       | GET      | Gets the amount of any personal exemption         |
+| exemption              |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-personal-       | POST     | Sets the amount of any personal exemption         |
+| exemption              |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-intake-limit       | GET      | Gets the intake limit                             |
++------------------------+----------+---------------------------------------------------+
+| set-intake-limit       | POST     | Sets the intake limit                             |
++------------------------+----------+---------------------------------------------------+
+| get-intake-reset-      | GET      | Gets the intake reset frequency                   |
+| frequency              |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-intake-reset-      | POST     | Sets the intake reset frequency                   |
+| frequency              |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-minimum-age        | GET      | Gets the minimum age to apply                     |
++------------------------+----------+---------------------------------------------------+
+| set-minimum-age        | POST     | Gets the minimum age to apply                     |
++------------------------+----------+---------------------------------------------------+
+| get-senior-age         | GET      | Gets the minimum age to be considered a senior    |
++------------------------+----------+---------------------------------------------------+
+| set-senior-age         | POST     | Sets the minimum age to be considered a senior    |
++------------------------+----------+---------------------------------------------------+
+| get-callback-number    | GET      | Get intake callback number                        |
++------------------------+----------+---------------------------------------------------+
+| set-callback-number    | POST     | Set intake callback number                        |
++------------------------+----------+---------------------------------------------------+
+| get-callback-type      | GET      | Get default callback type                         |
++------------------------+----------+---------------------------------------------------+
+| set-callback-type      | POST     | Set default callback type                         |
++------------------------+----------+---------------------------------------------------+
+| get-is-household-      | GET      | Gets the household definition for the settings    |
+| definition             |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-household-      | POST     | Sets the household definition for the settings    |
+| definition             |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-is-msg-already     | GET      | Gets the message for when a user has already      |
+| applied                |          | applied                                           |
++------------------------+----------+---------------------------------------------------+
+| set-is-msg-already     | POST     | Sets the message for when a user has already      |
+| applied                |          | applied                                           |
++------------------------+----------+---------------------------------------------------+
+| get-is-msg-current     | GET      | Gets the message for when a user is already a     |
+| client                 |          | client with this problem                          |
++------------------------+----------+---------------------------------------------------+
+| set-is-msg-current     | POST     | Sets the message for when a user has already      |
+| client                 |          | applied                                           |
++------------------------+----------+---------------------------------------------------+
+| get-is-msg-we-call-you | GET      | Gets message for when user is told program calls  |
++------------------------+----------+---------------------------------------------------+
+| set-is-msg-we-call-you | POST     | Sets message for when user is told program calls  |
++------------------------+----------+---------------------------------------------------+
+| get-is-msg-please-call | GET      | Gets message for when user is told to call        |
++------------------------+----------+---------------------------------------------------+
+| set-is-msg-please-call | POST     | Sets message for when user is told to call        |
++------------------------+----------+---------------------------------------------------+
+| get-is-msg-bypass      | GET      | Gets message for when user is to bypass intake    |
++------------------------+----------+---------------------------------------------------+
+| set-is-msg-bypass      | POST     | Sets message for when user is to bypass intake    |
++------------------------+----------+---------------------------------------------------+
+| get-is-msg-disclaimer  | GET      | Gets program disclaimer message                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-msg-disclaimer  | POST     | Sets program discmailer message                   |
++------------------------+----------+---------------------------------------------------+
+| get-help-marital-status| GET      | Gets the help text for asking for marital status  |
++------------------------+----------+---------------------------------------------------+
+| set-help-marital-status| POST     | Sets the help text for asking for marital status  |
++------------------------+----------+---------------------------------------------------+
+| get-help-immigration-  | GET      | Gets the help text for asking immigration status  |
+| status                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-help-immigration-  | POST     | Sets the help text for asking immigration status  |
+| status                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-help-citizenship-  | GET      | Gets the help text for asking citizenship status  |
+| status                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-help-citizenship-  | POST     | Sets the help text for asking citizenship status  |
+| status                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-help-language      | GET      | Gets the help text for asking language            |
++------------------------+----------+---------------------------------------------------+
+| set-help-language      | POST     | Sets the help text for asking language            |
++------------------------+----------+---------------------------------------------------+
+| get-help-race          | GET      | Gets the help text for asking race                |
++------------------------+----------+---------------------------------------------------+
+| set-help-race          | POST     | Sets the help text for asking race                |
++------------------------+----------+---------------------------------------------------+
+| get-help-gender        | GET      | Gets the help text for asking gender              |
++------------------------+----------+---------------------------------------------------+
+| set-help-gender        | POST     | Sets the help text for asking gender              |
++------------------------+----------+---------------------------------------------------+
+| get-help-ethnicity     | GET      | Gets the help text for asking ethnicity           |
++------------------------+----------+---------------------------------------------------+
+| set-help-ethnicity     | POST     | Sets the help text for asking ethnicity           |
++------------------------+----------+---------------------------------------------------+
+| get-waived-populations | GET      | Gets populations for whom income is waived        |
++------------------------+----------+---------------------------------------------------+
+| set-waived-populations | POST     | Sets populations for whom income is waived        |
++------------------------+----------+---------------------------------------------------+
+| get-is-legal-issues    | GET      | Gets the legal issues for an intake settings      |
++------------------------+----------+---------------------------------------------------+
+| set-is-legal-issues    | POST     | Sets the legal issues for an intake settings      |
++------------------------+----------+---------------------------------------------------+
+| get-is-service-area    | GET      | Gets the service area for an intake settings      |
++------------------------+----------+---------------------------------------------------+
+| set-is-service-area    | POST     | Sets the service area for an intake settings      |
++------------------------+----------+---------------------------------------------------+
+| get-is-callback-hours- | GET      | Gets the callback hours for a specific day        |
+| by-day                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| set-is-callback-hours- | POST     | Sets the callback hours for a specific day        |
+| by-day                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
 
-.. todo:  
-   need getters/setters for entity properties and fields
 
-Intake/Triage User Integration
 
+
+Intake Application Integration
+-------------------------------
 
 +------------------------+----------+---------------------------------------------------+
 | Endpoint               | Method   | Description                                       |
@@ -449,6 +694,14 @@ Intake/Triage User Integration
 | set-client-prisoner    | POST     | Sets whether the user has indicated that they are |
 |                        |          | in jail or prison                                 |
 +------------------------+----------+---------------------------------------------------+ 
+| get-veteran-status     | GET      | Gets the user's veteran status                    |
++------------------------+----------+---------------------------------------------------+
+| set-veteran-status     | POST     | Sets the user's veteran status                    |
++------------------------+----------+---------------------------------------------------+
+| get-homeless-status    | GET      | Gets the user's homeless status                   |
++------------------------+----------+---------------------------------------------------+
+| set-homeless-status    | POST     | Sets the user's homeless status                   |
++------------------------+----------+---------------------------------------------------+
 | get-client-phone       | GET      | Gets the client phone number                      |
 +------------------------+----------+---------------------------------------------------+ 
 | get-client-phone-type  | GET      | Gets the client phone type                        |
@@ -494,6 +747,11 @@ Intake/Triage User Integration
 | calculate-total        | POST     | Given collected expenses, returns total expenses  |
 | -expenses              |          |                                                   |
 +------------------------+----------+---------------------------------------------------+
+| load-callback-times    | GET      | Loads available callback times for a day or days  |
++------------------------+----------+---------------------------------------------------+
+
+
+
 
 
 .. note:: 

@@ -92,12 +92,20 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#financial-entities-api">Financial entities API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#notifications-reminders-api">Notifications &amp; Reminders API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifications-reminders-api">Notifications &amp; Reminders API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contact-api">Contact API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reminder-api">Reminder API</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#organization-api">Organization API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#location-api">Location API</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-api">Legal Issues API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#online-intake-api">Online Intake API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#online-intake-api">Online Intake API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#intake-settings">Intake settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#intake-application-integration">Intake Application Integration</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-server-etransfer-apis">Legal Server eTransfer APIs</a></li>
 </ul>
 </li>
@@ -634,6 +642,8 @@ family member over 8</td>
 </div>
 <div class="section" id="notifications-reminders-api">
 <h2>Notifications &amp; Reminders API<a class="headerlink" href="#notifications-reminders-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="contact-api">
+<h3>Contact API<a class="headerlink" href="#contact-api" title="Permalink to this headline">¶</a></h3>
 <p>The manages notifications and reminders settings.  By design, this should work across entities (triage users, Drupal users, for example) by requiring parameters for:</p>
 <ul class="simple">
 <li>entity type</li>
@@ -670,6 +680,61 @@ family member over 8</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="reminder-api">
+<h3>Reminder API<a class="headerlink" href="#reminder-api" title="Permalink to this headline">¶</a></h3>
+<p>The reminder API sends, logs, and provides report data:</p>
+<ul class="simple">
+<li>Confirmation messages upon completing an online application</li>
+<li>Appointment reminders</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>build-confirmation-msg</td>
+<td>POST</td>
+<td>Builds the confirmation message</td>
+</tr>
+<tr class="row-odd"><td>build-app-reminder</td>
+<td>POST</td>
+<td>Builds an appointment reminder</td>
+</tr>
+<tr class="row-even"><td>send-SMS-message</td>
+<td>POST</td>
+<td>Sends an SMS message of confirmation or
+reminder type</td>
+</tr>
+<tr class="row-odd"><td>send-mail-message</td>
+<td>POST</td>
+<td>Sends an email message of confimation or
+reminder type</td>
+</tr>
+<tr class="row-even"><td>save-SMS-message</td>
+<td>POST</td>
+<td>Saves an sms message record</td>
+</tr>
+<tr class="row-odd"><td>save-mail-message</td>
+<td>POST</td>
+<td>Saves a record of sent mail</td>
+</tr>
+<tr class="row-even"><td>get-messages</td>
+<td>GET</td>
+<td>Gets messages; allows for parameters for date,
+type, format</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div class="section" id="referral-history-api">
 <h2>Referral History API<a class="headerlink" href="#referral-history-api" title="Permalink to this headline">¶</a></h2>
@@ -848,7 +913,8 @@ legal issues</td>
 </div>
 <div class="section" id="online-intake-api">
 <h2>Online Intake API<a class="headerlink" href="#online-intake-api" title="Permalink to this headline">¶</a></h2>
-<p>Intake settings</p>
+<div class="section" id="intake-settings">
+<h3>Intake settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
@@ -870,9 +936,416 @@ legal issues</td>
 <td>POST</td>
 <td>Saves an intake settings entity</td>
 </tr>
+<tr class="row-even"><td>get-is-created</td>
+<td>GET</td>
+<td>Gets the created date for an intake settings</td>
+</tr>
+<tr class="row-odd"><td>get-is-changed</td>
+<td>GET</td>
+<td>Gets the last updated date for an intake settings</td>
+</tr>
+<tr class="row-even"><td>set-is-created</td>
+<td>POST</td>
+<td>Sets the created date for an intake settings</td>
+</tr>
+<tr class="row-odd"><td>set-is-changed</td>
+<td>POST</td>
+<td>Sets the last updated date for an intake settings</td>
+</tr>
+<tr class="row-even"><td>get-is-author</td>
+<td>GET</td>
+<td>Gets the author user id of an intake settings</td>
+</tr>
+<tr class="row-odd"><td>set-is-author</td>
+<td>POST</td>
+<td>Sets the author user id of an intake settings</td>
+</tr>
+<tr class="row-even"><td>get-is-current-count</td>
+<td>GET</td>
+<td>Gets the current count for an intake settings</td>
+</tr>
+<tr class="row-odd"><td>increment-is-current-
+-count</td>
+<td>POST</td>
+<td>Increments the current count of an intake setting
+by one</td>
+</tr>
+<tr class="row-even"><td>reset-is-current-count</td>
+<td>POST</td>
+<td>Resets intake current count to zero</td>
+</tr>
+<tr class="row-odd"><td>get-is-status</td>
+<td>GET</td>
+<td>Gets the current status (open/closed) for an
+intake settings</td>
+</tr>
+<tr class="row-even"><td>set-is-status</td>
+<td>POST</td>
+<td>Sets the current status for an intake settings</td>
+</tr>
+<tr class="row-odd"><td>get-collect-marital-
+status</td>
+<td>GET</td>
+<td>Gets whether we collect marital status</td>
+</tr>
+<tr class="row-even"><td>set-collect-marital-
+status</td>
+<td>POST</td>
+<td>Updates whether we collect marital status</td>
+</tr>
+<tr class="row-odd"><td>get-collect-immigration</td>
+<td>GET</td>
+<td>Gets whether we collect immigration</td>
+</tr>
+<tr class="row-even"><td>set-collect-immigration</td>
+<td>POST</td>
+<td>Sets whether we collect immigration</td>
+</tr>
+<tr class="row-odd"><td>get-collect-citizenship</td>
+<td>GET</td>
+<td>Gets whether we collect citizenship</td>
+</tr>
+<tr class="row-even"><td>set-collect-citizenship</td>
+<td>POST</td>
+<td>Sets whether we collect citizenship</td>
+</tr>
+<tr class="row-odd"><td>get-collect-country</td>
+<td>GET</td>
+<td>Gets whether we collect country of origin</td>
+</tr>
+<tr class="row-even"><td>set-collect-country</td>
+<td>POST</td>
+<td>Sets whether we collect country of origin</td>
+</tr>
+<tr class="row-odd"><td>get-collect-language</td>
+<td>GET</td>
+<td>Gets whether we collect language spoken at home</td>
+</tr>
+<tr class="row-even"><td>set-collect-language</td>
+<td>POST</td>
+<td>Sets whether we collect language spoken at home</td>
+</tr>
+<tr class="row-odd"><td>get-collect-race</td>
+<td>GET</td>
+<td>Gets whether we collect race</td>
+</tr>
+<tr class="row-even"><td>set-collect-race</td>
+<td>POST</td>
+<td>Sets whether we collect race</td>
+</tr>
+<tr class="row-odd"><td>get-collect-ethnicity</td>
+<td>GET</td>
+<td>Gets whether we collect ethnicity</td>
+</tr>
+<tr class="row-even"><td>set-collect-ethnicity</td>
+<td>POST</td>
+<td>Sets whether we collect ethnicity</td>
+</tr>
+<tr class="row-odd"><td>get-collect-income</td>
+<td>GET</td>
+<td>Gets whether we collect income information</td>
+</tr>
+<tr class="row-even"><td>set-collect-income</td>
+<td>POST</td>
+<td>Sets whether we collect income information</td>
+</tr>
+<tr class="row-odd"><td>get-is-income-types</td>
+<td>GET</td>
+<td>Gets types of income we collect</td>
+</tr>
+<tr class="row-even"><td>set-is-income-types</td>
+<td>POST</td>
+<td>Sets types of income we collect</td>
+</tr>
+<tr class="row-odd"><td>get-is-asset-types</td>
+<td>GET</td>
+<td>Gets types of assets we collect</td>
+</tr>
+<tr class="row-even"><td>set-is-asset-types</td>
+<td>POST</td>
+<td>Sets types of assets we collect</td>
+</tr>
+<tr class="row-odd"><td>get-is-expense-types</td>
+<td>GET</td>
+<td>Gets types of expenses we collect</td>
+</tr>
+<tr class="row-even"><td>set-is-expense-types</td>
+<td>POST</td>
+<td>Sets types of expenses we collect</td>
+</tr>
+<tr class="row-odd"><td>get-is-apply-income-
+limit</td>
+<td>GET</td>
+<td>Gets whether we apply an income limit</td>
+</tr>
+<tr class="row-even"><td>set-is-apply-income-
+limit</td>
+<td>POST</td>
+<td>Sets whether we apply an income limit</td>
+</tr>
+<tr class="row-odd"><td>get-is-apply-asset-
+limit</td>
+<td>GET</td>
+<td>Gets whether we apply an asset limit</td>
+</tr>
+<tr class="row-even"><td>set-is-apply-asset-
+limit</td>
+<td>POST</td>
+<td>Sets whether we apply an asset limit</td>
+</tr>
+<tr class="row-odd"><td>get-is-max-income-
+allowed</td>
+<td>GET</td>
+<td>Gets maximum income percentage</td>
+</tr>
+<tr class="row-even"><td>set-is-max-income-
+allowed</td>
+<td>POST</td>
+<td>Sets maximum income percentage</td>
+</tr>
+<tr class="row-odd"><td>get-is-income-standard</td>
+<td>GET</td>
+<td>Gets income standard to apply</td>
+</tr>
+<tr class="row-even"><td>set-is-income-standard</td>
+<td>POST</td>
+<td>Sets income standard to apply</td>
+</tr>
+<tr class="row-odd"><td>get-is-max-allowed-
+assets</td>
+<td>GET</td>
+<td>Gets the maximum assets allowed</td>
+</tr>
+<tr class="row-even"><td>set-is-max-allowed-
+assets</td>
+<td>POST</td>
+<td>Sets the maximum assets allowed</td>
+</tr>
+<tr class="row-odd"><td>get-is-personal-
+exemption</td>
+<td>GET</td>
+<td>Gets the amount of any personal exemption</td>
+</tr>
+<tr class="row-even"><td>set-is-personal-
+exemption</td>
+<td>POST</td>
+<td>Sets the amount of any personal exemption</td>
+</tr>
+<tr class="row-odd"><td>get-intake-limit</td>
+<td>GET</td>
+<td>Gets the intake limit</td>
+</tr>
+<tr class="row-even"><td>set-intake-limit</td>
+<td>POST</td>
+<td>Sets the intake limit</td>
+</tr>
+<tr class="row-odd"><td>get-intake-reset-
+frequency</td>
+<td>GET</td>
+<td>Gets the intake reset frequency</td>
+</tr>
+<tr class="row-even"><td>set-intake-reset-
+frequency</td>
+<td>POST</td>
+<td>Sets the intake reset frequency</td>
+</tr>
+<tr class="row-odd"><td>get-minimum-age</td>
+<td>GET</td>
+<td>Gets the minimum age to apply</td>
+</tr>
+<tr class="row-even"><td>set-minimum-age</td>
+<td>POST</td>
+<td>Gets the minimum age to apply</td>
+</tr>
+<tr class="row-odd"><td>get-senior-age</td>
+<td>GET</td>
+<td>Gets the minimum age to be considered a senior</td>
+</tr>
+<tr class="row-even"><td>set-senior-age</td>
+<td>POST</td>
+<td>Sets the minimum age to be considered a senior</td>
+</tr>
+<tr class="row-odd"><td>get-callback-number</td>
+<td>GET</td>
+<td>Get intake callback number</td>
+</tr>
+<tr class="row-even"><td>set-callback-number</td>
+<td>POST</td>
+<td>Set intake callback number</td>
+</tr>
+<tr class="row-odd"><td>get-callback-type</td>
+<td>GET</td>
+<td>Get default callback type</td>
+</tr>
+<tr class="row-even"><td>set-callback-type</td>
+<td>POST</td>
+<td>Set default callback type</td>
+</tr>
+<tr class="row-odd"><td>get-is-household-
+definition</td>
+<td>GET</td>
+<td>Gets the household definition for the settings</td>
+</tr>
+<tr class="row-even"><td>set-is-household-
+definition</td>
+<td>POST</td>
+<td>Sets the household definition for the settings</td>
+</tr>
+<tr class="row-odd"><td>get-is-msg-already
+applied</td>
+<td>GET</td>
+<td>Gets the message for when a user has already
+applied</td>
+</tr>
+<tr class="row-even"><td>set-is-msg-already
+applied</td>
+<td>POST</td>
+<td>Sets the message for when a user has already
+applied</td>
+</tr>
+<tr class="row-odd"><td>get-is-msg-current
+client</td>
+<td>GET</td>
+<td>Gets the message for when a user is already a
+client with this problem</td>
+</tr>
+<tr class="row-even"><td>set-is-msg-current
+client</td>
+<td>POST</td>
+<td>Sets the message for when a user has already
+applied</td>
+</tr>
+<tr class="row-odd"><td>get-is-msg-we-call-you</td>
+<td>GET</td>
+<td>Gets message for when user is told program calls</td>
+</tr>
+<tr class="row-even"><td>set-is-msg-we-call-you</td>
+<td>POST</td>
+<td>Sets message for when user is told program calls</td>
+</tr>
+<tr class="row-odd"><td>get-is-msg-please-call</td>
+<td>GET</td>
+<td>Gets message for when user is told to call</td>
+</tr>
+<tr class="row-even"><td>set-is-msg-please-call</td>
+<td>POST</td>
+<td>Sets message for when user is told to call</td>
+</tr>
+<tr class="row-odd"><td>get-is-msg-bypass</td>
+<td>GET</td>
+<td>Gets message for when user is to bypass intake</td>
+</tr>
+<tr class="row-even"><td>set-is-msg-bypass</td>
+<td>POST</td>
+<td>Sets message for when user is to bypass intake</td>
+</tr>
+<tr class="row-odd"><td>get-is-msg-disclaimer</td>
+<td>GET</td>
+<td>Gets program disclaimer message</td>
+</tr>
+<tr class="row-even"><td>set-is-msg-disclaimer</td>
+<td>POST</td>
+<td>Sets program discmailer message</td>
+</tr>
+<tr class="row-odd"><td>get-help-marital-status</td>
+<td>GET</td>
+<td>Gets the help text for asking for marital status</td>
+</tr>
+<tr class="row-even"><td>set-help-marital-status</td>
+<td>POST</td>
+<td>Sets the help text for asking for marital status</td>
+</tr>
+<tr class="row-odd"><td>get-help-immigration-
+status</td>
+<td>GET</td>
+<td>Gets the help text for asking immigration status</td>
+</tr>
+<tr class="row-even"><td>set-help-immigration-
+status</td>
+<td>POST</td>
+<td>Sets the help text for asking immigration status</td>
+</tr>
+<tr class="row-odd"><td>get-help-citizenship-
+status</td>
+<td>GET</td>
+<td>Gets the help text for asking citizenship status</td>
+</tr>
+<tr class="row-even"><td>set-help-citizenship-
+status</td>
+<td>POST</td>
+<td>Sets the help text for asking citizenship status</td>
+</tr>
+<tr class="row-odd"><td>get-help-language</td>
+<td>GET</td>
+<td>Gets the help text for asking language</td>
+</tr>
+<tr class="row-even"><td>set-help-language</td>
+<td>POST</td>
+<td>Sets the help text for asking language</td>
+</tr>
+<tr class="row-odd"><td>get-help-race</td>
+<td>GET</td>
+<td>Gets the help text for asking race</td>
+</tr>
+<tr class="row-even"><td>set-help-race</td>
+<td>POST</td>
+<td>Sets the help text for asking race</td>
+</tr>
+<tr class="row-odd"><td>get-help-gender</td>
+<td>GET</td>
+<td>Gets the help text for asking gender</td>
+</tr>
+<tr class="row-even"><td>set-help-gender</td>
+<td>POST</td>
+<td>Sets the help text for asking gender</td>
+</tr>
+<tr class="row-odd"><td>get-help-ethnicity</td>
+<td>GET</td>
+<td>Gets the help text for asking ethnicity</td>
+</tr>
+<tr class="row-even"><td>set-help-ethnicity</td>
+<td>POST</td>
+<td>Sets the help text for asking ethnicity</td>
+</tr>
+<tr class="row-odd"><td>get-waived-populations</td>
+<td>GET</td>
+<td>Gets populations for whom income is waived</td>
+</tr>
+<tr class="row-even"><td>set-waived-populations</td>
+<td>POST</td>
+<td>Sets populations for whom income is waived</td>
+</tr>
+<tr class="row-odd"><td>get-is-legal-issues</td>
+<td>GET</td>
+<td>Gets the legal issues for an intake settings</td>
+</tr>
+<tr class="row-even"><td>set-is-legal-issues</td>
+<td>POST</td>
+<td>Sets the legal issues for an intake settings</td>
+</tr>
+<tr class="row-odd"><td>get-is-service-area</td>
+<td>GET</td>
+<td>Gets the service area for an intake settings</td>
+</tr>
+<tr class="row-even"><td>set-is-service-area</td>
+<td>POST</td>
+<td>Sets the service area for an intake settings</td>
+</tr>
+<tr class="row-odd"><td>get-is-callback-hours-
+by-day</td>
+<td>GET</td>
+<td>Gets the callback hours for a specific day</td>
+</tr>
+<tr class="row-even"><td>set-is-callback-hours-
+by-day</td>
+<td>POST</td>
+<td>Sets the callback hours for a specific day</td>
+</tr>
 </tbody>
 </table>
-<p>Intake/Triage User Integration</p>
+</div>
+<div class="section" id="intake-application-integration">
+<h3>Intake Application Integration<a class="headerlink" href="#intake-application-integration" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
@@ -1004,6 +1477,22 @@ in jail or prison</td>
 <td>Sets whether the user has indicated that they are
 in jail or prison</td>
 </tr>
+<tr class="row-even"><td>get-veteran-status</td>
+<td>GET</td>
+<td>Gets the user’s veteran status</td>
+</tr>
+<tr class="row-odd"><td>set-veteran-status</td>
+<td>POST</td>
+<td>Sets the user’s veteran status</td>
+</tr>
+<tr class="row-even"><td>get-homeless-status</td>
+<td>GET</td>
+<td>Gets the user’s homeless status</td>
+</tr>
+<tr class="row-odd"><td>set-homeless-status</td>
+<td>POST</td>
+<td>Sets the user’s homeless status</td>
+</tr>
 <tr class="row-even"><td>get-client-phone</td>
 <td>GET</td>
 <td>Gets the client phone number</td>
@@ -1093,11 +1582,16 @@ income after deducting expenses</td>
 <td>POST</td>
 <td>Given collected expenses, returns total expenses</td>
 </tr>
+<tr class="row-odd"><td>load-callback-times</td>
+<td>GET</td>
+<td>Loads available callback times for a day or days</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), and any population they may be a member of.</p>
+</div>
 </div>
 </div>
 <div class="section" id="legal-server-etransfer-apis">
