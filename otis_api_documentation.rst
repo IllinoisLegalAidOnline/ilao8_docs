@@ -188,6 +188,13 @@ References to "triage user" refer to an instance of a triage user entity.  An in
 +------------------------+----------+---------------------------------------------------+
 | get-triage-populations | GET      | Gets any populations the user has identified as   |
 +------------------------+----------+---------------------------------------------------+
+
+Legal issue diagnosis API
+----------------------------
+
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
 | get-triage-problem     | GET      | Gets the text of the user's entered legal problem |
 +------------------------+----------+---------------------------------------------------+
 | set-triage-problem     | POST     | Sets the text of the user's entered legal problem |
@@ -195,8 +202,22 @@ References to "triage user" refer to an instance of a triage user entity.  An in
 | get-triage-problem-tree| GET      | Gets the legal issue tree of the user's entered   |
 |                        |          | legal problem                                     |
 +------------------------+----------+---------------------------------------------------+
-| set-triage-problem-tree| SET      | Sets the legal issue tree of the user's entered   |
+| set-triage-problem-tree| POST     | Sets the legal issue tree of the user's entered   |
 |                        |          | legal problem                                     |
++------------------------+----------+---------------------------------------------------+
+| get-legal-issue-from-  | POST     | Returns the best matches for a provided legal     |
+| text                   |          | problem narrative                                 |
++------------------------+----------+---------------------------------------------------+
+| set-legal-issue-status | POST     | Sets the legal issue status (correct, not correct)|
+|                        |          | for training data purposes                        |
++------------------------+----------+---------------------------------------------------+
+| get-legal-issue-status | GET      | Gets the legal issue status (correct, not correct)|
++------------------------+----------+---------------------------------------------------+
+| get-correct-legal-issue| GET      | Gets the correct legal issue identified when text |
+|                        |          | analysis failed                                   |
++------------------------+----------+---------------------------------------------------+
+| set-correct-legal-issue| POST     | Sets the correct legal issue identified when text |
+|                        |          | analysis failed                                   |
 +------------------------+----------+---------------------------------------------------+
 
 
@@ -341,8 +362,13 @@ The referral API will provide referral history information between systems.
 | update-referral-history| POST     | Updates a referral history entity                 |
 +------------------------+----------+---------------------------------------------------+
 
-Organization API
-==================
+Organization Entity APIs
+========================
+
+The organization entity APIs are designed to get data about an organization, its locations and its services.
+
+Organization
+--------------
 
 +------------------------+----------+---------------------------------------------------+
 | Endpoint               | Method   | Description                                       |
@@ -353,9 +379,63 @@ Organization API
 | get-organization-id-   | GET      | Loads the node id of the parent organization      |
 | service-id             |          | by service id.                                    |
 +------------------------+----------+---------------------------------------------------+
+| get-organization-url   | GET      | Loads the website url for an organization         |
++------------------------+----------+---------------------------------------------------+
 
-Location API
-==============
+Services
+-------------
+Every organization's locations must have at least one service.  The service is what we use to provide a referral to online intake or a cold referral to call.
+
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
+| get-service-id         | GET      | Loads the service id                              |
++------------------------+----------+---------------------------------------------------+
+| get-service-url        | GET      | Loads the website url for an service              |
++------------------------+----------+---------------------------------------------------+
+| get-service-geolocation| GET      | Returns the latitude and longitude of a service   |
++------------------------+----------+---------------------------------------------------+
+| get-holiday-schedule   | GET      | Returns the holiday schedule for a service        |
++------------------------+----------+---------------------------------------------------+
+| get-is-a-holiday       | GET      | Returns whether a specific date is a holiday      |
++------------------------+----------+---------------------------------------------------+
+| get-service-schedule   | GET      | Returns the schedule for a service; some services |
+|                        |          | operate daily and others on recurring schedules   |
++------------------------+----------+---------------------------------------------------+
+| get-service-area       | GET      | Returns the service area by zip code              |
++------------------------+----------+---------------------------------------------------+
+| get-service-populations| GET      | Returns the populations the service serves        |
++------------------------+----------+---------------------------------------------------+
+| get-service-volume     | GET      | Returns the average volume for the service        |
++------------------------+----------+---------------------------------------------------+
+| get-service-application| GET      | Returns the application processes for a service   |
+| -processes             |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-service-costs      | GET      | Returns the cost/fee structure for a service      |
++------------------------+----------+---------------------------------------------------+
+| get-service-level      | GET      | Returns the level(s) of service the service may   |
+|                        |          | provide                                           |
++------------------------+----------+---------------------------------------------------+
+| get-service-address    | GET      | Returns the address of the service                |
++------------------------+----------+---------------------------------------------------+
+| get-service-phone      | GET      | Returns the phone number of the service           |
++------------------------+----------+---------------------------------------------------+
+| get-service-legal-     | GET      | Returns the legal issues associated with a service|
+| issues                 |          |                                                   |
++------------------------+----------+---------------------------------------------------+
+| get-service-callbacks- | GET      | Returns the maximum number of callbacks allowed   |
+| -per-slot              |          | per time slot                                     |
++------------------------+----------+---------------------------------------------------+
+| get-service-callbacks- | GET      | Returns the maximum number of callbacks allowed   |
+| -per-user              |          | per user for a single application                 |
++------------------------+----------+---------------------------------------------------+
+| get-service-status     | GET      | Returns whether a service is open or closed       |
++------------------------+----------+---------------------------------------------------+
+       
+
+
+Geolocation API
+===========--===
 
 +------------------------+----------+---------------------------------------------------+
 | Endpoint               | Method   | Description                                       |
@@ -395,7 +475,7 @@ Legal Issues API
 +------------------------+----------+---------------------------------------------------+
 
 
-Online Intake API
+Online Intake APIs
 ======================
 
 Intake settings
@@ -750,13 +830,34 @@ Intake Application Integration
 | load-callback-times    | GET      | Loads available callback times for a day or days  |
 +------------------------+----------+---------------------------------------------------+
 
+.. note:: 
+   get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user's zip code, legal issue(s), and any population they may be a member of and will rely on the organization entity API and the intake settings API.
 
+Referrals
+-------------
+The referrals API relies on the organization APIs to return a set of cold referrals (a list of referrals that the user can contact).
 
+It also relies on the Referral history API to store and manage a user's provided referrals.
 
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
+| get-free-referrals     | POST     | Given a set of data points, returns referrals that|
+|                        |          | match, ordered by relevancy                       |
++------------------------+----------+---------------------------------------------------+
+| get-low-cost-referrals | POST     | Given a set of data points, returns referrals that|
+|                        |          | have a cost and match, ordered by relevancy       |
++------------------------+----------+---------------------------------------------------+
+| get-bar-referrals      | POST     | Given a set of data points, returns referrals that|
+|                        |          | are bar referrals, ordered by relevancy.          |
++------------------------+----------+---------------------------------------------------+
+| get-legal-self-help-   | POST     | Returns the closest legal self help center given  |
+| center                 |          | a user's location                                 |
++------------------------+----------+---------------------------------------------------+
 
 .. note:: 
-   get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user's zip code, legal issue(s), and any population they may be a member of.  
-
+   The referral endpoints are extensive API call that will require specific data to make an evaluation including the user's zip code, legal issue(s), income level, and any population they may be a member of and will rely on the organization entity API to score for relevancy.
+   
 
 Legal Server eTransfer APIs
 ==============================
@@ -786,6 +887,26 @@ Legal Server eTransfer APIs
 +------------------------+----------+---------------------------------------------------+
 
 
+Guided Navigation API Integration
+==================================
 
+.. note:: 
+   Legal Server will not have their Guided Navigation API available for use until end of 2019.  We anticipate some changes may be required to this integration.
+   
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
+| gn-get-path            | GET      | Returns the specific guided navigation path based |
+|                        |          | on the user's legal issue and location            |
++------------------------+----------+---------------------------------------------------+
+| gn-get-next-step       | POST     | Returns the next step in the guided path based    |
+|                        |          | on any known user data                            |
++------------------------+----------+---------------------------------------------------+
+| gn-save-response       | POST     | Saves the user response in our triage user entity |
++------------------------+----------+---------------------------------------------------+
+| gn-evaluate-response   | POST     | Evaluates a response to determine next step       |
++------------------------+----------+---------------------------------------------------+
+
+  
 
 

@@ -88,6 +88,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Drupal 8 OTIS API Implementation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#triage-user-api">Triage User API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#legal-issue-diagnosis-api">Legal issue diagnosis API</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#triage-listing-api">Triage Listing API</a></li>
 </ul>
 </li>
@@ -98,15 +99,20 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#organization-api">Organization API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#location-api">Location API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#organization-entity-apis">Organization Entity APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#organization">Organization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#services">Services</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-issues-api">Legal Issues API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#online-intake-api">Online Intake API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#online-intake-apis">Online Intake APIs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#intake-settings">Intake settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intake-application-integration">Intake Application Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#referrals">Referrals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-server-etransfer-apis">Legal Server eTransfer APIs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#guided-navigation-api-integration">Guided Navigation API Integration</a></li>
 </ul>
 </li>
 </ul>
@@ -533,26 +539,69 @@ over asset, etc)</td>
 <td>GET</td>
 <td>Gets any populations the user has identified as</td>
 </tr>
-<tr class="row-odd"><td>get-triage-problem</td>
+</tbody>
+</table>
+<div class="section" id="legal-issue-diagnosis-api">
+<h3>Legal issue diagnosis API<a class="headerlink" href="#legal-issue-diagnosis-api" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-triage-problem</td>
 <td>GET</td>
 <td>Gets the text of the user’s entered legal problem</td>
 </tr>
-<tr class="row-even"><td>set-triage-problem</td>
+<tr class="row-odd"><td>set-triage-problem</td>
 <td>POST</td>
 <td>Sets the text of the user’s entered legal problem</td>
 </tr>
-<tr class="row-odd"><td>get-triage-problem-tree</td>
+<tr class="row-even"><td>get-triage-problem-tree</td>
 <td>GET</td>
 <td>Gets the legal issue tree of the user’s entered
 legal problem</td>
 </tr>
-<tr class="row-even"><td>set-triage-problem-tree</td>
-<td>SET</td>
+<tr class="row-odd"><td>set-triage-problem-tree</td>
+<td>POST</td>
 <td>Sets the legal issue tree of the user’s entered
 legal problem</td>
 </tr>
+<tr class="row-even"><td>get-legal-issue-from-
+text</td>
+<td>POST</td>
+<td>Returns the best matches for a provided legal
+problem narrative</td>
+</tr>
+<tr class="row-odd"><td>set-legal-issue-status</td>
+<td>POST</td>
+<td>Sets the legal issue status (correct, not correct)
+for training data purposes</td>
+</tr>
+<tr class="row-even"><td>get-legal-issue-status</td>
+<td>GET</td>
+<td>Gets the legal issue status (correct, not correct)</td>
+</tr>
+<tr class="row-odd"><td>get-correct-legal-issue</td>
+<td>GET</td>
+<td>Gets the correct legal issue identified when text
+analysis failed</td>
+</tr>
+<tr class="row-even"><td>set-correct-legal-issue</td>
+<td>POST</td>
+<td>Sets the correct legal issue identified when text
+analysis failed</td>
+</tr>
 </tbody>
 </table>
+</div>
 <div class="section" id="triage-listing-api">
 <h3>Triage Listing API<a class="headerlink" href="#triage-listing-api" title="Permalink to this headline">¶</a></h3>
 <p>Each of the triage listing API methods listed below will return the list of options from the OTIS taxonomy system and return them in JSON format.</p>
@@ -795,8 +844,11 @@ a predefined closed date</td>
 </tbody>
 </table>
 </div>
-<div class="section" id="organization-api">
-<h2>Organization API<a class="headerlink" href="#organization-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="organization-entity-apis">
+<h2>Organization Entity APIs<a class="headerlink" href="#organization-entity-apis" title="Permalink to this headline">¶</a></h2>
+<p>The organization entity APIs are designed to get data about an organization, its locations and its services.</p>
+<div class="section" id="organization">
+<h3>Organization<a class="headerlink" href="#organization" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
@@ -822,11 +874,113 @@ service-id</td>
 <td>Loads the node id of the parent organization
 by service id.</td>
 </tr>
+<tr class="row-even"><td>get-organization-url</td>
+<td>GET</td>
+<td>Loads the website url for an organization</td>
+</tr>
 </tbody>
 </table>
 </div>
-<div class="section" id="location-api">
-<h2>Location API<a class="headerlink" href="#location-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="services">
+<h3>Services<a class="headerlink" href="#services" title="Permalink to this headline">¶</a></h3>
+<p>Every organization’s locations must have at least one service.  The service is what we use to provide a referral to online intake or a cold referral to call.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-service-id</td>
+<td>GET</td>
+<td>Loads the service id</td>
+</tr>
+<tr class="row-odd"><td>get-service-url</td>
+<td>GET</td>
+<td>Loads the website url for an service</td>
+</tr>
+<tr class="row-even"><td>get-service-geolocation</td>
+<td>GET</td>
+<td>Returns the latitude and longitude of a service</td>
+</tr>
+<tr class="row-odd"><td>get-holiday-schedule</td>
+<td>GET</td>
+<td>Returns the holiday schedule for a service</td>
+</tr>
+<tr class="row-even"><td>get-is-a-holiday</td>
+<td>GET</td>
+<td>Returns whether a specific date is a holiday</td>
+</tr>
+<tr class="row-odd"><td>get-service-schedule</td>
+<td>GET</td>
+<td>Returns the schedule for a service; some services
+operate daily and others on recurring schedules</td>
+</tr>
+<tr class="row-even"><td>get-service-area</td>
+<td>GET</td>
+<td>Returns the service area by zip code</td>
+</tr>
+<tr class="row-odd"><td>get-service-populations</td>
+<td>GET</td>
+<td>Returns the populations the service serves</td>
+</tr>
+<tr class="row-even"><td>get-service-volume</td>
+<td>GET</td>
+<td>Returns the average volume for the service</td>
+</tr>
+<tr class="row-odd"><td>get-service-application
+-processes</td>
+<td>GET</td>
+<td>Returns the application processes for a service</td>
+</tr>
+<tr class="row-even"><td>get-service-costs</td>
+<td>GET</td>
+<td>Returns the cost/fee structure for a service</td>
+</tr>
+<tr class="row-odd"><td>get-service-level</td>
+<td>GET</td>
+<td>Returns the level(s) of service the service may
+provide</td>
+</tr>
+<tr class="row-even"><td>get-service-address</td>
+<td>GET</td>
+<td>Returns the address of the service</td>
+</tr>
+<tr class="row-odd"><td>get-service-phone</td>
+<td>GET</td>
+<td>Returns the phone number of the service</td>
+</tr>
+<tr class="row-even"><td>get-service-legal-
+issues</td>
+<td>GET</td>
+<td>Returns the legal issues associated with a service</td>
+</tr>
+<tr class="row-odd"><td>get-service-callbacks-
+-per-slot</td>
+<td>GET</td>
+<td>Returns the maximum number of callbacks allowed
+per time slot</td>
+</tr>
+<tr class="row-even"><td>get-service-callbacks-
+-per-user</td>
+<td>GET</td>
+<td>Returns the maximum number of callbacks allowed
+per user for a single application</td>
+</tr>
+<tr class="row-odd"><td>get-service-status</td>
+<td>GET</td>
+<td>Returns whether a service is open or closed</td>
+</tr>
+</tbody>
+</table>
+<p>Geolocation API
+===========–===</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="28%" />
@@ -871,6 +1025,7 @@ by service id.</td>
 </tbody>
 </table>
 </div>
+</div>
 <div class="section" id="legal-issues-api">
 <h2>Legal Issues API<a class="headerlink" href="#legal-issues-api" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -911,8 +1066,8 @@ legal issues</td>
 </tbody>
 </table>
 </div>
-<div class="section" id="online-intake-api">
-<h2>Online Intake API<a class="headerlink" href="#online-intake-api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="online-intake-apis">
+<h2>Online Intake APIs<a class="headerlink" href="#online-intake-apis" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="intake-settings">
 <h3>Intake settings<a class="headerlink" href="#intake-settings" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -1590,7 +1745,52 @@ income after deducting expenses</td>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), and any population they may be a member of.</p>
+<p class="last">get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), and any population they may be a member of and will rely on the organization entity API and the intake settings API.</p>
+</div>
+</div>
+<div class="section" id="referrals">
+<h3>Referrals<a class="headerlink" href="#referrals" title="Permalink to this headline">¶</a></h3>
+<p>The referrals API relies on the organization APIs to return a set of cold referrals (a list of referrals that the user can contact).</p>
+<p>It also relies on the Referral history API to store and manage a user’s provided referrals.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-free-referrals</td>
+<td>POST</td>
+<td>Given a set of data points, returns referrals that
+match, ordered by relevancy</td>
+</tr>
+<tr class="row-odd"><td>get-low-cost-referrals</td>
+<td>POST</td>
+<td>Given a set of data points, returns referrals that
+have a cost and match, ordered by relevancy</td>
+</tr>
+<tr class="row-even"><td>get-bar-referrals</td>
+<td>POST</td>
+<td>Given a set of data points, returns referrals that
+are bar referrals, ordered by relevancy.</td>
+</tr>
+<tr class="row-odd"><td>get-legal-self-help-
+center</td>
+<td>POST</td>
+<td>Returns the closest legal self help center given
+a user’s location</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The referral endpoints are extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), income level, and any population they may be a member of and will rely on the organization entity API to score for relevancy.</p>
 </div>
 </div>
 </div>
@@ -1644,6 +1844,46 @@ Legal Server</td>
 <tr class="row-odd"><td>set-transfer-status</td>
 <td>POST</td>
 <td>Updates the triage user transfer status</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="guided-navigation-api-integration">
+<h2>Guided Navigation API Integration<a class="headerlink" href="#guided-navigation-api-integration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Legal Server will not have their Guided Navigation API available for use until end of 2019.  We anticipate some changes may be required to this integration.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>gn-get-path</td>
+<td>GET</td>
+<td>Returns the specific guided navigation path based
+on the user’s legal issue and location</td>
+</tr>
+<tr class="row-odd"><td>gn-get-next-step</td>
+<td>POST</td>
+<td>Returns the next step in the guided path based
+on any known user data</td>
+</tr>
+<tr class="row-even"><td>gn-save-response</td>
+<td>POST</td>
+<td>Saves the user response in our triage user entity</td>
+</tr>
+<tr class="row-odd"><td>gn-evaluate-response</td>
+<td>POST</td>
+<td>Evaluates a response to determine next step</td>
 </tr>
 </tbody>
 </table>
