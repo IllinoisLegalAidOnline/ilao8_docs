@@ -98,7 +98,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#reminder-api">Reminder API</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referral-apis">Referral APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#referral-api">Referral API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#referral-history-api">Referral History API</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#organization-entity-apis">Organization Entity APIs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#organization">Organization</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#services">Services</a></li>
@@ -108,7 +112,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#online-intake-apis">Online Intake APIs</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#intake-settings">Intake settings</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#intake-application-integration">Intake Application Integration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#referrals">Referrals</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-server-etransfer-apis">Legal Server eTransfer APIs</a></li>
@@ -185,6 +188,7 @@
             
   <div class="section" id="drupal-8-otis-api-implementation">
 <h1>Drupal 8 OTIS API Implementation<a class="headerlink" href="#drupal-8-otis-api-implementation" title="Permalink to this headline">¶</a></h1>
+<p>The APIs contained in this page are required to implement the new Drupal 8 API-first implementation for ILAO’s online intake and triage system (OTIS).</p>
 <div class="section" id="triage-user-api">
 <h2>Triage User API<a class="headerlink" href="#triage-user-api" title="Permalink to this headline">¶</a></h2>
 <p>References to “triage user” refer to an instance of a triage user entity.  An individual may have multiple triage user entities associated with them if they apply more than once.</p>
@@ -785,8 +789,55 @@ type, format</td>
 </table>
 </div>
 </div>
+<div class="section" id="referral-apis">
+<h2>Referral APIs<a class="headerlink" href="#referral-apis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="referral-api">
+<h3>Referral API<a class="headerlink" href="#referral-api" title="Permalink to this headline">¶</a></h3>
+<p>The referrals API relies on the organization APIs to return a set of cold referrals (a list of referrals that the user can contact).</p>
+<p>It also relies on the Referral history API to store and manage a user’s provided referrals.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="12%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Endpoint</th>
+<th class="head">Method</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>get-free-referrals</td>
+<td>POST</td>
+<td>Given a set of data points, returns referrals that
+match, ordered by relevancy</td>
+</tr>
+<tr class="row-odd"><td>get-low-cost-referrals</td>
+<td>POST</td>
+<td>Given a set of data points, returns referrals that
+have a cost and match, ordered by relevancy</td>
+</tr>
+<tr class="row-even"><td>get-bar-referrals</td>
+<td>POST</td>
+<td>Given a set of data points, returns referrals that
+are bar referrals, ordered by relevancy.</td>
+</tr>
+<tr class="row-odd"><td>get-legal-self-help-
+center</td>
+<td>POST</td>
+<td>Returns the closest legal self help center given
+a user’s location</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The referral endpoints are extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), income level, and any population they may be a member of and will rely on the organization entity API to score for relevancy.</p>
+</div>
+</div>
 <div class="section" id="referral-history-api">
-<h2>Referral History API<a class="headerlink" href="#referral-history-api" title="Permalink to this headline">¶</a></h2>
+<h3>Referral History API<a class="headerlink" href="#referral-history-api" title="Permalink to this headline">¶</a></h3>
 <p>The referral API will provide referral history information between systems.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -843,6 +894,7 @@ a predefined closed date</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="section" id="organization-entity-apis">
 <h2>Organization Entity APIs<a class="headerlink" href="#organization-entity-apis" title="Permalink to this headline">¶</a></h2>
@@ -1746,51 +1798,6 @@ income after deducting expenses</td>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), and any population they may be a member of and will rely on the organization entity API and the intake settings API.</p>
-</div>
-</div>
-<div class="section" id="referrals">
-<h3>Referrals<a class="headerlink" href="#referrals" title="Permalink to this headline">¶</a></h3>
-<p>The referrals API relies on the organization APIs to return a set of cold referrals (a list of referrals that the user can contact).</p>
-<p>It also relies on the Referral history API to store and manage a user’s provided referrals.</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="28%" />
-<col width="12%" />
-<col width="60%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Endpoint</th>
-<th class="head">Method</th>
-<th class="head">Description</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>get-free-referrals</td>
-<td>POST</td>
-<td>Given a set of data points, returns referrals that
-match, ordered by relevancy</td>
-</tr>
-<tr class="row-odd"><td>get-low-cost-referrals</td>
-<td>POST</td>
-<td>Given a set of data points, returns referrals that
-have a cost and match, ordered by relevancy</td>
-</tr>
-<tr class="row-even"><td>get-bar-referrals</td>
-<td>POST</td>
-<td>Given a set of data points, returns referrals that
-are bar referrals, ordered by relevancy.</td>
-</tr>
-<tr class="row-odd"><td>get-legal-self-help-
-center</td>
-<td>POST</td>
-<td>Returns the closest legal self help center given
-a user’s location</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The referral endpoints are extensive API call that will require specific data to make an evaluation including the user’s zip code, legal issue(s), income level, and any population they may be a member of and will rely on the organization entity API to score for relevancy.</p>
 </div>
 </div>
 </div>

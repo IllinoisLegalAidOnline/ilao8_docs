@@ -2,6 +2,8 @@
 Drupal 8 OTIS API Implementation
 ===================================
 
+The APIs contained in this page are required to implement the new Drupal 8 API-first implementation for ILAO's online intake and triage system (OTIS).  
+
 Triage User API
 =====================
 References to "triage user" refer to an instance of a triage user entity.  An individual may have multiple triage user entities associated with them if they apply more than once. 
@@ -330,10 +332,37 @@ The reminder API sends, logs, and provides report data:
 
 
 
+Referral APIs
+===============
 
+Referral API
+--------------------
+The referrals API relies on the organization APIs to return a set of cold referrals (a list of referrals that the user can contact).
+
+It also relies on the Referral history API to store and manage a user's provided referrals.
+
++------------------------+----------+---------------------------------------------------+
+| Endpoint               | Method   | Description                                       |
++========================+==========+===================================================+
+| get-free-referrals     | POST     | Given a set of data points, returns referrals that|
+|                        |          | match, ordered by relevancy                       |
++------------------------+----------+---------------------------------------------------+
+| get-low-cost-referrals | POST     | Given a set of data points, returns referrals that|
+|                        |          | have a cost and match, ordered by relevancy       |
++------------------------+----------+---------------------------------------------------+
+| get-bar-referrals      | POST     | Given a set of data points, returns referrals that|
+|                        |          | are bar referrals, ordered by relevancy.          |
++------------------------+----------+---------------------------------------------------+
+| get-legal-self-help-   | POST     | Returns the closest legal self help center given  |
+| center                 |          | a user's location                                 |
++------------------------+----------+---------------------------------------------------+
+
+.. note:: 
+   The referral endpoints are extensive API call that will require specific data to make an evaluation including the user's zip code, legal issue(s), income level, and any population they may be a member of and will rely on the organization entity API to score for relevancy.
+   
 
 Referral History API
-======================
+-----------------------
 The referral API will provide referral history information between systems.
 
 +------------------------+----------+---------------------------------------------------+
@@ -833,31 +862,7 @@ Intake Application Integration
 .. note:: 
    get-is-intake-available is an extensive API call that will require specific data to make an evaluation including the user's zip code, legal issue(s), and any population they may be a member of and will rely on the organization entity API and the intake settings API.
 
-Referrals
--------------
-The referrals API relies on the organization APIs to return a set of cold referrals (a list of referrals that the user can contact).
 
-It also relies on the Referral history API to store and manage a user's provided referrals.
-
-+------------------------+----------+---------------------------------------------------+
-| Endpoint               | Method   | Description                                       |
-+========================+==========+===================================================+
-| get-free-referrals     | POST     | Given a set of data points, returns referrals that|
-|                        |          | match, ordered by relevancy                       |
-+------------------------+----------+---------------------------------------------------+
-| get-low-cost-referrals | POST     | Given a set of data points, returns referrals that|
-|                        |          | have a cost and match, ordered by relevancy       |
-+------------------------+----------+---------------------------------------------------+
-| get-bar-referrals      | POST     | Given a set of data points, returns referrals that|
-|                        |          | are bar referrals, ordered by relevancy.          |
-+------------------------+----------+---------------------------------------------------+
-| get-legal-self-help-   | POST     | Returns the closest legal self help center given  |
-| center                 |          | a user's location                                 |
-+------------------------+----------+---------------------------------------------------+
-
-.. note:: 
-   The referral endpoints are extensive API call that will require specific data to make an evaluation including the user's zip code, legal issue(s), income level, and any population they may be a member of and will rely on the organization entity API to score for relevancy.
-   
 
 Legal Server eTransfer APIs
 ==============================
