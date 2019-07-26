@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Legal content migration &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Legal content paragraphs" href="legal_content_paragraphs.html" />
+    <link rel="prev" title="OTIS Reporting Functionality" href="migration_oas_reporting.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Legal content migration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#paragraphs">Paragraphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scheduler-issues">Scheduler Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workbench-moderation">Workbench Moderation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legal-content-functionality-to-deprecate">Legal content functionality to deprecate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+      <li>Legal content migration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_legal_content_types.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="legal-content-migration">
+<h1>Legal content migration<a class="headerlink" href="#legal-content-migration" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">See also:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
+</ul>
+</div>
+<p>Content types:</p>
+<ul class="simple">
+<li>legal_content</li>
+</ul>
+<div class="section" id="relies-on">
+<h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
+<p>Currently relies on:</p>
+<ul class="simple">
+<li>Contributed modules:<ul>
+<li>token_custom allows us to create custom snippets within legal content</li>
+<li>workbench</li>
+<li>workbench_moderation</li>
+<li>workbench_access</li>
+<li>paragraphs</li>
+<li>voting_api</li>
+<li>fivestar</li>
+<li>google_analytics_reports (GA)</li>
+</ul>
+</li>
+<li>Custom modules:<ul>
+<li>ckeditor_rsm supports our ability to localize legal content snippets</li>
+<li>ilao_access controls access to restricted content</li>
+<li>ilao_legal_articles provides the core custom functionality for the content type</li>
+<li>ilao_workbench provides custom settings for workbench moderation</li>
+</ul>
+</li>
+<li>Taxonomies<ul>
+<li>Legal_issues</li>
+<li>Content_keywords</li>
+<li>content_section</li>
+<li>region</li>
+</ul>
+</li>
+</ul>
+<p>It is unclear if we actually use:</p>
+<ul class="simple">
+<li>workbench_moderation_buttons</li>
+<li>workbench_moderation_profile</li>
+<li>workbench_scheduler or scheduler_workbench (I think we use one of these but I’m not sure how successful it is)</li>
+</ul>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>See also the <a class="reference external" href="https://docs.google.com/spreadsheets/d/18yC6qCk5gi3naY5f0xxT8Ye_aProaJIekmezI0copFI/edit#gid=1991457894">content migration spreadsheet.</a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_annual_updates</td>
+<td>Term reference to annual
+updates taxonomy</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_content_access</td>
+<td>Select (legal aid members or
+pro bono members)to restrict
+by role</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_content_description</td>
+<td>Description field for website;
+limited to 200 characters</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_content_level</td>
+<td>Select (basic or advanced)</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_content_type</td>
+<td>Paragraphs field</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_legal_issues</td>
+<td>Taxonomy term for legal issues</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_legal_position</td>
+<td>Select: plaintiff, defendant,
+or neutral</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_pageviews</td>
+<td>Number of pageviews in last
+60 days; from GA</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_popularviews</td>
+<td>Number of pageviews in last 2
+days; from GA</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_rating</td>
+<td>Stores our ratings data</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_share</td>
+<td>Add this field</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>field_image</td>
+<td>Image for use in social media</td>
+<td>Replace w/ media</td>
+</tr>
+<tr class="row-even"><td>field_last_substantive_update</td>
+<td>Date of last substantive edit</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_meta_description</td>
+<td>Description for metatags;
+limited to 300 characters</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_primary_category</td>
+<td>Single term reference to top
+legal issue category</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_primary_content_type</td>
+<td>Content format; determined by
+paragraphs included</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_substantive_update</td>
+<td>Boolean; indicates whether an
+edit is substantive or not</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>title_field</td>
+<td>Standard Drupal translatable
+title field</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>body</td>
+<td>Replaced with paragraphs</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_translation_outdated</td>
+<td>Boolean to indicate if new
+translation required</td>
+<td>Delete; duplicative
+of core function</td>
+</tr>
+<tr class="row-even"><td>field_promote_as_best_for</td>
+<td>search terms to return this
+as number 1 search result</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_request_translation</td>
+<td>On English content, yes/no
+as to whether it should also
+be translated</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_exclude_from
+_sms_content_s</td>
+<td>Indicates that the content
+should not be available in SMS</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_major_revision</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-even"><td>field_ilao_cid</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_lift_content_keyword</td>
+<td>Content_keywords term ref.</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_lift_content_section</td>
+<td>Content_section term reference</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_jurisdiction_type</td>
+<td>Select list of national,
+statewide or parts of Illinois</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_cities</td>
+<td>Term reference to region at
+city level</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_counties</td>
+<td>Term reference to region at
+county level</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_zipcodes</td>
+<td>Term reference to region at
+zip code level</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_include_exclude_by_type</td>
+<td>Select list; what level(cities
+counties or zip codes) to tag
+content to</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_include_exclude</td>
+<td>Whether to include or exclude
+the region(s) from the content</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_recommendation</td>
+<td>Reference to related content</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Jurisdictions are managed on an include or exclude basis when the content is set to parts of Illinois.  For example, if a node applies only to Cook county, I might include counties = Cook and if a node applies to all but Cook county, I might exclude counties = Cook.</p>
+</div>
+</div>
+<div class="section" id="paragraphs">
+<h2>Paragraphs<a class="headerlink" href="#paragraphs" title="Permalink to this headline">¶</a></h2>
+<p>Our content_block field uses paragraphs to build the actual legal content.  These are the paragraph bundles associated with legal content:</p>
+<p>See Legal content paragraphs for migration information.</p>
+<ul class="simple">
+<li>Text</li>
+<li>Automated documents</li>
+<li>Video</li>
+<li>Process step</li>
+<li>Static form</li>
+<li>File (non-form)</li>
+<li>Link (non-form)</li>
+<li>IICLE content</li>
+<li>Legal bundle</li>
+<li>Teach Me</li>
+<li>Decision tree</li>
+<li>Portal layout timeline</li>
+<li>A2J author</li>
+</ul>
+</div>
+<div class="section" id="scheduler-issues">
+<h2>Scheduler Issues<a class="headerlink" href="#scheduler-issues" title="Permalink to this headline">¶</a></h2>
+<p>We have 2 modules in our file system, workbench_scheduler and scheduler_workbench.  I don’t know which we need but we do want to be able to schedule nodes for publication.</p>
+</div>
+<div class="section" id="workbench-moderation">
+<h2>Workbench Moderation<a class="headerlink" href="#workbench-moderation" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="legal-content-functionality-to-deprecate">
+<h2>Legal content functionality to deprecate<a class="headerlink" href="#legal-content-functionality-to-deprecate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Sharing content by SMS; this is not used widely and the current architecture is problematic.</li>
+<li>Recommended for you block; migrating the field but need to evaluate the utility vs other ways to do this in D8</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="legal_content_paragraphs.html" class="btn btn-neutral float-right" title="Legal content paragraphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="migration_oas_reporting.html" class="btn btn-neutral" title="OTIS Reporting Functionality" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
