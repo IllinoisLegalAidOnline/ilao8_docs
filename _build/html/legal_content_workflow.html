@@ -30,7 +30,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Event nodes" href="migration_events.html" />
-    <link rel="prev" title="Legal content migration" href="migration_legal_content_types.html" /> 
+    <link rel="prev" title="Legal content paragraphs" href="legal_content_paragraphs.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,7 +90,11 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content workflows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#workbench-configuration">Workbench Configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#paragraphs">Paragraphs</a></li>
@@ -176,6 +180,62 @@
             
   <div class="section" id="legal-content-workflows">
 <h1>Legal content workflows<a class="headerlink" href="#legal-content-workflows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="workbench-configuration">
+<h2>Workbench Configuration<a class="headerlink" href="#workbench-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="states">
+<h3>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Machine name</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Draft/revise</td>
+<td>draft</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>Draft/Revise attorney content</td>
+<td>draft_revise_attorney_content</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>Copy Edit</td>
+<td>copy_edit</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>Ready to review</td>
+<td>ready_to_review</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>Published</td>
+<td>published</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>Metadata review</td>
+<td>metadata_review</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>Substantive update</td>
+<td>substantive_update</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>Plain language review</td>
+<td>plain_language_review</td>
+<td>TBD</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transitions">
+<h3>Transitions<a class="headerlink" href="#transitions" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
 
@@ -189,7 +249,7 @@
         <a href="migration_events.html" class="btn btn-neutral float-right" title="Event nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_legal_content_types.html" class="btn btn-neutral" title="Legal content migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="legal_content_paragraphs.html" class="btn btn-neutral" title="Legal content paragraphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
