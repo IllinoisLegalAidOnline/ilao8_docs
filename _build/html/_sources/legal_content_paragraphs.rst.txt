@@ -306,3 +306,16 @@ Purpose:  Displays a portal message consisting of a heading, image, and body.
 A2J Author
 ============
 
+Machine name:  a2j_author
+
+Purpose:  Container to embed a locally hosted A2J interview
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_a2j_file               | File; XML file of interview   | Migrate             |
++------------------------------+-------------------------------+---------------------+
+
+
+
+
+
