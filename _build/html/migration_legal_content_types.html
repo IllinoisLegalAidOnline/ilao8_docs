@@ -92,12 +92,23 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Legal content migration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_comments.html">Legal content comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#paragraphs">Paragraphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scheduler-issues">Scheduler Issues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#workbench-moderation">Workbench Moderation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functionality-notes">Functionality Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#primary-content-format">Primary content format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-breadcrumbs">Custom breadcrumbs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#archive-mcle-credit">Archive MCLE Credit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-access">Custom access</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#annual-updates">Annual updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lift-integration">Lift integration</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-content-functionality-to-deprecate">Legal content functionality to deprecate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues-notes-for-drupal-8">Known Issues &amp; Notes for Drupal 8</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
@@ -180,6 +191,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="legal_content_comments.html">Legal content comments</a></li>
 </ul>
 </div>
 <p>Content types:</p>
@@ -411,7 +423,7 @@ the region(s) from the content</td>
 <div class="section" id="paragraphs">
 <h2>Paragraphs<a class="headerlink" href="#paragraphs" title="Permalink to this headline">¶</a></h2>
 <p>Our content_block field uses paragraphs to build the actual legal content.  These are the paragraph bundles associated with legal content:</p>
-<p>See Legal content paragraphs for migration information.</p>
+<p>See <a class="reference internal" href="legal_content_paragraphs.html#id1"><span class="std std-ref">Text</span></a> for migration information.</p>
 <ul class="simple">
 <li>Text</li>
 <li>Automated documents</li>
@@ -434,12 +446,128 @@ the region(s) from the content</td>
 </div>
 <div class="section" id="workbench-moderation">
 <h2>Workbench Moderation<a class="headerlink" href="#workbench-moderation" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="legal_content_workflow.html#id1"><span class="std std-ref">Workbench Configuration</span></a></p>
+</div>
+<div class="section" id="functionality-notes">
+<h2>Functionality Notes<a class="headerlink" href="#functionality-notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="primary-content-format">
+<h3>Primary content format<a class="headerlink" href="#primary-content-format" title="Permalink to this headline">¶</a></h3>
+<p>The field_primary_content_type field should not be editable but should be determined when content is created or updated based on the following algorithm.  Once it hits a value in this chart, it stops (so for example, if a node contains a automated_documents block and an iicle_content block, it will be IICLE content because that is what it hits first).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">If the field_content_type contains
+this bundle</th>
+<th class="head">Then the field_primary_content_type is set
+to this taxonomy term id from content format</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>iicle_content</td>
+<td>523396 (IICLE)</td>
+</tr>
+<tr class="row-odd"><td>automated_documents</td>
+<td>41 (Easy Form)</td>
+</tr>
+<tr class="row-even"><td>decision_tree</td>
+<td>523631 (Decision Tree)</td>
+</tr>
+<tr class="row-odd"><td>teachme</td>
+<td>523401 (Teach Me)</td>
+</tr>
+<tr class="row-even"><td>legal_bundle</td>
+<td>523406 (Guide)</td>
+</tr>
+<tr class="row-odd"><td>process_step</td>
+<td>501551 (How-To)</td>
+</tr>
+<tr class="row-even"><td>portal_layout_timeline</td>
+<td>501551 (How-To)</td>
+</tr>
+<tr class="row-odd"><td>static_form (link)</td>
+<td>501221 (Form link)</td>
+</tr>
+<tr class="row-even"><td>static_form (file)</td>
+<td>501216 (From download)</td>
+</tr>
+<tr class="row-odd"><td>link_not_form``_``</td>
+<td>21 (Link)</td>
+</tr>
+<tr class="row-even"><td>file_not_form``_``</td>
+<td>22 (File download)</td>
+</tr>
+<tr class="row-odd"><td>video_content</td>
+<td>13 (Video)</td>
+</tr>
+<tr class="row-even"><td>a2j_author</td>
+<td>523631 (Decision Tree)</td>
+</tr>
+<tr class="row-odd"><td>anything else</td>
+<td>16 (Text article)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do we really care if forms are links or downloads?</p>
+</div>
+</div>
+<div class="section" id="custom-breadcrumbs">
+<h3>Custom breadcrumbs<a class="headerlink" href="#custom-breadcrumbs" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This will need to be re-evaluated based on the new design.</p>
+</div>
+</div>
+<div class="section" id="archive-mcle-credit">
+<h3>Archive MCLE Credit<a class="headerlink" href="#archive-mcle-credit" title="Permalink to this headline">¶</a></h3>
+<p>When a node contains a video and the video has MCLE credit assigned to it, the email contact form is used to send an email to a contact to request MCLE credit when:</p>
+<ul class="simple">
+<li>The user is logged in</li>
+<li>The node has a video block</li>
+<li>The cut off date for MCLE credit has not been reached</li>
+</ul>
+<div class="section" id="custom-code">
+<h4>Custom code<a class="headerlink" href="#custom-code" title="Permalink to this headline">¶</a></h4>
+<p>Custom functionality to alter the request can be found in:</p>
+<ul class="simple">
+<li>ilao_legal_articles_form_email_mail_page_form_alter</li>
+<li>ilao_legal_articles_form_email_mail_page_redirect_handler</li>
+<li>ilao_legal_articles_form_email_mail_page_validate</li>
+<li>ilao_legal_articles_form_email_mail_page_submit</li>
+</ul>
+</div>
+</div>
+<div class="section" id="custom-access">
+<h3>Custom access<a class="headerlink" href="#custom-access" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="annual-updates">
+<h3>Annual updates<a class="headerlink" href="#annual-updates" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="lift-integration">
+<h3>Lift integration<a class="headerlink" href="#lift-integration" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 <div class="section" id="legal-content-functionality-to-deprecate">
 <h2>Legal content functionality to deprecate<a class="headerlink" href="#legal-content-functionality-to-deprecate" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Sharing content by SMS; this is not used widely and the current architecture is problematic.</li>
 <li>Recommended for you block; migrating the field but need to evaluate the utility vs other ways to do this in D8</li>
+<li>Code related to lingotek in the ilao_legal_articles should not be migrated; we will not be using Lingotek in Drupal 8.</li>
+</ul>
+</div>
+<div class="section" id="known-issues-notes-for-drupal-8">
+<h2>Known Issues &amp; Notes for Drupal 8<a class="headerlink" href="#known-issues-notes-for-drupal-8" title="Permalink to this headline">¶</a></h2>
+<p>These are known issues and open questions to discuss with the content team:</p>
+<ul class="simple">
+<li>Current platform is overkill.</li>
+<li>Major / minor revision system =&gt; this has been disabled for months.  It should be completely deprecated in Drupal 8</li>
+<li>Ticket integration (ilao_workbench_check_for_open_ticket) should be discontinued.</li>
+<li>Notification of updates to users is dependent on what we do for account access moving forward.</li>
+<li>Popular today configuration may be depreciable if we do not continue that functionality moving forward.</li>
 </ul>
 </div>
 </div>

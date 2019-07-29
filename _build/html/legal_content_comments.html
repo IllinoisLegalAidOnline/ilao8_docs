@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OTIS Widget &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Legal content comments &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="OTIS Surveys" href="migration_oas_surveys.html" />
-    <link rel="prev" title="OTIS Modal" href="migration_oas_popup.html" /> 
+    <link rel="next" title="Event nodes" href="migration_events.html" />
+    <link rel="prev" title="Legal content workflows" href="legal_content_workflow.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,34 +88,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_intake_settings.html">OAS Intake Settings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_triage_user.html">OAS Triage User</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_referral_history.html">OAS Referral History</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_legal_server.html">OAS Legal Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_financial_category.html">ILAO OAS Financial Category</a></li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_income_standard.html">ILAO OAS Income Standard</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_functionality.html">OTIS Global Items</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_permissions.html">OTIS Permissions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_cron.html">OTIS Scheduled Tasks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_glh.html">Get Legal Help Form to Next Step</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_available.html">Intake Availability Functions</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_intake_ui.html">OTIS Intake UI and Pre-Transfer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_callbacks_and_confirms.html">Exit screens and Callbacks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_etransfer.html">OTIS eTransfer Processing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_notifications.html">OTIS Automated Notifications</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_triage_rules.html">Triage Rules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_referrals.html">OTIS Referrals</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_popup.html">OTIS Modal</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">OTIS Widget</a></li>
-<li class="toctree-l4"><a class="reference internal" href="migration_oas_surveys.html">OTIS Surveys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#relies-on">Relies on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#paragraphs">Paragraphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#scheduler-issues">Scheduler Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#workbench-moderation">Workbench Moderation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#legal-content-functionality-to-deprecate">Legal content functionality to deprecate</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
@@ -170,17 +155,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-          <li><a href="migration_otis_entities.html">OTIS-related migration</a> &raquo;</li>
+          <li><a href="migration_legal_content_types.html">Legal content migration</a> &raquo;</li>
         
-          <li><a href="migration_otis_functionality_overview.html">OTIS Functionality Documentation</a> &raquo;</li>
-        
-      <li>OTIS Widget</li>
+      <li>Legal content comments</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_oas_widget.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/legal_content_comments.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -193,8 +176,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="otis-widget">
-<h1>OTIS Widget<a class="headerlink" href="#otis-widget" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="legal-content-comments">
+<h1>Legal content comments<a class="headerlink" href="#legal-content-comments" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -205,10 +188,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_oas_surveys.html" class="btn btn-neutral float-right" title="OTIS Surveys" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_events.html" class="btn btn-neutral float-right" title="Event nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_oas_popup.html" class="btn btn-neutral" title="OTIS Modal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="legal_content_workflow.html" class="btn btn-neutral" title="Legal content workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

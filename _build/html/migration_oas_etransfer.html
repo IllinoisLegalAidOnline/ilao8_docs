@@ -115,6 +115,11 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -336,7 +341,7 @@ Returns a Legal server acceptable callback type string</p>
 <h4>Parameters<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <p>Accepts a triage user entity
 Returns an array of collected assets formatted as:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">assetType =&gt; name</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">assetType =&gt; name</span>
 <span class="x">assetAmount =&gt; $ amount of asset.</span>
 
 <span class="x"> Relies on oas_triage_user_get_financial_category to set the name based on Legal Server mappings.</span>
@@ -351,7 +356,7 @@ Returns an array of collected assets formatted as:</p>
 <h4>Parameters<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <p>Accepts a triage user entity
 Returns an array of collected income formatted as:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">incomeType =&gt; name</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">incomeType =&gt; name</span>
 <span class="x">incomeFrequencey =&gt; 12 (since we collect monthly only)</span>
 <span class="x">incomeAmount =&gt; dollar amount of income</span>
 </pre></div>
@@ -366,7 +371,7 @@ Returns an array of collected income formatted as:</p>
 <h4>Parameters<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
 <p>Accepts a triage user entity
 Returns an array of collected expenses formatted as:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">expenseType =&gt; name</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">expenseType =&gt; name</span>
 <span class="x">expenseFrequencey =&gt; 12 (since we collect monthly only)</span>
 <span class="x">expenseAmount =&gt; dollar amount of income</span>
 </pre></div>

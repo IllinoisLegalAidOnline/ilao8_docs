@@ -8,6 +8,7 @@ Legal content migration
 
    legal_content_paragraphs
    legal_content_workflow
+   legal_content_comments
 
 Content types:
 
@@ -158,7 +159,7 @@ Paragraphs
 ============
 Our content_block field uses paragraphs to build the actual legal content.  These are the paragraph bundles associated with legal content:
 
-See Legal content paragraphs for migration information.
+See :ref:`legal_content_paragraphs` for migration information.
 
 * Text
 * Automated documents
@@ -181,6 +182,88 @@ We have 2 modules in our file system, workbench_scheduler and scheduler_workbenc
 Workbench Moderation
 =====================
 
+See :ref:`legal_content_workflows`
+
+Functionality Notes
+=====================
+
+Primary content format
+-----------------------
+
+The field_primary_content_type field should not be editable but should be determined when content is created or updated based on the following algorithm.  Once it hits a value in this chart, it stops (so for example, if a node contains a automated_documents block and an iicle_content block, it will be IICLE content because that is what it hits first).
+
++-----------------------------------+---------------------------------------------+
+| If the field_content_type contains| Then the field_primary_content_type is set  |
+| this bundle                       | to this taxonomy term id from content format|
++===================================+=============================================+
+| iicle_content                     | 523396 (IICLE)                              |
++-----------------------------------+---------------------------------------------+
+| automated_documents               | 41 (Easy Form)                              |
++-----------------------------------+---------------------------------------------+
+| decision_tree                     | 523631 (Decision Tree)                      |
++-----------------------------------+---------------------------------------------+
+| teachme                           | 523401 (Teach Me)                           |
++-----------------------------------+---------------------------------------------+
+| legal_bundle                      | 523406 (Guide)                              |
++-----------------------------------+---------------------------------------------+
+| process_step                      | 501551 (How-To)                             |
++-----------------------------------+---------------------------------------------+
+| portal_layout_timeline            | 501551 (How-To)                             |
++-----------------------------------+---------------------------------------------+
+| static_form (link)                | 501221 (Form link)                          |
++-----------------------------------+---------------------------------------------+
+| static_form (file)                | 501216 (From download)                      |
++-----------------------------------+---------------------------------------------+
+| link_not_form``_``                | 21 (Link)                                   |
++-----------------------------------+---------------------------------------------+
+| file_not_form``_``                | 22 (File download)                          |
++-----------------------------------+---------------------------------------------+
+| video_content                     | 13 (Video)                                  |
++-----------------------------------+---------------------------------------------+
+| a2j_author                        | 523631 (Decision Tree)                      |
++-----------------------------------+---------------------------------------------+
+| anything else                     | 16 (Text article)                           |
++-----------------------------------+---------------------------------------------+
+
+
+.. note::
+   Do we really care if forms are links or downloads?                  
+
+Custom breadcrumbs
+---------------------
+
+.. warning::
+   This will need to be re-evaluated based on the new design.
+   
+Archive MCLE Credit
+---------------------
+
+When a node contains a video and the video has MCLE credit assigned to it, the email contact form is used to send an email to a contact to request MCLE credit when:
+
+* The user is logged in
+* The node has a video block
+* The cut off date for MCLE credit has not been reached
+
+Custom code
+^^^^^^^^^^^^^
+
+Custom functionality to alter the request can be found in:
+
+* ilao_legal_articles_form_email_mail_page_form_alter
+* ilao_legal_articles_form_email_mail_page_redirect_handler
+* ilao_legal_articles_form_email_mail_page_validate
+* ilao_legal_articles_form_email_mail_page_submit
+
+
+Custom access
+---------------
+
+Annual updates
+------------------
+
+Lift integration
+-------------------
+   
 
 
 Legal content functionality to deprecate
@@ -188,3 +271,21 @@ Legal content functionality to deprecate
 
 * Sharing content by SMS; this is not used widely and the current architecture is problematic.
 * Recommended for you block; migrating the field but need to evaluate the utility vs other ways to do this in D8
+* Code related to lingotek in the ilao_legal_articles should not be migrated; we will not be using Lingotek in Drupal 8.
+
+
+Known Issues & Notes for Drupal 8
+==================================
+
+These are known issues and open questions to discuss with the content team:
+
+* Current platform is overkill.
+* Major / minor revision system => this has been disabled for months.  It should be completely deprecated in Drupal 8
+* Ticket integration (ilao_workbench_check_for_open_ticket) should be discontinued.
+* Notification of updates to users is dependent on what we do for account access moving forward.
+* Popular today configuration may be depreciable if we do not continue that functionality moving forward.
+
+
+     
+          
+

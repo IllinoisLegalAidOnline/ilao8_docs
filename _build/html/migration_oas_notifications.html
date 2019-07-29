@@ -115,6 +115,11 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_oas_reporting.html">OTIS Reporting Functionality</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -305,7 +310,7 @@ Accepts the telephone number, message, and a message type.  For sms reminders, t
 <li>Invokes the ilao_sms_surveys_create function to create a message object</li>
 <li>Saves the message object</li>
 </ul>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$message[&#39;created&#39;] = REQUEST_TIME;</span>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">$message[&#39;created&#39;] = REQUEST_TIME;</span>
 <span class="x">$message[&#39;changed&#39;] = REQUEST_TIME;</span>
 <span class="x">$message[&#39;from_number&#39;] = variable_get(&#39;twilio_number&#39;);</span>
 <span class="x">$message[&#39;to_number&#39;] = $to_number;</span>

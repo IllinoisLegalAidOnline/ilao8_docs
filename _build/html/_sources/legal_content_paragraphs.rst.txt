@@ -2,6 +2,8 @@
 Legal content paragraphs
 ==================================
 
+.. _legal_content_paragraphs:
+
 Text
 ==============
 Machine name: text_article

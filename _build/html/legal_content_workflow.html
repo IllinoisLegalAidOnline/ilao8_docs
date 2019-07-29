@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Event nodes" href="migration_events.html" />
+    <link rel="next" title="Legal content comments" href="legal_content_comments.html" />
     <link rel="prev" title="Legal content paragraphs" href="legal_content_paragraphs.html" /> 
 
   
@@ -93,8 +93,13 @@
 <li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content workflows</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#workbench-configuration">Workbench Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#access-controls">Access controls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sending-notifications">Sending notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues-notes-for-drupal-8">Known Issues &amp; Notes for Drupal 8</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_comments.html">Legal content comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#paragraphs">Paragraphs</a></li>
@@ -181,7 +186,7 @@
   <div class="section" id="legal-content-workflows">
 <h1>Legal content workflows<a class="headerlink" href="#legal-content-workflows" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="workbench-configuration">
-<h2>Workbench Configuration<a class="headerlink" href="#workbench-configuration" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Workbench Configuration<a class="headerlink" href="#workbench-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="states">
 <h3>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -231,10 +236,197 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All states except for Draft/Revise attorney content apply to the legal content content type.  That state belongs to the ADRM content type.</p>
+</div>
 </div>
 <div class="section" id="transitions">
 <h3>Transitions<a class="headerlink" href="#transitions" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="22%" />
+<col width="22%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">From</th>
+<th class="head">To</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>draft-copy_edit</td>
+<td>Draft/Revise</td>
+<td>Copy Edit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>draft-ready_to_review</td>
+<td>Draft/Revise</td>
+<td>Ready to review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>draft-published</td>
+<td>Draft/Revise</td>
+<td>Published</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>draft-substantive_update</td>
+<td>Draft/Revise</td>
+<td>Sub. Update</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>draft_revise_attorney
+_content-published</td>
+<td>Draft/Revise
+attorney content</td>
+<td>Published</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>copy_edit-draft</td>
+<td>Copy edit</td>
+<td>Draft/revise</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>copy_edit-plain_language
+_review</td>
+<td>Copy edit</td>
+<td>Plain language
+Review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>ready_to_review-published</td>
+<td>Ready to review</td>
+<td>Published</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>published-draft_revise
+_attorney_content</td>
+<td>Published</td>
+<td>Draft/Revise
+Attorney content</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>metadata_review-draft</td>
+<td>Metadata review</td>
+<td>Draft/revise</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>metadata_review-copy_edit</td>
+<td>Metadata review</td>
+<td>Copy edit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>metadata_review-ready_to
+_review</td>
+<td>Metadata review</td>
+<td>Ready to review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>metadata_review-published</td>
+<td>Metadata review</td>
+<td>Published</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>metadata_review-plain
+_language_review</td>
+<td>Metadata review</td>
+<td>Plain language
+review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>substantive_update-draft</td>
+<td>Sub. Update</td>
+<td>Draft</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>substantive_update-copy_edit</td>
+<td>Sub. Update</td>
+<td>Copy edit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>substantive_update-metadata
+_review</td>
+<td>Sub. Update</td>
+<td>Metadata review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>substantive_update-plain
+_language_review</td>
+<td>Sub. update</td>
+<td>Plain language
+review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>published-draft_review</td>
+<td>Published</td>
+<td>Draft review</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>plain_language_review-draft</td>
+<td>Draft</td>
+<td>Plain language
+review</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>plain_language_review-copy
+_edit</td>
+<td>Plain language
+review</td>
+<td>Copy edit</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>plain_language_review-
+metadata_review</td>
+<td>Plain language</td>
+<td>Metadata review</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+<div class="section" id="permissions">
+<h2>Permissions<a class="headerlink" href="#permissions" title="Permalink to this headline">¶</a></h2>
+<p>The ilao_workbench module defines 4 permissions:</p>
+<ul class="simple">
+<li>publish without notification =&gt; users with this permission can publish without triggering an email notification to the content managers that they need to review the content</li>
+<li>receive workbench transition alerts =&gt; users with this permission will receive alerts when content is changed in some circumstances</li>
+<li>publish without review =&gt; can publish minor updates to the content automatically</li>
+<li>mark as substantive =&gt; can mark a revision as a substantive update</li>
+</ul>
+</div>
+<div class="section" id="access-controls">
+<h2>Access controls<a class="headerlink" href="#access-controls" title="Permalink to this headline">¶</a></h2>
+<p>The ilao_workbench module contains an access control such that:</p>
+<ul class="simple">
+<li>If content is marked “ready to review,” only users with the publish without review permission can edit it.</li>
+<li>If content is marked “copy edit,” only users who can transition from copy edit to plain language can edit it.</li>
+</ul>
+</div>
+<div class="section" id="sending-notifications">
+<h2>Sending notifications<a class="headerlink" href="#sending-notifications" title="Permalink to this headline">¶</a></h2>
+<p>The ilao_workbench_workbench_moderation_transition function fires whenever there is a transition between states and calls _ilao_workbench_workbench_notifications to send notifications as follows:</p>
+<ul class="simple">
+<li>to any user with the ‘receive workbench transition alerts’ permission</li>
+<li>where the content type is either adrm or legal content</li>
+<li>the edit wasn’t done anonymously (indication of a system update)</li>
+<li>if the new state is published, fires the rules component “rules_send_publish_notification”</li>
+<li>if the new state is ready to review, fires the rules component “rules_send_content_review_notification”</li>
+<li>if the new state is copy edit, fires the rules component “rules_send_content_copyedit_notification”</li>
+</ul>
+<p><em>Relies on Rules module</em></p>
+</div>
+<div class="section" id="known-issues-notes-for-drupal-8">
+<h2>Known Issues &amp; Notes for Drupal 8<a class="headerlink" href="#known-issues-notes-for-drupal-8" title="Permalink to this headline">¶</a></h2>
+<p>These are known issues and open questions to discuss with the content team:</p>
+<ul class="simple">
+<li>Current platform is overkill.</li>
+<li>Major / minor revision system =&gt; this has been disabled for months.  It should be completely deprecated in Drupal 8</li>
+<li>Ticket integration (ilao_workbench_check_for_open_ticket) should be discontinued.</li>
+</ul>
 </div>
 </div>
 
@@ -246,7 +438,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_events.html" class="btn btn-neutral float-right" title="Event nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="legal_content_comments.html" class="btn btn-neutral float-right" title="Legal content comments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="legal_content_paragraphs.html" class="btn btn-neutral" title="Legal content paragraphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
