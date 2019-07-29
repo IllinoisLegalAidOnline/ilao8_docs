@@ -225,6 +225,8 @@
 <li>Content_keywords</li>
 <li>content_section</li>
 <li>region</li>
+<li>annual updates</li>
+<li>content format</li>
 </ul>
 </li>
 </ul>
@@ -521,6 +523,13 @@ to this taxonomy term id from content format</th>
 <p class="first admonition-title">Warning</p>
 <p class="last">This will need to be re-evaluated based on the new design.</p>
 </div>
+<p>We set custom breadcrumbs based on how the user accessed the node:</p>
+<ul class="simple">
+<li>If the user came in from our primary navigation, we use the category they selected</li>
+<li>If the user came in from a portal page, we use the portal page name in the breadcrumb</li>
+<li>If the user came in directly or from search or any other path besides a portal page or primary nav, we use the primary category field value</li>
+</ul>
+<p>Custom code: ilao_legal_articles_set_breadcrumb called from ilao_legal_articles_node_view_alter</p>
 </div>
 <div class="section" id="archive-mcle-credit">
 <h3>Archive MCLE Credit<a class="headerlink" href="#archive-mcle-credit" title="Permalink to this headline">¶</a></h3>
@@ -546,6 +555,7 @@ to this taxonomy term id from content format</th>
 </div>
 <div class="section" id="annual-updates">
 <h3>Annual updates<a class="headerlink" href="#annual-updates" title="Permalink to this headline">¶</a></h3>
+<p>The annual update field tracks when a content needs to be reviewed based on a date (for example, food stamp content needs to updated in October when new financial values are released by USDA).</p>
 </div>
 <div class="section" id="lift-integration">
 <h3>Lift integration<a class="headerlink" href="#lift-integration" title="Permalink to this headline">¶</a></h3>

@@ -43,6 +43,8 @@ Currently relies on:
   * Content_keywords
   * content_section
   * region
+  * annual updates
+  * content format
    
 It is unclear if we actually use:
 
@@ -235,6 +237,16 @@ Custom breadcrumbs
 .. warning::
    This will need to be re-evaluated based on the new design.
    
+We set custom breadcrumbs based on how the user accessed the node:
+
+* If the user came in from our primary navigation, we use the category they selected
+* If the user came in from a portal page, we use the portal page name in the breadcrumb
+* If the user came in directly or from search or any other path besides a portal page or primary nav, we use the primary category field value
+
+Custom code: ilao_legal_articles_set_breadcrumb called from ilao_legal_articles_node_view_alter
+
+   
+   
 Archive MCLE Credit
 ---------------------
 
@@ -258,8 +270,12 @@ Custom functionality to alter the request can be found in:
 Custom access
 ---------------
 
+
 Annual updates
 ------------------
+
+The annual update field tracks when a content needs to be reviewed based on a date (for example, food stamp content needs to updated in October when new financial values are released by USDA).
+
 
 Lift integration
 -------------------
