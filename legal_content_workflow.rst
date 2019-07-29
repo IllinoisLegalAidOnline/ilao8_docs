@@ -131,17 +131,5 @@ The ilao_workbench_workbench_moderation_transition function fires whenever there
  
 
 
-Known Issues & Notes for Drupal 8
-==================================
-
-These are known issues and open questions to discuss with the content team:
-
-* Current platform is overkill.
-* Major / minor revision system => this has been disabled for months.  It should be completely deprecated in Drupal 8
-* Ticket integration (ilao_workbench_check_for_open_ticket) should be discontinued.
-
-
-     
-          
 
 
