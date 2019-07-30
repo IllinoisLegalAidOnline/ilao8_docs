@@ -105,6 +105,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#custom-access">Custom access</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#annual-updates">Annual updates</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#lift-integration">Lift integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#substantive-updates">Substantive updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notifications">Notifications</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#legal-content-functionality-to-deprecate">Legal content functionality to deprecate</a></li>
@@ -330,7 +332,7 @@ paragraphs included</td>
 <tr class="row-even"><td>field_substantive_update</td>
 <td>Boolean; indicates whether an
 edit is substantive or not</td>
-<td>Migrate</td>
+<td>Delete</td>
 </tr>
 <tr class="row-odd"><td>title_field</td>
 <td>Standard Drupal translatable
@@ -556,9 +558,54 @@ to this taxonomy term id from content format</th>
 <div class="section" id="annual-updates">
 <h3>Annual updates<a class="headerlink" href="#annual-updates" title="Permalink to this headline">¶</a></h3>
 <p>The annual update field tracks when a content needs to be reviewed based on a date (for example, food stamp content needs to updated in October when new financial values are released by USDA).</p>
+<div class="section" id="annual-updates-taxonomy">
+<h4>Annual updates Taxonomy<a class="headerlink" href="#annual-updates-taxonomy" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_holiday_date</td>
+<td>Date on which the annual
+update is due</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_last_mail_updated</td>
+<td>Records last time cron sent
+reminders to content team</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h4>Custom code<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>ilao_legal_articles_cron sends an email to users with the content manager role notifying them of the nodes that need to be updated, based on 30 days before the field_holiday_date value.  It also updates the field_last_mail_updated on each taxonomy term.</p>
+<p><em>Relies on cron</em></p>
+</div>
 </div>
 <div class="section" id="lift-integration">
 <h3>Lift integration<a class="headerlink" href="#lift-integration" title="Permalink to this headline">¶</a></h3>
+<p>As part of the node presave, the _ilao_legal_articles_save_lift_taxonomies sets the values for the field_lift_content_section and field_lift_content_keyword sections.</p>
+</div>
+<div class="section" id="substantive-updates">
+<h3>Substantive updates<a class="headerlink" href="#substantive-updates" title="Permalink to this headline">¶</a></h3>
+<p>The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:
+* Relabel the field_last_substantive_update to “Last expert review”
+* Add a new date field for last_revised; label as “Last internal revision” with help text of “Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes.”</p>
+</div>
+<div class="section" id="notifications">
+<h3>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h3>
+<p>The node_presave function in ilao_legal_articles also handles sending notifications to users when legal content or portal main page content is updated by invoking the ilao_legal_articles_send_notification_preference_message function.</p>
+<p>This function pulls any user favorites that match the node and sends either an email or text message based on the user’s preferences.</p>
 </div>
 </div>
 <div class="section" id="legal-content-functionality-to-deprecate">

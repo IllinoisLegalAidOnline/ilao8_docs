@@ -92,13 +92,19 @@
 <li class="toctree-l2 current"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content comments</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content comments</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#considerations">Considerations</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#paragraphs">Paragraphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#scheduler-issues">Scheduler Issues</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#workbench-moderation">Workbench Moderation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#functionality-notes">Functionality Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#legal-content-functionality-to-deprecate">Legal content functionality to deprecate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#known-issues-notes-for-drupal-8">Known Issues &amp; Notes for Drupal 8</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
@@ -178,6 +184,48 @@
             
   <div class="section" id="legal-content-comments">
 <h1>Legal content comments<a class="headerlink" href="#legal-content-comments" title="Permalink to this headline">¶</a></h1>
+<p>..note :: The big decision with comments is its integration with ratings and whether we keep the 5 star rating or move to a simpler helpful/not helpful rating.</p>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_rating</td>
+<td>Fivestar rating tied</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>author</td>
+<td>System field</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>subject</td>
+<td>System field</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>comment_body</td>
+<td>Long text; Body of comment</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="considerations">
+<h2>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Staff and intern users must be able to reply to comments without needing to leave a rating</li>
+<li>Ratings need to be aggregated at the node level.  See ilao_legal_articles’ function ilao_legal_articles_comment_publish</li>
+</ul>
+</div>
 </div>
 
 

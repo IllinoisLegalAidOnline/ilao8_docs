@@ -102,7 +102,7 @@ See also the `content migration spreadsheet. <https://docs.google.com/spreadshee
 | field_primary_content_type   | Content format; determined by | Migrate             |
 |                              | paragraphs included           |                     |
 +------------------------------+-------------------------------+---------------------+
-| field_substantive_update     | Boolean; indicates whether an | Migrate             |
+| field_substantive_update     | Boolean; indicates whether an | Delete              |
 |                              | edit is substantive or not    |                     |
 +------------------------------+-------------------------------+---------------------+
 | title_field                  | Standard Drupal translatable  | Migrate             |
@@ -277,8 +277,44 @@ Annual updates
 The annual update field tracks when a content needs to be reviewed based on a date (for example, food stamp content needs to updated in October when new financial values are released by USDA).
 
 
+Annual updates Taxonomy
+^^^^^^^^^^^^^^^^^^^^^^^^
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_holiday_date           | Date on which the annual      | Migrate             |
+|                              | update is due                 |                     |
++------------------------------+-------------------------------+---------------------+
+| field_last_mail_updated      | Records last time cron sent   | Migrate             |
+|                              | reminders to content team     |                     |
++------------------------------+-------------------------------+---------------------+
+
+Custom code
+^^^^^^^^^^^^
+ilao_legal_articles_cron sends an email to users with the content manager role notifying them of the nodes that need to be updated, based on 30 days before the field_holiday_date value.  It also updates the field_last_mail_updated on each taxonomy term.
+
+*Relies on cron*
+
+
+
 Lift integration
 -------------------
+
+As part of the node presave, the _ilao_legal_articles_save_lift_taxonomies sets the values for the field_lift_content_section and field_lift_content_keyword sections.
+   
+Substantive updates
+--------------------
+The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:
+* Relabel the field_last_substantive_update to "Last expert review"
+* Add a new date field for last_revised; label as "Last internal revision" with help text of "Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes."
+
+Notifications
+----------------
+The node_presave function in ilao_legal_articles also handles sending notifications to users when legal content or portal main page content is updated by invoking the ilao_legal_articles_send_notification_preference_message function.  
+
+This function pulls any user favorites that match the node and sends either an email or text message based on the user's preferences.
+   
    
 
 
@@ -288,6 +324,7 @@ Legal content functionality to deprecate
 * Sharing content by SMS; this is not used widely and the current architecture is problematic.
 * Recommended for you block; migrating the field but need to evaluate the utility vs other ways to do this in D8
 * Code related to lingotek in the ilao_legal_articles should not be migrated; we will not be using Lingotek in Drupal 8.
+
 
 
 Known Issues & Notes for Drupal 8
