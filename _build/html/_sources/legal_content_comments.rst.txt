@@ -2,7 +2,8 @@
 Legal content comments
 ===============================
 
-..note :: The big decision with comments is its integration with ratings and whether we keep the 5 star rating or move to a simpler helpful/not helpful rating.
+..  todo:: 
+    The big decision with comments is its integration with ratings and whether we keep the 5 star rating or move to a simpler helpful/not helpful rating.
 
 Fields
 =======

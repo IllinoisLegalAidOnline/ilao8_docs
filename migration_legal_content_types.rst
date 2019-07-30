@@ -9,6 +9,10 @@ Legal content migration
    legal_content_paragraphs
    legal_content_workflow
    legal_content_comments
+   legal_content_custom_tokens
+   legal_content_localization
+   legal_content_iicle_proxy
+   legal_content_glossary
 
 Content types:
 

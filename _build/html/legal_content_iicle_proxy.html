@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Legal content comments &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>IICLE Proxy &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Legal content custom tokens" href="legal_content_custom_tokens.html" />
-    <link rel="prev" title="Legal content workflows" href="legal_content_workflow.html" /> 
+    <link rel="next" title="Glossary" href="legal_content_glossary.html" />
+    <link rel="prev" title="Legal Content Localization" href="legal_content_localization.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -92,14 +92,14 @@
 <li class="toctree-l2 current"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_workflow.html">Legal content workflows</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content comments</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#considerations">Considerations</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="legal_content_comments.html">Legal content comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_custom_tokens.html">Legal content custom tokens</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_localization.html">Legal Content Localization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="legal_content_iicle_proxy.html">IICLE Proxy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">IICLE Proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relies-on">Relies on</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_glossary.html">Glossary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#fields">Fields</a></li>
@@ -167,13 +167,13 @@
         
           <li><a href="migration_legal_content_types.html">Legal content migration</a> &raquo;</li>
         
-      <li>Legal content comments</li>
+      <li>IICLE Proxy</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/legal_content_comments.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/legal_content_iicle_proxy.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -186,52 +186,59 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="legal-content-comments">
-<h1>Legal content comments<a class="headerlink" href="#legal-content-comments" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">The big decision with comments is its integration with ratings and whether we keep the 5 star rating or move to a simpler helpful/not helpful rating.</p>
+  <div class="section" id="iicle-proxy">
+<h1>IICLE Proxy<a class="headerlink" href="#iicle-proxy" title="Permalink to this headline">¶</a></h1>
+<p>IICLE content is any legal content that has a paragraph block of type “iicle” attached to it.</p>
+<p>Because of ILAO’s agreement with IICLE, we must use a proxy server to display IICLE content.  The proxy server grabs the entire web page from IICLE, including stylesheet information and renders it on our site.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unlike must of ILAO’s code, the IICLE proxy code is contained within a feature.  See features/ilao_f_iicle_proxy</p>
 </div>
-<div class="section" id="fields">
-<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="relies-on">
+<h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Proxy contributed module</li>
+<li>ilao_f_iicle_proxy feature with the proxy_processor_ilao.inc file</li>
+</ul>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The current proxy module throws an error when trying to access configuration.</p>
+</div>
 <table border="1" class="docutils">
 <colgroup>
-<col width="37%" />
-<col width="38%" />
-<col width="26%" />
+<col width="53%" />
+<col width="47%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Description</th>
-<th class="head">Status</th>
+<tr class="row-odd"><th class="head">Variable</th>
+<th class="head">Value</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>field_rating</td>
-<td>Fivestar rating tied</td>
-<td>Migrate</td>
+<tr class="row-even"><td>proxy_flood_interval</td>
+<td>3600</td>
 </tr>
-<tr class="row-odd"><td>author</td>
-<td>System field</td>
-<td>Migrate</td>
+<tr class="row-odd"><td>proxy_flood_control</td>
+<td>1</td>
 </tr>
-<tr class="row-even"><td>subject</td>
-<td>System field</td>
-<td>Migrate</td>
+<tr class="row-even"><td>proxy_processor_proxy_processor_ilao</td>
+<td>1</td>
 </tr>
-<tr class="row-odd"><td>comment_body</td>
-<td>Long text; Body of comment</td>
-<td>Migrate</td>
+<tr class="row-odd"><td>proxy_processor_proxy_processor_proxify
+_urls</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>proxy_whitelist_control</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>proxy_whitelist_domains</td>
+<td>iicle.com</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="considerations">
-<h2>Considerations<a class="headerlink" href="#considerations" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Staff and intern users must be able to reply to comments without needing to leave a rating</li>
-<li>Ratings need to be aggregated at the node level.  See ilao_legal_articles’ function ilao_legal_articles_comment_publish</li>
-</ul>
 </div>
 </div>
 
@@ -243,10 +250,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="legal_content_custom_tokens.html" class="btn btn-neutral float-right" title="Legal content custom tokens" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="legal_content_glossary.html" class="btn btn-neutral float-right" title="Glossary" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="legal_content_workflow.html" class="btn btn-neutral" title="Legal content workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="legal_content_localization.html" class="btn btn-neutral" title="Legal Content Localization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
