@@ -198,38 +198,39 @@ Primary content format
 
 The field_primary_content_type field should not be editable but should be determined when content is created or updated based on the following algorithm.  Once it hits a value in this chart, it stops (so for example, if a node contains a automated_documents block and an iicle_content block, it will be IICLE content because that is what it hits first).
 
-+-----------------------------------+---------------------------------------------+
-| If the field_content_type contains| Then the field_primary_content_type is set  |
-| this bundle                       | to this taxonomy term id from content format|
-+===================================+=============================================+
-| iicle_content                     | 523396 (IICLE)                              |
-+-----------------------------------+---------------------------------------------+
-| automated_documents               | 41 (Easy Form)                              |
-+-----------------------------------+---------------------------------------------+
-| decision_tree                     | 523631 (Decision Tree)                      |
-+-----------------------------------+---------------------------------------------+
-| teachme                           | 523401 (Teach Me)                           |
-+-----------------------------------+---------------------------------------------+
-| legal_bundle                      | 523406 (Guide)                              |
-+-----------------------------------+---------------------------------------------+
-| process_step                      | 501551 (How-To)                             |
-+-----------------------------------+---------------------------------------------+
-| portal_layout_timeline            | 501551 (How-To)                             |
-+-----------------------------------+---------------------------------------------+
-| static_form (link)                | 501221 (Form link)                          |
-+-----------------------------------+---------------------------------------------+
-| static_form (file)                | 501216 (From download)                      |
-+-----------------------------------+---------------------------------------------+
-| link_not_form``_``                | 21 (Link)                                   |
-+-----------------------------------+---------------------------------------------+
-| file_not_form``_``                | 22 (File download)                          |
-+-----------------------------------+---------------------------------------------+
-| video_content                     | 13 (Video)                                  |
-+-----------------------------------+---------------------------------------------+
-| a2j_author                        | 523631 (Decision Tree)                      |
-+-----------------------------------+---------------------------------------------+
-| anything else                     | 16 (Text article)                           |
-+-----------------------------------+---------------------------------------------+
+This is currently handled in the ilao_legal_articles_submit function.
+
++-----------------------------------+-------------------------------------------------+
+| Content type field contains       | Then field_primary_content_type taxonomy term is|
++===================================+=================================================+
+| iicle_content                     | 523396 (IICLE)                                  |
++-----------------------------------+-------------------------------------------------+
+| automated_documents               | 41 (Easy Form)                                  |
++-----------------------------------+-------------------------------------------------+
+| decision_tree                     | 523631 (Decision Tree)                          |
++-----------------------------------+-------------------------------------------------+
+| teachme                           | 523401 (Teach Me)                               |
++-----------------------------------+-------------------------------------------------+
+| legal_bundle                      | 523406 (Guide)                                  |
++-----------------------------------+-------------------------------------------------+
+| process_step                      | 501551 (How-To)                                 |
++-----------------------------------+-------------------------------------------------+
+| portal_layout_timeline            | 501551 (How-To)                                 |
++-----------------------------------+-------------------------------------------------+
+| static_form (link)                | 501221 (Form link)                              |
++-----------------------------------+-------------------------------------------------+
+| static_form (file)                | 501216 (Form download)                          |
++-----------------------------------+-------------------------------------------------+
+| link_not_form``_``                | 21 (Link)                                       |
++-----------------------------------+-------------------------------------------------+
+| file_not_form``_``                | 22 (File download)                              |
++-----------------------------------+-------------------------------------------------+
+| video_content                     | 13 (Video)                                      |
++-----------------------------------+-------------------------------------------------+
+| a2j_author                        | 523631 (Decision Tree)                          |
++-----------------------------------+-------------------------------------------------+
+| anything else                     | 16 (Text article)                               |
++-----------------------------------+-------------------------------------------------+
 
 
 .. note::
@@ -273,6 +274,11 @@ Custom functionality to alter the request can be found in:
 
 Custom access
 ---------------
+The _ilao_access_check_legal_article in the ilao_access module checks node access for legal content based on the field_content_access field:
+
+* If the value = 0, it is restricted to pro bono members or ILAO staff
+* If the value = 1, it is restricted to legal aid members or ILAO staff
+* If there are more than 1 value in the field for the node, it is restricted to pro bono members, legal aid members, or ILAO staff.
 
 
 Annual updates
@@ -310,6 +316,7 @@ As part of the node presave, the _ilao_legal_articles_save_lift_taxonomies sets 
 Substantive updates
 --------------------
 The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:
+
 * Relabel the field_last_substantive_update to "Last expert review"
 * Add a new date field for last_revised; label as "Last internal revision" with help text of "Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes."
 
@@ -341,6 +348,7 @@ These are known issues and open questions to discuss with the content team:
 * Ticket integration (ilao_workbench_check_for_open_ticket) should be discontinued.
 * Notification of updates to users is dependent on what we do for account access moving forward.
 * Popular today configuration may be depreciable if we do not continue that functionality moving forward.
+* Images lack alternate text.
 
 
      

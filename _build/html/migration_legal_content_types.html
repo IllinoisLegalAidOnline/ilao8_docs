@@ -117,10 +117,24 @@
 <li class="toctree-l3"><a class="reference internal" href="#known-issues-notes-for-drupal-8">Known Issues &amp; Notes for Drupal 8</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -465,16 +479,15 @@ the region(s) from the content</td>
 <div class="section" id="primary-content-format">
 <h3>Primary content format<a class="headerlink" href="#primary-content-format" title="Permalink to this headline">¶</a></h3>
 <p>The field_primary_content_type field should not be editable but should be determined when content is created or updated based on the following algorithm.  Once it hits a value in this chart, it stops (so for example, if a node contains a automated_documents block and an iicle_content block, it will be IICLE content because that is what it hits first).</p>
+<p>This is currently handled in the ilao_legal_articles_submit function.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="44%" />
-<col width="56%" />
+<col width="42%" />
+<col width="58%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head">If the field_content_type contains
-this bundle</th>
-<th class="head">Then the field_primary_content_type is set
-to this taxonomy term id from content format</th>
+<tr class="row-odd"><th class="head">Content type field contains</th>
+<th class="head">Then field_primary_content_type taxonomy term is</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -503,7 +516,7 @@ to this taxonomy term id from content format</th>
 <td>501221 (Form link)</td>
 </tr>
 <tr class="row-even"><td>static_form (file)</td>
-<td>501216 (From download)</td>
+<td>501216 (Form download)</td>
 </tr>
 <tr class="row-odd"><td>link_not_form``_``</td>
 <td>21 (Link)</td>
@@ -562,6 +575,12 @@ to this taxonomy term id from content format</th>
 </div>
 <div class="section" id="custom-access">
 <h3>Custom access<a class="headerlink" href="#custom-access" title="Permalink to this headline">¶</a></h3>
+<p>The _ilao_access_check_legal_article in the ilao_access module checks node access for legal content based on the field_content_access field:</p>
+<ul class="simple">
+<li>If the value = 0, it is restricted to pro bono members or ILAO staff</li>
+<li>If the value = 1, it is restricted to legal aid members or ILAO staff</li>
+<li>If there are more than 1 value in the field for the node, it is restricted to pro bono members, legal aid members, or ILAO staff.</li>
+</ul>
 </div>
 <div class="section" id="annual-updates">
 <h3>Annual updates<a class="headerlink" href="#annual-updates" title="Permalink to this headline">¶</a></h3>
@@ -606,9 +625,11 @@ reminders to content team</td>
 </div>
 <div class="section" id="substantive-updates">
 <h3>Substantive updates<a class="headerlink" href="#substantive-updates" title="Permalink to this headline">¶</a></h3>
-<p>The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:
-* Relabel the field_last_substantive_update to “Last expert review”
-* Add a new date field for last_revised; label as “Last internal revision” with help text of “Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes.”</p>
+<p>The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:</p>
+<ul class="simple">
+<li>Relabel the field_last_substantive_update to “Last expert review”</li>
+<li>Add a new date field for last_revised; label as “Last internal revision” with help text of “Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes.”</li>
+</ul>
 </div>
 <div class="section" id="notifications">
 <h3>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h3>
@@ -633,6 +654,7 @@ reminders to content team</td>
 <li>Ticket integration (ilao_workbench_check_for_open_ticket) should be discontinued.</li>
 <li>Notification of updates to users is dependent on what we do for account access moving forward.</li>
 <li>Popular today configuration may be depreciable if we do not continue that functionality moving forward.</li>
+<li>Images lack alternate text.</li>
 </ul>
 </div>
 </div>
