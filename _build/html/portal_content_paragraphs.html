@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Portal content &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Portal related paragraphs &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Portal related paragraphs" href="portal_content_paragraphs.html" />
-    <link rel="prev" title="Glossary" href="legal_content_glossary.html" /> 
+    <link rel="next" title="Toolboxes and related structures" href="migration_toolboxes.html" />
+    <link rel="prev" title="Portal content" href="migration_portal_pages.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,10 +90,10 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Portal content</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="portal_content_paragraphs.html">Portal related paragraphs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#open-issues">Open issues</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_portal_pages.html">Portal content</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Portal related paragraphs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_portal_pages.html#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_portal_pages.html#open-issues">Open issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
@@ -163,13 +163,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>Portal content</li>
+          <li><a href="migration_portal_pages.html">Portal content</a> &raquo;</li>
+        
+      <li>Portal related paragraphs</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_portal_pages.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/portal_content_paragraphs.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -182,120 +184,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="portal-content">
-<h1>Portal content<a class="headerlink" href="#portal-content" title="Permalink to this headline">¶</a></h1>
-<p>The portal main page was developed to create a custom landing page for a collection of issues.</p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">See also:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="portal_content_paragraphs.html">Portal related paragraphs</a></li>
-</ul>
-</div>
-<p>Content type:  portal_main_page</p>
-<div class="section" id="fields">
-<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
-<p>See also the <a class="reference external" href="https://docs.google.com/spreadsheets/d/18yC6qCk5gi3naY5f0xxT8Ye_aProaJIekmezI0copFI/edit#gid=1991457894">content migration spreadsheet.</a></p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="37%" />
-<col width="38%" />
-<col width="26%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Field</th>
-<th class="head">Description</th>
-<th class="head">Status</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>field_subdomain</td>
-<td>Text field; Path for portal;
-pages are tied together via
-the domain</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-odd"><td>field_page_type</td>
-<td>Select; one of main_page, sub-
-page or toolbox_selector_page</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-even"><td>title_field</td>
-<td>Title field</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-odd"><td>field_meta_description</td>
-<td>Long text; description for SEO</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-even"><td>field_image</td>
-<td>Image for social media</td>
-<td>Migrate to media</td>
-</tr>
-<tr class="row-odd"><td>field_hero_image</td>
-<td>Image for page’s hero banner</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-even"><td>field_hero_title</td>
-<td>Text; Title to overlay on
-hero image</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-odd"><td>field_hero_subtitle</td>
-<td>Text; subtitle to overlay
-on hero image</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-even"><td>field_primary_category</td>
-<td>Term reference to legal issues</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-odd"><td>field_portal_paragraphs</td>
-<td>Paragraphs; items to include
-on page</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-even"><td>field_rating</td>
-<td>Five star rating field</td>
-<td>TBD</td>
-</tr>
-<tr class="row-odd"><td>field_share</td>
-<td>AddThis</td>
-<td>Deprecate/replace</td>
-</tr>
-<tr class="row-even"><td>field_substantive_update</td>
-<td>Boolean/when checked, update</td>
-<td>TBD</td>
-</tr>
-<tr class="row-odd"><td>field_last_substantive_update</td>
-<td>Date</td>
-<td>TBD</td>
-</tr>
-<tr class="row-even"><td>field_transation_outdated</td>
-<td>&#160;</td>
-<td>Do not migrate</td>
-</tr>
-<tr class="row-odd"><td>field_legal_issues</td>
-<td>Term reference to legal issue</td>
-<td>Migrate</td>
-</tr>
-<tr class="row-even"><td>field_promote_as_best_for</td>
-<td>Text; Best bet reference</td>
-<td>Migrate</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The hero image already uses the media module but the image field does not.</p>
-</div>
-</div>
-<div class="section" id="open-issues">
-<h2>Open issues<a class="headerlink" href="#open-issues" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="portal-related-paragraphs">
+<h1>Portal related paragraphs<a class="headerlink" href="#portal-related-paragraphs" title="Permalink to this headline">¶</a></h1>
+<p>The following paragraphs bundles are associated with the portal content type:</p>
 <ul class="simple">
-<li>Should we even have portal content?  Can we accommodate the same type of pages within the legal content type?</li>
-<li>Workflow should be identical to legal content</li>
+<li>Toolbox selector form</li>
+<li>Portal layout webform</li>
+<li>Portal layout grid</li>
+<li>Portal CTA</li>
+<li>Portal CTA image</li>
+<li>Portal layout grid</li>
+<li>Portal layout summary</li>
+<li>Portal layout timeline</li>
+<li>Portal layout sidebar</li>
+<li>Portal layout split column</li>
+<li>Portal story</li>
+<li>Portal layout structured content</li>
+<li>Portal text</li>
 </ul>
-</div>
 </div>
 
 
@@ -306,10 +212,10 @@ on page</td>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="portal_content_paragraphs.html" class="btn btn-neutral float-right" title="Portal related paragraphs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_toolboxes.html" class="btn btn-neutral float-right" title="Toolboxes and related structures" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="legal_content_glossary.html" class="btn btn-neutral" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_portal_pages.html" class="btn btn-neutral" title="Portal content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
