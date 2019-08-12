@@ -91,7 +91,17 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="migration_portal_pages.html">Portal content</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Portal related paragraphs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Portal related paragraphs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolbox-selector-form">Toolbox selector form</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-webform">Portal layout webform</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-grid">Portal layout grid</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-story">Portal Story</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-cta">Portal CTA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-cta-image">Portal CTA Image</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_portal_pages.html#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_portal_pages.html#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_portal_pages.html#open-issues">Open issues</a></li>
 </ul>
@@ -191,6 +201,7 @@
 <li>Toolbox selector form</li>
 <li>Portal layout webform</li>
 <li>Portal layout grid</li>
+<li>Portal story</li>
 <li>Portal CTA</li>
 <li>Portal CTA image</li>
 <li>Portal layout grid</li>
@@ -198,10 +209,198 @@
 <li>Portal layout timeline</li>
 <li>Portal layout sidebar</li>
 <li>Portal layout split column</li>
-<li>Portal story</li>
 <li>Portal layout structured content</li>
 <li>Portal text</li>
 </ul>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>See also the <a class="reference external" href="https://docs.google.com/spreadsheets/d/18yC6qCk5gi3naY5f0xxT8Ye_aProaJIekmezI0copFI/edit#gid=1991457894">content migration spreadsheet.</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In some bundles, the title_field provided by the title module is being used.  Should this be used or a different translatable field?</p>
+</div>
+</div>
+<div class="section" id="toolbox-selector-form">
+<h2>Toolbox selector form<a class="headerlink" href="#toolbox-selector-form" title="Permalink to this headline">¶</a></h2>
+<p>The toolbox selector form is used to generate a toolbox selector form that pulls together all the toolbox portal pages in a particular portal subdomain.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The toolbox selector form is only supposed to be used to tie toolboxes together.  It needs to be evaluated.  It is stored only in a portal page of type “toolbox selector page”</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_form_label</td>
+<td>Text; Title for the form</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_label_for_other_option</td>
+<td>Text; label to display for
+when no toolbox applies</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_description_for_other</td>
+<td>Long text; help text to show
+for other</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_node_for_other_option</td>
+<td>Entity reference to node to
+refer “other” users to</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-layout-webform">
+<h2>Portal layout webform<a class="headerlink" href="#portal-layout-webform" title="Permalink to this headline">¶</a></h2>
+<p>Relies on:</p>
+<ul class="simple">
+<li>block_reference module</li>
+<li>webform</li>
+</ul>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_layout_paragraph</td>
+<td>Paragraphs; holds a single
+portal text bundle to display
+next to a webform</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_webform</td>
+<td>Block reference to the webform</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-layout-grid">
+<h2>Portal layout grid<a class="headerlink" href="#portal-layout-grid" title="Permalink to this headline">¶</a></h2>
+<p>This is a 4 section grid.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Title of the bundle</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>field_portal_grid_columns</td>
+<td>Paragraphs; hold grid items
+allows only portal story items</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-story">
+<h2>Portal Story<a class="headerlink" href="#portal-story" title="Permalink to this headline">¶</a></h2>
+<p>The is a single cell in the portal layout grid.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Text; heading for the cell</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_image</td>
+<td>Image; displays in cell</td>
+<td>Migrate/Media</td>
+</tr>
+<tr class="row-even"><td>field_quote</td>
+<td>Text</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_summary</td>
+<td>Long text and summary</td>
+<td>Migrate (long text)</td>
+</tr>
+<tr class="row-even"><td>field_url</td>
+<td>URL; used for a clickable
+button</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-cta">
+<h2>Portal CTA<a class="headerlink" href="#portal-cta" title="Permalink to this headline">¶</a></h2>
+<p>Portal Call to Action layout consists of an icon, a title, a body, and a clickable button.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_icons</td>
+<td>List; class of icon to display</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_body</td>
+<td>Long text; body</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_url</td>
+<td>Link; url and title of button</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-cta-image">
+<h2>Portal CTA Image<a class="headerlink" href="#portal-cta-image" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 

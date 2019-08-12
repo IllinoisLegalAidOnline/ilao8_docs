@@ -12,6 +12,22 @@ The portal main page was developed to create a custom landing page for a collect
 
 Content type:  portal_main_page
 
+Relies on
+============
+
+Currently relies on:
+
+* Contributed modules:
+
+  * token_custom allows us to create custom snippets within legal content
+  * paragraphs
+  * voting_api
+  * fivestar
+  * block_reference
+  
+* Custom modules:
+
+* Taxonomies
 
 Fields
 ========
