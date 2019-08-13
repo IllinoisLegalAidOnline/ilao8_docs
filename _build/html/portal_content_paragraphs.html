@@ -99,6 +99,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#portal-story">Portal Story</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#portal-cta">Portal CTA</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#portal-cta-image">Portal CTA Image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-summary">Portal Layout Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-message">Portal message</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-timeline">Portal layout timeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-sidebar">Portal layout sidebar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-split-column">Portal layout split column</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-layout-structured-content">Portal layout structured content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#portal-text">Portal text</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="migration_portal_pages.html#relies-on">Relies on</a></li>
@@ -204,14 +211,18 @@
 <li>Portal story</li>
 <li>Portal CTA</li>
 <li>Portal CTA image</li>
-<li>Portal layout grid</li>
 <li>Portal layout summary</li>
 <li>Portal layout timeline</li>
 <li>Portal layout sidebar</li>
 <li>Portal layout split column</li>
 <li>Portal layout structured content</li>
 <li>Portal text</li>
+<li>Portal message</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The portal layout types are generally just holders for other paragraphs and look the same but have different layouts associated with them.</p>
+</div>
 <div class="section" id="fields">
 <h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
 <p>See also the <a class="reference external" href="https://docs.google.com/spreadsheets/d/18yC6qCk5gi3naY5f0xxT8Ye_aProaJIekmezI0copFI/edit#gid=1991457894">content migration spreadsheet.</a></p>
@@ -400,6 +411,234 @@ button</td>
 </div>
 <div class="section" id="portal-cta-image">
 <h2>Portal CTA Image<a class="headerlink" href="#portal-cta-image" title="Permalink to this headline">¶</a></h2>
+<p>Portal Call to Action Image layout consists of an icon, an image, a title, a body, and a clickable button.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_icons</td>
+<td>List; class of icon to display</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_body</td>
+<td>Long text; body</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_url</td>
+<td>Link; url and title of button</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_image</td>
+<td>Image; appears on block</td>
+<td>Migrate/Media</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-layout-summary">
+<h2>Portal Layout Summary<a class="headerlink" href="#portal-layout-summary" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_summary</td>
+<td>Paragraphs; limited to portal
+text</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-message">
+<h2>Portal message<a class="headerlink" href="#portal-message" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_media</td>
+<td>File; media file</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_summary</td>
+<td>Long text w/ summary</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-layout-timeline">
+<h2>Portal layout timeline<a class="headerlink" href="#portal-layout-timeline" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_tab</td>
+<td>List; options for step, alert
+turning point, decision</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_timeline_boxes</td>
+<td>Paragraphs; limited to portal
+message</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The portal tab field then relies on custom CSS to display the correct image based on the selection</p>
+</div>
+</div>
+<div class="section" id="portal-layout-sidebar">
+<h2>Portal layout sidebar<a class="headerlink" href="#portal-layout-sidebar" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_sidebar_content</td>
+<td>Paragraphs; limited to portal
+CTA, Portal CTA image</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-layout-split-column">
+<h2>Portal layout split column<a class="headerlink" href="#portal-layout-split-column" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_split_columns</td>
+<td>Paragraphs; limited to portal
+text</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-layout-structured-content">
+<h2>Portal layout structured content<a class="headerlink" href="#portal-layout-structured-content" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Text; title field for block</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_structured_paragraphs</td>
+<td>Paragraphs; limited to portal
+text</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="portal-text">
+<h2>Portal text<a class="headerlink" href="#portal-text" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_portal_icons</td>
+<td>List; class of icon to display</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_summary</td>
+<td>Long text w/ summary</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_url</td>
+<td>Link for button</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 

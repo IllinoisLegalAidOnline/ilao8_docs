@@ -10,13 +10,16 @@ The following paragraphs bundles are associated with the portal content type:
 * Portal story
 * Portal CTA
 * Portal CTA image
-* Portal layout grid
 * Portal layout summary
 * Portal layout timeline
 * Portal layout sidebar
 * Portal layout split column
 * Portal layout structured content
 * Portal text
+* Portal message
+
+.. note::
+   The portal layout types are generally just holders for other paragraphs and look the same but have different layouts associated with them.  
 
 Fields
 ========
@@ -26,6 +29,7 @@ See also the `content migration spreadsheet. <https://docs.google.com/spreadshee
 
 .. note::
    In some bundles, the title_field provided by the title module is being used.  Should this be used or a different translatable field?
+   
 
 Toolbox selector form
 =======================
@@ -125,7 +129,115 @@ Portal Call to Action layout consists of an icon, a title, a body, and a clickab
 Portal CTA Image
 =================
 
+Portal Call to Action Image layout consists of an icon, an image, a title, a body, and a clickable button.
 
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_portal_icons           | List; class of icon to display| Migrate             |
++------------------------------+-------------------------------+---------------------+
+| title_field                  | Text; title                   | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_body                   | Long text; body               | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_url                    | Link; url and title of button | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_image                  | Image; appears on block       | Migrate/Media       |
++------------------------------+-------------------------------+---------------------+
+
+Portal Layout Summary
+======================
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_portal_summary         | Paragraphs; limited to portal | Migrate             |
+|                              | text                          |                     |
++------------------------------+-------------------------------+---------------------+
+
+
+
+   
+Portal message
+===============
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| title_field                  | Text; title                   | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_media                  | File; media file              | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_summary                | Long text w/ summary          | Migrate             |
++------------------------------+-------------------------------+---------------------+
+
+Portal layout timeline
+=======================
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_portal_tab             | List; options for step, alert | Migrate             |
+|                              | turning point, decision       |                     |
++------------------------------+-------------------------------+---------------------+
+| field_timeline_boxes         | Paragraphs; limited to portal | Migrate             |
+|                              | message                       |                     |
++------------------------------+-------------------------------+---------------------+
+
+.. note::
+   The portal tab field then relies on custom CSS to display the correct image based on the selection
+
+
+
+Portal layout sidebar
+======================
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_portal_sidebar_content | Paragraphs; limited to portal | Migrate             |
+|                              | CTA, Portal CTA image         |                     |
++------------------------------+-------------------------------+---------------------+
+
+
+Portal layout split column
+===========================
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_portal_split_columns   | Paragraphs; limited to portal | Migrate             |
+|                              | text                          |                     |
++------------------------------+-------------------------------+---------------------+
+
+
+Portal layout structured content
+=================================
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| title_field                  | Text; title field for block   | Migrate             |
++------------------------------+-------------------------------+---------------------+ 
+| field_structured_paragraphs  | Paragraphs; limited to portal | Migrate             |
+|                              | text                          |                     |
++------------------------------+-------------------------------+---------------------+
+
+
+Portal text
+============
+
++------------------------------+-------------------------------+---------------------+
+| Field                        | Description                   | Status              |
++==============================+===============================+=====================+
+| field_portal_icons           | List; class of icon to display| Migrate             |
++------------------------------+-------------------------------+---------------------+
+| title_field                  | Text; title                   | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_summary                | Long text w/ summary          | Migrate             |
++------------------------------+-------------------------------+---------------------+
+| field_url                    | Link for button               | Migrate             |
++------------------------------+-------------------------------+---------------------+
 
 
 
