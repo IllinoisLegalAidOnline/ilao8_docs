@@ -94,6 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="portal_content_paragraphs.html">Portal related paragraphs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functionality">Functionality</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#add-edit-form-alter">Add/Edit Form alter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webform-alter">Webform alter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-presave">Node Presave</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-view-changes">Node view changes</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#open-issues">Open issues</a></li>
 </ul>
 </li>
@@ -193,6 +200,10 @@
 </ul>
 </div>
 <p>Content type:  portal_main_page</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">See also our <a class="reference external" href="https://ilaodocs.readthedocs.io/en/latest/portal_admin.html">end-user documentation</a>.</p>
+</div>
 <div class="section" id="relies-on">
 <h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
 <p>Currently relies on:</p>
@@ -205,9 +216,20 @@
 <li>block_reference</li>
 </ul>
 </li>
-<li>Custom modules:</li>
-<li>Taxonomies</li>
+<li>Custom modules:<ul>
+<li>ilao_portal_pages</li>
+<li>ilao_legal_articles (the send_notification_preferences function only)</li>
 </ul>
+</li>
+<li>Taxonomies:<ul>
+<li>legal_issues</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There are functions in the ilao_portal_pages module related to the toolbox content type that are not documented here but are documented in the Toolbox content. See <a class="reference external" href="migration_toolboxes.html">toolbox documentation</a></p>
+</div>
 </div>
 <div class="section" id="fields">
 <h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
@@ -306,11 +328,48 @@ on page</td>
 <p class="last">The hero image already uses the media module but the image field does not.</p>
 </div>
 </div>
+<div class="section" id="functionality">
+<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
+<p>The ilao_portal_pages module provides a set of functions related to the add/edit content form:</p>
+<div class="section" id="add-edit-form-alter">
+<h3>Add/Edit Form alter<a class="headerlink" href="#add-edit-form-alter" title="Permalink to this headline">¶</a></h3>
+<p>Alters the form to include information about</p>
+<ul class="simple">
+<li>updating the revision date, which should be replaced to match legal content</li>
+<li>asking about translation outdated, which should be replaced with core translation pieces</li>
+<li>validates for best bet</li>
+<li>adds an After build to hide language, which should be evaluated for necessity in Drupal 8</li>
+</ul>
+</div>
+<div class="section" id="webform-alter">
+<h3>Webform alter<a class="headerlink" href="#webform-alter" title="Permalink to this headline">¶</a></h3>
+<p>Has a special webform alter for webform with NID 99541 to set a custom submission function (ilao_portal_pages_submit).  This provides custom node redirection for that specific webform.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Is this still necessary after the custom webform tool that lets us specify node redirects?</p>
+</div>
+</div>
+<div class="section" id="node-presave">
+<h3>Node Presave<a class="headerlink" href="#node-presave" title="Permalink to this headline">¶</a></h3>
+<p>The node presave function:
+* Forces the last substantive update date to the current date for new content
+* Updates the last substantive update date when the user indicates it is an update
+* Invokes the notifications function in ilao_legal_articles to send notification to users.</p>
+</div>
+<div class="section" id="node-view-changes">
+<h3>Node view changes<a class="headerlink" href="#node-view-changes" title="Permalink to this headline">¶</a></h3>
+<p>There is some custom code for NID 99176 to force Spanish users back to the English content page.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This doesn’t support Polish and should be reevaluated rather than migrated.</p>
+</div>
+</div>
+</div>
 <div class="section" id="open-issues">
 <h2>Open issues<a class="headerlink" href="#open-issues" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Should we even have portal content?  Can we accommodate the same type of pages within the legal content type?</li>
-<li>Workflow should be identical to legal content</li>
+<li>Workflow should be identical to legal content but currently there is no workflow management</li>
 </ul>
 </div>
 </div>

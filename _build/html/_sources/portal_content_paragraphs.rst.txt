@@ -20,6 +20,8 @@ The following paragraphs bundles are associated with the portal content type:
 
 .. note::
    The portal layout types are generally just holders for other paragraphs and look the same but have different layouts associated with them.  
+   
+ 
 
 Fields
 ========
