@@ -1,0 +1,634 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Toolbox-related paragraphs bundles &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Toolbox-related entities" href="toolboxes_entities.html" />
+    <link rel="prev" title="Toolbox related fields" href="toolboxes_fields.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="migration_toolboxes.html#content-types-and-custom-entities">Content types and custom entities</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="toolboxes_fields.html">Toolbox related fields</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Toolbox-related paragraphs bundles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="toolboxes_entities.html">Toolbox-related entities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#relies-on">Relies on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-fields">Toolbox Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-tool-fields">Toolbox Tool Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-tool-step-fields">Toolbox Tool Step Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-paragraph-bundles">Toolbox Paragraph Bundles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#custom-entities-metadata">Custom Entities/Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#open-issues">Open issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+          <li><a href="migration_toolboxes.html">Toolboxes and related structures</a> &raquo;</li>
+        
+      <li>Toolbox-related paragraphs bundles</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/toolboxes_paragraphs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="toolbox-related-paragraphs-bundles">
+<h1>Toolbox-related paragraphs bundles<a class="headerlink" href="#toolbox-related-paragraphs-bundles" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="tickler-settings">
+<h2>Tickler settings<a class="headerlink" href="#tickler-settings" title="Permalink to this headline">¶</a></h2>
+<p>Used in the field_tickler_settings field in the toolbox tool step content type.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_number_of_days_to
+_trigger</td>
+<td>Text; number of days to invoke
+a tickler</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_tickler_type</td>
+<td>Select; end_last or end_this
+what date to start calc from</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_sms_message_to_send</td>
+<td>Long text; 160 character max
+message to send to SMS users</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_email_subject</td>
+<td>Text; subject for email users</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_email_body</td>
+<td>Long text; body for mail users</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="webform">
+<h2>Webform<a class="headerlink" href="#webform" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: webform. Used in the field_step_type field.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_heading</td>
+<td>Text;heading for webform block</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_portal_icons</td>
+<td>List; icon to include on block</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_body</td>
+<td>Body to display with webform</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_webform</td>
+<td>Block reference to webform</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fill-out-forms-single">
+<h2>Fill out forms (single)<a class="headerlink" href="#fill-out-forms-single" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: fill_out_forms_single. Used in the field_step_type field to pull in a single form from ILAO’s website.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_callout</td>
+<td>Paragraphs; limited to callout</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_internal_forms</td>
+<td>Paragraphs; limited to internal
+forms</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="fill-out-forms-multiple">
+<h2>Fill out forms (multiple)<a class="headerlink" href="#fill-out-forms-multiple" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: fill_out_forms_multiple. Used in the field_step_type to pull together a list of forms.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_callout</td>
+<td>Paragraphs; limited to callout</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_required_forms_label</td>
+<td>Text; label for grouping of
+required forms</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_optional_forms_label</td>
+<td>Text; label for grouping of
+optional forms</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_internal_forms</td>
+<td>Paragraphs; limited to internal
+forms</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_external_forms</td>
+<td><dl class="first last docutils">
+<dt>Paragraphs; limited to external</dt>
+<dd>forms</dd>
+</dl>
+</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="callout">
+<h2>Callout<a class="headerlink" href="#callout" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: callout
+Nested within multiple paragraph bundles.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_title</td>
+<td>Text; Header for callout block</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_body</td>
+<td>Long text; body of callout</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_portal_icons</td>
+<td>List; icon to display</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_position</td>
+<td>List; top or bottom; where to
+show callout on page</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="internal-forms">
+<h2>Internal forms<a class="headerlink" href="#internal-forms" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: internal_forms</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_form</td>
+<td>Entity reference to legal
+content that are forms</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_form_type</td>
+<td>List; form is required or not</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="external-forms">
+<h2>External forms<a class="headerlink" href="#external-forms" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: external_forms</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_link</td>
+<td>Link to an external form</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_body</td>
+<td>Long text; description of form</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_form_type</td>
+<td>List; form is required or not</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="process-step">
+<h2>Process step<a class="headerlink" href="#process-step" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: process_step</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_title</td>
+<td>Text; Step title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_body</td>
+<td>Long text; body of step</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Also used in legal content.</p>
+</div>
+</div>
+<div class="section" id="short-answer-component">
+<h2>Short answer component<a class="headerlink" href="#short-answer-component" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: short_answer_component</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_component_label</td>
+<td>Text; Header for  block</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_component_description</td>
+<td>Paragraphs; limited to
+component description</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="component-description">
+<h2>Component description<a class="headerlink" href="#component-description" title="Permalink to this headline">¶</a></h2>
+<p>Machine name: component_description</p>
+<p>Used in short answer component to build out individual items.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_body</td>
+<td>Long text; body</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="key-terms">
+<h2>Key terms<a class="headerlink" href="#key-terms" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_term</td>
+<td>Text; term name</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_body</td>
+<td>Long text; definition</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="paragraph-bundles-to-delete">
+<h2>Paragraph bundles to delete<a class="headerlink" href="#paragraph-bundles-to-delete" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>informational_step</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="toolboxes_entities.html" class="btn btn-neutral float-right" title="Toolbox-related entities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="toolboxes_fields.html" class="btn btn-neutral" title="Toolbox related fields" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

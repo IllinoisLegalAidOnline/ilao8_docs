@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Toolboxes and related structures &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Toolbox-related entities &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Toolbox related fields" href="toolboxes_fields.html" />
-    <link rel="prev" title="Portal related paragraphs" href="portal_content_paragraphs.html" /> 
+    <link rel="next" title="Event nodes" href="migration_events.html" />
+    <link rel="prev" title="Toolbox-related paragraphs bundles" href="toolboxes_paragraphs.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -91,22 +91,20 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Toolboxes and related structures</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#content-types-and-custom-entities">Content types and custom entities</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="migration_toolboxes.html#content-types-and-custom-entities">Content types and custom entities</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="toolboxes_fields.html">Toolbox related fields</a></li>
 <li class="toctree-l4"><a class="reference internal" href="toolboxes_paragraphs.html">Toolbox-related paragraphs bundles</a></li>
-<li class="toctree-l4"><a class="reference internal" href="toolboxes_entities.html">Toolbox-related entities</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Toolbox-related entities</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#functionality">Functionality</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ilao-toolbox-entity-info">ilao_toolbox_entity_info</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ilao-toolbox-form-alter">ilao_toolbox_form_alter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ilao-toolbox-alter-encourage-user-help">ilao_toolbox_alter_encourage_user_help</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#basic-functionality-overview-for-users">Basic functionality overview for users</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#open-issues">Open issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#relies-on">Relies on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-fields">Toolbox Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-tool-fields">Toolbox Tool Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-tool-step-fields">Toolbox Tool Step Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#toolbox-paragraph-bundles">Toolbox Paragraph Bundles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#custom-entities-metadata">Custom Entities/Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_toolboxes.html#open-issues">Open issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
@@ -175,13 +173,15 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>Toolboxes and related structures</li>
+          <li><a href="migration_toolboxes.html">Toolboxes and related structures</a> &raquo;</li>
+        
+      <li>Toolbox-related entities</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/migration_toolboxes.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/toolboxes_entities.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -194,113 +194,160 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="toolboxes-and-related-structures">
-<h1>Toolboxes and related structures<a class="headerlink" href="#toolboxes-and-related-structures" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="content-types-and-custom-entities">
-<span id="migration-toolboxes"></span><h2>Content types and custom entities<a class="headerlink" href="#content-types-and-custom-entities" title="Permalink to this headline">¶</a></h2>
-<p>The toolboxes platform relies on 4 content types:</p>
-<ul class="simple">
-<li>portal_main_page</li>
-<li>toolboxes</li>
-<li>toolbox_tool</li>
-<li>toolbox_tool_step</li>
-</ul>
-<p>See also <a class="reference external" href="https://ilaodocs.readthedocs.io/en/latest/toolboxes_admin.html">End user toolbox documentation</a></p>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">See also:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="toolboxes_fields.html">Toolbox related fields</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toolboxes_paragraphs.html">Toolbox-related paragraphs bundles</a></li>
-<li class="toctree-l1"><a class="reference internal" href="toolboxes_entities.html">Toolbox-related entities</a></li>
-</ul>
+  <div class="section" id="toolbox-related-entities">
+<h1>Toolbox-related entities<a class="headerlink" href="#toolbox-related-entities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="toolbox-user">
+<h2>Toolbox user<a class="headerlink" href="#toolbox-user" title="Permalink to this headline">¶</a></h2>
+<p>Tracks each instance of a toolbox experience.  If a user returns either logged in or with a return code, the system should pull the related toolbox experience rather than create a new record.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>toolbox_id</td>
+<td>Serial; unique toolbox user ID</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>uid</td>
+<td>int; uid of the user</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>return_code</td>
+<td>text; return code to come back</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>date; date record was created</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>changed</td>
+<td>date; date record was changed</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
 </div>
+<div class="section" id="toolbox-usage">
+<h2>Toolbox usage<a class="headerlink" href="#toolbox-usage" title="Permalink to this headline">¶</a></h2>
+<p>Tracks progress through a toolbox experience.  Relates to the toolbox user entity on toolbox_id.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>toolbox_usage_id</td>
+<td>Serial; unique identifier</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>toolbox_id</td>
+<td>Serial; unique toolbox user ID</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>entity_type</td>
+<td>text; entity type (node)</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>bundle</td>
+<td>text; bundle of the entity
+type (toolbox, tool, step)</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>created</td>
+<td>date; timestamp record created</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>changed</td>
+<td>date; timestamp record changed</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>status</td>
+<td>text; started, saved, or
+completed</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="relies-on">
-<h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
-<p>Currently relies on:</p>
-<ul class="simple">
-<li>Contributed modules:<ul>
-<li>token_custom allows us to create custom snippets within legal content</li>
-<li>paragraphs</li>
-<li>voting_api</li>
-<li>fivestar</li>
-<li>block_reference</li>
-<li>rules</li>
-<li>views</li>
-<li>twilio</li>
-</ul>
-</li>
-<li>Custom modules:<ul>
-<li>ilao_portal_pages</li>
-<li>ilao_toolbox</li>
-<li>ilao_f_node_toolbox</li>
-<li>ilao_f_node_toolbox_tool</li>
-<li>ilao_f_node_toolbox_tool_step</li>
-</ul>
-</li>
-<li>Taxonomies:<ul>
-<li>legal_issues</li>
-</ul>
-</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>The ilao_toolbox defines database schemas and metadata controllers for:</p>
-<ul class="last simple">
-<li>toolbox_usage</li>
-<li>toolbox_user</li>
-<li>toolbox_tickler</li>
-</ul>
-</div>
-</div>
-<div class="section" id="functionality">
-<h2>Functionality<a class="headerlink" href="#functionality" title="Permalink to this headline">¶</a></h2>
-<p>The key functionality can be found in our custom modules.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">ILAO really needs to rethink the workflow for the toolboxes and simplify them down, perhaps eliminating the toolbox completely and just using the tool and associated steps.</p>
-</div>
-<div class="section" id="ilao-toolbox-entity-info">
-<h3>ilao_toolbox_entity_info<a class="headerlink" href="#ilao-toolbox-entity-info" title="Permalink to this headline">¶</a></h3>
-<p>Exposes the entity properties for toolbox_user, toolbox_usage, and toolbox_tickler for integration with views.</p>
-</div>
-<div class="section" id="ilao-toolbox-form-alter">
-<h3>ilao_toolbox_form_alter<a class="headerlink" href="#ilao-toolbox-form-alter" title="Permalink to this headline">¶</a></h3>
-<p>Form alter applies to all 3 toolbox content types to:
-* require the revision log</p>
-<p>For the toolbox content type only:
-* hides best bet field for toolboxes unless the user is a content manager or site architect (this will need to be updated for new roles)
-* adds validation and submit fields for best bet fields</p>
-</div>
-<div class="section" id="ilao-toolbox-alter-encourage-user-help">
-<h3>ilao_toolbox_alter_encourage_user_help<a class="headerlink" href="#ilao-toolbox-alter-encourage-user-help" title="Permalink to this headline">¶</a></h3>
-<p>Deprecate</p>
-</div>
-<div class="section" id="basic-functionality-overview-for-users">
-<h3>Basic functionality overview for users<a class="headerlink" href="#basic-functionality-overview-for-users" title="Permalink to this headline">¶</a></h3>
-<p>When a user starts with a toolbox page:</p>
-<ul class="simple">
-<li></li>
-</ul>
-<p>When a user starts a tool page:</p>
-<ul class="simple">
-<li>We need to know if they’ve already started this tool in the current session</li>
-<li>We need to know if they’ve already started this tool outside of the current session (either by having a record tied to a user ID or by entering a return code)</li>
-</ul>
-<p>When a user starts on a tool step page:
-* We need to know if they’ve already started this tool in the current session
-* We need to know if they’ve already started this tool outside of the current session (either by having a record tied to a user ID or by entering a return code)
-* We need to warn them to start at the first step in the process</p>
-</div>
-</div>
-<div class="section" id="open-issues">
-<h2>Open issues<a class="headerlink" href="#open-issues" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Toolboxes currently must be tied to a portal</li>
-<li>Toolboxes have no QA protocols or workflow integration</li>
-<li>Return codes are unwieldy and difficult to use</li>
-<li>Some users may come into the site already in the middle of the process</li>
-</ul>
+<div class="section" id="toolbox-tickler">
+<h2>Toolbox Tickler<a class="headerlink" href="#toolbox-tickler" title="Permalink to this headline">¶</a></h2>
+<p>Defined in ilao_toolbox module.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>tickler_id</td>
+<td>Serial; unique ID</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>uid</td>
+<td>Int; uid of user sent tickler</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>format</td>
+<td>Text; format of the tickler</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>entity_id</td>
+<td>int; NID of tool step</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>subject</td>
+<td>text; subject of email sent</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>message</td>
+<td>text; message sent</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>receiver</td>
+<td>text; email/phone message sent
+to</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>created</td>
+<td>date; date tickler sent</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>changed</td>
+<td>date; date record updated</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>parent_entity</td>
+<td>int; nid of the parent entity</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>language</td>
+<td>text; language code of the
+page when viewed</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -312,10 +359,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="toolboxes_fields.html" class="btn btn-neutral float-right" title="Toolbox related fields" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_events.html" class="btn btn-neutral float-right" title="Event nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="portal_content_paragraphs.html" class="btn btn-neutral" title="Portal related paragraphs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="toolboxes_paragraphs.html" class="btn btn-neutral" title="Toolbox-related paragraphs bundles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
