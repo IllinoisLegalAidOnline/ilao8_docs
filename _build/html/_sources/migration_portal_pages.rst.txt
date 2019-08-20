@@ -32,6 +32,7 @@ Currently relies on:
 
   * ilao_portal_pages
   * ilao_legal_articles (the send_notification_preferences function only)
+  * ilao_webform
 
 * Taxonomies:
 
@@ -127,6 +128,18 @@ There is some custom code for NID 99176 to force Spanish users back to the Engli
 .. note::
    This doesn't support Polish and should be reevaluated rather than migrated.
    
+Webform redirects
+------------------
+The ilao_webform module:
+
+* Checks to see if the webform is not a triage rules node
+* Checks an endpoint hidden field and redirects to:
+
+  * a specific node if the value is numeric
+  * an internal url if it is not numeric
+  
+.. note:;
+   For example, an endpoint of node/1 would direct back to the home page while an endpoint of get-legal-help would direct to /get-legal-help     
 
 
 Open issues

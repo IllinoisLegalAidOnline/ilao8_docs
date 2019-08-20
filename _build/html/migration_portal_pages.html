@@ -99,6 +99,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#webform-alter">Webform alter</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#node-presave">Node Presave</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#node-view-changes">Node view changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#webform-redirects">Webform redirects</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#open-issues">Open issues</a></li>
@@ -219,6 +220,7 @@
 <li>Custom modules:<ul>
 <li>ilao_portal_pages</li>
 <li>ilao_legal_articles (the send_notification_preferences function only)</li>
+<li>ilao_webform</li>
 </ul>
 </li>
 <li>Taxonomies:<ul>
@@ -363,6 +365,18 @@ on page</td>
 <p class="first admonition-title">Note</p>
 <p class="last">This doesn’t support Polish and should be reevaluated rather than migrated.</p>
 </div>
+</div>
+<div class="section" id="webform-redirects">
+<h3>Webform redirects<a class="headerlink" href="#webform-redirects" title="Permalink to this headline">¶</a></h3>
+<p>The ilao_webform module:</p>
+<ul class="simple">
+<li>Checks to see if the webform is not a triage rules node</li>
+<li>Checks an endpoint hidden field and redirects to:<ul>
+<li>a specific node if the value is numeric</li>
+<li>an internal url if it is not numeric</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="open-issues">

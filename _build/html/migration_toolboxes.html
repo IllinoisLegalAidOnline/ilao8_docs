@@ -278,19 +278,44 @@
 </div>
 <div class="section" id="basic-functionality-overview-for-users">
 <h3>Basic functionality overview for users<a class="headerlink" href="#basic-functionality-overview-for-users" title="Permalink to this headline">¶</a></h3>
-<p>When a user starts with a toolbox page:</p>
+<p>The ilao_toolbox module provides the functionality to:</p>
 <ul class="simple">
-<li></li>
+<li>Set a record when a user starts a new toolbox, tool, or tool step.</li>
+<li>Updates records when a user completes a toolbox, tool or tool step.  When a user completes the last step in a tool, then the tool is marked complete.  When a user completes every step in every tool, the toolbox is marked complete.</li>
+<li>Gathers a user’s history based on their UID or a return code</li>
+<li>Generates return codes</li>
+<li>Warns users who come into a process in the middle that they need to review the rest</li>
+<li>Warns users who have skipped tests</li>
+<li>Schedules ticklers<ul>
+<li>Determines when, who, and where to send ticklers</li>
+<li>Alters tickler emails</li>
+<li>Invokes rules to execute tickler sending</li>
 </ul>
-<p>When a user starts a tool page:</p>
-<ul class="simple">
-<li>We need to know if they’ve already started this tool in the current session</li>
-<li>We need to know if they’ve already started this tool outside of the current session (either by having a record tied to a user ID or by entering a return code)</li>
+</li>
+<li>Manages returning users with options to:<ul>
+<li>Enter a return code on the home page to come back where the left off<ul>
+<li>Displays the form</li>
+<li>Validates the form</li>
+<li>Displays a message and provides a my return block</li>
 </ul>
-<p>When a user starts on a tool step page:
-* We need to know if they’ve already started this tool in the current session
-* We need to know if they’ve already started this tool outside of the current session (either by having a record tied to a user ID or by entering a return code)
-* We need to warn them to start at the first step in the process</p>
+</li>
+<li>See a list of their toolboxes on their dashboard if they are logged in</li>
+</ul>
+</li>
+<li>Manages toolbox selection<ul>
+<li>Builds out toolbox selector forms on portal pages by taking all the toolboxes in a portal and building a form</li>
+<li>Builds out a toolbox “My issues” page where users can start or save toolboxes they selected in the toolbox selector form</li>
+</ul>
+</li>
+</ul>
+<p>The ilao_portal module provides the functionality to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Builds out a form on toolbox pages that list all of the tools in a toolbox for the user to pick which tools they want to start</li>
+<li>Builds out a tool “My issues” page from the tool selection form on a toolbox page so that users can start or save tools they selected.</li>
+<li>Create toolbox user and toolbox usage entry</li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 <div class="section" id="open-issues">
@@ -298,8 +323,10 @@
 <ul class="simple">
 <li>Toolboxes currently must be tied to a portal</li>
 <li>Toolboxes have no QA protocols or workflow integration</li>
-<li>Return codes are unwieldy and difficult to use</li>
+<li>Return codes are unwieldy and difficult to use; replace this with account login</li>
 <li>Some users may come into the site already in the middle of the process</li>
+<li>See User testing report</li>
+<li>There are so many problems with these</li>
 </ul>
 </div>
 </div>
