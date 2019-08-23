@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Event nodes" href="migration_events.html" />
+    <link rel="next" title="Portal content" href="migration_portal_pages.html" />
     <link rel="prev" title="IICLE Proxy" href="legal_content_iicle_proxy.html" /> 
 
   
@@ -96,7 +96,10 @@
 <li class="toctree-l3"><a class="reference internal" href="legal_content_custom_tokens.html">Legal content custom tokens</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_localization.html">Legal Content Localization</a></li>
 <li class="toctree-l3"><a class="reference internal" href="legal_content_iicle_proxy.html">IICLE Proxy</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Glossary</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Glossary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#current-configuration">Current Configuration</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#fields">Fields</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#paragraphs">Paragraphs</a></li>
@@ -105,12 +108,27 @@
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#functionality-notes">Functionality Notes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#legal-content-functionality-to-deprecate">Legal content functionality to deprecate</a></li>
 <li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#known-issues-notes-for-drupal-8">Known Issues &amp; Notes for Drupal 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_legal_content_types.html#new-legal-content-functionality">New legal content functionality</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -184,6 +202,28 @@
             
   <div class="section" id="glossary">
 <h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="current-configuration">
+<h2>Current Configuration<a class="headerlink" href="#current-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The current configuration uses:</p>
+<ul class="simple">
+<li>the Glossary taxonomy, configured as a “translate” multilingual taxonomy (so that each language has its own terms)</li>
+<li>the lexicon module, which adds a filter to WYSIWYG content to automatically highlight glossary terms by:<ul>
+<li>matching on the exact word (so that the glossary term eviction will be associated with eviction but not evict or evicting).</li>
+<li>is case insensitive</li>
+<li>only picks up the first instance in the entity (this has been problematic with paragraphs as it picks up the first instance in each paragraphs bundle rather than just the first entity in the node)</li>
+<li>is supposed to ignore terms in headers but this does not work</li>
+<li>ignores text wrapped in the no-lexicon tags</li>
+<li>links to the term in a glossary page</li>
+<li>breaks the glossary across multiple pages by letter</li>
+<li>links related terms</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lexicon has not been ported to Drupal 8</p>
+</div>
+</div>
 </div>
 
 
@@ -194,7 +234,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_events.html" class="btn btn-neutral float-right" title="Event nodes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_portal_pages.html" class="btn btn-neutral float-right" title="Portal content" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="legal_content_iicle_proxy.html" class="btn btn-neutral" title="IICLE Proxy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

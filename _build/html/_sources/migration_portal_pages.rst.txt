@@ -27,6 +27,8 @@ Currently relies on:
   * voting_api
   * fivestar
   * block_reference
+  * webform
+  * webform_conditionals
   
 * Custom modules:
 
@@ -116,6 +118,7 @@ Has a special webform alter for webform with NID 99541 to set a custom submissio
 Node Presave
 --------------
 The node presave function:
+
 * Forces the last substantive update date to the current date for new content
 * Updates the last substantive update date when the user indicates it is an update
 * Invokes the notifications function in ilao_legal_articles to send notification to users.
