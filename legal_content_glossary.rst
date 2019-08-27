@@ -20,7 +20,7 @@ The current configuration uses:
   
 
 .. note::
-   Lexicon has not been ported to Drupal 8
+   Lexicon has not been ported to Drupal 8; Glossify looks like an acceptable solution but still has the problem of it being rendered on a per-field basis.  Also does not appear to support tags to exclude terms from being highlighted, work across multiple paged view, or limit to specific node types.
    
    
    
