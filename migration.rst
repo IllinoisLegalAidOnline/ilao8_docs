@@ -27,5 +27,6 @@ Migration Documentation
    migration_translation
    migration_mailchimp
    migration_discussion_groups
-
+   migration_contexts
+   migration_rules
 

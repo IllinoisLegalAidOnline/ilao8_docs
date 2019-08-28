@@ -117,7 +117,7 @@ Has a special webform alter for webform with NID 99541 to set a custom submissio
    
 Node Presave
 --------------
-The node presave function:
+The node presave function currently:
 
 * Forces the last substantive update date to the current date for new content
 * Updates the last substantive update date when the user indicates it is an update
@@ -150,5 +150,6 @@ Open issues
 
 * Should we even have portal content?  Can we accommodate the same type of pages within the legal content type?  
 * Workflow should be identical to legal content but currently there is no workflow management
+* Need to re-evaluate whether we allow selecting parents automatically.  
 
 

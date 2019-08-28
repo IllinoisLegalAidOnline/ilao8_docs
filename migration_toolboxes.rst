@@ -125,9 +125,6 @@ The ilao_portal module provides the functionality to:
   
 
 
-
-
-
 Open issues
 ============
 
