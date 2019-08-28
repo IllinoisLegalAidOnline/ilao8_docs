@@ -104,7 +104,7 @@ Toolbox Tool Step Fields
 +------------------------------+-------------------------------+---------------------+
 | field_tool                   | Entity reference to tool node | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| field_purpose_description    | Long text; used on My issues  | Migrate             | 
+| field_purpose_description    |                               | Delete              | 
 +------------------------------+-------------------------------+---------------------+
 | field_step_always_required   | Boolean; does a user always   | Migrate             |
 |                              | have to complete the step     |                     |
@@ -122,7 +122,7 @@ Toolbox Tool Step Fields
 |                              | out forms (single/multiple),  |                     |
 |                              | process step                  |                     |
 +------------------------------+-------------------------------+---------------------+
-| field_tool_step_component    | Paragraphs; side content     | Migrate              |
+| field_tool_step_component    | Paragraphs; side content      | Migrate             |
 |                              | Limited to callout, key terms,|                     |
 |                              | Short answer component        |                     |
 +------------------------------+-------------------------------+---------------------+

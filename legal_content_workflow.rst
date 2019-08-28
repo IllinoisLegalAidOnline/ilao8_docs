@@ -96,6 +96,10 @@ Transitions
 | metadata_review              |                  |                  |                |
 +------------------------------+------------------+------------------+----------------+
 
+.. note::
+   Currently, staff and interns can move content to any state and can go directly from draft to publish.
+   SME's can go from draft to ready to review; only a staff/intern user can publish
+   Legal aid members and pro bono editors can go from draft to ready to review or copy edit only.
 
 Permissions
 =================
