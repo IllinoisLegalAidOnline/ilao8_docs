@@ -201,22 +201,104 @@
 <div class="section" id="ilao-contexts-zipcode">
 <h3>ilao_contexts_zipcode<a class="headerlink" href="#ilao-contexts-zipcode" title="Permalink to this headline">¶</a></h3>
 <p>Sets a context based on the user’s zip code</p>
+<p>Returns on of:</p>
+<ul class="simple">
+<li>“US” if the zip code is a US zip code but not Illinois</li>
+<li>“Illinois” if the zip code is in Illinois</li>
+<li>“Not in US” if the zip code is not a US zip code</li>
+</ul>
+<p>Relies on the ilao_geolocation module.</p>
+<p>Executes on node view</p>
 </div>
 <div class="section" id="ilao-contexts-legal-bundle-menu">
 <h3>ilao_contexts_legal_bundle_menu<a class="headerlink" href="#ilao-contexts-legal-bundle-menu" title="Permalink to this headline">¶</a></h3>
-<p>Seta a context based on whether a bundle menu should be displayed</p>
+<p>Sets a context based on whether a bundle menu should be displayed</p>
+<p>Returns one of:</p>
+<ul class="simple">
+<li>Bundle overview, when the node being viewed is a Guide</li>
+<li>Learn more, when the node being viewed is in a single Guide as a Learn more article</li>
+<li>Take action, when the node being viewed is in a single Guide as a take action article</li>
+<li>Multiple (Appears in multiple legal bundles), when the node being viewed is in more than one Guide</li>
+<li>None, when the node being viewed is not associated with a Guide</li>
+</ul>
+<p>Executes on node view</p>
 </div>
 <div class="section" id="ilao-contexts-paragraphs-type">
 <h3>ilao_contexts_paragraphs_type<a class="headerlink" href="#ilao-contexts-paragraphs-type" title="Permalink to this headline">¶</a></h3>
 <p>Sets a context based on the paragraphs bundles in a specific node</p>
+<p>Returns one of:</p>
+<ul class="simple">
+<li>Automated documents</li>
+<li>Decision tree</li>
+<li>Video</li>
+<li>Static form</li>
+<li>Link</li>
+<li>File</li>
+<li>Article</li>
+<li>IICLE</li>
+<li>Process</li>
+<li>Legal bundle</li>
+</ul>
+<p>based on the paragraphs included in the node and is applied only to legal content. If a node has multiple paragraph bundles, it is set based on the following hierarchy:</p>
+<ul class="simple">
+<li>Autodocs</li>
+<li>Legal bundle if not an autodocs</li>
+<li>Process step if not an autodoc or bundle</li>
+<li>Video if not a process step or autodoc</li>
+<li>All others only if nothing else has been set</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This could probably be replaced with a check for primary content format but may break if the taxonomy is changed.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is behind.  Is missing some content formats.</p>
+</div>
 </div>
 <div class="section" id="ilao-contexts-oas-help-type">
 <h3>ilao_contexts_oas_help_type<a class="headerlink" href="#ilao-contexts-oas-help-type" title="Permalink to this headline">¶</a></h3>
-<p>Sets a context based on the type of help a user has selected</p>
+<p>Sets a context based on the type of help a user (information, forms, or lawyer) has selected. It is designed to handle all permutations of options.</p>
+<p>Returns one of:</p>
+<ul class="simple">
+<li>Information only (user only checked help finding information)</li>
+<li>Forms only (user only checked court forms)</li>
+<li>Information and forms (user checked all but lawyer)</li>
+<li>Lawyer, information and form (user checked all 3 options)</li>
+<li>Lawyer, forms (user checked lawyer, court forms but not information)</li>
+<li>Lawyer, content (user checked lawyer, information but not court forms)</li>
+<li>Lawyer (user checked lawyer only)</li>
+</ul>
+<p>Fires on page reaction when the user is on one of the following:</p>
+<ul class="simple">
+<li>get-legal-help/referrals</li>
+<li>get-legal-help/callback-confirm</li>
+<li>get-legal-help/please-call</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Should this context be available for get-legal-help/bypass?</p>
+</div>
 </div>
 <div class="section" id="ilao-contexts-advocate-type">
 <h3>ilao_contexts_advocate_type<a class="headerlink" href="#ilao-contexts-advocate-type" title="Permalink to this headline">¶</a></h3>
-<p>Sets a context based on the OG member roles a user has</p>
+<p>Sets a context based on the OG member roles a user has.</p>
+<p>Returns one of:</p>
+<ul class="simple">
+<li>‘non member’</li>
+<li>‘staff’</li>
+<li>‘organization manager’</li>
+<li>‘OAS manager’</li>
+</ul>
+<p>The logic works as follows: for a specific user ID, it loads the organization the uer is a member of and then the roles.  By default, the user is set to staff.  If they are an OAS manager, the status is set to OAS manager (regardless of any other roles); If they are an organization manager (but not an OAS manager), the context returns organization manager.</p>
+<p>For ILAO staff and interns, the context returns non-member since we do not need this context.</p>
+<p>Executes on page reaction when the page path is one of:</p>
+<ul class="simple">
+<li>node/edit</li>
+<li>node/add/location-services</li>
+<li>node/add/location</li>
+<li>user/</li>
+</ul>
 </div>
 <div class="section" id="ilao-context-oas-modal">
 <h3>ilao_context_oas_modal<a class="headerlink" href="#ilao-context-oas-modal" title="Permalink to this headline">¶</a></h3>
@@ -235,14 +317,15 @@
 <p>Set this context to when current time in business hours.</p>
 <p>Returns one of:</p>
 <ul class="simple">
-<li>business hours, when the current time is between 9am and 5pm Mon-Fri</li>
-<li>outside of business hours, when the current time is between 5pm and 9am Mon - Fri</li>
-<li>weekend, when the current day is Saturday or Sunday</li>
+<li>Weekday business hours, when the current time is between 9am and 5pm Mon-Fri</li>
+<li>Outside business hours, when the current time is between 5pm and 9am Mon - Fri</li>
+<li>Weekend hours, when the current day is Saturday or Sunday</li>
 </ul>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">This context was created to control fundraising pop ups and should be evaluated to determine if it in fact needs to be migrated.</p>
 </div>
+<p>Executes on page reaction (all pages)</p>
 </div>
 </div>
 </div>
