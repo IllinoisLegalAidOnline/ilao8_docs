@@ -137,6 +137,20 @@
 <li class="toctree-l4"><a class="reference internal" href="#send-email-to-site-architect-upon-updating-triage-rules">Send Email to Site Architect upon updating Triage Rules</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#rule-components">Rule Components</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rule-plugins">Rule plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#action-plugins">Action plugins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#send-ticklers">Send ticklers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#rules-in-code">Rules in Code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-events-module">ilao_events module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-sms-surveys">ilao_sms_surveys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-toolbox">ilao_toolbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-user-utilities">ilao_user_utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-workbench">ilao_workbench</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -421,6 +435,118 @@ Then:  Sends an html email to otissupport with a subject of Triage rules updated
 <p class="first admonition-title">Todo</p>
 <p class="last">Rule needs cleaned in Drupal 7 to reflect only edited triage rules</p>
 </div>
+</div>
+</div>
+<div class="section" id="rule-components">
+<h2>Rule Components<a class="headerlink" href="#rule-components" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rule-plugins">
+<h3>Rule plugins<a class="headerlink" href="#rule-plugins" title="Permalink to this headline">¶</a></h3>
+<p>The following are all added and defined by the Scheduler contributed module:</p>
+<ul class="simple">
+<li>Set scheduled publishing date</li>
+<li>Set scheduled unpublishing date</li>
+<li>Remove scheduled publishing date</li>
+<li>Remove scheduled unpublishing date</li>
+</ul>
+</div>
+<div class="section" id="action-plugins">
+<h3>Action plugins<a class="headerlink" href="#action-plugins" title="Permalink to this headline">¶</a></h3>
+<p>Do not migrate:
+* Create email ticket record
+* Support client mapping</p>
+<div class="section" id="potential-problem-with-etransfers">
+<h4>Potential problem with eTransfers<a class="headerlink" href="#potential-problem-with-etransfers" title="Permalink to this headline">¶</a></h4>
+<p>Sends an html email to site architects with a subject of “Potential problem: No etransfers in 2 days” and body of “The system hasn’t recorded any online intakes being transferred to a CMS in 2 days. Please check the system.”</p>
+</div>
+<div class="section" id="potential-problem-with-surveys">
+<h4>Potential problem with surveys<a class="headerlink" href="#potential-problem-with-surveys" title="Permalink to this headline">¶</a></h4>
+<p>Sends an html email to site architects with a subject of “Potential problem: [surveys:title] hasn’t been collecting data.” and a body of “The following survey [surveys:title] at [surveys:url] has not had a completed survey in 3 days. Please check the system.”</p>
+<div class="admonition-todo admonition" id="index-5">
+<p class="first admonition-title">Todo</p>
+<p class="last">Evaluate whether this is needed in light of surveys generally</p>
+</div>
+</div>
+<div class="section" id="content-management-notifications">
+<h4>Content management notifications<a class="headerlink" href="#content-management-notifications" title="Permalink to this headline">¶</a></h4>
+<p>These 3 action plugins send emails to users when content changes workbench states and are fired in the ilao_workbench module.  They plugins accept 3 variables:</p>
+<ul class="simple">
+<li>the roles list of who to send the email to</li>
+<li>the node that was edited</li>
+<li>the user who made the edits</li>
+</ul>
+<p>Roles that receive these are any that have the “receive workbench transition alerts” permission.</p>
+</div>
+<div class="section" id="send-content-copy-edit-notification">
+<h4>Send content copy edit notification<a class="headerlink" href="#send-content-copy-edit-notification" title="Permalink to this headline">¶</a></h4>
+<p>Sends an email to all users of the provided roles with a subject of “[node:title] is ready for copy edit” and body of:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">The &lt;a href=&quot;[node:url]&quot;&gt;[node:title]&lt;/a&gt; has been updated and is ready for copy edit</span>
+<span class="x">The content, [&lt;a href=&quot;[node:url]&quot;&gt;[node:title]&lt;/a&gt; has been edited and is &lt;a</span>
+<span class="x">href=&quot;[node:edit-url]&quot;&gt;ready for review&lt;/a&gt;. The content was updated by [user:name].</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="send-content-review-notification">
+<h4>Send content review notification<a class="headerlink" href="#send-content-review-notification" title="Permalink to this headline">¶</a></h4>
+<p>Sends an email to all users of the provided roles with a subject of “[node:title] is ready for review” and body of:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">The &lt;a href=&quot;[node:url]&quot;&gt;[node:title]&lt;/a&gt; has been updated and is ready to be reviewed.</span>
+<span class="x">The content, [&lt;a href=&quot;[node:url]&quot;&gt;[node:title]&lt;/a&gt; has been edited and is</span>
+<span class="x">&lt;a href=&quot;[node:edit-url]&quot;&gt;ready for review&lt;/a&gt;. The content was updated by [user:name].</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="send-publish-notificationn">
+<h4>Send publish notificationn<a class="headerlink" href="#send-publish-notificationn" title="Permalink to this headline">¶</a></h4>
+<p>Sends an email to all users of the provided roles with a subject of “An unreviewed update to [node:title] has been published.” and body of:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">[user:name] just published a revision for &lt;a href=&quot;[node:url]&quot;&gt;[node:title]&lt;/a&gt; on the</span>
+<span class="x">website.  This revision was not reviewed by ILAO staff prior to publication.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="send-ticklers">
+<h3>Send ticklers<a class="headerlink" href="#send-ticklers" title="Permalink to this headline">¶</a></h3>
+<p>There are 2 components that are used by the ilao_toolbox module to send tickler messages.</p>
+<div class="section" id="send-email-on-ticklr">
+<h4>Send email on ticklr<a class="headerlink" href="#send-email-on-ticklr" title="Permalink to this headline">¶</a></h4>
+<p>Sends a tickler email for a toolbox tool step to a specific user and logs the email sent to the toolbox tickler entity.</p>
+</div>
+<div class="section" id="send-sms-on-tickler">
+<h4>Send sms on tickler<a class="headerlink" href="#send-sms-on-tickler" title="Permalink to this headline">¶</a></h4>
+<p>Sends an sms to a number over Twilio and logs the sms sent to the toolbox tickler entity</p>
+</div>
+</div>
+</div>
+<div class="section" id="rules-in-code">
+<h2>Rules in Code<a class="headerlink" href="#rules-in-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ilao-events-module">
+<h3>ilao_events module<a class="headerlink" href="#ilao-events-module" title="Permalink to this headline">¶</a></h3>
+<p>Invokes the registration_settings_created event.  Do not migrate</p>
+</div>
+<div class="section" id="ilao-sms-surveys">
+<h3>ilao_sms_surveys<a class="headerlink" href="#ilao-sms-surveys" title="Permalink to this headline">¶</a></h3>
+<p>Invokes the rules component rules_potential_problem_with_surveys as part of a cron call</p>
+</div>
+<div class="section" id="ilao-toolbox">
+<h3>ilao_toolbox<a class="headerlink" href="#ilao-toolbox" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Has custom action defined (create_new_toolbox_tickler_entity)</li>
+<li>Custom code schedules tickler messages</li>
+</ul>
+</div>
+<div class="section" id="ilao-user-utilities">
+<h3>ilao_user_utilities<a class="headerlink" href="#ilao-user-utilities" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Defines custom actions for first time login and domain check</li>
+<li>Invokes the first time login event</li>
+</ul>
+</div>
+<div class="section" id="ilao-workbench">
+<h3>ilao_workbench<a class="headerlink" href="#ilao-workbench" title="Permalink to this headline">¶</a></h3>
+<p>Invokes rules component based on the workbench state:
+* rules_send_publish_notification
+* rules_send_content_review_notification
+* rules_send_content_copyedit_notification</p>
+<p>end</p>
 </div>
 </div>
 </div>

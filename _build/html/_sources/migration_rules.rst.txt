@@ -211,5 +211,120 @@ Then:  Sends an html email to otissupport with a subject of Triage rules updated
 
 .. todo::
    Rule needs cleaned in Drupal 7 to reflect only edited triage rules
+   
+Rule Components
+=================
+Rule plugins
+-------------
+The following are all added and defined by the Scheduler contributed module:
+
+* Set scheduled publishing date
+* Set scheduled unpublishing date
+* Remove scheduled publishing date
+* Remove scheduled unpublishing date
+
+Action plugins
+---------------- 
+Do not migrate:  
+* Create email ticket record 
+* Support client mapping
+
+
+Potential problem with eTransfers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sends an html email to site architects with a subject of "Potential problem: No etransfers in 2 days" and body of "The system hasn't recorded any online intakes being transferred to a CMS in 2 days. Please check the system."
+
+Potential problem with surveys
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sends an html email to site architects with a subject of "Potential problem: [surveys:title] hasn't been collecting data." and a body of "The following survey [surveys:title] at [surveys:url] has not had a completed survey in 3 days. Please check the system."
+
+.. todo:: 
+   Evaluate whether this is needed in light of surveys generally
+
+Content management notifications
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+These 3 action plugins send emails to users when content changes workbench states and are fired in the ilao_workbench module.  They plugins accept 3 variables:
+
+* the roles list of who to send the email to
+* the node that was edited
+* the user who made the edits
+
+Roles that receive these are any that have the "receive workbench transition alerts" permission.
+
+Send content copy edit notification  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sends an email to all users of the provided roles with a subject of "[node:title] is ready for copy edit" and body of:
+
+.. code-block:: php
+
+   The <a href="[node:url]">[node:title]</a> has been updated and is ready for copy edit
+   The content, [<a href="[node:url]">[node:title]</a> has been edited and is <a 
+   href="[node:edit-url]">ready for review</a>. The content was updated by [user:name]. 
+
+
+Send content review notification  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sends an email to all users of the provided roles with a subject of "[node:title] is ready for review" and body of:
+
+.. code-block:: php
+
+   The <a href="[node:url]">[node:title]</a> has been updated and is ready to be reviewed.   
+   The content, [<a href="[node:url]">[node:title]</a> has been edited and is 
+   <a href="[node:edit-url]">ready for review</a>. The content was updated by [user:name].  
+
+Send publish notificationn  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Sends an email to all users of the provided roles with a subject of "An unreviewed update to [node:title] has been published." and body of:
+
+.. code-block:: php
+
+   [user:name] just published a revision for <a href="[node:url]">[node:title]</a> on the 
+   website.  This revision was not reviewed by ILAO staff prior to publication.
+   
+Send ticklers
+----------------
+There are 2 components that are used by the ilao_toolbox module to send tickler messages.
+
+Send email on ticklr
+^^^^^^^^^^^^^^^^^^^^^^
+Sends a tickler email for a toolbox tool step to a specific user and logs the email sent to the toolbox tickler entity.
+
+Send sms on tickler
+^^^^^^^^^^^^^^^^^^^^^^
+Sends an sms to a number over Twilio and logs the sms sent to the toolbox tickler entity
+   
+   
+Rules in Code
+=================
+
+ilao_events module
+--------------------
+Invokes the registration_settings_created event.  Do not migrate
+
+ilao_sms_surveys
+--------------------
+Invokes the rules component rules_potential_problem_with_surveys as part of a cron call
+
+ilao_toolbox
+---------------
+
+* Has custom action defined (create_new_toolbox_tickler_entity)
+* Custom code schedules tickler messages
+
+ilao_user_utilities
+----------------------
+* Defines custom actions for first time login and domain check
+* Invokes the first time login event
+
+ilao_workbench
+-----------------
+Invokes rules component based on the workbench state:
+* rules_send_publish_notification
+* rules_send_content_review_notification
+* rules_send_content_copyedit_notification
+
+end
+
+   
 
    
