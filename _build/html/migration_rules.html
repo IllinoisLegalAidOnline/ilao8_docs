@@ -109,7 +109,36 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Custom Rules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Custom Rules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rules-to-be-deleted">Rules to be deleted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#content-management-rules">Content Management Rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#portal-content-needs-re-translated">Portal Content needs re-translated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#content-needs-re-translated">Content needs re-translated</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notify-legal-comments">Notify legal comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unpublish-inappropriate-comments">Unpublish inappropriate comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#send-mail-on-creating-events-and-indicates-recording">Send mail on creating events and indicates recording</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#send-mail-on-updating-events-and-indicates-recording">Send mail on updating events and indicates recording</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#send-mail-on-adrm-content-update">Send mail on adrm content update</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-management-rules">User Management Rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#law-students-get-pro-bono-automatically">Law students get pro bono automatically</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-user-to-group-based-on-email">Add user to group based on email</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#email-upon-validating-account">Email upon validating account</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legal-aid-member-role-organization-grant">Legal Aid Member Role Organization Grant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legal-self-help-center-navigator-role-organization-grant">Legal self help center navigator Role Organization Grant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#revoke-og-memberships-if-legal-self-help-center-navigator-role-is-lost">Revoke OG memberships if Legal self-help center navigator Role is lost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#revoke-og-memberships-if-legal-aid-member-role-is-lost">Revoke OG memberships if Legal aid member Role is lost</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#block-anonymous-access-to-user-profiles">Block anonymous access to user profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#otis-related-rules">OTIS-related Rules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#send-email-to-site-architect-upon-updating-intake-settings">Send Email to Site Architect upon updating Intake Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#send-email-to-site-architect-upon-updating-triage-rules">Send Email to Site Architect upon updating Triage Rules</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -181,6 +210,219 @@
             
   <div class="section" id="custom-rules">
 <h1>Custom Rules<a class="headerlink" href="#custom-rules" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="rules-to-be-deleted">
+<h2>Rules to be deleted<a class="headerlink" href="#rules-to-be-deleted" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>all inactive rules</li>
+<li>support ticket response - legal help (spanish)</li>
+<li>test og</li>
+<li>content updated by advocates (currently emails stephanie)</li>
+<li>create ticket for sent email</li>
+<li>email link to registration to contact of event</li>
+<li>email link to registration to creator of event</li>
+<li>email site architect on landing page creation</li>
+<li>Notify content team on edit</li>
+<li>Route support requests</li>
+<li>Save service practice area from legal category</li>
+<li>Stop registrations</li>
+<li>Subscribe Community engagement users to Opportunity node type</li>
+<li>Subscribe to bugs</li>
+<li>Subscribe users to support ticket - Admin</li>
+<li>Subscribe users to support ticket - Bugs</li>
+<li>Subscribe users to support ticket - Community</li>
+<li>Subscribe users to support ticket - Fundraising</li>
+<li>Subscribe users to support ticket - Intern</li>
+<li>Subscribe users to support ticket - Live Help</li>
+<li>Subscribe users to support ticket - Media</li>
+<li>Subscribe users to support ticket - UX</li>
+<li>Subscribe users to support ticket - YPB</li>
+<li>Subscribe UX users to FAQ node type</li>
+<li>Support ticket response - Account</li>
+<li>Support ticket response - Closing message</li>
+<li>Support ticket response - General redirect</li>
+<li>Support ticket response - legal help</li>
+<li>Support ticket response - LSHC redirect</li>
+<li>test</li>
+<li>ticket comment state defaults</li>
+<li>ticket comment client defaults</li>
+<li>ticket comment assignee defaults</li>
+<li>ticket comment priority defaults</li>
+</ul>
+</div>
+<div class="section" id="content-management-rules">
+<h2>Content Management Rules<a class="headerlink" href="#content-management-rules" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Can the re-translation rules be combined?</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If we delete the field-translation-outdated field and go with the core fields, the retrnaslation rules would need to be updated</p>
+</div>
+<div class="section" id="portal-content-needs-re-translated">
+<h3>Portal Content needs re-translated<a class="headerlink" href="#portal-content-needs-re-translated" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  after updating existing content type Portal main page
+When: field-translation-outdated is true and the prior value wasn’t true
+Then:
+Sends an HTML email to <a class="reference external" href="mailto:translationmgmt&#37;&#52;&#48;illinoislegalaid&#46;org">translationmgmt<span>&#64;</span>illinoislegalaid<span>&#46;</span>org</a> with the subject of “Translation needs updated: node:title]” and a body of [node:title] (Node ID:  [node:nid]) has been flagged as needing its translations updated.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If we delete the field-translation-outdated field and go with the core fields, this rule needs updated</p>
+</div>
+</div>
+<div class="section" id="content-needs-re-translated">
+<h3>Content needs re-translated<a class="headerlink" href="#content-needs-re-translated" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  after updating existing content type Legal content
+When: field-translation-outdated is true and the prior value wasn’t true
+Then:
+Sends an HTML email to <a class="reference external" href="mailto:translationmgmt&#37;&#52;&#48;illinoislegalaid&#46;org">translationmgmt<span>&#64;</span>illinoislegalaid<span>&#46;</span>org</a> with the subject of “Translation needs updated: node:title]” and a body of [node:title] (Node ID:  [node:nid]) has been flagged as needing its translations updated.</p>
+</div>
+<div class="section" id="notify-legal-comments">
+<h3>Notify legal comments<a class="headerlink" href="#notify-legal-comments" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  when a new comment is saved
+Condition: User is not anonymous
+Then:  Sends an email to <a class="reference external" href="mailto:contentteam&#37;&#52;&#48;illinoislegalaid&#46;org">contentteam<span>&#64;</span>illinoislegalaid<span>&#46;</span>org</a> with message of &lt;p&gt;A new comment by [comment:name]/[comment:mail] was just posted&lt;/p&gt;
+[comment:body]
+&lt;p&gt;The comment can be found here:  [comment:url]&lt;/p&gt;</p>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">Should not trigger if the user has the staff role</p>
+</div>
+</div>
+<div class="section" id="unpublish-inappropriate-comments">
+<h3>Unpublish inappropriate comments<a class="headerlink" href="#unpublish-inappropriate-comments" title="Permalink to this headline">¶</a></h3>
+<p>Triggers: when a comment is flagged as inappropriate
+Condtion:  count of inappropriate flags is 3 or more
+Action: Unpublishes the comment</p>
+</div>
+<div class="section" id="send-mail-on-creating-events-and-indicates-recording">
+<h3>Send mail on creating events and indicates recording<a class="headerlink" href="#send-mail-on-creating-events-and-indicates-recording" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  When saving a new event
+When:  User does not indicates that they do not want an event recorded
+Then: Sends an email to all users with the content manager role with a subject of [node:title]: Event recording notification and a body of he following event on [node:field-start-date:value] is set to be recorded. Please follow up with the sponsoring organization. Event details: [node:url]</p>
+<div class="admonition-todo admonition" id="index-1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Should send to the contnet managers gmail account, not role-based</p>
+</div>
+</div>
+<div class="section" id="send-mail-on-updating-events-and-indicates-recording">
+<h3>Send mail on updating events and indicates recording<a class="headerlink" href="#send-mail-on-updating-events-and-indicates-recording" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  When updating an event
+When:  User does not indicates that they do not want an event recorded and this and previously had indicated that they did not want the event recorded
+Then: Sends an email to all users with the content manager role with a subject of [node:title]: Event recording notification and a body of he following event on [node:field-start-date:value] is set to be recorded. Please follow up with the sponsoring organization. Event details: [node:url]</p>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p class="last">Should send to the contnet managers gmail account, not role-based</p>
+</div>
+</div>
+<div class="section" id="send-mail-on-adrm-content-update">
+<h3>Send mail on adrm content update<a class="headerlink" href="#send-mail-on-adrm-content-update" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  When an ADRM content is updated
+Conditions:  The user does not have the content manager role; the user has the legal aid member or SME role
+Action:  Sends email to all users with the content manager role
+with a subject line of Attorney manual [node:title]
+and subject of: The attorney manual [node:title] has been updated by [node:current-revision-author-name]. Please review: [node:url]</p>
+</div>
+</div>
+<div class="section" id="user-management-rules">
+<h2>User Management Rules<a class="headerlink" href="#user-management-rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="law-students-get-pro-bono-automatically">
+<h3>Law students get pro bono automatically<a class="headerlink" href="#law-students-get-pro-bono-automatically" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  After saving a new user account
+Condition:  Email address contains .edu
+Then:  Adds the role of Law student member to account</p>
+</div>
+<div class="section" id="add-user-to-group-based-on-email">
+<h3>Add user to group based on email<a class="headerlink" href="#add-user-to-group-based-on-email" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  After updating an existing user account
+Condition:  User has legal aid member role AND email is not empty
+Then: no action</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Need to evaluate</p>
+</div>
+</div>
+<div class="section" id="email-upon-validating-account">
+<h3>Email upon validating account<a class="headerlink" href="#email-upon-validating-account" title="Permalink to this headline">¶</a></h3>
+<p>Purpose is to get user to complete a user testing demographics survey</p>
+<p>Triggers: When user logs in for the first time
+Then: Send an HTML email with a subject of “Help improve IllinoisLegalAid.org”
+and a body of “Thank you for expressing an interest in participating in user research activities to help improve IllinoisLegalAid.org. Please take &lt;a href=”<a class="reference external" href="https://www.surveymonkey.com/r/?sm=0dJuQigsoARhzLV8oPf3EmVTgBKyM664pn2IwhSkZbU_3D">https://www.surveymonkey.com/r/?sm=0dJuQigsoARhzLV8oPf3EmVTgBKyM664pn2IwhSkZbU_3D</a>” rel=”noopener” target=”_blank”&gt;this short survey&lt;/a&gt;, so that we know which types of user research opportunities to share with you. If you are no longer interested in participating, log in to IllinoisLegalAid.org and update your preferences. Thanks for your time!”</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This should check that the user opted in to user test but doesn’t</p>
+</div>
+</div>
+<div class="section" id="legal-aid-member-role-organization-grant">
+<h3>Legal Aid Member Role Organization Grant<a class="headerlink" href="#legal-aid-member-role-organization-grant" title="Permalink to this headline">¶</a></h3>
+<p>Purpose is to associate a legal aid user with an organization when they create or update their account</p>
+<p>Triggers:  User updates an existing account or saves a new account
+When:  Legal aid affiliation field is not empty AND user is not a group member AND user has the legal aid member role OR (current user is ILAO staff and email domain matches an organization domain
+Actions:  Add the user to the organic group of the organization associated with the organization domain</p>
+<p>Relies on:  ilao_user_utilities to define the condition.</p>
+</div>
+<div class="section" id="legal-self-help-center-navigator-role-organization-grant">
+<h3>Legal self help center navigator Role Organization Grant<a class="headerlink" href="#legal-self-help-center-navigator-role-organization-grant" title="Permalink to this headline">¶</a></h3>
+<p>Purpose is to associate a legal aid user with an organization when they create or update their account</p>
+<p>Triggers:  User updates an existing account or saves a new account
+When:  User has the legal self help center role
+Actions:  Add the user to the organic group of the organization associated with the organization domain</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Why are these 2 organization grants so different?</p>
+</div>
+</div>
+<div class="section" id="revoke-og-memberships-if-legal-self-help-center-navigator-role-is-lost">
+<h3>Revoke OG memberships if Legal self-help center navigator Role is lost<a class="headerlink" href="#revoke-og-memberships-if-legal-self-help-center-navigator-role-is-lost" title="Permalink to this headline">¶</a></h3>
+<p>Triggers; when an existing user account is updated
+When: user had the LSHC role and now does not
+Then: Revokes OG memebership in LSHC organization and display a message on screen that says Revoked membership in [og-user-node-list:title] group for [account:name]</p>
+</div>
+<div class="section" id="revoke-og-memberships-if-legal-aid-member-role-is-lost">
+<h3>Revoke OG memberships if Legal aid member Role is lost<a class="headerlink" href="#revoke-og-memberships-if-legal-aid-member-role-is-lost" title="Permalink to this headline">¶</a></h3>
+<p>Triggers; when an existing user account is updated
+When: user had the legal aid member role and now does not
+Then: Revokes OG memebership in LSHC organization and display a message on screen that says Revoked membership in [og-user-node-list:title] group for [account:name]</p>
+</div>
+<div class="section" id="block-anonymous-access-to-user-profiles">
+<h3>Block anonymous access to user profiles<a class="headerlink" href="#block-anonymous-access-to-user-profiles" title="Permalink to this headline">¶</a></h3>
+<p>Triggers: User account page is viewed
+When:  Current user has the anonymous role
+Then: Redirect to node/85641 (access denied)</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">URL may change with migration</p>
+</div>
+</div>
+</div>
+<div class="section" id="otis-related-rules">
+<h2>OTIS-related Rules<a class="headerlink" href="#otis-related-rules" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="send-email-to-site-architect-upon-updating-intake-settings">
+<h3>Send Email to Site Architect upon updating Intake Settings<a class="headerlink" href="#send-email-to-site-architect-upon-updating-intake-settings" title="Permalink to this headline">¶</a></h3>
+<p>Triggers:  when an intake settings entity is created or updated
+Condition: User is not a site architect or anonymous
+Then Sends an HTML email with a subject of Intake Settings updated or added at [site:name] and a body of: &lt;p&gt;[site:current-user] has added or updated the following Intake Settings &lt;a href=”/admin/intake/[oas-intake-settings:intake-settings-id]/edit”&gt;[oas-intake-settings:name]&lt;/a&gt;.&lt;/p&gt;</p>
+<div class="admonition-todo admonition" id="index-3">
+<p class="first admonition-title">Todo</p>
+<p class="last">Rule needs cleaned in Drupal 7 to send to <a class="reference external" href="mailto:otissupport&#37;&#52;&#48;illinoislegalaid&#46;org">otissupport<span>&#64;</span>illinoislegalaid<span>&#46;</span>org</a> rather than site architect.</p>
+</div>
+</div>
+<div class="section" id="send-email-to-site-architect-upon-updating-triage-rules">
+<h3>Send Email to Site Architect upon updating Triage Rules<a class="headerlink" href="#send-email-to-site-architect-upon-updating-triage-rules" title="Permalink to this headline">¶</a></h3>
+<p>Trigger:  When an existing triage rule content is updated
+Condition: And the user does not have the site architect role
+Then:  Sends an html email to otissupport with a subject of Triage rules updated or added at [site:name] and body of Please edit the triage rules for node [node:nid] to enable the translation settings:
+1) Add translations for each language
+2) Enable string translation in the webform
+3) Go to translate interface and filter on webform localization and add the translations using Google translate.</p>
+<div class="admonition-todo admonition" id="index-4">
+<p class="first admonition-title">Todo</p>
+<p class="last">Rule needs cleaned in Drupal 7 to reflect only edited triage rules</p>
+</div>
+</div>
+</div>
 </div>
 
 
