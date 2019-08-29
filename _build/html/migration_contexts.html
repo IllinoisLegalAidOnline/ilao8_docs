@@ -119,6 +119,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#ilao-contexts-check-empty-variable">ilao_contexts_check_empty_variable</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ilao-contexts-check-region-specific-markup">ilao_contexts_check_region_specific_markup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ilao-contexts-business-hours">ilao_contexts_business_hours</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-contexts-service-type">ilao_contexts_service_type</a></li>
 </ul>
 </li>
 </ul>
@@ -255,6 +256,7 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">This is behind.  Is missing some content formats.</p>
 </div>
+<p>Executes on node view</p>
 </div>
 <div class="section" id="ilao-contexts-oas-help-type">
 <h3>ilao_contexts_oas_help_type<a class="headerlink" href="#ilao-contexts-oas-help-type" title="Permalink to this headline">¶</a></h3>
@@ -302,15 +304,28 @@
 </div>
 <div class="section" id="ilao-context-oas-modal">
 <h3>ilao_context_oas_modal<a class="headerlink" href="#ilao-context-oas-modal" title="Permalink to this headline">¶</a></h3>
-<p>Seta a context based on whether we should show the OAS modal</p>
+<p>Seta a context based on whether we should show the OAS modal.</p>
+<p>Returns one of:</p>
+<ul class="simple">
+<li>Intake available; single issue</li>
+<li>Intake available; multiple issues</li>
+<li>Intake closed</li>
+</ul>
+<p>Relies on oas_modal_apply module</p>
+<p>Executes on node view.</p>
 </div>
 <div class="section" id="ilao-contexts-check-empty-variable">
 <h3>ilao_contexts_check_empty_variable<a class="headerlink" href="#ilao-contexts-check-empty-variable" title="Permalink to this headline">¶</a></h3>
 <p>Set this context to check if variable exists and is not empty.</p>
+<p>Uses a custom form to determine if a variable exists.</p>
+<p>Returns true if the variable exists and is not empty.</p>
+<p>Executes on page reaction and node view</p>
 </div>
 <div class="section" id="ilao-contexts-check-region-specific-markup">
 <h3>ilao_contexts_check_region_specific_markup<a class="headerlink" href="#ilao-contexts-check-region-specific-markup" title="Permalink to this headline">¶</a></h3>
 <p>Set this context to check if node contains region specific Markup</p>
+<p>Does not return values but does return a custom form if regional markup is found</p>
+<p>Executes on node view</p>
 </div>
 <div class="section" id="ilao-contexts-business-hours">
 <h3>ilao_contexts_business_hours<a class="headerlink" href="#ilao-contexts-business-hours" title="Permalink to this headline">¶</a></h3>
@@ -326,6 +341,17 @@
 <p class="last">This context was created to control fundraising pop ups and should be evaluated to determine if it in fact needs to be migrated.</p>
 </div>
 <p>Executes on page reaction (all pages)</p>
+</div>
+<div class="section" id="ilao-contexts-service-type">
+<h3>ilao_contexts_service_type<a class="headerlink" href="#ilao-contexts-service-type" title="Permalink to this headline">¶</a></h3>
+<p>Sets this context based on the service type of a location service node</p>
+<p>Returns one of:</p>
+<ul class="simple">
+<li>Legal self-help center</li>
+<li>Direct representation</li>
+<li>Lawyer referral service</li>
+</ul>
+<p>Executes on node view</p>
 </div>
 </div>
 </div>

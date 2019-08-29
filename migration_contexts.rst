@@ -69,6 +69,8 @@ based on the paragraphs included in the node and is applied only to legal conten
 .. warning::
    This is behind.  Is missing some content formats.   
 
+Executes on node view
+
 ilao_contexts_oas_help_type
 ----------------------------
 Sets a context based on the type of help a user (information, forms, or lawyer) has selected. It is designed to handle all permutations of options.
@@ -118,16 +120,36 @@ Executes on page reaction when the page path is one of:
 
 ilao_context_oas_modal
 ------------------------
-Seta a context based on whether we should show the OAS modal
+Seta a context based on whether we should show the OAS modal.
+
+Returns one of:
+
+* Intake available; single issue
+* Intake available; multiple issues
+* Intake closed
+
+Relies on oas_modal_apply module
+
+Executes on node view.
 
 
 ilao_contexts_check_empty_variable
 ------------------------------------
 Set this context to check if variable exists and is not empty.
 
+Uses a custom form to determine if a variable exists.  
+
+Returns true if the variable exists and is not empty.
+
+Executes on page reaction and node view
+
 ilao_contexts_check_region_specific_markup
 ---------------------------------------------
 Set this context to check if node contains region specific Markup
+
+Does not return values but does return a custom form if regional markup is found
+
+Executes on node view
 
 ilao_contexts_business_hours
 ------------------------------
@@ -142,4 +164,17 @@ Returns one of:
 .. note::
    This context was created to control fundraising pop ups and should be evaluated to determine if it in fact needs to be migrated. 
    
-Executes on page reaction (all pages)    
+Executes on page reaction (all pages)   
+
+ilao_contexts_service_type
+-----------------------------
+Sets this context based on the service type of a location service node
+
+Returns one of:
+
+* Legal self-help center
+* Direct representation
+* Lawyer referral service
+
+
+Executes on node view
