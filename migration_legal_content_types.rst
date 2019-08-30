@@ -355,10 +355,14 @@ New legal content functionality
 
 * Creation of a checkbox field of taxonomy terms for a taxonomy called "Content QA" that contains the steps in a content QA process.  This field is only visible to users with the staff or intern role
 * Creation of a checkbox field of taxonomy terms for a taxonomy called "Substantive review" that contains the steps in a legal accuracy review.  This field is only visible to SMEs, staff and interns.
-* An unpublish reason field.  This is select list of reasons why content is being unpublished.
+* An unpublish reason field.  This is select list of reasons why content is being unpublished. (Built into Drupal 7 version)
 * Integration of Readable.io API into WYSIWYG
-* See also changes in Substantive Update
-* Removal of most workbench moderation states except Draft -> Ready to Review -> Publish.  Ready to review state is only needed for non-staff edits.  [Andrew & Arlene:  Please weigh in on review of intern edits]
+* CKeditor spell check on by default
+* Relabel current last substantive update date field to “Last expert review” to preserve the most common usage of the field as it currently exists.  
+* Remove the substantive update yes/no field and display the date field instead (which is currently hidden from staff)
+* Add a new field for “Last revision” to indicate when the content has been substantively revised in any way.  
+* Make both date fields editable by staff users rather than a yes/no.  Defaults to the current date but can be changed
+* Remove  most workbench moderation states except Draft -> Ready to Review -> Publish.  Ready to review state is only needed for non-staff edits.  [Andrew & Arlene:  Please weigh in on review of intern edits]
 
      
           
