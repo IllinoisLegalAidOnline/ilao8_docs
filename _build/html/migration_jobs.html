@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Job content types &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Job content type &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -90,10 +90,31 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Job content types</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Job content type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changes">Changes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -144,7 +165,7 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>Job content types</li>
+      <li>Job content type</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,8 +184,112 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="job-content-types">
-<h1>Job content types<a class="headerlink" href="#job-content-types" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="job-content-type">
+<h1>Job content type<a class="headerlink" href="#job-content-type" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>Our current platform uses organic groups to control ownership of a job and then has an intricate set of conditional fields that control supporting both internal and external organizations.  We don’t support viewing organization profiles from job postings so this is probably unneeded.</p>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>field_my_org_or_ther</td>
+<td>Boolean; controls layout</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_sponsoring_org_single</td>
+<td>Entity reference to org</td>
+<td>Delete</td>
+</tr>
+<tr class="row-even"><td>field_organization_other</td>
+<td>Text</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_address</td>
+<td>Postal address</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_website</td>
+<td>Link</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>title</td>
+<td>Job title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_job_type</td>
+<td>Select list of job types</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>body</td>
+<td>Long text;Job description</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_remote_allowed</td>
+<td>Boolean</td>
+<td>Transform</td>
+</tr>
+<tr class="row-odd"><td>field_candidate_qualifications</td>
+<td>Long text</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_file</td>
+<td>Unlimited files; attachments</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_depends_on_experience</td>
+<td>Boolean</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_compensation_low</td>
+<td>Integer</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_compensation_high</td>
+<td>Integer</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_compensation_type</td>
+<td>Select list</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_how_to_apply</td>
+<td>Long text</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_open_until_filled</td>
+<td>Boolean</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_deadline</td>
+<td>Date</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="changes">
+<h2>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Make only the compensation low required rather than requiring a range</li>
+<li>Make the single checkbox boolean yes/no</li>
+<li>Add a note that all job postings come down after 45 days, regardless of deadline.</li>
+<li>Add a notification email to the sender at 40 days to remind them to renew their posting</li>
+</ul>
+<p>The remote allowed field is currently a yes/no.  Would be nice to offer fully remote, some remote allowed, no remote allowed.</p>
+</div>
 </div>
 
 
