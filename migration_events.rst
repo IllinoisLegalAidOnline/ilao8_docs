@@ -7,12 +7,15 @@ Relies On:
 
 Taxonomies:
 
-* Frequently Asked Questions
+* Audience
+* Legal issues
+* Event types
 
 Custom modules:
 
-* ilao_access : controls view access based on the field_restrict_access.
+* ilao_access : controls update access to allow the contact to edit the event.  Unclear if this is needed.
 
+* ilao_events:  Most of this module is registration based and can go in the trash.
 
 
 Fields
@@ -92,8 +95,6 @@ Fields
 | field_image                  | Image field                   | Migrate as Media    |
 +------------------------------+-------------------------------+---------------------+
                 
-
-
 
 
 
