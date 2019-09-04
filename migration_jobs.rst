@@ -57,8 +57,13 @@ Changes
 * Make the single checkbox boolean yes/no
 * Add a note that all job postings come down after 45 days, regardless of deadline.
 * Add a notification email to the sender at 40 days to remind them to renew their posting
-
-
+* Add internship as an option in job type select
+* Add fellowship as an option in job type select
 
 
 The remote allowed field is currently a yes/no.  Would be nice to offer fully remote, some remote allowed, no remote allowed.
+
+.. note::
+   ILAO will manually repost relevant internships as jobs.
+   
+   

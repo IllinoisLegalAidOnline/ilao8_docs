@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Event nodes &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Event Content Type &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Job content types" href="migration_jobs.html" />
-    <link rel="prev" title="Legal content workflows" href="legal_content_workflow.html" /> 
+    <link rel="next" title="Job content type" href="migration_jobs.html" />
+    <link rel="prev" title="Toolbox-related entities" href="toolboxes_entities.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,10 +90,32 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Event Content Type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies On:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-changes">Known Changes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -144,7 +166,7 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>Event nodes</li>
+      <li>Event Content Type</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -163,8 +185,182 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="event-nodes">
-<h1>Event nodes<a class="headerlink" href="#event-nodes" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="event-content-type">
+<h1>Event Content Type<a class="headerlink" href="#event-content-type" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="relies-on">
+<h2>Relies On:<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
+<p>Taxonomies:</p>
+<ul class="simple">
+<li>Frequently Asked Questions</li>
+</ul>
+<p>Custom modules:</p>
+<ul class="simple">
+<li>ilao_access : controls view access based on the field_restrict_access.</li>
+</ul>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_start_date</td>
+<td>Date; with optional end date</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_sponsoring_organzation</td>
+<td>Entity reference to OG</td>
+<td>Merge &amp; Delete</td>
+</tr>
+<tr class="row-odd"><td>field_organization_other</td>
+<td>Text</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_event_format</td>
+<td>Select list; in person, remote
+alert/notice</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_address</td>
+<td>Postal address</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_instructions</td>
+<td>Long text; event instructions</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_uses_registration</td>
+<td>Boolean</td>
+<td>Delete</td>
+</tr>
+<tr class="row-even"><td>field_contact_else</td>
+<td>Boolean</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_contact_email</td>
+<td>Email</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_speakers</td>
+<td>Field collection</td>
+<td>Replace</td>
+</tr>
+<tr class="row-odd"><td>field_audience</td>
+<td>Term reference to audience</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_legal_issues</td>
+<td>Term reference to select
+legal issues taxonomy terms</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_event_type</td>
+<td>Term reference to event types</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_event_recording</td>
+<td>Select list</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>field_has_mcle</td>
+<td>Boolean</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_mcle_hours</td>
+<td>Float; total hours of MCLE</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_mcle_ethics_hours</td>
+<td>Float; ethics hours</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_archive_eligible_for
+_mcle</td>
+<td>Boolean</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>field_email</td>
+<td>Email; MCLE contact</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_email_for_questions</td>
+<td>Email; Question receiver for
+archive CLE</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>field_deadline</td>
+<td>Date; MCLE deadline</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_attachments</td>
+<td>File; files for the event</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_registration_required</td>
+<td>Select</td>
+<td>Migrate &amp; Update</td>
+</tr>
+<tr class="row-even"><td>field_register_or_buy_tickets</td>
+<td>List; label for registration</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_legal_link</td>
+<td>Link; registration link</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_registration</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_capacity</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-even"><td>field_waiting_list</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_waiting_list_capacity</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-even"><td>field_registration_open</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_send_reminder</td>
+<td>&#160;</td>
+<td>Delete</td>
+</tr>
+<tr class="row-even"><td>field_image</td>
+<td>Image field</td>
+<td>Migrate as Media</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="known-changes">
+<h2>Known Changes<a class="headerlink" href="#known-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>We are not migrating entity registration or event registration.</li>
+<li>Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other</li>
+<li>Speakers need to be replaced with a paragraphs bundle over field collection</li>
+<li>Field registration required should not have the ilao option</li>
+</ul>
+</div>
 </div>
 
 
@@ -175,10 +371,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_jobs.html" class="btn btn-neutral float-right" title="Job content types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_jobs.html" class="btn btn-neutral float-right" title="Job content type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="legal_content_workflow.html" class="btn btn-neutral" title="Legal content workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="toolboxes_entities.html" class="btn btn-neutral" title="Toolbox-related entities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
