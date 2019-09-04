@@ -34,7 +34,8 @@ Fields
 +------------------------------+-------------------------------+---------------------+
 | field_file                   | Unlimited files; attachments  | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| field_depends_on_experience  | Boolean                       | Migrate             |
+| field_depends_on_experience  | Boolean                       | Merge into          |
+|                              |                               | compensation type   |
 +------------------------------+-------------------------------+---------------------+
 | field_compensation_low       | Integer                       | Migrate             |
 +------------------------------+-------------------------------+---------------------+
@@ -59,6 +60,7 @@ Changes
 * Add a notification email to the sender at 40 days to remind them to renew their posting
 * Add internship as an option in job type select
 * Add fellowship as an option in job type select
+* Depends on experience field is merged into compensation type
 
 
 The remote allowed field is currently a yes/no.  Would be nice to offer fully remote, some remote allowed, no remote allowed.
