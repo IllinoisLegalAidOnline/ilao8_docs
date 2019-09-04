@@ -16,6 +16,7 @@ Migration Documentation
    migration_internships
    migration_blog
    migration_basic_pages
+   migration_faqs
    migration_other_node_types
    migration_search
    migration_reporting
