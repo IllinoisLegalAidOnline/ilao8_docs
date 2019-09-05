@@ -95,6 +95,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Event Content Type</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies On:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-module-functionality">Custom module functionality</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#known-changes">Known Changes</a></li>
 </ul>
 </li>
@@ -355,11 +356,24 @@ archive CLE</td>
 </tbody>
 </table>
 </div>
+<div class="section" id="custom-module-functionality">
+<h2>Custom module functionality<a class="headerlink" href="#custom-module-functionality" title="Permalink to this headline">¶</a></h2>
+<p>Within the ilao_events module, the following are likely still needed in Drupal 8:</p>
+<ul class="simple">
+<li>ilao_events_form_events_node_form_alter which alters aspects of the event add/edit form.  Not all elements will need migrated.</li>
+<li>ilao_events_after_build (maybe)</li>
+<li>node_presave (we still want events to support a contact other than the poster)</li>
+<li>ilao_events_validate - some of the validation is still relevant</li>
+<li>ilao_events_form_email_mail_page_form_alter - alters the contact form to send an accommodation request to the event contact.</li>
+<li>ilao_events_form_email_mail_page_submit</li>
+</ul>
+<p>The rest of the functions are not required in Drupal 8 with the elimination of tying organic groups to events and eliminating event registration.</p>
+</div>
 <div class="section" id="known-changes">
 <h2>Known Changes<a class="headerlink" href="#known-changes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>We are not migrating entity registration or event registration.</li>
-<li>Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other</li>
+<li>Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other and any reference to organic groups removed.  The user who created the event and users with the staff or intern role are the only ones who need edit or delete access.</li>
 <li>Speakers need to be replaced with a paragraphs bundle over field collection</li>
 <li>Field registration required should not have the ilao option</li>
 </ul>

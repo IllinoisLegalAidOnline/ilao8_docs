@@ -96,6 +96,18 @@ Fields
 +------------------------------+-------------------------------+---------------------+
                 
 
+Custom module functionality
+============================
+Within the ilao_events module, the following are likely still needed in Drupal 8:
+
+* ilao_events_form_events_node_form_alter which alters aspects of the event add/edit form.  Not all elements will need migrated.
+* ilao_events_after_build (maybe)
+* node_presave (we still want events to support a contact other than the poster)
+* ilao_events_validate - some of the validation is still relevant
+* ilao_events_form_email_mail_page_form_alter - alters the contact form to send an accommodation request to the event contact.  
+* ilao_events_form_email_mail_page_submit
+
+The rest of the functions are not required in Drupal 8 with the elimination of tying organic groups to events and eliminating event registration.
 
 
 
@@ -103,7 +115,7 @@ Known Changes
 ==============
 
 * We are not migrating entity registration or event registration.
-* Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other
+* Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other and any reference to organic groups removed.  The user who created the event and users with the staff or intern role are the only ones who need edit or delete access.
 * Speakers need to be replaced with a paragraphs bundle over field collection
 * Field registration required should not have the ilao option
 
