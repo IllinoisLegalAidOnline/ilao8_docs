@@ -39,6 +39,8 @@ Fields
 +------------------------------+-------------------------------+---------------------+
 | field_instructions           | Long text; event instructions | Migrate             |
 +------------------------------+-------------------------------+---------------------+
+| body                         | Event description             | Migrate             |     
++------------------------------+-------------------------------+---------------------+
 | field_uses_registration      | Boolean                       | Delete              |
 +------------------------------+-------------------------------+---------------------+
 | field_contact_else           | Boolean                       | Delete              |
@@ -54,7 +56,7 @@ Fields
 +------------------------------+-------------------------------+---------------------+
 | field_event_type             | Term reference to event types | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| field_event_recording        | Select list                   | TBD                 |
+| field_event_recording        | Select list                   | Delete              |
 +------------------------------+-------------------------------+---------------------+
 | field_has_mcle               | Boolean                       | Migrate             |
 +------------------------------+-------------------------------+---------------------+
@@ -62,12 +64,12 @@ Fields
 +------------------------------+-------------------------------+---------------------+
 | field_mcle_ethics_hours      | Float; ethics hours           | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| field_archive_eligible_for   | Boolean                       | TBD                 |
+| field_archive_eligible_for   | Boolean                       | Delete              |
 | _mcle                        |                               |                     |
 +------------------------------+-------------------------------+---------------------+
 | field_email                  | Email; MCLE contact           | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| field_email_for_questions    | Email; Question receiver for  | TBD                 |
+| field_email_for_questions    | Email; Question receiver for  | Delete              |
 |                              | archive CLE                   |                     |
 +------------------------------+-------------------------------+---------------------+
 | field_deadline               | Date; MCLE deadline           | Migrate             |
@@ -115,6 +117,7 @@ Known Changes
 ==============
 
 * We are not migrating entity registration or event registration.
+* We are not migrating data related to recording events, including archive MCLE information.  
 * Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other and any reference to organic groups removed.  The user who created the event and users with the staff or intern role are the only ones who need edit or delete access.
 * Speakers need to be replaced with a paragraphs bundle over field collection
 * Field registration required should not have the ilao option

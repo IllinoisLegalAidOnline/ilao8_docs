@@ -246,110 +246,114 @@ alert/notice</td>
 <td>Long text; event instructions</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-odd"><td>field_uses_registration</td>
+<tr class="row-odd"><td>body</td>
+<td>Event description</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_uses_registration</td>
 <td>Boolean</td>
 <td>Delete</td>
 </tr>
-<tr class="row-even"><td>field_contact_else</td>
+<tr class="row-odd"><td>field_contact_else</td>
 <td>Boolean</td>
 <td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_contact_email</td>
+<tr class="row-even"><td>field_contact_email</td>
 <td>Email</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_speakers</td>
+<tr class="row-odd"><td>field_speakers</td>
 <td>Field collection</td>
 <td>Replace</td>
 </tr>
-<tr class="row-odd"><td>field_audience</td>
+<tr class="row-even"><td>field_audience</td>
 <td>Term reference to audience</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_legal_issues</td>
+<tr class="row-odd"><td>field_legal_issues</td>
 <td>Term reference to select
 legal issues taxonomy terms</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-odd"><td>field_event_type</td>
+<tr class="row-even"><td>field_event_type</td>
 <td>Term reference to event types</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_event_recording</td>
+<tr class="row-odd"><td>field_event_recording</td>
 <td>Select list</td>
-<td>TBD</td>
+<td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_has_mcle</td>
+<tr class="row-even"><td>field_has_mcle</td>
 <td>Boolean</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_mcle_hours</td>
+<tr class="row-odd"><td>field_mcle_hours</td>
 <td>Float; total hours of MCLE</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-odd"><td>field_mcle_ethics_hours</td>
+<tr class="row-even"><td>field_mcle_ethics_hours</td>
 <td>Float; ethics hours</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_archive_eligible_for
+<tr class="row-odd"><td>field_archive_eligible_for
 _mcle</td>
 <td>Boolean</td>
-<td>TBD</td>
+<td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_email</td>
+<tr class="row-even"><td>field_email</td>
 <td>Email; MCLE contact</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_email_for_questions</td>
+<tr class="row-odd"><td>field_email_for_questions</td>
 <td>Email; Question receiver for
 archive CLE</td>
-<td>TBD</td>
+<td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_deadline</td>
+<tr class="row-even"><td>field_deadline</td>
 <td>Date; MCLE deadline</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_attachments</td>
+<tr class="row-odd"><td>field_attachments</td>
 <td>File; files for the event</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-odd"><td>field_registration_required</td>
+<tr class="row-even"><td>field_registration_required</td>
 <td>Select</td>
 <td>Migrate &amp; Update</td>
 </tr>
-<tr class="row-even"><td>field_register_or_buy_tickets</td>
+<tr class="row-odd"><td>field_register_or_buy_tickets</td>
 <td>List; label for registration</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-odd"><td>field_legal_link</td>
+<tr class="row-even"><td>field_legal_link</td>
 <td>Link; registration link</td>
 <td>Migrate</td>
 </tr>
-<tr class="row-even"><td>field_registration</td>
+<tr class="row-odd"><td>field_registration</td>
 <td>&#160;</td>
 <td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_capacity</td>
+<tr class="row-even"><td>field_capacity</td>
 <td>&#160;</td>
 <td>Delete</td>
 </tr>
-<tr class="row-even"><td>field_waiting_list</td>
+<tr class="row-odd"><td>field_waiting_list</td>
 <td>&#160;</td>
 <td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_waiting_list_capacity</td>
+<tr class="row-even"><td>field_waiting_list_capacity</td>
 <td>&#160;</td>
 <td>Delete</td>
 </tr>
-<tr class="row-even"><td>field_registration_open</td>
+<tr class="row-odd"><td>field_registration_open</td>
 <td>&#160;</td>
 <td>Delete</td>
 </tr>
-<tr class="row-odd"><td>field_send_reminder</td>
+<tr class="row-even"><td>field_send_reminder</td>
 <td>&#160;</td>
 <td>Delete</td>
 </tr>
-<tr class="row-even"><td>field_image</td>
+<tr class="row-odd"><td>field_image</td>
 <td>Image field</td>
 <td>Migrate as Media</td>
 </tr>
@@ -373,6 +377,7 @@ archive CLE</td>
 <h2>Known Changes<a class="headerlink" href="#known-changes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>We are not migrating entity registration or event registration.</li>
+<li>We are not migrating data related to recording events, including archive MCLE information.</li>
 <li>Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other and any reference to organic groups removed.  The user who created the event and users with the staff or intern role are the only ones who need edit or delete access.</li>
 <li>Speakers need to be replaced with a paragraphs bundle over field collection</li>
 <li>Field registration required should not have the ilao option</li>
