@@ -45,7 +45,7 @@ Fields
 +------------------------------+-------------------------------+---------------------+
 | field_contact_else           | Boolean                       | Delete              |
 +------------------------------+-------------------------------+---------------------+
-| field_contact_email          | Email                         | Migrate             |
+| field_contact_email          | Email                         | Update and Migrate  |
 +------------------------------+-------------------------------+---------------------+
 | field_speakers               | Field collection              | Replace             |
 +------------------------------+-------------------------------+---------------------+
@@ -121,4 +121,5 @@ Known Changes
 * Eliminating the field_sponsoring_organization; the name of the organization should be copied into field_organization_other and any reference to organic groups removed.  The user who created the event and users with the staff or intern role are the only ones who need edit or delete access.
 * Speakers need to be replaced with a paragraphs bundle over field collection
 * Field registration required should not have the ilao option
+* The field contact email currently uses a field with unlimited cardinality; I don't want to have to support multiple emails.
 
