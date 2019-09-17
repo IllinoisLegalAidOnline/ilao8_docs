@@ -25,7 +25,10 @@ Currently relies on:
 
   * ckeditor_rsm supports our ability to localize legal content snippets
   * ilao_access controls access to restricted content
-  * ilao_ardm provides the core custom functionality for the content type
+  * ilao_ardm provides the core custom functionality for the content type:
+  
+    * Form alters for editing and adding
+    * Clone tool to allow us to copy metadata between chapters in the same book
   
 * Taxonomies
   
@@ -84,12 +87,32 @@ See also the `content migration spreadsheet. <https://docs.google.com/spreadshee
 +------------------------------+-------------------------------+---------------------+
 | field_lift_content_section   | Content_section term reference| Migrate             |
 +------------------------------+-------------------------------+---------------------+
+| field_substantive_update     | Boolean; indicates whether an | Delete              |
+|                              | edit is substantive or not    |                     |
++------------------------------+-------------------------------+---------------------+
+| field_last_substantive_update| Date of last substantive edit | Migrate             |
++------------------------------+-------------------------------+---------------------+
 
 Workbench Moderation
 =====================
+ADRM content uses a modified workbench moderation that is different from legal content generally:
 
-Notes
-========
+* Draft/Revise attorney content
+* Published
+
+None of the custom workbench work that was done for legal content is included in this content type.
+
+Substantive updates
+--------------------
+The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:
+
+* Relabel the field_last_substantive_update to "Last expert review"
+* Add a new date field for last_revised; label as "Last internal revision" with help text of "Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes."
+
+This is the same as what is in legal content!
+
+Other Notes
+=============
 
 Field primary content type currently is never set for ADRM content; these are by definition attorney manuals.
 

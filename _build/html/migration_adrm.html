@@ -95,8 +95,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ADRM Content</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#workbench-moderation">Workbench Moderation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workbench-moderation">Workbench Moderation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#substantive-updates">Substantive updates</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#other-notes">Other Notes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
@@ -210,7 +213,11 @@
 <li>Custom modules:<ul>
 <li>ckeditor_rsm supports our ability to localize legal content snippets</li>
 <li>ilao_access controls access to restricted content</li>
-<li>ilao_ardm provides the core custom functionality for the content type</li>
+<li>ilao_ardm provides the core custom functionality for the content type:<ul>
+<li>Form alters for editing and adding</li>
+<li>Clone tool to allow us to copy metadata between chapters in the same book</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Taxonomies<ul>
@@ -317,14 +324,38 @@ legal category; limited to 1</td>
 <td>Content_section term reference</td>
 <td>Migrate</td>
 </tr>
+<tr class="row-even"><td>field_substantive_update</td>
+<td>Boolean; indicates whether an
+edit is substantive or not</td>
+<td>Delete</td>
+</tr>
+<tr class="row-odd"><td>field_last_substantive_update</td>
+<td>Date of last substantive edit</td>
+<td>Migrate</td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="workbench-moderation">
 <h2>Workbench Moderation<a class="headerlink" href="#workbench-moderation" title="Permalink to this headline">¶</a></h2>
+<p>ADRM content uses a modified workbench moderation that is different from legal content generally:</p>
+<ul class="simple">
+<li>Draft/Revise attorney content</li>
+<li>Published</li>
+</ul>
+<p>None of the custom workbench work that was done for legal content is included in this content type.</p>
+<div class="section" id="substantive-updates">
+<h3>Substantive updates<a class="headerlink" href="#substantive-updates" title="Permalink to this headline">¶</a></h3>
+<p>The node_presave function in ilao_legal_articles also handles substantive updates.  We are going to want to revise this functionality to:</p>
+<ul class="simple">
+<li>Relabel the field_last_substantive_update to “Last expert review”</li>
+<li>Add a new date field for last_revised; label as “Last internal revision” with help text of “Defined as when a staff user makes a substantive change to the content. Does not include typos, grammatical fixes, or style changes. Does include anything that adds or removes information, especially law changes.”</li>
+</ul>
+<p>This is the same as what is in legal content!</p>
 </div>
-<div class="section" id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="other-notes">
+<h2>Other Notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h2>
 <p>Field primary content type currently is never set for ADRM content; these are by definition attorney manuals.</p>
 <p>Content access does not appear to have actually been implemented on the ADRM content type.</p>
 </div>
