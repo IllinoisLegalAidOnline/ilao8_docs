@@ -1,0 +1,399 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ADRM Content &mdash; ILAO Drupal 8 3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Event Content Type" href="migration_events.html" />
+    <link rel="prev" title="Toolbox-related entities" href="toolboxes_entities.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ILAO Drupal 8
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="migration.html">Migration Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="migration_users.html">Users and user profiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_org_data.html">Migrating Organization Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_otis_entities.html">OTIS-related migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ADRM Content</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workbench-moderation">Workbench Moderation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ILAO Drupal 8</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
+        
+      <li>ADRM Content</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/migration_adrm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="adrm-content">
+<h1>ADRM Content<a class="headerlink" href="#adrm-content" title="Permalink to this headline">¶</a></h1>
+<p>Content types:</p>
+<ul class="simple">
+<li>adrm</li>
+</ul>
+<div class="section" id="relies-on">
+<h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
+<p>Currently relies on:</p>
+<ul class="simple">
+<li>Contributed modules:<ul>
+<li>token_custom allows us to create custom snippets within legal content</li>
+<li>book</li>
+<li>paragraphs</li>
+<li>voting_api</li>
+<li>fivestar</li>
+<li>google_analytics_reports (GA)</li>
+<li>workbench_moderation</li>
+</ul>
+</li>
+<li>Custom modules:<ul>
+<li>ckeditor_rsm supports our ability to localize legal content snippets</li>
+<li>ilao_access controls access to restricted content</li>
+<li>ilao_ardm provides the core custom functionality for the content type</li>
+</ul>
+</li>
+<li>Taxonomies<ul>
+<li>Legal_issues</li>
+<li>Content_keywords</li>
+<li>content_section</li>
+<li>annual updates</li>
+<li>content format</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<p>See also the <a class="reference external" href="https://docs.google.com/spreadsheets/d/18yC6qCk5gi3naY5f0xxT8Ye_aProaJIekmezI0copFI/edit#gid=1991457894">content migration spreadsheet.</a></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_annual_updates</td>
+<td>Term reference to annual
+updates taxonomy</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_meta_description</td>
+<td>Long text; SEO description</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_content_description</td>
+<td>Long text; site description</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_content_type</td>
+<td>Paragraphs; limited to link
+(non-form), video, text, file
+(non-form)</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_legal_position</td>
+<td>List (integer), 0 neutral, 1
+plaintiff, 2 defendant</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_content_level</td>
+<td>List (text) basic or advanced</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_legal_issues</td>
+<td>Term reference to legal issues
+Unlimited cardinality</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_primary_category</td>
+<td>Term reference to top level
+legal category; limited to 1</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_primary_content_type</td>
+<td>Term reference</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_image</td>
+<td>Image</td>
+<td>Migrate to media</td>
+</tr>
+<tr class="row-odd"><td>field_content_access</td>
+<td>List(1 legal aid; 2 pro bono)</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_pageviews</td>
+<td>Integer; from Google analytics</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_popularviews</td>
+<td>Integer; from Google analytics</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_rating</td>
+<td>Fivestar rating</td>
+<td>TBD</td>
+</tr>
+<tr class="row-odd"><td>field_share</td>
+<td>AddThis</td>
+<td>Replace</td>
+</tr>
+<tr class="row-even"><td>field_lift_content_keyword</td>
+<td>Content_keywords term ref.</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_lift_content_section</td>
+<td>Content_section term reference</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="workbench-moderation">
+<h2>Workbench Moderation<a class="headerlink" href="#workbench-moderation" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>Field primary content type currently is never set for ADRM content; these are by definition attorney manuals.</p>
+<p>Content access does not appear to have actually been implemented on the ADRM content type.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="migration_events.html" class="btn btn-neutral float-right" title="Event Content Type" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="toolboxes_entities.html" class="btn btn-neutral" title="Toolbox-related entities" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, ILAO.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'3.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

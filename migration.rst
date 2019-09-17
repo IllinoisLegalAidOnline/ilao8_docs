@@ -11,6 +11,7 @@ Migration Documentation
    migration_legal_content_types
    migration_portal_pages
    migration_toolboxes
+   migration_adrm
    migration_events
    migration_jobs
    migration_internships
