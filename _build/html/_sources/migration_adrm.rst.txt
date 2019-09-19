@@ -118,7 +118,7 @@ Field primary content type currently is never set for ADRM content; these are by
 
 Content access does not appear to have actually been implemented on the ADRM content type.
 
-
+ADRM content is not translated into other languages.
 
 
 
