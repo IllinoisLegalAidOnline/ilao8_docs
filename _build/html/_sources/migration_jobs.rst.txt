@@ -68,4 +68,6 @@ The remote allowed field is currently a yes/no.  Would be nice to offer fully re
 .. note::
    ILAO will manually repost relevant internships as jobs.
    
+.. todo::
+   Human review of compensation type to accommodate Depends on Experience changes
    
