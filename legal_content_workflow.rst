@@ -4,6 +4,16 @@ Legal content workflows
 
 .. _legal_content_workflows:
 
+Relies on
+==========
+
+* workbench
+* workbench_moderation
+* ilao_workbench custom module
+
+.. note::
+   I don't think we use the workbench moderation buttons or profiles modules.  With all the changes to simplify workflows, I don't think these are helpful.
+
 Workbench Configuration
 =============================
 
