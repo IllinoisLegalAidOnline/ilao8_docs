@@ -5,7 +5,7 @@ Legal content workflows
 .. _legal_content_workflows:
 
 Workbench Configuration
-=========================
+=============================
 
 States
 ---------
@@ -16,23 +16,26 @@ States
 +==============================+===============================+=====================+
 | Draft/revise                 | draft                         | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| Draft/Revise attorney content| draft_revise_attorney_content | TBD                 |
+| Draft/Revise attorney content| draft_revise_attorney_content | Do not migrate      |
 +------------------------------+-------------------------------+---------------------+
-| Copy Edit                    | copy_edit                     | TBD                 |
+| Copy Edit                    | copy_edit                     | Do not migrate      |
 +------------------------------+-------------------------------+---------------------+
-| Ready to review              | ready_to_review               | TBD                 |
+| Ready to review              | ready_to_review               | Do not migrate      |
 +------------------------------+-------------------------------+---------------------+
 | Published                    | published                     | Migrate             |
 +------------------------------+-------------------------------+---------------------+
-| Metadata review              | metadata_review               | TBD                 |
+| Metadata review              | metadata_review               | Do not migrate      |
 +------------------------------+-------------------------------+---------------------+
-| Substantive update           | substantive_update            | TBD                 |
+| Substantive update           | substantive_update            | Do not migrate      |
 +------------------------------+-------------------------------+---------------------+
-| Plain language review        | plain_language_review         | TBD                 |
+| Plain language review        | plain_language_review         | Do not migrate      |
 +------------------------------+-------------------------------+---------------------+
 
 .. note::
-   All states except for Draft/Revise attorney content apply to the legal content content type.  That state belongs to the ADRM content type.
+   Currently: All states except for Draft/Revise attorney content apply to the legal content content type.  That state belongs to the ADRM content type.
+   Going forward:  Workbench states should apply to all the legal content types (legal content, ADRM, tools, tool steps)
+   
+  
    
 Transitions
 -------------
@@ -43,7 +46,7 @@ Transitions
 +==============================+==================+==================+================+
 | draft-copy_edit              | Draft/Revise     | Copy Edit        |                |
 +------------------------------+------------------+------------------+----------------+
-| draft-ready_to_review        | Draft/Revise     | Ready to review  |                |
+| draft-ready_to_review        | Draft/Revise     | Ready to review  | Migrate        |
 +------------------------------+------------------+------------------+----------------+
 | draft-published              | Draft/Revise     | Published        | Migrate        |
 +------------------------------+------------------+------------------+----------------+
@@ -57,7 +60,7 @@ Transitions
 | copy_edit-plain_language     | Copy edit        | Plain language   |                |
 | _review                      |                  | Review           |                |
 +------------------------------+------------------+------------------+----------------+
-| ready_to_review-published    | Ready to review  | Published        |                |
+| ready_to_review-published    | Ready to review  | Published        | Migrate        |
 +------------------------------+------------------+------------------+----------------+
 | published-draft_revise       | Published        | Draft/Revise     |                |
 | _attorney_content            |                  | Attorney content |                |
@@ -84,7 +87,7 @@ Transitions
 | substantive_update-plain     | Sub. update      | Plain language   |                |
 | _language_review             |                  | review           |                |
 +------------------------------+------------------+------------------+----------------+
-| published-draft_review       | Published        | Draft review     | Migrate        |
+| published-draft_revise       | Published        | Draft/Revise     | Migrate        |
 +------------------------------+------------------+------------------+----------------+
 | plain_language_review-draft  | Draft            | Plain language   |                |
 |                              |                  | review           |                |
@@ -97,9 +100,8 @@ Transitions
 +------------------------------+------------------+------------------+----------------+
 
 .. note::
-   Currently, staff and interns can move content to any state and can go directly from draft to publish.
-   SME's can go from draft to ready to review; only a staff/intern user can publish
-   Legal aid members and pro bono editors can go from draft to ready to review or copy edit only.
+   Staff and interns can move content to any state and can go directly from draft to publish.  Legal aid and pro bono members can go from draft to ready to review only.
+  
 
 Permissions
 =================
@@ -109,7 +111,9 @@ The ilao_workbench module defines 4 permissions:
 * publish without notification => users with this permission can publish without triggering an email notification to the content managers that they need to review the content
 * receive workbench transition alerts => users with this permission will receive alerts when content is changed in some circumstances
 * publish without review => can publish minor updates to the content automatically
-* mark as substantive => can mark a revision as a substantive update
+* mark as substantive => can mark a revision as a substantive update or change substantive dates
+
+.. note:: we can combine the publish without notification and publish without review into a single permission in Drupal 8 as there is no longer any distinction.
 
 Access controls
 ================
@@ -118,6 +122,9 @@ The ilao_workbench module contains an access control such that:
 
 * If content is marked "ready to review," only users with the publish without review permission can edit it.
 * If content is marked "copy edit," only users who can transition from copy edit to plain language can edit it.
+
+.. note::
+  The copy edit access control is not relevant in Drupal 8.
 
 Sending notifications
 ======================
@@ -133,7 +140,4 @@ The ilao_workbench_workbench_moderation_transition function fires whenever there
 
 *Relies on Rules module*
  
-
-
-
 
