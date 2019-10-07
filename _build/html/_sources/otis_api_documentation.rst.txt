@@ -464,7 +464,7 @@ Every organization's locations must have at least one service.  The service is w
 
 
 Geolocation API
-===========--===
+================
 
 +------------------------+----------+---------------------------------------------------+
 | Endpoint               | Method   | Description                                       |

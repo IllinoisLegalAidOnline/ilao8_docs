@@ -153,7 +153,8 @@ The install hook(s) add a number of fields and field instances upon installation
 +----------------------------+----------------------------------------------------------+
 | Field                      | Description                                              |
 +============================+==========================================================+
-| oas_referrals              | Installed in install hook; deleted in update hook        |
+| oas_referrals              | Do not migrate; Installed in install hook; deleted in    | 
+|                            | update hook                                              |
 +----------------------------+----------------------------------------------------------+
 | oas_triage_help_type       | Type of help the user is seeking (list_text, unlimited)  |
 +----------------------------+----------------------------------------------------------+
@@ -168,8 +169,8 @@ The install hook(s) add a number of fields and field instances upon installation
 | field_triage_problem       | Term reference for user problem (term reference; uses    |
 |                            | legal issues taxonomy; cardinality unlimited)            |
 +----------------------------+----------------------------------------------------------+
-| field_triage_referrals     | Exists in install script but deleted in intake settings  |
-| _given                     | update hook                                              |
+| field_triage_referrals     | Do not migrate; Exists in install script but deleted in  |
+| _given                     | intake settings update hook                              |
 +----------------------------+----------------------------------------------------------+
 | field_triage_callback_times| Stores user callback times; text field; unlimited        |
 +----------------------------+----------------------------------------------------------+

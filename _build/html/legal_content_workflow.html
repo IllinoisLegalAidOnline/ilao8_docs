@@ -92,6 +92,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="legal_content_paragraphs.html">Legal content paragraphs</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Legal content workflows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#relies-on">Relies on</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#workbench-configuration">Workbench Configuration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#permissions">Permissions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#access-controls">Access controls</a></li>
@@ -116,11 +117,13 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
@@ -132,6 +135,8 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -205,8 +210,20 @@
             
   <div class="section" id="legal-content-workflows">
 <h1>Legal content workflows<a class="headerlink" href="#legal-content-workflows" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="relies-on">
+<span id="id1"></span><h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>workbench</li>
+<li>workbench_moderation</li>
+<li>ilao_workbench custom module</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">I don’t think we use the workbench moderation buttons or profiles modules.  With all the changes to simplify workflows, I don’t think these are helpful.</p>
+</div>
+</div>
 <div class="section" id="workbench-configuration">
-<span id="id1"></span><h2>Workbench Configuration<a class="headerlink" href="#workbench-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Workbench Configuration<a class="headerlink" href="#workbench-configuration" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="states">
 <h3>States<a class="headerlink" href="#states" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
@@ -228,15 +245,15 @@
 </tr>
 <tr class="row-odd"><td>Draft/Revise attorney content</td>
 <td>draft_revise_attorney_content</td>
-<td>TBD</td>
+<td>Do not migrate</td>
 </tr>
 <tr class="row-even"><td>Copy Edit</td>
 <td>copy_edit</td>
-<td>TBD</td>
+<td>Do not migrate</td>
 </tr>
 <tr class="row-odd"><td>Ready to review</td>
 <td>ready_to_review</td>
-<td>TBD</td>
+<td>Migrate</td>
 </tr>
 <tr class="row-even"><td>Published</td>
 <td>published</td>
@@ -244,21 +261,22 @@
 </tr>
 <tr class="row-odd"><td>Metadata review</td>
 <td>metadata_review</td>
-<td>TBD</td>
+<td>Do not migrate</td>
 </tr>
 <tr class="row-even"><td>Substantive update</td>
 <td>substantive_update</td>
-<td>TBD</td>
+<td>Do not migrate</td>
 </tr>
 <tr class="row-odd"><td>Plain language review</td>
 <td>plain_language_review</td>
-<td>TBD</td>
+<td>Do not migrate</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">All states except for Draft/Revise attorney content apply to the legal content content type.  That state belongs to the ADRM content type.</p>
+<p class="last">Currently: All states except for Draft/Revise attorney content apply to the legal content content type.  That state belongs to the ADRM content type.
+Going forward:  Workbench states should apply to all the legal content types (legal content, ADRM, tools, tool steps)</p>
 </div>
 </div>
 <div class="section" id="transitions">
@@ -286,7 +304,7 @@
 <tr class="row-odd"><td>draft-ready_to_review</td>
 <td>Draft/Revise</td>
 <td>Ready to review</td>
-<td>&#160;</td>
+<td>Migrate</td>
 </tr>
 <tr class="row-even"><td>draft-published</td>
 <td>Draft/Revise</td>
@@ -320,7 +338,7 @@ Review</td>
 <tr class="row-odd"><td>ready_to_review-published</td>
 <td>Ready to review</td>
 <td>Published</td>
-<td>&#160;</td>
+<td>Migrate</td>
 </tr>
 <tr class="row-even"><td>published-draft_revise
 _attorney_content</td>
@@ -380,9 +398,9 @@ _language_review</td>
 review</td>
 <td>&#160;</td>
 </tr>
-<tr class="row-even"><td>published-draft_review</td>
+<tr class="row-even"><td>published-draft_revise</td>
 <td>Published</td>
-<td>Draft review</td>
+<td>Draft/Revise</td>
 <td>Migrate</td>
 </tr>
 <tr class="row-odd"><td>plain_language_review-draft</td>
@@ -408,9 +426,7 @@ metadata_review</td>
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Currently, staff and interns can move content to any state and can go directly from draft to publish.
-SME’s can go from draft to ready to review; only a staff/intern user can publish
-Legal aid members and pro bono editors can go from draft to ready to review or copy edit only.</p>
+<p class="last">Staff and interns can move content to any state and can go directly from draft to publish.  Legal aid and pro bono members can go from draft to ready to review only.</p>
 </div>
 </div>
 </div>
@@ -421,8 +437,12 @@ Legal aid members and pro bono editors can go from draft to ready to review or c
 <li>publish without notification =&gt; users with this permission can publish without triggering an email notification to the content managers that they need to review the content</li>
 <li>receive workbench transition alerts =&gt; users with this permission will receive alerts when content is changed in some circumstances</li>
 <li>publish without review =&gt; can publish minor updates to the content automatically</li>
-<li>mark as substantive =&gt; can mark a revision as a substantive update</li>
+<li>mark as substantive =&gt; can mark a revision as a substantive update or change substantive dates</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">we can combine the publish without notification and publish without review into a single permission in Drupal 8 as there is no longer any distinction.</p>
+</div>
 </div>
 <div class="section" id="access-controls">
 <h2>Access controls<a class="headerlink" href="#access-controls" title="Permalink to this headline">¶</a></h2>
@@ -431,6 +451,10 @@ Legal aid members and pro bono editors can go from draft to ready to review or c
 <li>If content is marked “ready to review,” only users with the publish without review permission can edit it.</li>
 <li>If content is marked “copy edit,” only users who can transition from copy edit to plain language can edit it.</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The copy edit access control is not relevant in Drupal 8.</p>
+</div>
 </div>
 <div class="section" id="sending-notifications">
 <h2>Sending notifications<a class="headerlink" href="#sending-notifications" title="Permalink to this headline">¶</a></h2>

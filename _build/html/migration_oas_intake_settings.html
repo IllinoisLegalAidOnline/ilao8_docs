@@ -106,10 +106,28 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -511,7 +529,7 @@ Used to indicate what exepense types to collect</td>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>OAS:name] or [OAS:Name]</td>
+<tr class="row-even"><td>[OAS:name] or [OAS:Name]</td>
 <td>Returns the organization name of the service the user has
 applied to.</td>
 </tr>
@@ -800,104 +818,38 @@ Boolean</td>
 <td>Entity reference to region taxonomy of additional states
 This is used exclusively for NIJC</td>
 </tr>
-<tr class="row-odd"><td>oas_income_categories</td>
-<td>Entity reference to finance categories of type income
-that should be collected from the user.</td>
-</tr>
-<tr class="row-even"><td>oas_income_standard</td>
-<td>Entity reference to income categories</td>
-</tr>
-<tr class="row-odd"><td>oas_income_exempt</td>
-<td>Term reference to intake populations that should have any
-ncome limits waived</td>
-</tr>
-<tr class="row-even"><td>oas_asset_categories</td>
-<td>Entity references to finance categories of type assets
-that should be collected from the user.</td>
-</tr>
-<tr class="row-odd"><td>oas_expense_categories</td>
-<td>Entity references to finance categories of type expense
-that should be collected from the user.</td>
-</tr>
-<tr class="row-even"><td>oas_msg_we_call_you</td>
-<td>Long text; message to display to users when the callback
-type is “we call you”</td>
-</tr>
-<tr class="row-odd"><td>oas_msg_please_call</td>
-<td>Long text; message to display to users when the callback
-type is “client calls”</td>
-</tr>
-<tr class="row-even"><td>oas_callback_hours_sunday</td>
+<tr class="row-odd"><td>oas_callback_hours_sunday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Sundays</td>
 </tr>
-<tr class="row-odd"><td>oas_callback_hours_monday</td>
+<tr class="row-even"><td>oas_callback_hours_monday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Mondays</td>
 </tr>
-<tr class="row-even"><td>oas_callback_hours_tuesday</td>
+<tr class="row-odd"><td>oas_callback_hours_tuesday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Tuesdays</td>
 </tr>
-<tr class="row-odd"><td>oas_callback_hours
+<tr class="row-even"><td>oas_callback_hours
 _wednesday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Wednesdays</td>
 </tr>
-<tr class="row-even"><td>oas_callback_hours
+<tr class="row-odd"><td>oas_callback_hours
 _thursday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Thursdays</td>
 </tr>
-<tr class="row-odd"><td>oas_callback_hours_friday</td>
+<tr class="row-even"><td>oas_callback_hours_friday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Fridays</td>
 </tr>
-<tr class="row-even"><td>oas_callback_hours_saturday</td>
+<tr class="row-odd"><td>oas_callback_hours_saturday</td>
 <td>Term reference to OAS callback hours; used to indicate
 available hours for callbacks on Saturdays</td>
 </tr>
-<tr class="row-odd"><td>field_bypass_intake_message</td>
+<tr class="row-even"><td>field_bypass_intake_message</td>
 <td>Long text; message to display when intake is bypassed</td>
-</tr>
-<tr class="row-even"><td>oas_msg_disclaimer</td>
-<td>Long text; program disclaimer to display to user starting
-an online intake application</td>
-</tr>
-<tr class="row-odd"><td>oas_household_definition</td>
-<td>Long text; the program’s definition of a household</td>
-</tr>
-<tr class="row-even"><td>oas_msg_current_client</td>
-<td>Long text; message to display to a user who is already a
-current client for the same problem</td>
-</tr>
-<tr class="row-odd"><td>oas_msg_already_applied</td>
-<td>Long text; message to display to a user who has already
-applied for this same problem</td>
-</tr>
-<tr class="row-even"><td>oas_help_citizenship_status</td>
-<td>Long text; help text to display to users when collecting
-citizenship status</td>
-</tr>
-<tr class="row-odd"><td>oas_help_country_of_origin</td>
-<td>Long text; help text to display to users when collecting
-a user’s country of origin</td>
-</tr>
-<tr class="row-even"><td>oas_help_marital_status</td>
-<td>Long text; help text to display to users when collecting
-marital status</td>
-</tr>
-<tr class="row-odd"><td>oas_help_gender</td>
-<td>Long text; help text to display to users when collecting
-user’s gender</td>
-</tr>
-<tr class="row-even"><td>oas_help_immigration_status</td>
-<td>Long text; help text to display to users when collecting
-their immigrant status</td>
-</tr>
-<tr class="row-odd"><td>oas_help_language</td>
-<td>Long text; help text to display to users when collecting
-the user’s primary language</td>
 </tr>
 </tbody>
 </table>

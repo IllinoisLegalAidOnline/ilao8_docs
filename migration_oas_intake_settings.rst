@@ -204,7 +204,7 @@ When used in text that is then run through the token module, the token string is
 +----------------------------+----------------------------------------------------------+
 | Token                      | Description                                              |
 +============================+==========================================================+
-| OAS:name] or [OAS:Name]    | Returns the organization name of the service the user has|
+| [OAS:name] or [OAS:Name]   | Returns the organization name of the service the user has|
 |                            | applied to.                                              |
 +----------------------------+----------------------------------------------------------+
 | [OAS:call-back-number],    | Returns the call back number from the intake settings    |
@@ -373,26 +373,6 @@ For example:
 | field_extended_service_area| Entity reference to region taxonomy of additional states |
 |                            | This is used exclusively for NIJC                        |
 +----------------------------+----------------------------------------------------------+
-| oas_income_categories      | Entity reference to finance categories of type income    |
-|                            | that should be collected from the user.                  |
-+----------------------------+----------------------------------------------------------+
-| oas_income_standard        | Entity reference to income categories                    |
-+----------------------------+----------------------------------------------------------+
-| oas_income_exempt          | Term reference to intake populations that should have any|
-|                            | ncome limits waived                                      |  
-+----------------------------+----------------------------------------------------------+
-| oas_asset_categories       | Entity references to finance categories of type assets   |
-|                            | that should be collected from the user.                  |
-+----------------------------+----------------------------------------------------------+
-| oas_expense_categories     | Entity references to finance categories of type expense  |
-|                            | that should be collected from the user.                  |
-+----------------------------+----------------------------------------------------------+
-| oas_msg_we_call_you        | Long text; message to display to users when the callback |
-|                            | type is "we call you"                                    |
-+----------------------------+----------------------------------------------------------+
-| oas_msg_please_call        | Long text; message to display to users when the callback |
-|                            | type is "client calls"                                   |
-+----------------------------+----------------------------------------------------------+
 | oas_callback_hours_sunday  | Term reference to OAS callback hours; used to indicate   |
 |                            | available hours for callbacks on Sundays                 |
 +----------------------------+----------------------------------------------------------+
@@ -416,35 +396,7 @@ For example:
 +----------------------------+----------------------------------------------------------+
 | field_bypass_intake_message| Long text; message to display when intake is bypassed    |
 +----------------------------+----------------------------------------------------------+
-| oas_msg_disclaimer         | Long text; program disclaimer to display to user starting|
-|                            | an online intake application                             |
-+----------------------------+----------------------------------------------------------+
-| oas_household_definition   | Long text; the program's definition of a household       |
-+----------------------------+----------------------------------------------------------+
-| oas_msg_current_client     | Long text; message to display to a user who is already a |
-|                            | current client for the same problem                      |
-+----------------------------+----------------------------------------------------------+
-| oas_msg_already_applied    | Long text; message to display to a user who has already  |
-|                            | applied for this same problem                            |
-+----------------------------+----------------------------------------------------------+
-| oas_help_citizenship_status| Long text; help text to display to users when collecting |
-|                            | citizenship status                                       |
-+----------------------------+----------------------------------------------------------+
-| oas_help_country_of_origin | Long text; help text to display to users when collecting |
-|                            | a user's country of origin                               |
-+----------------------------+----------------------------------------------------------+
-| oas_help_marital_status    | Long text; help text to display to users when collecting |
-|                            | marital status                                           |
-+----------------------------+----------------------------------------------------------+
-| oas_help_gender            | Long text; help text to display to users when collecting |
-|                            | user's gender                                            |
-+----------------------------+----------------------------------------------------------+
-| oas_help_immigration_status| Long text; help text to display to users when collecting |
-|                            | their immigrant status                                   |
-+----------------------------+----------------------------------------------------------+
-| oas_help_language          | Long text; help text to display to users when collecting |
-|                            | the user's primary language                              |
-+----------------------------+----------------------------------------------------------+
+
 
 
 
