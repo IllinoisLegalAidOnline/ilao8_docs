@@ -237,7 +237,6 @@ Each of the triage listing API methods listed below will return the list of opti
 * get-marital-status-list
 * get-citizenship-list
 * get-immigrant-status-list
-* get-income-status
 
 Financial entities API
 ========================
