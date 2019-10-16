@@ -19,6 +19,7 @@ Migration Documentation
    migration_basic_pages
    migration_faqs
    migration_other_node_types
+   migration_seo_settings
    migration_search
    migration_reporting
    migration_seo
