@@ -104,6 +104,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#metatags">Metatags</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#metatag-defaults">Metatag Defaults</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#metatags-for-legal-issue-category-and-subcategory-pages">Metatags for Legal Issue Category and Subcategory Pages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metatag-for-views">Metatag for Views</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#path-aliases">Path Aliases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#content-paths">Content paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Known issues</a></li>
 </ul>
 </li>
 </ul>
@@ -359,7 +366,7 @@
 </tr>
 <tr class="row-even"><td>Node default</td>
 <td>Hreflang (polish)</td>
-<td>empty (needs fixed)</td>
+<td>[node:url-pl]</td>
 </tr>
 <tr class="row-odd"><td>Node default</td>
 <td>Hreflang (spanish)</td>
@@ -435,7 +442,7 @@
 </tr>
 <tr class="row-odd"><td>ADRM Content</td>
 <td>Hreflang (polish)</td>
-<td>empty (needs fixed)</td>
+<td>[node:url-pl]</td>
 </tr>
 <tr class="row-even"><td>ADRM Content</td>
 <td>Hreflang (spanish)</td>
@@ -1017,7 +1024,229 @@ title]: [node:title] \ [site:name]</td>
 </tr>
 </tbody>
 </table>
-<p>Metatags for Views/Pages</p>
+</div>
+<div class="section" id="metatag-for-views">
+<h3>Metatag for Views<a class="headerlink" href="#metatag-for-views" title="Permalink to this headline">¶</a></h3>
+<p>We use views as pages to display specific information.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="71%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Metatag</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Page title</td>
+<td>[view:title] | [site:name]</td>
+</tr>
+<tr class="row-odd"><td>Description</td>
+<td>[view:description]</td>
+</tr>
+<tr class="row-even"><td>OG: Content Type</td>
+<td>none</td>
+</tr>
+<tr class="row-odd"><td>OG: Page URL</td>
+<td>[current-page:url:absolute]</td>
+</tr>
+<tr class="row-even"><td>OG: Content title</td>
+<td>[current-page:title]</td>
+</tr>
+<tr class="row-odd"><td>OG: Description</td>
+<td>Empty</td>
+</tr>
+<tr class="row-even"><td>X-Default</td>
+<td>Empty</td>
+</tr>
+<tr class="row-odd"><td>hreflang (English)</td>
+<td>Empty (probably needs reviewed)</td>
+</tr>
+<tr class="row-even"><td>hreflang (Spanish)</td>
+<td>Empty (probably needs reviewed)</td>
+</tr>
+<tr class="row-odd"><td>hreflang (Polish)</td>
+<td>Empty (probably needs reviewed)</td>
+</tr>
+<tr class="row-even"><td>Twitter card type</td>
+<td>Summary (default)</td>
+</tr>
+<tr class="row-odd"><td>Twitter creator</td>
+<td>&#64;ilao</td>
+</tr>
+<tr class="row-even"><td>Twitter: Page URL</td>
+<td>[current-page:url:absolute]</td>
+</tr>
+<tr class="row-odd"><td>Twitter: Content title</td>
+<td>[current-page:title]</td>
+</tr>
+<tr class="row-even"><td>Twitter: Description</td>
+<td>Empty</td>
+</tr>
+<tr class="row-odd"><td>Twitter: image</td>
+<td>Empty</td>
+</tr>
+<tr class="row-even"><td>Twitter: alt text</td>
+<td>Empty</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="path-aliases">
+<h2>Path Aliases<a class="headerlink" href="#path-aliases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The - is our separator which replaces spaces and punctuation.</li>
+<li>All characters are changed to lower case</li>
+<li>Maximum alias length is 100 characters</li>
+<li>Maximum component in the alias is 100 characters</li>
+<li>Transliterates prior to creating alias (replaces accented characters to acceptable characters)</li>
+<li>Removes common strings: a, an, as, at, before, but, by, for, from, is, in, into, like, of, off, on, onto, per, since, than, the, this, that, to, up, via, with</li>
+<li>Removes punctuation</li>
+</ul>
+</div>
+<div class="section" id="content-paths">
+<h3>Content paths<a class="headerlink" href="#content-paths" title="Permalink to this headline">¶</a></h3>
+<p>These are the default patterns.  They can, and in some instances, have been overwritten.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="29%" />
+<col width="50%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Content Type</th>
+<th class="head">Pattern</th>
+<th class="head">Language</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ADRM</td>
+<td>legal-information/[node:title]</td>
+<td>All</td>
+</tr>
+<tr class="row-odd"><td>Basic Pages</td>
+<td>No default pattern</td>
+<td>All</td>
+</tr>
+<tr class="row-even"><td>Blog posts</td>
+<td>About/our-work/blog/[node:title]</td>
+<td>All</td>
+</tr>
+<tr class="row-odd"><td>Event</td>
+<td>for-legal-professionals/calendar/[node:
+title]</td>
+<td>All</td>
+</tr>
+<tr class="row-even"><td>Job Posting</td>
+<td>for-legal-professionals/job-postings/
+[node:title]</td>
+<td>All</td>
+</tr>
+<tr class="row-odd"><td>Legal Content</td>
+<td>legal-information/[node:title-field]</td>
+<td>English</td>
+</tr>
+<tr class="row-even"><td>Legal Content</td>
+<td>informacje-prawne/[node:title-field]</td>
+<td>Polish</td>
+</tr>
+<tr class="row-odd"><td>Legal Content</td>
+<td>informacion-legal/[node:title-field]</td>
+<td>Spanish</td>
+</tr>
+<tr class="row-even"><td>Location</td>
+<td>organizations/location/[node:title]</td>
+<td>All</td>
+</tr>
+<tr class="row-odd"><td>Location Services</td>
+<td>organizations/locations/services/
+[node:title]</td>
+<td>All</td>
+</tr>
+<tr class="row-even"><td>Organization</td>
+<td>organizations/[node:title]</td>
+<td>All</td>
+</tr>
+<tr class="row-odd"><td>Portal Main Page</td>
+<td>[node:field_subdomain]/[node:title-field]</td>
+<td>English</td>
+</tr>
+<tr class="row-even"><td>Portal Main Page</td>
+<td>[node:field_subdomain]/pl-
+[node:title-field]</td>
+<td>Polish</td>
+</tr>
+<tr class="row-odd"><td>Portal Main Page</td>
+<td>[node:field_subdomain]/es-
+[node:title-field]</td>
+<td>Spanish</td>
+</tr>
+<tr class="row-even"><td>Site FAQ</td>
+<td>site-faq/[node:title-field]</td>
+<td>All</td>
+</tr>
+<tr class="row-odd"><td>Toolbox</td>
+<td>legal-information/toolboxes/
+[node:title-field]</td>
+<td>English</td>
+</tr>
+<tr class="row-even"><td>Toolbox</td>
+<td>informacje-prawne/toolboxes/
+[node:title-field]</td>
+<td>Polish</td>
+</tr>
+<tr class="row-odd"><td>Toolbox</td>
+<td>informacion-legal/toolboxes/
+[node:title-field]</td>
+<td>Spanish</td>
+</tr>
+<tr class="row-even"><td>Toolbox step</td>
+<td>legal-information/toolboxes/
+[node:field-tool:title]/[node:title]</td>
+<td>English</td>
+</tr>
+<tr class="row-odd"><td>Toolbox step</td>
+<td>informacje-prawne/toolboxes/
+[node:field-tool:title]/[node:title]</td>
+<td>Polish</td>
+</tr>
+<tr class="row-even"><td>Toolbox step</td>
+<td>informacion-legal/toolboxes/
+[node:field-tool:title]/[node:title]</td>
+<td>Spanish</td>
+</tr>
+<tr class="row-odd"><td>Toolbox tool</td>
+<td>legal-information/toolboxes/[node:field
+]-toolbox:title-field]/[node:title]</td>
+<td>English</td>
+</tr>
+<tr class="row-even"><td>Toolbox tool</td>
+<td>informacje-prawne/toolboxes/[node:field
+]-toolbox:title-field]/[node:title]</td>
+<td>Polish</td>
+</tr>
+<tr class="row-odd"><td>Toolbox tool</td>
+<td>informacion-legal/toolboxes/[node:field
+]-toolbox:title-field]/[node:title]</td>
+<td>Spanish</td>
+</tr>
+<tr class="row-even"><td>Triage Rules</td>
+<td>get-legal-help/triage-rules/[node:nid]</td>
+<td>All</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="known-issues">
+<h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Legal Self-Help Centers use a different path of /counties/[county name].  This makes it impossible to regenerate organization, location, location services.</li>
+<li>Path aliases are automatically changed when new titles are created.  This breaks Google analytics data.</li>
+</ul>
 </div>
 </div>
 </div>

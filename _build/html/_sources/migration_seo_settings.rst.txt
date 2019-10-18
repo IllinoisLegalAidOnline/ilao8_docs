@@ -98,7 +98,7 @@ Metatag Defaults
 +------------------------+----------------------+------------------------------------+
 | Node default           | Hreflang (english)   | [node:url-en]                      |
 +------------------------+----------------------+------------------------------------+
-| Node default           | Hreflang (polish)    | empty (needs fixed)                |
+| Node default           | Hreflang (polish)    | [node:url-pl]                      |
 +------------------------+----------------------+------------------------------------+
 | Node default           | Hreflang (spanish)   | [node:url-es]                      |
 +------------------------+----------------------+------------------------------------+
@@ -136,7 +136,7 @@ Metatag Defaults
 +------------------------+----------------------+------------------------------------+
 | ADRM Content           | Hreflang (english)   | [node:url-en]                      |
 +------------------------+----------------------+------------------------------------+
-| ADRM Content           | Hreflang (polish)    | empty (needs fixed)                |
+| ADRM Content           | Hreflang (polish)    | [node:url-pl]                      |
 +------------------------+----------------------+------------------------------------+
 | ADRM Content           | Hreflang (spanish)   | [node:url-es]                      |
 +------------------------+----------------------+------------------------------------+
@@ -439,7 +439,142 @@ These pages are just taxonomy term pages and use the taxonomy metatag defaults.
 | Twitter: alt text      | Empty                                                     |
 +------------------------+-----------------------------------------------------------+
 
-Metatags for Views/Pages
+Metatag for Views
+--------------------
+
+We use views as pages to display specific information.
+
++------------------------+-----------------------------------------------------------+
+|  Metatag               | Default                                                   |
++========================+===========================================================+
+| Page title             | [view:title] | [site:name]                                |
++------------------------+-----------------------------------------------------------+
+| Description            | [view:description]                                        |
++------------------------+-----------------------------------------------------------+
+| OG: Content Type       | none                                                      |
++------------------------+-----------------------------------------------------------+
+| OG: Page URL           | [current-page:url:absolute]                               |
++------------------------+-----------------------------------------------------------+
+| OG: Content title      | [current-page:title]                                      |
++------------------------+-----------------------------------------------------------+
+| OG: Description        | Empty                                                     |
++------------------------+-----------------------------------------------------------+
+| X-Default              | Empty                                                     |
++------------------------+-----------------------------------------------------------+
+| hreflang (English)     | Empty (probably needs reviewed)                           |
++------------------------+-----------------------------------------------------------+
+| hreflang (Spanish)     | Empty (probably needs reviewed)                           |
++------------------------+-----------------------------------------------------------+
+| hreflang (Polish)      | Empty (probably needs reviewed)                           |
++------------------------+-----------------------------------------------------------+
+| Twitter card type      | Summary (default)                                         |
++------------------------+-----------------------------------------------------------+
+| Twitter creator        | @ilao                                                     |
++------------------------+-----------------------------------------------------------+
+| Twitter: Page URL      | [current-page:url:absolute]                               |
++------------------------+-----------------------------------------------------------+
+| Twitter: Content title | [current-page:title]                                      |
++------------------------+-----------------------------------------------------------+
+| Twitter: Description   | Empty                                                     |
++------------------------+-----------------------------------------------------------+
+| Twitter: image         | Empty                                                     |
++------------------------+-----------------------------------------------------------+
+| Twitter: alt text      | Empty                                                     |
++------------------------+-----------------------------------------------------------+
+
+Path Aliases
+==============
+
+Settings
+----------
+
+* The - is our separator which replaces spaces and punctuation.
+* All characters are changed to lower case
+* Maximum alias length is 100 characters
+* Maximum component in the alias is 100 characters
+* Transliterates prior to creating alias (replaces accented characters to acceptable characters)
+* Removes common strings: a, an, as, at, before, but, by, for, from, is, in, into, like, of, off, on, onto, per, since, than, the, this, that, to, up, via, with
+* Removes punctuation
+ 
+
+Content paths
+----------------
+These are the default patterns.  They can, and in some instances, have been overwritten.
+
++------------------------+-----------------------------------------+-----------------+
+| Content Type           | Pattern                                 | Language        |
++========================+=========================================+=================+
+| ADRM                   | legal-information/[node:title]          | All             |
++------------------------+-----------------------------------------+-----------------+
+| Basic Pages            | No default pattern                      | All             |
++------------------------+-----------------------------------------+-----------------+
+| Blog posts             | About/our-work/blog/[node:title]        | All             |
++------------------------+-----------------------------------------+-----------------+
+| Event                  | for-legal-professionals/calendar/[node: | All             |
+|                        | title]                                  |                 |
++------------------------+-----------------------------------------+-----------------+
+| Job Posting            | for-legal-professionals/job-postings/   | All             |
+|                        | [node:title]                            |                 |
++------------------------+-----------------------------------------+-----------------+
+| Legal Content          | legal-information/[node:title-field]    | English         |
++------------------------+-----------------------------------------+-----------------+
+| Legal Content          | informacje-prawne/[node:title-field]    | Polish          |
++------------------------+-----------------------------------------+-----------------+
+| Legal Content          | informacion-legal/[node:title-field]    | Spanish         |
++------------------------+-----------------------------------------+-----------------+
+| Location               | organizations/location/[node:title]     | All             |
++------------------------+-----------------------------------------+-----------------+
+| Location Services      | organizations/locations/services/       | All             |
+|                        | [node:title]                            |                 |
++------------------------+-----------------------------------------+-----------------+
+| Organization           | organizations/[node:title]              | All             |
++------------------------+-----------------------------------------+-----------------+
+| Portal Main Page       |[node:field_subdomain]/[node:title-field]| English         |
++------------------------+-----------------------------------------+-----------------+
+| Portal Main Page       | [node:field_subdomain]/pl-              | Polish          |
+|                        | [node:title-field]                      |                 |
++------------------------+-----------------------------------------+-----------------+
+| Portal Main Page       | [node:field_subdomain]/es-              | Spanish         |
+|                        | [node:title-field]                      |                 |
++------------------------+-----------------------------------------+-----------------+
+| Site FAQ               | site-faq/[node:title-field]             | All             |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox                | legal-information/toolboxes/            | English         |
+|                        | [node:title-field]                      |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox                | informacje-prawne/toolboxes/            | Polish          |
+|                        | [node:title-field]                      |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox                | informacion-legal/toolboxes/            | Spanish         |
+|                        | [node:title-field]                      |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox step           | legal-information/toolboxes/            | English         |
+|                        | [node:field-tool:title]/[node:title]    |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox step           | informacje-prawne/toolboxes/            | Polish          |
+|                        | [node:field-tool:title]/[node:title]    |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox step           | informacion-legal/toolboxes/            | Spanish         |
+|                        | [node:field-tool:title]/[node:title]    |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox tool           | legal-information/toolboxes/[node:field | English         |
+|                        | ]-toolbox:title-field]/[node:title]     |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox tool           | informacje-prawne/toolboxes/[node:field | Polish          |
+|                        | ]-toolbox:title-field]/[node:title]     |                 |
++------------------------+-----------------------------------------+-----------------+
+| Toolbox tool           | informacion-legal/toolboxes/[node:field | Spanish         |
+|                        | ]-toolbox:title-field]/[node:title]     |                 |
++------------------------+-----------------------------------------+-----------------+
+| Triage Rules           | get-legal-help/triage-rules/[node:nid]  | All             |
++------------------------+-----------------------------------------+-----------------+
+
+
+Known issues
+--------------
+
+* Legal Self-Help Centers use a different path of /counties/[county name].  This makes it impossible to regenerate organization, location, location services.
+* Path aliases are automatically changed when new titles are created.  This breaks Google analytics data.  
 
 
 
