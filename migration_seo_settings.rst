@@ -76,6 +76,12 @@ Metatag Defaults
 +------------------------+----------------------+------------------------------------+
 | Global home page       |OG:Content description| site:slogan                        |
 +------------------------+----------------------+------------------------------------+
+| Global home page       | hreflang             | [site:root]  (English)             |
++------------------------+----------------------+------------------------------------+
+| Global home page       | hreflang             | [site:root]\pl  (Polish)           |
++------------------------+----------------------+------------------------------------+
+| Global home page       | hreflang             | [site:root]\es  (Spanish)          |
++------------------------+----------------------+------------------------------------+
 | Node default           | Page title           | [node:title] \\ [site:name]        |
 +------------------------+----------------------+------------------------------------+
 | Node default           | Description          | [node:summary]                     |
@@ -574,7 +580,12 @@ Known issues
 --------------
 
 * Legal Self-Help Centers use a different path of /counties/[county name].  This makes it impossible to regenerate organization, location, location services.
-* Path aliases are automatically changed when new titles are created.  This breaks Google analytics data.  
+* Path aliases are automatically changed when new titles are created.  This breaks Google analytics historical data.  
+
+
+Additional Notes
+==================
+We added a custom bulk update that lets us update path aliases automatically per content type (rather than having to revert all nodes, etc).
 
 
 
