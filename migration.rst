@@ -22,7 +22,6 @@ Migration Documentation
    migration_seo_settings
    migration_search
    migration_reporting
-   migration_seo
    migration_google_analytics
    migration_sms
    migration_zendesk
