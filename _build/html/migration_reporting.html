@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Views/Reporting Migration &mdash; ILAO Drupal 8 3.0 documentation</title>
+  <title>Reporting Migration &mdash; ILAO Drupal 8 3.0 documentation</title>
   
 
   
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Migration: SEO features" href="migration_seo.html" />
+    <link rel="next" title="Google analytics" href="migration_google_analytics.html" />
     <link rel="prev" title="Search migration" href="migration_search.html" /> 
 
   
@@ -92,15 +92,51 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo_settings.html">SEO Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Views/Reporting Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reporting Migration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#legal-information-reports">Legal information reports</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#find-content">Find content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#find-legal-content">Find legal content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#find-file-content">Find file content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#localized-content">Localized content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#requested-forms">Requested forms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#images-for-legal-content">Images for legal content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolbox-tool-usage-report">Toolbox tool usage report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toolbox-tool-step-usage-report">Toolbox tool step usage report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#learn-more-articles-by-guide">Learn more articles by guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#take-action-articles-by-guide">Take action articles by guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comments-with-ratings">Comments with Ratings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#content-ratings">Content ratings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#otis-get-legal-help-reports">OTIS/Get Legal Help reports</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-legal-help-report">Get Legal Help Report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etransfers-report">eTransfers report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sms-oas-survey-report">SMS OAS Survey report</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#user-reports">User reports</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#people">People</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#never-validated-accounts">Never validated accounts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#user-demographics-report">User demographics report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#board-staff-ypb-users">Board, staff, YPB users</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-reports">Additional reports</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sms-reports">SMS Reports</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
@@ -108,6 +144,8 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -158,7 +196,7 @@
         
           <li><a href="migration.html">Migration Documentation</a> &raquo;</li>
         
-      <li>Views/Reporting Migration</li>
+      <li>Reporting Migration</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,8 +215,92 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="views-reporting-migration">
-<h1>Views/Reporting Migration<a class="headerlink" href="#views-reporting-migration" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="reporting-migration">
+<h1>Reporting Migration<a class="headerlink" href="#reporting-migration" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There are views that are used to create blocks and pages within the system.  This page covers the views that we use for reporting.</p>
+</div>
+<div class="section" id="legal-information-reports">
+<h2>Legal information reports<a class="headerlink" href="#legal-information-reports" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="find-content">
+<h3>Find content<a class="headerlink" href="#find-content" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="find-legal-content">
+<h3>Find legal content<a class="headerlink" href="#find-legal-content" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="find-file-content">
+<h3>Find file content<a class="headerlink" href="#find-file-content" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="localized-content">
+<h3>Localized content<a class="headerlink" href="#localized-content" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="requested-forms">
+<h3>Requested forms<a class="headerlink" href="#requested-forms" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="images-for-legal-content">
+<h3>Images for legal content<a class="headerlink" href="#images-for-legal-content" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="toolbox-tool-usage-report">
+<h3>Toolbox tool usage report<a class="headerlink" href="#toolbox-tool-usage-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="toolbox-tool-step-usage-report">
+<h3>Toolbox tool step usage report<a class="headerlink" href="#toolbox-tool-step-usage-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="learn-more-articles-by-guide">
+<h3>Learn more articles by guide<a class="headerlink" href="#learn-more-articles-by-guide" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="take-action-articles-by-guide">
+<h3>Take action articles by guide<a class="headerlink" href="#take-action-articles-by-guide" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="comments-with-ratings">
+<h3>Comments with Ratings<a class="headerlink" href="#comments-with-ratings" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="content-ratings">
+<h3>Content ratings<a class="headerlink" href="#content-ratings" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="otis-get-legal-help-reports">
+<h2>OTIS/Get Legal Help reports<a class="headerlink" href="#otis-get-legal-help-reports" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-legal-help-report">
+<h3>Get Legal Help Report<a class="headerlink" href="#get-legal-help-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="etransfers-report">
+<h3>eTransfers report<a class="headerlink" href="#etransfers-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="sms-oas-survey-report">
+<h3>SMS OAS Survey report<a class="headerlink" href="#sms-oas-survey-report" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="user-reports">
+<h2>User reports<a class="headerlink" href="#user-reports" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="people">
+<h3>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="never-validated-accounts">
+<h3>Never validated accounts<a class="headerlink" href="#never-validated-accounts" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="user-demographics-report">
+<h3>User demographics report<a class="headerlink" href="#user-demographics-report" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="board-staff-ypb-users">
+<h3>Board, staff, YPB users<a class="headerlink" href="#board-staff-ypb-users" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="additional-reports">
+<h2>Additional reports<a class="headerlink" href="#additional-reports" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sms-reports">
+<h3>SMS Reports<a class="headerlink" href="#sms-reports" title="Permalink to this headline">¶</a></h3>
+<p>These are all of a status of “TBD”</p>
+<ul class="simple">
+<li>List of campaigns</li>
+<li>Campaign keywords</li>
+<li>Campaign summary report</li>
+<li>Campaign interactions report</li>
+<li>Legal content sharing report</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -189,7 +311,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_seo.html" class="btn btn-neutral float-right" title="Migration: SEO features" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_google_analytics.html" class="btn btn-neutral float-right" title="Google analytics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="migration_search.html" class="btn btn-neutral" title="Search migration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
