@@ -148,8 +148,34 @@ Has filters for:
 * Intake status
 * Source (to account for ILAO's modal, program widget, etc).
 
+Organization Report
+^^^^^^^^^^^^^^^^^^^^^
+There are also organization specific intake reports that mirror the etransfer report at admin/organizations/reporting/intake-report that can also be exported
+
+
 SMS OAS Survey report
 ----------------------
+We have one SMS-based survey created that ties into Webform to follow up with users who complete an online intake application.  This view displays the data associated with that survey along with OTIS information.
+
+Fields include:
+
+* triage user ID
+* intake date
+* survey submission date
+* zip code
+* legal issue
+* service
+* location
+* organization
+* survey responses
+
+Filters include:
+
+* survey date (beginning/ending range)
+* organization name
+* callback type
+* legal issue
+
 
 
 User reports
