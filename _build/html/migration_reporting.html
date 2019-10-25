@@ -228,9 +228,65 @@
 <h2>Legal information reports<a class="headerlink" href="#legal-information-reports" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="find-content">
 <h3>Find content<a class="headerlink" href="#find-content" title="Permalink to this headline">¶</a></h3>
+<p>Find content is the basic content report, with some modifications that is part of the Administrative views module (which we should deprecate in Drupal 8)</p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>NID</li>
+<li>Title</li>
+<li>Content type</li>
+<li>Primary content type</li>
+<li>Author</li>
+<li>Published</li>
+<li>Last updated</li>
+</ul>
+<p>Filters include:</p>
+<ul class="simple">
+<li>Title</li>
+<li>Content type</li>
+<li>Published (any, yes, no)</li>
+<li>Vocabulary</li>
+<li>Has taxonomy terms (with depth)</li>
+<li>Image (has image/no image)</li>
+<li>Primary content type</li>
+</ul>
 </div>
 <div class="section" id="find-legal-content">
 <h3>Find legal content<a class="headerlink" href="#find-legal-content" title="Permalink to this headline">¶</a></h3>
+<p>Find legal content is specialized version of the content report designed to show legal content only.  Excluded from this report is any other legal content like portal main pages, toolboxes, tool steps, tools, which make it less than ideal as a full view of our legal content.</p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>Node ID</li>
+<li>Title</li>
+<li>Primary content type</li>
+<li>Primary legal category</li>
+<li>Created date</li>
+<li>Author</li>
+<li>Last updated</li>
+<li>Last reviewed</li>
+<li>Published</li>
+</ul>
+<p>Filters include:</p>
+<ul class="simple">
+<li>Node ID</li>
+<li>Title (contains)</li>
+<li>Description (contains)</li>
+<li>Body (contains)</li>
+<li>Primary legal category</li>
+<li>Published (defaults to Yes)</li>
+<li>Content type (multiple select)</li>
+<li>Translation exists (English, Spanish, Polish)</li>
+<li>Advanced filters<ul>
+<li>Content level</li>
+<li>Legal position</li>
+<li>Restrict to legal aid and/or pro bono</li>
+<li>Jurisdiction</li>
+<li>Annual updates</li>
+<li>Translation outdated</li>
+<li>Created date (between)</li>
+<li>Last reviewed date (between)</li>
+</ul>
+</li>
+</ul>
 </div>
 <div class="section" id="find-file-content">
 <h3>Find file content<a class="headerlink" href="#find-file-content" title="Permalink to this headline">¶</a></h3>

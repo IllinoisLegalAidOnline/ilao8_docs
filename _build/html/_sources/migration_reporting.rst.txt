@@ -10,9 +10,66 @@ Legal information reports
 
 Find content
 --------------
+Find content is the basic content report, with some modifications that is part of the Administrative views module (which we should deprecate in Drupal 8)
+
+Fields include:
+
+* NID
+* Title
+* Content type
+* Primary content type
+* Author
+* Published
+* Last updated
+
+Filters include:
+
+* Title
+* Content type
+* Published (any, yes, no)
+* Vocabulary
+* Has taxonomy terms (with depth)
+* Image (has image/no image)
+* Primary content type
+
 
 Find legal content
 --------------------
+Find legal content is specialized version of the content report designed to show legal content only.  Excluded from this report is any other legal content like portal main pages, toolboxes, tool steps, tools, which make it less than ideal as a full view of our legal content.
+
+Fields include:
+
+* Node ID
+* Title
+* Primary content type
+* Primary legal category
+* Created date
+* Author
+* Last updated
+* Last reviewed
+* Published
+
+Filters include:
+
+* Node ID
+* Title (contains)
+* Description (contains)
+* Body (contains)
+* Primary legal category
+* Published (defaults to Yes)
+* Content type (multiple select)
+* Translation exists (English, Spanish, Polish)
+* Advanced filters
+
+  * Content level
+  * Legal position
+  * Restrict to legal aid and/or pro bono
+  * Jurisdiction
+  * Annual updates
+  * Translation outdated
+  * Created date (between)
+  * Last reviewed date (between)
+
 
 Find file content
 ------------------
