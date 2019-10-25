@@ -120,6 +120,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#otis-get-legal-help-reports">OTIS/Get Legal Help reports</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#get-legal-help-report">Get Legal Help Report</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#referral-history">Referral History</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#referral-count-report">Referral Count Report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#etransfers-report">eTransfers report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sms-oas-survey-report">SMS OAS Survey report</a></li>
 </ul>
@@ -129,6 +131,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#never-validated-accounts">Never validated accounts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#user-demographics-report">User demographics report</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#board-staff-ypb-users">Board, staff, YPB users</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#login-report">Login Report</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#additional-reports">Additional reports</a><ul>
@@ -262,11 +265,105 @@
 </div>
 <div class="section" id="otis-get-legal-help-reports">
 <h2>OTIS/Get Legal Help reports<a class="headerlink" href="#otis-get-legal-help-reports" title="Permalink to this headline">¶</a></h2>
+<p>The OTIS/Get Legal Help reports are custom reports we created to keep track of online intake information.</p>
 <div class="section" id="get-legal-help-report">
 <h3>Get Legal Help Report<a class="headerlink" href="#get-legal-help-report" title="Permalink to this headline">¶</a></h3>
+<p>This is the main report for tracking usage of the Get Legal Help feature.</p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>Triage ID</li>
+<li>Created</li>
+<li>Zip code</li>
+<li>Over-income (yes or no)</li>
+<li>Household size</li>
+<li>Legal problem</li>
+<li>Help type sought</li>
+<li>Triage status</li>
+</ul>
+<p>Filters include:</p>
+<ul class="simple">
+<li>Help type (lawyer, forms, information)</li>
+<li>Start date</li>
+<li>End date</li>
+<li>Legal issues</li>
+</ul>
+</div>
+<div class="section" id="referral-history">
+<h3>Referral History<a class="headerlink" href="#referral-history" title="Permalink to this headline">¶</a></h3>
+<p>Found at admin/reporting/get-legal-help/referrals</p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>ID of referral user</li>
+<li>Title of the service the user was referred to</li>
+<li>County of the user</li>
+<li>Over-income status</li>
+<li>Referral date</li>
+<li>Problem history</li>
+</ul>
+<p>Includes filter for:</p>
+<ul class="simple">
+<li>Referral date (between)</li>
+<li>County</li>
+<li>Legal issue</li>
+</ul>
+<p>Should include:</p>
+<ul class="simple">
+<li>Organization</li>
+<li>A way to export the data</li>
+<li>Explanation of over income statuses</li>
+</ul>
+<p>May need to review:</p>
+<ul class="simple">
+<li>Whether the problem field is correct or not</li>
+</ul>
+</div>
+<div class="section" id="referral-count-report">
+<h3>Referral Count Report<a class="headerlink" href="#referral-count-report" title="Permalink to this headline">¶</a></h3>
+<p>Includes:</p>
+<ul class="simple">
+<li>Number of referrals made to a service</li>
+<li>Title of the service</li>
+</ul>
+<p>Has filters for:</p>
+<ul class="simple">
+<li>Referral date (between)</li>
+<li>County</li>
+<li>Legal issue</li>
+</ul>
+<p>Should include:</p>
+<ul class="simple">
+<li>Organization name</li>
+<li>A way to export the data</li>
+</ul>
 </div>
 <div class="section" id="etransfers-report">
 <h3>eTransfers report<a class="headerlink" href="#etransfers-report" title="Permalink to this headline">¶</a></h3>
+<p>The eTransfers report shows all instances of Get Legal Help where the user got past the basic Get Legal Help pages and into the OTIS funnel.</p>
+<p>Has fields for:</p>
+<ul class="simple">
+<li>Triage ID</li>
+<li>Intake organization name</li>
+<li>Location</li>
+<li>Service</li>
+<li>Date of intake</li>
+<li>Intake status</li>
+<li>Zip code</li>
+<li>County</li>
+<li>Gender</li>
+<li>Race</li>
+<li>Ethnicity</li>
+<li>Marital status</li>
+<li>Legal problem</li>
+</ul>
+<p>Has filters for:</p>
+<ul class="simple">
+<li>Start and end dates</li>
+<li>Organization name</li>
+<li>Service</li>
+<li>Legal issue</li>
+<li>Intake status</li>
+<li>Source (to account for ILAO’s modal, program widget, etc).</li>
+</ul>
 </div>
 <div class="section" id="sms-oas-survey-report">
 <h3>SMS OAS Survey report<a class="headerlink" href="#sms-oas-survey-report" title="Permalink to this headline">¶</a></h3>
@@ -274,17 +371,99 @@
 </div>
 <div class="section" id="user-reports">
 <h2>User reports<a class="headerlink" href="#user-reports" title="Permalink to this headline">¶</a></h2>
+<p>The people reports are based off of the administrative views module, which should probably not be used in Drupal 8.</p>
+<p>All of these reports are exportable as CSV.</p>
 <div class="section" id="people">
 <h3>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h3>
+<p>The people report should include:</p>
+<ul class="simple">
+<li>Last name</li>
+<li>First name</li>
+<li>Email</li>
+<li>Roles</li>
+<li>Active (as yes/no)</li>
+<li>Create date</li>
+<li>Last access date</li>
+<li>Member type</li>
+<li>Participates in user tests (yes/no)</li>
+<li>Operations to edit or cancel account</li>
+</ul>
+<p>Filters should include:</p>
+<ul class="simple">
+<li>First name (contains)</li>
+<li>Last name (contains)</li>
+<li>Email (contains)</li>
+<li>Has roles (any, yes/no)</li>
+<li>Roles (multi-select)</li>
+<li>Active</li>
+<li>Member type</li>
+<li>Participate in user test (all, yes, no)</li>
+<li>Joined between dates</li>
+</ul>
 </div>
 <div class="section" id="never-validated-accounts">
 <h3>Never validated accounts<a class="headerlink" href="#never-validated-accounts" title="Permalink to this headline">¶</a></h3>
+<p>This report shows all users who registered on the website but then did not activate their account.  These users are automatically deleted after [x] days.</p>
+<p>It is a mirror of the people report but limited to users who:</p>
+<ul class="simple">
+<li>have a last access date of less than Jan 1, 2015</li>
+<li>have an empty internal organization value</li>
+</ul>
 </div>
 <div class="section" id="user-demographics-report">
 <h3>User demographics report<a class="headerlink" href="#user-demographics-report" title="Permalink to this headline">¶</a></h3>
+<p>Similar to the people table, this report lets us export user demographic data and includes fields for:</p>
+<ul class="simple">
+<li>email</li>
+<li>first name</li>
+<li>last name</li>
+<li>role(s)</li>
+<li>member type</li>
+<li>year born</li>
+<li>gender</li>
+<li>zip code</li>
+<li>language preferences</li>
+<li>last login</li>
+<li>date joined</li>
+</ul>
 </div>
 <div class="section" id="board-staff-ypb-users">
 <h3>Board, staff, YPB users<a class="headerlink" href="#board-staff-ypb-users" title="Permalink to this headline">¶</a></h3>
+<p>We use this report to filter users with an “internal organization” role so that we can control who shows up on the board, staff, and YPB pages in the About Us section.</p>
+<p>The report should include:</p>
+<ul class="simple">
+<li>User name</li>
+<li>Last name</li>
+<li>First name</li>
+<li>Company/Organization</li>
+<li>Biography</li>
+<li>Internal organization</li>
+<li>Internal title</li>
+<li>Roles</li>
+<li>Edit link</li>
+</ul>
+<p>The report should be filtered on:</p>
+<ul class="simple">
+<li>Active users</li>
+<li>Has one or more internal roles (this should be exposed)</li>
+</ul>
+</div>
+<div class="section" id="login-report">
+<h3>Login Report<a class="headerlink" href="#login-report" title="Permalink to this headline">¶</a></h3>
+<p>This report shows the number of times a user has logged into the website.</p>
+<p>The report should include:</p>
+<ul class="simple">
+<li>user ID</li>
+<li>email</li>
+<li>first name</li>
+<li>last name</li>
+<li>roles</li>
+<li>member type</li>
+<li>first log in</li>
+<li>last log in</li>
+<li>total number of logins</li>
+<li>frequency of logins</li>
+</ul>
 </div>
 </div>
 <div class="section" id="additional-reports">

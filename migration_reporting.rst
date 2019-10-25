@@ -47,30 +47,207 @@ Content ratings
 
 OTIS/Get Legal Help reports
 ============================
+The OTIS/Get Legal Help reports are custom reports we created to keep track of online intake information.
+
 Get Legal Help Report
 -----------------------
+This is the main report for tracking usage of the Get Legal Help feature.
+
+Fields include:
+
+* Triage ID
+* Created
+* Zip code
+* Over-income (yes or no)
+* Household size
+* Legal problem
+* Help type sought
+* Triage status
+
+Filters include:
+
+* Help type (lawyer, forms, information)
+* Start date
+* End date
+* Legal issues
+
+
+Referral History
+-------------------
+Found at admin/reporting/get-legal-help/referrals
+
+Fields include:
+
+* ID of referral user
+* Title of the service the user was referred to
+* County of the user
+* Over-income status
+* Referral date
+* Problem history
+
+Includes filter for:
+
+* Referral date (between)
+* County
+* Legal issue
+
+Should include:
+
+* Organization
+* A way to export the data
+* Explanation of over income statuses
+
+May need to review:
+
+* Whether the problem field is correct or not
+
+Referral Count Report
+-----------------------
+Includes:
+
+* Number of referrals made to a service
+* Title of the service
+
+Has filters for:
+
+* Referral date (between)
+* County
+* Legal issue
+
+Should include:
+
+* Organization name
+* A way to export the data
 
 eTransfers report
 -------------------
+The eTransfers report shows all instances of Get Legal Help where the user got past the basic Get Legal Help pages and into the OTIS funnel.  
+
+Has fields for:
+
+* Triage ID
+* Intake organization name
+* Location
+* Service
+* Date of intake
+* Intake status
+* Zip code
+* County
+* Gender
+* Race
+* Ethnicity
+* Marital status
+* Legal problem
+
+Has filters for:
+
+* Start and end dates
+* Organization name
+* Service
+* Legal issue
+* Intake status
+* Source (to account for ILAO's modal, program widget, etc).
 
 SMS OAS Survey report
 ----------------------
 
+
 User reports
 =============
 
+The people reports are based off of the administrative views module, which should probably not be used in Drupal 8.
+
+All of these reports are exportable as CSV.
+
 People
 --------
+The people report should include:
+
+* Last name
+* First name
+* Email
+* Roles
+* Active (as yes/no)
+* Create date
+* Last access date
+* Member type
+* Participates in user tests (yes/no)
+* Operations to edit or cancel account
+
+Filters should include:
+
+* First name (contains)
+* Last name (contains)
+* Email (contains)
+* Has roles (any, yes/no)
+* Roles (multi-select)
+* Active
+* Member type
+* Participate in user test (all, yes, no)
+* Joined between dates
 
 Never validated accounts
 --------------------------
+This report shows all users who registered on the website but then did not activate their account.  These users are automatically deleted after [x] days.
+
+It is a mirror of the people report but limited to users who:
+
+* have a last access date of less than Jan 1, 2015
+* have an empty internal organization value
 
 User demographics report
 --------------------------
+Similar to the people table, this report lets us export user demographic data and includes fields for:
+
+* email
+* first name
+* last name
+* role(s)
+* member type
+* year born
+* gender
+* zip code
+* language preferences
+* last login
+* date joined
 
 Board, staff, YPB users
 ------------------------
+We use this report to filter users with an "internal organization" role so that we can control who shows up on the board, staff, and YPB pages in the About Us section.
 
+The report should include:
+
+* User name
+* Last name
+* First name
+* Company/Organization 
+* Biography
+* Internal organization
+* Internal title
+* Roles
+* Edit link
+
+The report should be filtered on:
+
+* Active users
+* Has one or more internal roles (this should be exposed)
+
+Login Report
+----------------
+This report shows the number of times a user has logged into the website.
+
+The report should include:
+
+* user ID
+* email
+* first name
+* last name
+* roles
+* member type
+* first log in
+* last log in
+* total number of logins
+* frequency of logins
 
 Additional reports
 ===================
