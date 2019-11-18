@@ -2,6 +2,26 @@
 Translation
 ===============================
 
+Content types that support translation
+=======================================
+
+* Legal content
+* Basic pages(page)
+* Blog posts (article)
+* ADRM
+* Events
+* Location
+* Location services
+* Organization
+* Site faq
+* Surveys
+* Toolbox
+* Toolbox tool
+* Toolbox tool step
+* Triage rules
+* Webform
+* Portla main page
+
 Current workflow
 ==================
 
