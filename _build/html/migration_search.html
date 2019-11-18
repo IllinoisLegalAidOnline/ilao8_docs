@@ -29,8 +29,8 @@
   <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Views/Reporting Migration" href="migration_reporting.html" />
-    <link rel="prev" title="Other node types" href="migration_other_node_types.html" /> 
+    <link rel="next" title="Reporting Migration" href="migration_reporting.html" />
+    <link rel="prev" title="SEO Settings" href="migration_seo_settings.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -92,15 +92,27 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Search migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo_settings.html">SEO Settings</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Search migration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current-search-set-up">Current search set up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-functionality">Custom functionality</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-search">ilao_search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ilao-search-synonyms">ilao_search_synonyms</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#best-bets">Best Bets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Reporting Migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
@@ -108,6 +120,8 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -179,6 +193,109 @@
             
   <div class="section" id="search-migration">
 <h1>Search migration<a class="headerlink" href="#search-migration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="current-search-set-up">
+<h2>Current search set up<a class="headerlink" href="#current-search-set-up" title="Permalink to this headline">¶</a></h2>
+<p>Current search settings rely on ApacheSolr modules and Acquia Search:</p>
+<ul class="simple">
+<li>apachesolr</li>
+<li>apachesolr_attachments</li>
+<li>apachesolr_exclude_node</li>
+<li>apachesolr_multilingual</li>
+<li>apachesolr_nan</li>
+<li>apachesolr_paragraphs</li>
+<li>apachesolr_views</li>
+</ul>
+<p>As well as custom modules:</p>
+<ul class="simple">
+<li>ilao_search</li>
+<li>ilao_search_synonyms</li>
+</ul>
+<p>And a custom best bet field attached to certain content types.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The search feature contains configuration data, which is not documented in full below.  For nodes that use paragraphs, those paragraph should be indexed.  Multilingual search is also required.</p>
+</div>
+<p>The following content types are included in the search:</p>
+<ul class="simple">
+<li>Attorney desk reference module (ADRM)</li>
+<li>Basic pages</li>
+<li>Blog posts</li>
+<li>Events</li>
+<li>Internship/fellowships (deprecated in Drupal 8)</li>
+<li>Job postings</li>
+<li>Legal content</li>
+<li>Portal main pages</li>
+<li>Site FAQs</li>
+<li>Toolboxes</li>
+</ul>
+<p>Attachments are also included in the search:</p>
+<ul class="simple">
+<li>ADRM, as part of parent entity</li>
+<li>Event, attachments as separate entity (Deprecate in Drupal 8)</li>
+<li>Job posting, as part of parent entity</li>
+<li>Legal content, as part of parent entity</li>
+<li>Basic page, change to as part of parent entity</li>
+<li>Portal main page, as part of parent entity</li>
+<li>Toolboxe, as part of parent entity</li>
+</ul>
+<p>Not-a-node pages</p>
+<p>We use the not-a-node to index pages that are not nodes.  These include:
+* form-library view
+* get-legal-help main page
+* legal self-help library view</p>
+</div>
+<div class="section" id="custom-functionality">
+<h2>Custom functionality<a class="headerlink" href="#custom-functionality" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ilao-search">
+<h3>ilao_search<a class="headerlink" href="#ilao-search" title="Permalink to this headline">¶</a></h3>
+<p>The ilao_search module alters search queries so that:</p>
+<ul class="simple">
+<li>Guides are weighted heavier than other types of content</li>
+<li>If the search term contains forms, easy forms are weighted higher than other types of content, including Guides (which are still weighted higher than other forms)</li>
+<li>If the search term contains videos, videos are weighted higher than other types of content, including Guides (which are still weighted higher than other forms)</li>
+<li>remove stop words from queries (see the module for a list of stop words)</li>
+<li>add in or replace any defined synonyms (see the ilao_search_synonyms documentation below)</li>
+</ul>
+<p>It also provides functionality to:</p>
+<ul class="simple">
+<li>highlight search terms</li>
+<li>strip out languages and Add rating text added by the fivestar and language modules</li>
+</ul>
+</div>
+<div class="section" id="ilao-search-synonyms">
+<h3>ilao_search_synonyms<a class="headerlink" href="#ilao-search-synonyms" title="Permalink to this headline">¶</a></h3>
+<p>The search synonyms module relies on the search synonym taxonomy.</p>
+<p>The search synonym taxonomy contains:</p>
+<ul class="simple">
+<li>name is the string to look for in a search query</li>
+<li>description is the string to add or replace in the search query</li>
+<li>field_synonym_type, which defines the type of synonym:
+* replace, which replaces the name with the description
+* expand, which adds the description to the name</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Examples</p>
+<p class="last">For the search query i received a notice of forcible entry and detainer: if the taxonomy defines forcible entry and detainer as a name with eviction as the description, a type set for replace would result in a query of I received a notice of eviction and with add would result in a query of I received a notcie of forcible entry and detainer, eviction.</p>
+</div>
+</div>
+<div class="section" id="best-bets">
+<h3>Best Bets<a class="headerlink" href="#best-bets" title="Permalink to this headline">¶</a></h3>
+<p>In the current iteration, best bets are available on legal content types to promote these to the top of search queries that exactly match the best bet</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Example: A legal content node is marked as a best bet for “op”; a user searching for op would see that node as the #1 result regardless of the actual Solr scoring.</p>
+</div>
+<p>Best Bets:</p>
+<ul class="simple">
+<li>are found in the ilao_legal_articles module</li>
+<li>do not allow duplicates across node.  Only 1 node can be a best bet for a search term</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -189,10 +306,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="migration_reporting.html" class="btn btn-neutral float-right" title="Views/Reporting Migration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="migration_reporting.html" class="btn btn-neutral float-right" title="Reporting Migration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="migration_other_node_types.html" class="btn btn-neutral" title="Other node types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="migration_seo_settings.html" class="btn btn-neutral" title="SEO Settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
