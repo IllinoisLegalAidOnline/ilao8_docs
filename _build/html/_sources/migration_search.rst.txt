@@ -50,7 +50,7 @@ Attachments are also included in the search:
 * Legal content, as part of parent entity
 * Basic page, change to as part of parent entity
 * Portal main page, as part of parent entity
-* Toolboxe, as part of parent entity
+* Toolboxes, as part of parent entity
 
 Not-a-node pages
 
