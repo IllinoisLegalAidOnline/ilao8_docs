@@ -92,22 +92,31 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo_settings.html">SEO Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Reporting Migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Translation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Translation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#current-workflow">Current workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#current-customization">Current customization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drupal-8">Drupal 8</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -179,6 +188,37 @@
             
   <div class="section" id="translation">
 <h1>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="current-workflow">
+<h2>Current workflow<a class="headerlink" href="#current-workflow" title="Permalink to this headline">¶</a></h2>
+<p>The current workflow is a bit of a mess:</p>
+<ul class="simple">
+<li>Lingotek was installed to do automatic translation; it does not work correctly.</li>
+<li>We created some fields on content to track translations that entity translation provides equivalent fields.</li>
+<li>Our staff now copies and pastes fields from content into Google Docs, sends to a professional translator and then copies and pastes back into fields</li>
+</ul>
+</div>
+<div class="section" id="current-customization">
+<h2>Current customization<a class="headerlink" href="#current-customization" title="Permalink to this headline">¶</a></h2>
+<p>On legal content, we added fields to better support translation:</p>
+<ul class="simple">
+<li>added a boolean field to indicate if the translation needs updated (duplicative of the flag translation as outdated)</li>
+<li>added a request translation field to allow staff to indicate that content should be translated (need to keep)</li>
+</ul>
+<p>We created reports and rules to help with the workflow:</p>
+<ul class="simple">
+<li>When legal content and portal content is updated, a rule fires that sends an email to <a class="reference external" href="mailto:translationmgmt&#37;&#52;&#48;illinoislegalaid&#46;org">translationmgmt<span>&#64;</span>illinoislegalaid<span>&#46;</span>org</a> if the translation outdated has been changed from false to true</li>
+</ul>
+</div>
+<div class="section" id="drupal-8">
+<h2>Drupal 8<a class="headerlink" href="#drupal-8" title="Permalink to this headline">¶</a></h2>
+<p>Lingotek should not be migrated in any form.  ILAO custom fields that can be handled just as easily with core features should be migrated to the core fields</p>
+<p>The translation management module should be installed and enabled with the ability to:</p>
+<ul class="simple">
+<li>use Google translate for automated translation (but this should only happen if the staff requests Google to translate it)</li>
+<li>create jobs and export as xliff files</li>
+<li>import xliff files back into the system</li>
+</ul>
+</div>
 </div>
 
 
