@@ -325,6 +325,7 @@
 <div class="section" id="get-legal-help-report">
 <h3>Get Legal Help Report<a class="headerlink" href="#get-legal-help-report" title="Permalink to this headline">¶</a></h3>
 <p>This is the main report for tracking usage of the Get Legal Help feature.</p>
+<p>Found at <a class="reference external" href="https://www.illinoislegalaid.org/admin/intake/reporting/get-legal-help-summary">https://www.illinoislegalaid.org/admin/intake/reporting/get-legal-help-summary</a></p>
 <p>Fields include:</p>
 <ul class="simple">
 <li>Triage ID</li>
@@ -343,13 +344,18 @@
 <li>End date</li>
 <li>Legal issues</li>
 </ul>
+<p>Exportable as a CSV</p>
+<p>Should include:
+* filter for zip code
+* column for county
+* filter for zip code</p>
 </div>
 <div class="section" id="referral-history">
 <h3>Referral History<a class="headerlink" href="#referral-history" title="Permalink to this headline">¶</a></h3>
 <p>Found at admin/reporting/get-legal-help/referrals</p>
 <p>Fields include:</p>
 <ul class="simple">
-<li>ID of referral user</li>
+<li>Referral ID</li>
 <li>Title of the service the user was referred to</li>
 <li>County of the user</li>
 <li>Over-income status</li>
@@ -367,6 +373,7 @@
 <li>Organization</li>
 <li>A way to export the data</li>
 <li>Explanation of over income statuses</li>
+<li>Triage User ID</li>
 </ul>
 <p>May need to review:</p>
 <ul class="simple">
@@ -420,6 +427,9 @@
 <li>Intake status</li>
 <li>Source (to account for ILAO’s modal, program widget, etc).</li>
 </ul>
+<p>Should have:
+* Filter for zip code
+* Filter for county</p>
 <div class="section" id="organization-report">
 <h4>Organization Report<a class="headerlink" href="#organization-report" title="Permalink to this headline">¶</a></h4>
 <p>There are also organization specific intake reports that mirror the etransfer report at admin/organizations/reporting/intake-report that can also be exported</p>

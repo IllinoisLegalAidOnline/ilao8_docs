@@ -110,6 +110,8 @@ Get Legal Help Report
 -----------------------
 This is the main report for tracking usage of the Get Legal Help feature.
 
+Found at https://www.illinoislegalaid.org/admin/intake/reporting/get-legal-help-summary
+
 Fields include:
 
 * Triage ID
@@ -128,6 +130,12 @@ Filters include:
 * End date
 * Legal issues
 
+Exportable as a CSV
+
+Should include:
+* filter for zip code
+* column for county
+* filter for zip code
 
 Referral History
 -------------------
@@ -135,7 +143,7 @@ Found at admin/reporting/get-legal-help/referrals
 
 Fields include:
 
-* ID of referral user
+* Referral ID
 * Title of the service the user was referred to
 * County of the user
 * Over-income status
@@ -153,6 +161,8 @@ Should include:
 * Organization
 * A way to export the data
 * Explanation of over income statuses
+* Triage User ID
+
 
 May need to review:
 
@@ -204,6 +214,10 @@ Has filters for:
 * Legal issue
 * Intake status
 * Source (to account for ILAO's modal, program widget, etc).
+
+Should have:
+* Filter for zip code
+* Filter for county
 
 Organization Report
 ^^^^^^^^^^^^^^^^^^^^^
