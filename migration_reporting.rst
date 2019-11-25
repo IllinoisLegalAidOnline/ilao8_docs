@@ -308,6 +308,18 @@ Similar to the people table, this report lets us export user demographic data an
 * last login
 * date joined
 
+Filters:
+
+* roles
+* date joined between
+* gender
+* language preference
+* zip code (with options for filter type)
+* year born (with options for filter type)
+
+Needs:
+* Participate in user test (all, yes, no) filter
+
 Board, staff, YPB users
 ------------------------
 We use this report to filter users with an "internal organization" role so that we can control who shows up on the board, staff, and YPB pages in the About Us section.
