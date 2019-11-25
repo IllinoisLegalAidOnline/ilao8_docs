@@ -293,15 +293,63 @@
 </div>
 <div class="section" id="localized-content">
 <h3>Localized content<a class="headerlink" href="#localized-content" title="Permalink to this headline">¶</a></h3>
+<p>Found at: <a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/content/localized-content">https://www.illinoislegalaid.org/admin/reporting/content/localized-content</a></p>
+<p>Fields include:
+* Node ID
+* Title
+* Primary legal category
+* Primary content format
+* Published yes/no
+* Edit link</p>
+<p>Filters:
+* Limited to legal content content type
+* Has span| text in the body of the content</p>
+<p>Downloads as CSV</p>
 </div>
 <div class="section" id="requested-forms">
 <h3>Requested forms<a class="headerlink" href="#requested-forms" title="Permalink to this headline">¶</a></h3>
+<p>This is just the webform results, not a view to be migrated.</p>
 </div>
 <div class="section" id="images-for-legal-content">
 <h3>Images for legal content<a class="headerlink" href="#images-for-legal-content" title="Permalink to this headline">¶</a></h3>
+<p>Evaluate for migration (change to media module may break this)</p>
+<p>Found at <a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/content-images">https://www.illinoislegalaid.org/admin/reporting/content-images</a></p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>node ID</li>
+<li>title</li>
+<li>primary legal category</li>
+<li>image thumbnail from image field</li>
+</ul>
+<p>Filters:</p>
+<ul class="simple">
+<li>Limited to legal content content type</li>
+<li>Exposed filter for title (user can select the type of filter)</li>
+<li>Exposed title for primary legal category (checkboxes; multi-select)</li>
+</ul>
 </div>
 <div class="section" id="toolbox-tool-usage-report">
 <h3>Toolbox tool usage report<a class="headerlink" href="#toolbox-tool-usage-report" title="Permalink to this headline">¶</a></h3>
+<p>The toolbox usage report tracks usage of toolbox tool content by user.</p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>Toolbox ID - the unique ID of the toolbox user session</li>
+<li>User ID - the user ID if known (it will be 0 for anonymous users)</li>
+<li>Toolbox title - the title of the toolbox the user accessed during the session</li>
+<li>Toolbox tool title - the title of the tool being accessed during the sesson</li>
+<li>Toolbox usage created (labeled Started)</li>
+<li>Toolbox usage updated (labeled Last Activity)</li>
+<li>Status (Started, saved, complete) - status of the tool</li>
+<li>Language (labeled User’s Language) - language the user viewed the pages in</li>
+</ul>
+<p>Filters:</p>
+<ul class="simple">
+<li>Tool started between (timestamp on created)</li>
+<li>Tool last changed between (timestamp on updated)</li>
+<li>Status</li>
+<li>User’s language</li>
+</ul>
+<p>Downloadable as CSV</p>
 </div>
 <div class="section" id="toolbox-tool-step-usage-report">
 <h3>Toolbox tool step usage report<a class="headerlink" href="#toolbox-tool-step-usage-report" title="Permalink to this headline">¶</a></h3>
@@ -314,6 +362,25 @@
 </div>
 <div class="section" id="comments-with-ratings">
 <h3>Comments with Ratings<a class="headerlink" href="#comments-with-ratings" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments">https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments</a></p>
+<p>Fields include:</p>
+<ul class="simple">
+<li>Node ID</li>
+<li>Content title</li>
+<li>Rating associated with the comment</li>
+<li>Comment</li>
+<li>Author of the comment</li>
+</ul>
+<p>Filters include:</p>
+<ul class="simple">
+<li>Content title (contains)</li>
+<li>Node ID</li>
+</ul>
+<p>Downloadable as CSV</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In a future revision, exclude staff comments.</p>
+</div>
 </div>
 <div class="section" id="content-ratings">
 <h3>Content ratings<a class="headerlink" href="#content-ratings" title="Permalink to this headline">¶</a></h3>

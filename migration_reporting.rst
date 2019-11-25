@@ -77,14 +77,73 @@ Find file content
 Localized content
 -------------------
 
+Found at: https://www.illinoislegalaid.org/admin/reporting/content/localized-content
+
+Fields include:
+* Node ID
+* Title
+* Primary legal category
+* Primary content format
+* Published yes/no
+* Edit link
+
+Filters:
+* Limited to legal content content type
+* Has span| text in the body of the content
+
+Downloads as CSV
+
 Requested forms
 ----------------
+
+This is just the webform results, not a view to be migrated.
 
 Images for legal content
 -------------------------
 
+Evaluate for migration (change to media module may break this)
+
+
+Found at https://www.illinoislegalaid.org/admin/reporting/content-images
+
+Fields include:
+
+* node ID
+* title
+* primary legal category
+* image thumbnail from image field
+
+Filters:
+
+* Limited to legal content content type
+* Exposed filter for title (user can select the type of filter)
+* Exposed title for primary legal category (checkboxes; multi-select)
+
 Toolbox tool usage report
 --------------------------
+The toolbox usage report tracks usage of toolbox tool content by user.  
+
+Fields include:
+
+* Toolbox ID - the unique ID of the toolbox user session
+* User ID - the user ID if known (it will be 0 for anonymous users)
+* Toolbox title - the title of the toolbox the user accessed during the session
+* Toolbox tool title - the title of the tool being accessed during the sesson
+* Toolbox usage created (labeled Started)
+* Toolbox usage updated (labeled Last Activity)
+* Status (Started, saved, complete) - status of the tool
+* Language (labeled User's Language) - language the user viewed the pages in
+
+Filters:
+
+* Tool started between (timestamp on created)
+* Tool last changed between (timestamp on updated)
+* Status
+* User's language
+
+Downloadable as CSV
+
+
 
 Toolbox tool step usage report
 --------------------------------
@@ -98,6 +157,26 @@ Take action articles by guide
 
 Comments with Ratings
 ----------------------
+https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments
+
+Fields include:
+
+* Node ID
+* Content title
+* Rating associated with the comment
+* Comment
+* Author of the comment
+
+Filters include:
+
+* Content title (contains)
+* Node ID
+
+Downloadable as CSV
+
+
+.. note:: 
+   In a future revision, exclude staff comments.
 
 Content ratings
 ------------------
