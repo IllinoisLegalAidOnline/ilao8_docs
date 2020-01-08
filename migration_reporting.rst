@@ -114,8 +114,8 @@ This is just the webform results, not a view to be migrated. In Drupal 8, we exp
 Images for legal content
 -------------------------
 
-..note::
-  Deprecate 
+.. note::
+   Deprecate 
 
 Found at https://www.illinoislegalaid.org/admin/reporting/content-images
 
@@ -170,12 +170,14 @@ Drupal 8 version:  admin/reporting/content/guides/learn-more
 
 This report returns the content that is tied to a Guide article via the learn more field
 Columns include:
+
 * Node ID
 * Title
 * Learn more title
 * Learn more node id
 
 Filters for:
+
 * Guide title (Legal Content Title)
 * Legal content NID 
 * Learn more title
@@ -189,12 +191,14 @@ Drupal 8 version:  admin/reporting/content/guides/take-action
 
 This report returns the content that is tied to a Guide article via the take action field
 Columns include:
+
 * Node ID
 * Title
 * Take action title
 * Take action node id
 
 Filters for:
+
 * Guide title (Legal Content Title)
 * Legal content NID 
 * Take action title
