@@ -168,10 +168,37 @@ Learn more articles by guide
 Current url: admin/content/bundles/learn-more
 Drupal 8 version:  admin/reporting/content/guides/learn-more
 
+This report returns the content that is tied to a Guide article via the learn more field
+Columns include:
+* Node ID
+* Title
+* Learn more title
+* Learn more node id
+
+Filters for:
+* Guide title (Legal Content Title)
+* Legal content NID 
+* Learn more title
+* Learn more node id
+
 Take action articles by guide
 -------------------------------
 Current url: admin/content/bundles/take-action
 Drupal 8 version:  admin/reporting/content/guides/take-action
+
+
+This report returns the content that is tied to a Guide article via the take action field
+Columns include:
+* Node ID
+* Title
+* Take action title
+* Take action node id
+
+Filters for:
+* Guide title (Legal Content Title)
+* Legal content NID 
+* Take action title
+* Take action node id
 
 Comments with Ratings
 ----------------------
