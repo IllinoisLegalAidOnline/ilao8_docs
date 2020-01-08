@@ -36,6 +36,7 @@ Filters include:
 
 Find legal content
 --------------------
+In Drupal 8: /admin/reporting/content/legal-content
 Find legal content is specialized version of the content report designed to show legal content only.  Excluded from this report is any other legal content like portal main pages, toolboxes, tool steps, tools, which make it less than ideal as a full view of our legal content.
 
 Fields include:
@@ -80,30 +81,41 @@ Localized content
 
 Found at: https://www.illinoislegalaid.org/admin/reporting/content/localized-content
 
+
 Fields include:
 * Node ID
 * Title
+* Type (content type; New)
 * Primary legal category
 * Primary content format
 * Published yes/no
 * Edit link
 
 Filters:
-* Limited to legal content content type
+* Limited to legal content content type (new:  need to cover all legal information types:
+
+  * legal content
+  * portal main pages
+  * toolbox tool steps
+  * tools
+  * adrm
+
 * Has span| text in the body of the content
 
 Downloads as CSV
 
-Requested forms
+Requested forms 
 ----------------
+.. note:: 
+   Deprecate
 
-This is just the webform results, not a view to be migrated.
+This is just the webform results, not a view to be migrated. In Drupal 8, we expect this to be integrated with Zendesk rather than through webform.
 
 Images for legal content
 -------------------------
 
-Evaluate for migration (change to media module may break this)
-
+..note::
+  Deprecate 
 
 Found at https://www.illinoislegalaid.org/admin/reporting/content-images
 
@@ -122,6 +134,8 @@ Filters:
 
 Toolbox tool usage report
 --------------------------
+D7 Url: admin/content/toolboxes/tool-usage
+D8 version: admin/reporting/content/toolboxes/tool-usage
 The toolbox usage report tracks usage of toolbox tool content by user.  
 
 Fields include:
@@ -151,14 +165,20 @@ Toolbox tool step usage report
 
 Learn more articles by guide
 -----------------------------
+Current url: admin/content/bundles/learn-more
+Drupal 8 version:  admin/reporting/content/guides/learn-more
 
 Take action articles by guide
 -------------------------------
-
+Current url: admin/content/bundles/take-action
+Drupal 8 version:  admin/reporting/content/guides/take-action
 
 Comments with Ratings
 ----------------------
-https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments
+Current url: https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments
+
+Drupal 8 version:
+admin/reporting/content/legal-content-ratings-comments
 
 Fields include:
 
@@ -181,6 +201,7 @@ Downloadable as CSV
 
 Content ratings
 ------------------
+D8 Version: admin/reporting/content/comments
 
 OTIS/Get Legal Help reports
 ============================

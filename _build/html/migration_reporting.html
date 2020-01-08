@@ -253,7 +253,8 @@
 </div>
 <div class="section" id="find-legal-content">
 <h3>Find legal content<a class="headerlink" href="#find-legal-content" title="Permalink to this headline">¶</a></h3>
-<p>Find legal content is specialized version of the content report designed to show legal content only.  Excluded from this report is any other legal content like portal main pages, toolboxes, tool steps, tools, which make it less than ideal as a full view of our legal content.</p>
+<p>In Drupal 8: /admin/reporting/content/legal-content
+Find legal content is specialized version of the content report designed to show legal content only.  Excluded from this report is any other legal content like portal main pages, toolboxes, tool steps, tools, which make it less than ideal as a full view of our legal content.</p>
 <p>Fields include:</p>
 <ul class="simple">
 <li>Node ID</li>
@@ -298,22 +299,41 @@
 <p>Fields include:
 * Node ID
 * Title
+* Type (content type; New)
 * Primary legal category
 * Primary content format
 * Published yes/no
 * Edit link</p>
 <p>Filters:
-* Limited to legal content content type
-* Has span| text in the body of the content</p>
+* Limited to legal content content type (new:  need to cover all legal information types:</p>
+<blockquote>
+<div><ul class="simple">
+<li>legal content</li>
+<li>portal main pages</li>
+<li>toolbox tool steps</li>
+<li>tools</li>
+<li>adrm</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Has span| text in the body of the content</li>
+</ul>
 <p>Downloads as CSV</p>
 </div>
 <div class="section" id="requested-forms">
 <h3>Requested forms<a class="headerlink" href="#requested-forms" title="Permalink to this headline">¶</a></h3>
-<p>This is just the webform results, not a view to be migrated.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Deprecate</p>
+</div>
+<p>This is just the webform results, not a view to be migrated. In Drupal 8, we expect this to be integrated with Zendesk rather than through webform.</p>
 </div>
 <div class="section" id="images-for-legal-content">
 <h3>Images for legal content<a class="headerlink" href="#images-for-legal-content" title="Permalink to this headline">¶</a></h3>
-<p>Evaluate for migration (change to media module may break this)</p>
+<dl class="docutils">
+<dt>..note::</dt>
+<dd>Deprecate</dd>
+</dl>
 <p>Found at <a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/content-images">https://www.illinoislegalaid.org/admin/reporting/content-images</a></p>
 <p>Fields include:</p>
 <ul class="simple">
@@ -331,7 +351,9 @@
 </div>
 <div class="section" id="toolbox-tool-usage-report">
 <h3>Toolbox tool usage report<a class="headerlink" href="#toolbox-tool-usage-report" title="Permalink to this headline">¶</a></h3>
-<p>The toolbox usage report tracks usage of toolbox tool content by user.</p>
+<p>D7 Url: admin/content/toolboxes/tool-usage
+D8 version: admin/reporting/content/toolboxes/tool-usage
+The toolbox usage report tracks usage of toolbox tool content by user.</p>
 <p>Fields include:</p>
 <ul class="simple">
 <li>Toolbox ID - the unique ID of the toolbox user session</li>
@@ -357,13 +379,19 @@
 </div>
 <div class="section" id="learn-more-articles-by-guide">
 <h3>Learn more articles by guide<a class="headerlink" href="#learn-more-articles-by-guide" title="Permalink to this headline">¶</a></h3>
+<p>Current url: admin/content/bundles/learn-more
+Drupal 8 version:  admin/reporting/content/guides/learn-more</p>
 </div>
 <div class="section" id="take-action-articles-by-guide">
 <h3>Take action articles by guide<a class="headerlink" href="#take-action-articles-by-guide" title="Permalink to this headline">¶</a></h3>
+<p>Current url: admin/content/bundles/take-action
+Drupal 8 version:  admin/reporting/content/guides/take-action</p>
 </div>
 <div class="section" id="comments-with-ratings">
 <h3>Comments with Ratings<a class="headerlink" href="#comments-with-ratings" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments">https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments</a></p>
+<p>Current url: <a class="reference external" href="https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments">https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings-comments</a></p>
+<p>Drupal 8 version:
+admin/reporting/content/legal-content-ratings-comments</p>
 <p>Fields include:</p>
 <ul class="simple">
 <li>Node ID</li>
@@ -385,6 +413,7 @@
 </div>
 <div class="section" id="content-ratings">
 <h3>Content ratings<a class="headerlink" href="#content-ratings" title="Permalink to this headline">¶</a></h3>
+<p>D8 Version: admin/reporting/content/comments</p>
 </div>
 </div>
 <div class="section" id="otis-get-legal-help-reports">
