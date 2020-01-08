@@ -24,13 +24,14 @@ Fields include:
 
 Filters include:
 
+* Node ID (new)
 * Title
 * Content type
 * Published (any, yes, no)
-* Vocabulary
-* Has taxonomy terms (with depth)
-* Image (has image/no image)
-* Primary content type
+* Vocabulary [deprecate]
+* Has taxonomy terms (with depth) [deprecate]
+* Image (has image/no image) [deprecate]
+* Primary content type [deprecate on this report]
 
 
 Find legal content
@@ -53,8 +54,8 @@ Filters include:
 
 * Node ID
 * Title (contains)
-* Description (contains)
-* Body (contains)
+* Description [deprecate]
+* Body [deprecate]
 * Primary legal category
 * Published (defaults to Yes)
 * Content type (multiple select)
@@ -66,7 +67,7 @@ Filters include:
   * Restrict to legal aid and/or pro bono
   * Jurisdiction
   * Annual updates
-  * Translation outdated
+  * Translation outdated (deprecate)
   * Created date (between)
   * Last reviewed date (between)
 
