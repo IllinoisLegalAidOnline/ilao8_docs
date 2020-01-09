@@ -163,6 +163,29 @@ Downloadable as CSV
 Toolbox tool step usage report
 --------------------------------
 
+D7 Url: https://www.illinoislegalaid.org/admin/content/toolboxes/toolstep-usage
+D8 version: admin/reporting/content/toolboxes/toolstep-usage
+
+Fields include:
+
+* toolbox ID - the unique id of the toolbox user session
+* toolbox usage ID - the unique id of the toolbox step usage
+* user ID - the user ID of the user (0 for anonymous users)
+* tool title - the title of the tool the user was viewing
+* tool step title - the title of the tool step the user was viewing
+* Started - the time the tool step was started
+* Changed - the time the tool step was last changed 
+* Status - the status of the progress on the tool (saved, started, completed)
+* Language (labeled User's Language) - language the user viewed the pages in
+
+Filters:
+* Date range for when the tool step was started
+* Date range for when the tool step was last changed
+* Status (single drop down)
+* User's language (single drop down)
+* Tool title (uses contains)
+* Toolbox ID associated with the tool step
+
 Learn more articles by guide
 -----------------------------
 Current url: admin/content/bundles/learn-more
