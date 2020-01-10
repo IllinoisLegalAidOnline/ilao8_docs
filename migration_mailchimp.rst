@@ -37,6 +37,7 @@ We have configuration set that allows us to select:
 eUpdates
 ==================
 `Monthly example <https://us17.campaign-archive.com/?e=56139dc628&u=9690d96f7e71a177840ef4770&id=7e17e54aae>`_
+
 `Weekly example <https://us17.campaign-archive.com/?e=56139dc628&u=9690d96f7e71a177840ef4770&id=30d22def4e>`_
 
 Legal Content
