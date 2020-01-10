@@ -111,7 +111,11 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mailchimp Integration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#user-subscription-integration">User subscription integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#groups-template-configuration">Groups &amp; Template configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#eupdates">eUpdates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eupdates">eUpdates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#legal-content">Legal Content</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#more-from-the-community">More from the community</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
@@ -196,7 +200,13 @@
 <p>We are interested in expanding it to handle all transactional email through the website</p>
 <div class="section" id="user-subscription-integration">
 <h2>User subscription integration<a class="headerlink" href="#user-subscription-integration" title="Permalink to this headline">¶</a></h2>
-<p>All website users are added to the Master list.</p>
+<p>All website users are added to the Master list and then added to the group that they belong to based on subscription:</p>
+<ul class="simple">
+<li>Blog</li>
+<li>Newsletter</li>
+<li>Weekly eUpdate</li>
+<li>Monthly eUpdate</li>
+</ul>
 </div>
 <div class="section" id="groups-template-configuration">
 <h2>Groups &amp; Template configuration<a class="headerlink" href="#groups-template-configuration" title="Permalink to this headline">¶</a></h2>
@@ -207,20 +217,26 @@
 <li>What template to use for the weekly eUpdate (currently uses the eupdate_weekly template)</li>
 <li>What template to use for the monthly eUpdate (currently uses the eupdate_weekly template)</li>
 </ul>
-<p>We have PHP settings set up to ensure this.</p>
 </div>
 <div class="section" id="eupdates">
 <h2>eUpdates<a class="headerlink" href="#eupdates" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=7e17e54aae">Monthly example</a>
 <a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=30d22def4e">Weekly example</a></p>
+<div class="section" id="legal-content">
+<h3>Legal Content<a class="headerlink" href="#legal-content" title="Permalink to this headline">¶</a></h3>
 <p>Currently, the eUpdate displays legal content updates:</p>
 <blockquote>
 <div><ul class="simple">
-<li>is of content type [x]</li>
-<li>has a created date of [y] OR has a [date] of</li>
+<li>is of content type legal content (should be expanded to other legal content types)</li>
+<li>is not tagged to be suppressed from search</li>
+<li>is published</li>
+<li>has a created date of [y] OR has a last substantive updated date within [y] where y is the date/time from the last eUpdate.</li>
+<li>is grouped by primary legal category</li>
 </ul>
 </div></blockquote>
-<p>Also includes sections for:</p>
+</div>
+<div class="section" id="more-from-the-community">
+<h3>More from the community<a class="headerlink" href="#more-from-the-community" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li>Open job postings (keep)</li>
@@ -229,6 +245,7 @@
 <li>Open internships/fellowships (deprecate)</li>
 </ul>
 </div></blockquote>
+</div>
 </div>
 </div>
 
