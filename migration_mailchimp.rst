@@ -31,17 +31,23 @@ We have configuration set that allows us to select:
 * What template to use for the weekly eUpdate (currently uses the eupdate_weekly template)
 * What template to use for the monthly eUpdate (currently uses the eupdate_weekly template)
 
-.. warning:
+.. warning::
    Check group segment is used for testing.  This is the only group that should ever get mail from staging, dev, or any local instance. We have PHP settings set up to ensure this.
 
 eUpdates
 ==================
-`Monthly example <https://us17.campaign-archive.com/?e=56139dc628&u=9690d96f7e71a177840ef4770&id=7e17e54aae>`_
 
-`Weekly example <https://us17.campaign-archive.com/?e=56139dc628&u=9690d96f7e71a177840ef4770&id=30d22def4e>`_
+Examples
+---------
+`Monthly <https://us17.campaign-archive.com/?e=56139dc628&u=9690d96f7e71a177840ef4770&id=7e17e54aae>`_
+
+`Weekly <https://us17.campaign-archive.com/?e=56139dc628&u=9690d96f7e71a177840ef4770&id=30d22def4e>`_
+
+Structure
+------------
 
 Legal Content
----------------
+^^^^^^^^^^^^^^^^
 Currently, the eUpdate displays legal content updates:
 
   * is of content type legal content (should be expanded to other legal content types)
@@ -50,16 +56,23 @@ Currently, the eUpdate displays legal content updates:
   * has a created date of [y] OR has a last substantive updated date within [y] where y is the date/time from the last eUpdate.
   * is grouped by primary legal category
   
-.. note:
+.. note::
    The core views for this are in admin/structure/views/view/legal_content/  
   
 More from the community
-------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
  * Open job postings (keep)
  * Upcoming events (keep)
  * Open volunteer opportunities (deprecate)
  * Open internships/fellowships (deprecate)
+ 
+Scheduling and Sending
+------------------------
+The monthly eUpdate is sent at 9am on the 1st of each month.
+The weekly eUpdate is sent at 9am on each Tuesday
+ 
+ 
  
    
 
