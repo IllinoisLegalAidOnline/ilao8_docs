@@ -246,16 +246,27 @@ Filters include:
 
 * Content title (contains)
 * Node ID
+* Yes/no filter to exclude staff ratings and comments that when checked hides all comments where the UID has the role staff or intern.
 
 Downloadable as CSV
 
 
-.. note:: 
-   In a future revision, exclude staff comments.
 
 Content ratings
 ------------------
+D7 version: https://www.illinoislegalaid.org/admin/reporting/legal-content-ratings
 D8 Version: admin/reporting/content/comments
+
+Fields include: 
+
+* Node ID (new) labeled as ID (sortable)
+* Content title labeled as title and links to the content (sortable)
+* Rating (5 star default) (sortable)
+
+CSV exportable with columns for:
+* Title
+* Average rating 
+* number of votes
 
 OTIS/Get Legal Help reports
 ============================
