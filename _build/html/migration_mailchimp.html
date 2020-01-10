@@ -92,22 +92,29 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_blog.html">Migration Blog Posts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo_settings.html">SEO Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Views/Reporting Migration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_seo.html">Migration: SEO features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Mailchimp Integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Mailchimp Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#user-subscription-integration">User subscription integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eupdates">eUpdates</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -179,11 +186,33 @@
             
   <div class="section" id="mailchimp-integration">
 <h1>Mailchimp Integration<a class="headerlink" href="#mailchimp-integration" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>eUpdates</li>
-<li>newsletter and blog subscriptions</li>
-<li>mandrill for transactional emails</li>
+<p>We currently use Mailchimp integration to:
+* Subscribe users to newsletter and blog subscriptions through the master list
+* Send out the weekly and monthly eUpdates</p>
+<p>We are interested in expanding it to handle all transactional email through the website</p>
+<div class="section" id="user-subscription-integration">
+<h2>User subscription integration<a class="headerlink" href="#user-subscription-integration" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="eupdates">
+<h2>eUpdates<a class="headerlink" href="#eupdates" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=7e17e54aae">Monthly example</a></p>
+<p>Currently, the eUpdate displays legal content updates:</p>
+<blockquote>
+<div><ul class="simple">
+<li>is of content type [x]</li>
+<li>has a created date of [y] OR has a [date] of</li>
 </ul>
+</div></blockquote>
+<p>Also includes sections for:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Open job postings (keep)</li>
+<li>Upcoming events (keep)</li>
+<li>Open volunteer opportunities (deprecate)</li>
+<li>Open internships/fellowships (deprecate)</li>
+</ul>
+</div></blockquote>
+</div>
 </div>
 
 
