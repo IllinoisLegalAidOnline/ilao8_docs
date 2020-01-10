@@ -102,6 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_seo_settings.html">SEO Settings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Reporting Migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
@@ -109,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Mailchimp Integration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#user-subscription-integration">User subscription integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#groups-template-configuration">Groups &amp; Template configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#eupdates">eUpdates</a></li>
 </ul>
 </li>
@@ -186,16 +188,31 @@
             
   <div class="section" id="mailchimp-integration">
 <h1>Mailchimp Integration<a class="headerlink" href="#mailchimp-integration" title="Permalink to this headline">¶</a></h1>
-<p>We currently use Mailchimp integration to:
-* Subscribe users to newsletter and blog subscriptions through the master list
-* Send out the weekly and monthly eUpdates</p>
+<p>We currently use Mailchimp integration to:</p>
+<ul class="simple">
+<li>Subscribe users to newsletter and blog subscriptions through the master list (these are sent out manually by staff)</li>
+<li>Send out the weekly and monthly eUpdates automatically</li>
+</ul>
 <p>We are interested in expanding it to handle all transactional email through the website</p>
 <div class="section" id="user-subscription-integration">
 <h2>User subscription integration<a class="headerlink" href="#user-subscription-integration" title="Permalink to this headline">¶</a></h2>
+<p>All website users are added to the Master list.</p>
+</div>
+<div class="section" id="groups-template-configuration">
+<h2>Groups &amp; Template configuration<a class="headerlink" href="#groups-template-configuration" title="Permalink to this headline">¶</a></h2>
+<p>We have configuration set that allows us to select:</p>
+<ul class="simple">
+<li>What group receives the weekly eUpdate (currently uses the weekly eUpdate group)</li>
+<li>What group receives the monthly eUpdate (currently uses the monthly eUpdate group)</li>
+<li>What template to use for the weekly eUpdate (currently uses the eupdate_weekly template)</li>
+<li>What template to use for the monthly eUpdate (currently uses the eupdate_weekly template)</li>
+</ul>
+<p>We have PHP settings set up to ensure this.</p>
 </div>
 <div class="section" id="eupdates">
 <h2>eUpdates<a class="headerlink" href="#eupdates" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=7e17e54aae">Monthly example</a></p>
+<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=7e17e54aae">Monthly example</a>
+<a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=30d22def4e">Weekly example</a></p>
 <p>Currently, the eUpdate displays legal content updates:</p>
 <blockquote>
 <div><ul class="simple">
