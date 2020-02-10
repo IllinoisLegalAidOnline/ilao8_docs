@@ -112,8 +112,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#user-subscription-integration">User subscription integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#groups-template-configuration">Groups &amp; Template configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#eupdates">eUpdates</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#legal-content">Legal Content</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#more-from-the-community">More from the community</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#structure">Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scheduling-and-sending">Scheduling and Sending</a></li>
 </ul>
 </li>
 </ul>
@@ -217,13 +218,22 @@
 <li>What template to use for the weekly eUpdate (currently uses the eupdate_weekly template)</li>
 <li>What template to use for the monthly eUpdate (currently uses the eupdate_weekly template)</li>
 </ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Check group segment is used for testing.  This is the only group that should ever get mail from staging, dev, or any local instance. We have PHP settings set up to ensure this.</p>
+</div>
 </div>
 <div class="section" id="eupdates">
 <h2>eUpdates<a class="headerlink" href="#eupdates" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=7e17e54aae">Monthly example</a></p>
-<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=30d22def4e">Weekly example</a></p>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=7e17e54aae">Monthly</a></p>
+<p><a class="reference external" href="https://us17.campaign-archive.com/?e=56139dc628&amp;u=9690d96f7e71a177840ef4770&amp;id=30d22def4e">Weekly</a></p>
+</div>
+<div class="section" id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="legal-content">
-<h3>Legal Content<a class="headerlink" href="#legal-content" title="Permalink to this headline">¶</a></h3>
+<h4>Legal Content<a class="headerlink" href="#legal-content" title="Permalink to this headline">¶</a></h4>
 <p>Currently, the eUpdate displays legal content updates:</p>
 <blockquote>
 <div><ul class="simple">
@@ -234,9 +244,13 @@
 <li>is grouped by primary legal category</li>
 </ul>
 </div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The core views for this are in admin/structure/views/view/legal_content/</p>
+</div>
 </div>
 <div class="section" id="more-from-the-community">
-<h3>More from the community<a class="headerlink" href="#more-from-the-community" title="Permalink to this headline">¶</a></h3>
+<h4>More from the community<a class="headerlink" href="#more-from-the-community" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li>Open job postings (keep)</li>
@@ -245,6 +259,12 @@
 <li>Open internships/fellowships (deprecate)</li>
 </ul>
 </div></blockquote>
+</div>
+</div>
+<div class="section" id="scheduling-and-sending">
+<h3>Scheduling and Sending<a class="headerlink" href="#scheduling-and-sending" title="Permalink to this headline">¶</a></h3>
+<p>The monthly eUpdate is sent at 9am on the 1st of each month.
+The weekly eUpdate is sent at 9am on each Tuesday</p>
 </div>
 </div>
 </div>
