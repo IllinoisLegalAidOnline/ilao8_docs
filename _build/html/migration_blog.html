@@ -92,12 +92,31 @@
 <li class="toctree-l2"><a class="reference internal" href="migration_legal_content_types.html">Legal content migration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_portal_pages.html">Portal content</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_toolboxes.html">Toolboxes and related structures</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event nodes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_adrm.html">ADRM Content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_events.html">Event Content Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_jobs.html">Job content type</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_internships.html">Internships content type</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Migration Blog Posts</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migration Blog Posts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#relies-on">Relies on</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields">Fields</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-changes">Known changes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="migration_basic_pages.html">Basic page content type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_faqs.html">Site FAQs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="migration_other_node_types.html">Other node types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_seo_settings.html">SEO Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_search.html">Search migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_reporting.html">Reporting Migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_google_analytics.html">Google analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_sms.html">SMS and Twilio integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_zendesk.html">Zendesk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_livechat.html">Livechat Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_translation.html">Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_mailchimp.html">Mailchimp Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_discussion_groups.html">Discussion groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_contexts.html">Contexts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migration_rules.html">Custom Rules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="otis_drupal8.html">OTIS Drupal 8</a></li>
@@ -169,6 +188,76 @@
             
   <div class="section" id="migration-blog-posts">
 <h1>Migration Blog Posts<a class="headerlink" href="#migration-blog-posts" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There is some internal confusion about the blog and whether it should be merged with legal content or remain a standalone content type.</p>
+</div>
+<div class="section" id="relies-on">
+<h2>Relies on<a class="headerlink" href="#relies-on" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>image (D8: media)</li>
+<li>AddThis (to be replaced with whatever new tool we are using to share with)</li>
+</ul>
+</div>
+<div class="section" id="fields">
+<h2>Fields<a class="headerlink" href="#fields" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="38%" />
+<col width="26%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Description</th>
+<th class="head">Status</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>title_field</td>
+<td>Text; title</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>field_blog_category</td>
+<td>Term reference</td>
+<td>TBD</td>
+</tr>
+<tr class="row-even"><td>field_legal_topic</td>
+<td>Term reference to legal issues</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-odd"><td>body</td>
+<td>Long text and summary</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_image</td>
+<td>Image</td>
+<td>Migrate to media</td>
+</tr>
+<tr class="row-odd"><td>field_tags</td>
+<td>Term reference</td>
+<td>Do not migrate</td>
+</tr>
+<tr class="row-even"><td>field_share</td>
+<td>AddThis</td>
+<td>Migrate based on
+new tools</td>
+</tr>
+<tr class="row-odd"><td>field_lift_content_keyword</td>
+<td>Term reference</td>
+<td>Migrate</td>
+</tr>
+<tr class="row-even"><td>field_lift_content_section</td>
+<td>Term reference</td>
+<td>Migrate</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="known-changes">
+<h2>Known changes<a class="headerlink" href="#known-changes" title="Permalink to this headline">¶</a></h2>
+<p>None known</p>
+</div>
 </div>
 
 
